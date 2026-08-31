@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* Leaflet Overrides for sleek dark theme */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background-color: #020617;
+  font-family: inherit;
+}
+
+.leaflet-control-attribution {
+  background: rgba(15, 23, 42, 0.8) !important;
+  color: #94a3b8 !important;
+  font-size: 10px !important;
+  backdrop-filter: blur(8px);
+  border-radius: 6px;
+  padding: 2px 6px !important;
+  margin: 6px !important;
+}
+
+.leaflet-control-attribution a {
+  color: #f59e0b !important;
+}
+
+/* Custom Marker styling */
+.custom-state-pin, .monument-marker-icon {
+  background: transparent;
+  border: none;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.8);
+}
