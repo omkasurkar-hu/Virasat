@@ -1,6 +1,6 @@
 {
-  "name": "Cultural Heritage Explorer",
-  "description": "An interactive map platform to explore cultural heritage, monuments, folk art, cuisines, and traditions across states.",
+  "name": "Virasat - Cultural Heritage Explorer",
+  "description": "Discover digital antiquity across India with an interactive heritage map, monuments, folk art, cuisines, and timeless traditions.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

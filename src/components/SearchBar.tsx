@@ -9,6 +9,7 @@ interface SearchBarProps {
   onSelectMonument: (monument: Monument, state: StateHeritage) => void;
   filterRegion: string | null;
   onFilterRegion: (region: string | null) => void;
+  className?: string;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({
@@ -18,6 +19,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   onSelectMonument,
   filterRegion,
   onFilterRegion,
+  className,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -110,7 +112,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   ];
 
   return (
-    <div className="absolute top-4 left-4 z-30 w-[calc(100%-2rem)] max-w-md pointer-events-auto">
+    <div className={`w-full pointer-events-auto ${className || ''}`}>
       {/* Search Input Box */}
       <div
         ref={dropdownRef}
