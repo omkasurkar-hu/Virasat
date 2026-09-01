@@ -88,7 +88,7 @@ export const HeritageMap: React.FC<HeritageMapProps> = ({
     }
   };
 
-  // Initialize Map
+  // Initialize Map with full world view centered on India
   useEffect(() => {
     if (!mapContainerRef.current || mapInstanceRef.current) return;
 
@@ -104,7 +104,7 @@ export const HeritageMap: React.FC<HeritageMapProps> = ({
     const initialMap = L.map(mapContainerRef.current, {
       center: initialCenter,
       zoom: initialZoom,
-      minZoom: 4,
+      minZoom: 3,
       maxZoom: 18,
       zoomControl: false,
     });
@@ -142,7 +142,24 @@ export const HeritageMap: React.FC<HeritageMapProps> = ({
       }
     }, 500);
 
+    const handleZoomIn = () => {
+      mapInstanceRef.current?.zoomIn();
+    };
+    const handleZoomOut = () => {
+      mapInstanceRef.current?.zoomOut();
+    };
+    const handleResetIndia = () => {
+      safeNavigate(DEFAULT_CENTER, DEFAULT_ZOOM);
+    };
+
+    window.addEventListener('virasat-zoom-in', handleZoomIn);
+    window.addEventListener('virasat-zoom-out', handleZoomOut);
+    window.addEventListener('virasat-reset-india', handleResetIndia);
+
     return () => {
+      window.removeEventListener('virasat-zoom-in', handleZoomIn);
+      window.removeEventListener('virasat-zoom-out', handleZoomOut);
+      window.removeEventListener('virasat-reset-india', handleResetIndia);
       clearTimeout(t1);
       clearTimeout(t2);
       resizeObserver.disconnect();
@@ -283,6 +300,13 @@ export const HeritageMap: React.FC<HeritageMapProps> = ({
   return (
     <div className="relative w-full h-full">
       <div id="heritage-map-container" ref={mapContainerRef} className="w-full h-full z-0 bg-slate-950" />
+      
+      {/* Interactive Map Status Badge */}
+      <div className="absolute bottom-6 left-4 z-20 pointer-events-none hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/85 backdrop-blur-md border border-amber-500/40 text-slate-300 text-[11px] shadow-xl">
+        <span className="text-amber-400 font-bold">🗺️ Virasat Cultural Atlas</span>
+        <span className="text-slate-500">•</span>
+        <span className="text-stone-300">Click any state or monument to explore</span>
+      </div>
     </div>
   );
 };

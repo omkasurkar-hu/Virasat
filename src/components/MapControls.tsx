@@ -123,11 +123,31 @@ export const MapControls: React.FC<MapControlsProps> = ({
 
       {/* Control Buttons Cluster */}
       <div className="bg-slate-900/90 backdrop-blur-xl p-1.5 rounded-2xl border border-slate-700/70 shadow-2xl flex flex-col gap-1.5">
+        {/* Zoom In */}
+        <button
+          id="btn-map-zoom-in"
+          onClick={() => window.dispatchEvent(new CustomEvent('virasat-zoom-in'))}
+          className="p-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-amber-300 transition-all cursor-pointer"
+          title="Zoom In on India"
+        >
+          <ZoomIn className="w-4 h-4" />
+        </button>
+
+        {/* Zoom Out */}
+        <button
+          id="btn-map-zoom-out"
+          onClick={() => window.dispatchEvent(new CustomEvent('virasat-zoom-out'))}
+          className="p-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-amber-300 transition-all cursor-pointer"
+          title="Zoom Out"
+        >
+          <ZoomOut className="w-4 h-4" />
+        </button>
+
         {/* Layer Toggle */}
         <button
           id="btn-toggle-map-layer"
           onClick={() => setShowLayerMenu(!showLayerMenu)}
-          className={`p-2.5 rounded-xl transition-all ${
+          className={`p-2.5 rounded-xl transition-all cursor-pointer ${
             showLayerMenu
               ? 'bg-amber-500 text-slate-950'
               : 'text-slate-200 hover:bg-slate-800 hover:text-amber-300'
@@ -141,7 +161,7 @@ export const MapControls: React.FC<MapControlsProps> = ({
         <button
           id="btn-ambient-drone-toggle"
           onClick={toggleAmbientAudio}
-          className={`p-2.5 rounded-xl transition-all ${
+          className={`p-2.5 rounded-xl transition-all cursor-pointer ${
             isAmbientPlaying
               ? 'bg-amber-500 text-slate-950 animate-pulse'
               : 'text-slate-200 hover:bg-slate-800 hover:text-amber-300'
@@ -151,12 +171,15 @@ export const MapControls: React.FC<MapControlsProps> = ({
           {isAmbientPlaying ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
         </button>
 
-        {/* Reset View Compass */}
+        {/* Reset View Compass to India */}
         <button
           id="btn-reset-map-view"
-          onClick={onResetView}
-          className="p-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-amber-300 transition-all"
-          title="Reset View to All States"
+          onClick={() => {
+            onResetView();
+            window.dispatchEvent(new CustomEvent('virasat-reset-india'));
+          }}
+          className="p-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-amber-300 transition-all cursor-pointer"
+          title="Reset View to India Map"
         >
           <Compass className="w-4 h-4" />
         </button>
