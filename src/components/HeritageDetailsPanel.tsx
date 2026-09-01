@@ -22,6 +22,7 @@ import {
   Info,
 } from 'lucide-react';
 import { StateHeritage, HeritageTab, Monument } from '../types';
+import { heritageAudio } from '../utils/audioSynth';
 
 interface HeritageDetailsPanelProps {
   state: StateHeritage;
@@ -41,6 +42,19 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isPlayingFolkAudio, setIsPlayingFolkAudio] = useState(false);
+
+  const toggleFolkAudio = () => {
+    if (isPlayingFolkAudio) {
+      heritageAudio.stopAll();
+      setIsPlayingFolkAudio(false);
+    } else {
+      setIsPlayingFolkAudio(true);
+      heritageAudio.playFolkSongPreview(state.name, () => {
+        setIsPlayingFolkAudio(false);
+      });
+    }
+  };
 
   // AI Guide Chat State
   const [aiQuery, setAiQuery] = useState('');
@@ -139,6 +153,7 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
     { id: 'overview', label: 'Overview', icon: <Info className="w-4 h-4" /> },
     { id: 'monuments', label: 'Monuments', icon: <Landmark className="w-4 h-4" /> },
     { id: 'dance_music', label: 'Arts & Dance', icon: <Music className="w-4 h-4" /> },
+    { id: 'folk_lore', label: 'Folk Lore', icon: <BookOpen className="w-4 h-4" /> },
     { id: 'cuisines', label: 'Cuisines', icon: <Utensils className="w-4 h-4" /> },
     { id: 'festivals', label: 'Festivals', icon: <Sparkles className="w-4 h-4" /> },
     { id: 'crafts_attire', label: 'Crafts & Attire', icon: <Shirt className="w-4 h-4" /> },
@@ -415,6 +430,37 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
             animate={{ opacity: 1, y: 0 }}
             className="space-y-4"
           >
+            <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between gap-3">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">
+                  🎵 Authentic Folk & Classical Acoustic Snippet
+                </span>
+                <span className="text-xs text-slate-200 font-medium">
+                  {state.folkMusicSnippet?.songName || `${state.name} Folk Melody & Drone`}
+                </span>
+              </div>
+              <button
+                onClick={toggleFolkAudio}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  isPlayingFolkAudio
+                    ? 'bg-amber-400 text-slate-950 animate-pulse'
+                    : 'bg-amber-600 hover:bg-amber-500 text-white'
+                }`}
+              >
+                {isPlayingFolkAudio ? (
+                  <>
+                    <VolumeX className="w-3.5 h-3.5" />
+                    <span>Playing...</span>
+                  </>
+                ) : (
+                  <>
+                    <Volume2 className="w-3.5 h-3.5" />
+                    <span>Play Snippet</span>
+                  </>
+                )}
+              </button>
+            </div>
+
             <p className="text-xs text-slate-400">
               Classical dance forms, folk theatre, rhythmic percussion, and traditional musical
               instruments.
@@ -464,6 +510,69 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                   )}
                 </div>
               ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* FOLK LORE & TRADITIONS TAB */}
+        {activeTab === 'folk_lore' && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-4"
+          >
+            <p className="text-xs text-slate-400">
+              Oral folk epics, village legends, and timeless cultural mythologies passed down through generations.
+            </p>
+
+            <div className="bg-slate-800/60 p-5 rounded-2xl border border-slate-700/60 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="p-2 rounded-lg bg-amber-500/20 text-amber-300">
+                  <BookOpen className="w-4 h-4" />
+                </span>
+                <div>
+                  <h4 className="text-base font-bold text-amber-300">
+                    {state.folkStory?.title || `${state.name} Folk Epics & Ballads`}
+                  </h4>
+                  <span className="text-xs text-slate-400">Oral Storytelling & Village Lore</span>
+                </div>
+              </div>
+
+              <p className="text-xs text-slate-300 leading-relaxed">
+                {state.folkStory?.synopsis ||
+                  `In ${state.name}, folk storytellers have carried epics and morality tales through bardic songs, puppet shows, and temple recitations for centuries. These stories weave together local geography, historical kings, devotion, and reverence for nature.`}
+              </p>
+
+              {state.folkStory?.characters && state.folkStory.characters.length > 0 && (
+                <div className="pt-2 border-t border-slate-700/50">
+                  <span className="text-[11px] text-amber-400 font-semibold block mb-1">
+                    Key Folk Figures & Motifs:
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {state.folkStory.characters.map((c, i) => (
+                      <span key={i} className="px-2 py-0.5 bg-slate-900 text-slate-300 rounded text-[10px] border border-slate-700">
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {state.folkStory?.moralOrSignificance && (
+                <div className="p-3 bg-amber-950/30 rounded-xl border border-amber-500/30 text-xs text-amber-200">
+                  <strong>Cultural Lesson: </strong>
+                  <span>{state.folkStory.moralOrSignificance}</span>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 space-y-2">
+              <h5 className="text-xs font-bold text-amber-400 uppercase tracking-wider">
+                Fascinating State Trivia
+              </h5>
+              <p className="text-xs text-slate-300 leading-relaxed italic">
+                "{state.funFact}"
+              </p>
             </div>
           </motion.div>
         )}

@@ -59,9 +59,65 @@ Provide a rich, fascinating, vivid, and culturally accurate answer in 2-3 struct
     }
   });
 
-  // Health check
-  app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", timestamp: new Date().toISOString() });
+  // Ask Bharat - General Cultural Assistant API
+  app.post("/api/ask-bharat", async (req, res) => {
+    try {
+      const { query } = req.body;
+      if (!query) {
+        return res.status(400).json({ error: "Missing query" });
+      }
+
+      const ai = getGenAI();
+      if (!ai) {
+        return res.json({
+          answer: null,
+          suggestedFollowUps: [
+            "Tell me about Rajasthan folk music",
+            "What is Rogan fabric painting?",
+            "Explain the architecture of Brihadisvara Temple"
+          ]
+        });
+      }
+
+      const prompt = `You are 'Bharat', an erudite, warm, and inspiring cultural scholar and storyteller of India's living civilizational heritage, architecture, classical dances, endangered crafts, ancient sciences, and festive cuisines.
+User question: "${query}"
+
+Respond concisely in 2-3 engaging, culturally accurate paragraphs. At the end, propose 2 short follow-up questions formatted as:
+FOLLOW_UPS:
+- [Question 1]
+- [Question 2]`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: prompt,
+      });
+
+      const fullText = response.text || "";
+      const parts = fullText.split("FOLLOW_UPS:");
+      const answer = parts[0].trim();
+      let suggestedFollowUps: string[] = [];
+
+      if (parts[1]) {
+        suggestedFollowUps = parts[1]
+          .split("\n")
+          .map((s) => s.replace(/^[-*•\d.]\s*/, "").trim())
+          .filter((s) => s.length > 0);
+      }
+
+      return res.json({
+        answer,
+        suggestedFollowUps: suggestedFollowUps.length > 0 ? suggestedFollowUps : [
+          "What are the regional folk dances?",
+          "Tell me about traditional cuisines"
+        ]
+      });
+    } catch (error: any) {
+      console.error("Ask Bharat Error:", error);
+      return res.status(500).json({
+        error: "Failed to query Bharat guide",
+        details: error.message
+      });
+    }
   });
 
   // Vite middleware in dev mode only
