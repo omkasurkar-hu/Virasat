@@ -21,11 +21,7 @@ export default function App() {
   const [showQuizModal, setShowQuizModal] = useState<boolean>(false);
 
   const handleOpenMap = (initialState?: StateHeritage) => {
-    if (initialState) {
-      setSelectedState(initialState);
-    } else if (!selectedState) {
-      setSelectedState(STATES_HERITAGE_DATA[0]); // Default to rich preview
-    }
+    setSelectedState(initialState || null);
     setCurrentView('map');
   };
 

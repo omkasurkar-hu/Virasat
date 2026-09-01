@@ -1,6 +1,5 @@
 import express from "express";
 import path from "path";
-import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
 
@@ -65,8 +64,9 @@ Provide a rich, fascinating, vivid, and culturally accurate answer in 2-3 struct
     res.json({ status: "ok", timestamp: new Date().toISOString() });
   });
 
-  // Vite middleware in dev mode
+  // Vite middleware in dev mode only
   if (process.env.NODE_ENV !== "production") {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",

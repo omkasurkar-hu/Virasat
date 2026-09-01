@@ -107,28 +107,49 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </header>
 
-      {/* Main Hero Section */}
+      {/* Main Hero Section with Heritage Artwork Background */}
       <main className="flex-1">
         <section
           id="hero-section"
-          className="min-h-[72vh] flex flex-col items-center justify-center text-center px-6 pt-16 pb-24"
+          className="relative min-h-[78vh] flex flex-col items-center justify-center text-center px-6 pt-16 pb-24 overflow-hidden"
         >
+          {/* Background Heritage Artwork Canvas */}
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+            <img
+              src="/images/virasat_hero_bg.jpg"
+              alt="Indian Heritage Tapestry"
+              className="w-full h-full object-cover object-center opacity-90 transition-transform duration-1000"
+              referrerPolicy="no-referrer"
+            />
+            {/* Top, Bottom, and Side Gradient Blends for Seamless Integration */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F2] via-transparent to-[#FAF7F2]/75" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/60 via-transparent to-[#FAF7F2]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/40 via-transparent to-[#FAF7F2]/40" />
+            <div className="absolute inset-0 bg-amber-950/5 mix-blend-multiply" />
+          </div>
+
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="max-w-4xl mx-auto flex flex-col items-center"
+            transition={{ duration: 0.9, ease: 'easeOut' }}
+            className="relative z-10 max-w-4xl mx-auto flex flex-col items-center"
           >
+            {/* Heritage Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-900/10 backdrop-blur-md border border-stone-900/10 text-stone-900 text-[11px] font-semibold uppercase tracking-[0.25em] mb-4 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#8B1E22] animate-pulse" />
+              <span>The Living Soul of India</span>
+            </div>
+
             {/* Giant VIRASAT Typography */}
-            <h1 className="font-serif font-black tracking-[0.08em] text-[#8B1E22] text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] leading-none mb-10 select-none drop-shadow-sm">
+            <h1 className="font-serif font-black tracking-[0.08em] text-[#8B1E22] text-6xl sm:text-8xl md:text-9xl lg:text-[10.5rem] leading-none mb-10 select-none drop-shadow-[0_4px_24px_rgba(139,30,34,0.18)]">
               VIRASAT
             </h1>
 
-            {/* Outlined Explore Button */}
+            {/* Outlined / Solid Explore Button */}
             <button
               id="btn-hero-explore-virasat"
               onClick={onExploreVirasat}
-              className="group inline-flex items-center gap-3 px-8 py-3.5 rounded-lg border border-[#8B1E22] text-[#8B1E22] hover:bg-[#8B1E22] hover:text-white transition-all duration-300 text-xs font-semibold uppercase tracking-[0.2em] shadow-sm hover:shadow-md cursor-pointer"
+              className="group inline-flex items-center gap-3 px-9 py-4 rounded-xl bg-[#8B1E22] text-white hover:bg-[#721519] border border-[#8B1E22] transition-all duration-300 text-xs font-bold uppercase tracking-[0.22em] shadow-lg hover:shadow-xl hover:-translate-y-0.5 cursor-pointer backdrop-blur-sm"
             >
               <span>EXPLORE VIRASAT</span>
               <span className="transform group-hover:translate-x-1.5 transition-transform duration-300 text-sm">

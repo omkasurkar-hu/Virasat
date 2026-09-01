@@ -17,6 +17,7 @@ export interface ArtAndDance {
   instruments?: string[];
   costumeHighlight?: string;
   image?: string;
+  giTag?: boolean;
 }
 
 export interface CuisineItem {
