@@ -192,7 +192,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'East',
     coordinates: [20.9517, 85.0985],
     zoomLevel: 7,
-    bannerImage: 'https://images.unsplash.com/photo-1600100397608-f010e4299955?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://hblimg.mmtcdn.com/content/hubble/img/puri/mmt/destination/m_destination_puri_landscape_l_327_523.jpg',
     tagline: 'Soul of Incredible India, Konark Sun Temple & Jagannath Ratha Yatra',
     overview: 'Odisha is the land of sublime architectural grandeur, pristine Bay of Bengal coastline, and profound spiritual devotion. It is famed for the colossal stone chariot of the Konark Sun Temple, the divine Rath Yatra of Puri Jagannath, classical Odissi dance, Sambalpuri tie-and-dye ikats, and Pattachitra scrolls.',
     officialLanguage: 'Odia',
@@ -203,11 +203,11 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     monuments: [
       {
         name: 'Konark Sun Temple (Black Pagoda)',
+        image:'https://tds.indianeagle.com/wp-content/uploads/2026/02/Konark-temple.png',
         type: 'Kalinga Architectural Colossus',
         century: '1250 AD (13th Century / King Narasimhadeva I)',
         location: 'Konark, Puri Coast',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1600100397608-f010e4299955?auto=format&fit=crop&w=800&q=80',
         description: 'A colossal stone chariot with 24 carved sundial wheels pulled by seven horses celebrating Surya the Sun God, adorned with intricate erotic friezes and war elephants.',
         coordinates: [19.8876, 86.0945]
       },
@@ -217,7 +217,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '1161 AD (12th Century / Anantavarman Chodaganga Deva)',
         location: 'Puri',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
+        image: 'https://i.pinimg.com/736x/51/a2/ab/51a2ab09cc39e2deb1d9f482b673e9dc.jpg',
         description: 'One of the four sacred Char Dham shrines, where wooden idols of Lord Jagannath, Balabhadra, and Subhadra are worshipped and periodically reborn (Nabakalebara).',
         coordinates: [19.8048, 85.8179]
       },
@@ -227,7 +227,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '11th Century AD (Somavamshi Dynasty)',
         location: 'Old Town, Bhubaneswar',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1609137144822-0797300f8dc4?auto=format&fit=crop&w=800&q=80',
+        image: 'https://temple.yatradham.org/public/Product/temple/temple_9JHrEaxc_202506301423160.webp',
         description: '180-foot towering sandstone temple dedicated to Harihara (combined form of Shiva and Vishnu), centerpiece of Bhubaneswar\'s 1,000 temple skyline.',
         coordinates: [20.2382, 85.8336]
       },
@@ -237,7 +237,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '2nd Century BCE (King Kharavela of Chedi Dynasty)',
         location: 'Bhubaneswar',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
+        image: 'https://compass.rauias.com/wp-content/uploads/2024/07/image-24.png',
         description: 'Twin hills with 33 carved monastic cells containing the famous 17-line Hathigumpha inscription recording Kharavela\'s military campaigns.',
         coordinates: [20.2589, 85.7867]
       }
@@ -245,6 +245,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Odissi Dance',
+        image:'https://upload.wikimedia.org/wikipedia/commons/e/e7/Odissi_Performance_DS.jpg?utm_source=sa.wikipedia.org&utm_campaign=index&utm_content=original',
         type: 'Dance',
         origin: 'Temples of Odisha (Mahari & Gotipua traditions)',
         description: 'Classical Indian dance celebrated for its fluid torso movements, Tribhangi (three-bend sculptural body posture), and Chauka (grounded masculine stance).',
@@ -253,6 +254,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Gotipua & Chhau (Mayurbhanj)',
+        image:'https://s3.ap-southeast-1.amazonaws.com/images.asianage.com/images/aa-Cover-faqgiquug3cfb6n0a99pi04rj4-20180612030935.Medi.jpeg',
         type: 'Dance',
         origin: 'Raghurajpur & Mayurbhanj',
         description: 'Acrobatic temple dance by young boys in female attire, and martial Mayurbhanj Chhau performed without masks with dynamic sword maneuvers.',
@@ -260,6 +262,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Pattachitra & Palm Leaf Engraving (Tala Pattachitra)',
+        image:'https://i.pinimg.com/736x/78/2d/a7/782da7a45a55f851c3b368da6c2cd4bc.jpg',
         type: 'Theatre',
         origin: 'Raghurajpur Heritage Crafts Village',
         description: 'Ancient scroll painting on treated cloth/palm leaves using natural stone pigments and tamarind gum depicting Jagannath legends.',
@@ -269,18 +272,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Puri Jagannath Mahaprasad (Chhappan Bhog)',
+        image:'https://res.cloudinary.com/vgoh5qrn/image/upload/v1786985018/why-jagannath-temple-prasad-is-called-mahaprasad.jpg',
         category: 'Vegetarian',
         description: 'Sacred temple feast cooked in earthen pots including Kanika (sweet saffron rice), Dalma (lentils slow-cooked with pumpkin, raw banana, and roasted cumin), and Besara.',
         keyIngredients: ['Raw Banana', 'Pumpkin', 'Toor Dal', 'Panch Phoron', 'Desi Ghee', 'Grated Coconut', 'Roasted Cumin Powder']
       },
       {
         name: 'Pakhala Bhata with Machha Bhaja',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQokUTbwWcPduxT_rz6NgUPGaUv2MDDN3C_c5mWdQSUbnIKhG3BM7f8rWw&s=10',
         category: 'Vegetarian',
         description: 'Fermented water rice tempered with roasted cumin, mustard seeds, curry leaves, and green chilies, served with crispy fried fish, saga bhaja, and badi chura.',
         keyIngredients: ['Cooked Rice', 'Water', 'Curd', 'Mustard Seeds', 'Curry Leaves', 'Badi (Urad Dal Crisp Crumbles)']
       },
       {
         name: 'Chhena Poda (Burnt Cheese Cake)',
+        image:'https://www.vidhyashomecooking.com/wp-content/uploads/2020/11/chennapoda-683x1024.jpg',
         category: 'Dessert',
         description: 'India\'s first native cheesecake, made by kneading fresh chhena with sugar, cardamom, and cashews, wrapped in sal leaves and slow-baked over coal until caramelized brown.',
         keyIngredients: ['Fresh Cottage Cheese (Chhena)', 'Sugar / Jaggery', 'Semolina (Suji)', 'Cardamom', 'Cashews', 'Ghee'],
@@ -288,6 +294,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Rasabali & Khira Gaja',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAi7mrtM_jlP46lAZj0TdGZhwre8_Nw91fTUphiIaonudknVGpEKLMOQ0&s=10',
         category: 'Dessert',
         description: 'Deep-fried flattened chhena patties soaked in thick cardamom-infused reduced milk (from Baladevjew Temple, Kendrapara).',
         keyIngredients: ['Chhena', 'Reduced Milk (Rabri)', 'Cardamom', 'Sugar', 'Flour'],
@@ -297,6 +304,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Puri Rath Yatra (Chariot Festival)',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2U744D9fAMRHAtVWzl8d9gKEqVtd0wU4-6oI_bqs0YyI2tAv39PTeO4lB&s=10',
         timing: 'Ashadha Shukla Dwitiya (June - July)',
         significance: 'World\'s oldest and grandest chariot festival where Lord Jagannath, Balabhadra, and Subhadra emerge from the temple on massive hand-built wooden chariots.',
         keyRitual: 'Chhera Pahanra (King of Puri sweeping the chariot floors with a golden broom) and pulling of the 45-foot Nandighosha chariot by millions.',
@@ -304,6 +312,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Konark Dance Festival & Sand Art Festival',
+        image:'https://www.tourmyindia.com/states/odisha/images/konark-dance-festival1-1.jpg',
         timing: 'December 1 - 5',
         significance: 'Open-air classical dance festival against the illuminated backdrop of the Sun Temple, accompanied by international sand art on Chandrabhaga Beach.',
         keyRitual: 'Nightly recitals by world masters of Odissi, Bharatanatyam, Kathak, and Kuchipudi.',
@@ -311,6 +320,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Bali Jatra Cuttack',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmviWSn_aFBdnbBVWqGSPm8azVPq7S9hm_LiuD-aK-05zV1QDnGD-xRDm5&s=10',
         timing: 'Kartik Purnima (November)',
         significance: 'Celebration of ancient Kalinga\'s maritime merchants (Sadhabas) who sailed in Boitas to Bali, Java, and Sumatra for trade.',
         keyRitual: 'Floating colorful paper and bark boats (Boita Bandana) at sunrise in the Mahanadi River.',
@@ -318,31 +328,44 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       }
     ],
     craftsAndAttire: {
-      textiles: ['Sambalpuri Bandha Saree (Double Ikat)', 'Bomkai Silk & Cotton', 'Berhampuri Patta (Kumbha borders)', 'Kotpad Natural Dye Handloom', 'Pasapalli Sarees (Chessboard motifs)'],
-      handicrafts: ['Pattachitra Paintings of Raghurajpur', 'Cuttack Tarakasi (Silver Filigree Jewelry)', 'Pipili Appliqué Work (Chandua)', 'Dhokra Metal Casting', 'Stone Carvings of Puri'],
+      textiles: ['Sambalpuri Bandha Saree (Double Ikat)', 'Bomkai Silk & Cotton', 'Berhampuri Patta (Kumbha borders)'],
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXLTakHaofr_lsa_4n9QQt2T7uFyVKOhybrWFPIafg0NxaOsUxLRYpL94&s=10',
+      image:'https://content-d11d.kxcdn.com/media/catalog/product/a/d/adi492.5342.jpg',
+      image:'https://cdn.shopaccino.com/nirguna/products/tri3dnirguna-2021071514silkset290sowmyasriside2021-7-15-19-28-491600x2400-173281_m.jpg?v=731',
+      handicrafts: ['Pattachitra Paintings of Raghurajpur', 'Cuttack Tarakasi (Silver Filigree Jewelry)', 'Pipili Appliqué Work (Chandua)', 'Dhokra Metal Casting'],
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYWNZ6786fYWxoWTVwRrfBT5Sqf-9JLFNnWsxDXe9X7Rq31h2kSm0rlYob&s=10',
+      image:'https://static.toiimg.com/thumb/msid-108183267,width-1280,height-720,resizemode-4/108183267.jpg',
+      image:'https://gaatha.org/wp-content/uploads/puri-applique-craft.jpg.webp',
+      image:'https://vajiramias.sgp1.cdn.digitaloceanspaces.com/wp/current-affairs/2025/03/what_is_dokra_metal_crafts.jpg?v=2',
       traditionalMenAttire: 'Dhoti with Kurta and Gamucha draped over the shoulder.',
+      image:'https://www.indiatravel.app/wp-content/uploads/2024/10/Pata-Dhoti-227x300.png',
       traditionalWomenAttire: 'Sambalpuri Ikat or Bomkai Silk Saree with distinctive temple border and silver filigree ornaments.',
+      image:'https://www.bunkarvalley.com/wp-content/uploads/2025/02/Tribal-Fashion-of-Odisha.jpg',
       giTaggedCrafts: ['Odisha Rasagola', 'Sambalpuri Bandha Saree', 'Kotpad Handloom', 'Odisha Pattachitra', 'Pipili Applique Work', 'Cuttack Silver Filigree (Tarakasi)', 'Kandhamal Haldi (Turmeric)']
     },
     historyTimeline: [
       {
         era: '261 BCE',
         title: 'The Kalinga War & Emperor Ashoka',
+        image:'https://cdn.britannica.com/02/247602-004-F3D2F0F0.jpg',
         description: 'The monumental battle fought along the Daya River near Dhauli prompted Emperor Ashoka to renounce violence and adopt Buddhism.'
       },
       {
         era: '1st Century BCE',
         title: 'Empire of Mahameghavahana Kharavela',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6tRoDcav_oMf1eviZkH-fsnHmByori42svBkgui8myQ&s=10',
         description: 'Kalinga became a dominant military and commercial empire with expeditions across India and deep maritime ties with Southeast Asia.'
       },
       {
         era: '11th - 13th Century AD',
         title: 'Eastern Ganga Empire & Golden Temple Age',
+        image:'https://upload.wikimedia.org/wikipedia/commons/6/6d/Eastern_Ganga_fanam_Chodaganga.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         description: 'Constructed the Jagannath Temple at Puri and the Sun Temple at Konark, defeating foreign incursions and patronizing Sanskrit and Odia poetry.'
       },
       {
         era: '1936 AD',
         title: 'First Province Formed on Linguistic Basis',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPuH9EyG08oxQ2gT88v6dvVX3YDW6Q6MW3dq1ivmJYek0tlP5EqAr_UG7N&s=10',
         description: 'Odisha was constituted as a separate province in British India on 1 April 1936 through the efforts of Utkal Gourav Madhusudan Das (celebrated as Utkal Divas).'
       }
     ]
