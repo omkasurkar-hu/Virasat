@@ -228,7 +228,12 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
 
         {/* State Title on Banner */}
         <div className="absolute bottom-3 left-6 right-6">
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            {state.stateCode && (
+              <span className="px-2 py-0.5 rounded-md text-[11px] font-extrabold bg-amber-500 text-slate-950 shadow">
+                {state.stateCode}
+              </span>
+            )}
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40">
               {state.region} India
             </span>
@@ -399,7 +404,7 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                     </span>
                   </div>
 
-                  <div className="p-4">
+                  <div className="p-4 space-y-2.5">
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <h4 className="text-base font-bold text-white group-hover:text-amber-400 transition-colors">
@@ -409,13 +414,33 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                           📍 {m.location} &bull; {m.type}
                         </span>
                       </div>
-                      <span className="text-xs text-amber-400 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform flex-shrink-0">
+                      <span className="text-xs text-amber-400 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform flex-shrink-0 font-medium">
                         Details &rarr;
                       </span>
                     </div>
-                    <p className="text-xs text-slate-300 mt-2.5 leading-relaxed line-clamp-3">
-                      {m.description}
+
+                    {m.shortDesc && (
+                      <p className="text-xs text-amber-200 font-medium italic">
+                        {m.shortDesc}
+                      </p>
+                    )}
+
+                    <p className="text-xs text-slate-300 leading-relaxed">
+                      {m.detailedDescription || m.description}
                     </p>
+
+                    {m.highlights && m.highlights.length > 0 && (
+                      <div className="pt-2 border-t border-slate-700/50 flex flex-wrap gap-1.5">
+                        {m.highlights.map((h, i) => (
+                          <span
+                            key={i}
+                            className="px-2 py-0.5 rounded text-[10px] bg-slate-900/90 text-amber-300 border border-slate-700 font-medium"
+                          >
+                            ✓ {h}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -462,17 +487,16 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
             </div>
 
             <p className="text-xs text-slate-400">
-              Classical dance forms, folk theatre, rhythmic percussion, and traditional musical
-              instruments.
+              Classical dance forms, folk music genres, theatrical traditions, and indigenous instruments of {state.name}.
             </p>
 
             <div className="space-y-4">
               {state.artAndDance.map((art, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 space-y-3"
+                  className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 space-y-3 hover:border-amber-500/40 transition-all"
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-start justify-between gap-2">
                     <div>
                       <h4 className="text-base font-bold text-amber-300">{art.name}</h4>
                       <span className="text-xs text-slate-400">
@@ -484,7 +508,35 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-300 leading-relaxed">{art.description}</p>
+                  {art.image && (
+                    <div className="relative h-36 rounded-xl overflow-hidden border border-slate-700/50">
+                      <img src={art.image} alt={art.name} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                    </div>
+                  )}
+
+                  {art.shortDesc && (
+                    <p className="text-xs text-amber-200 font-medium italic">
+                      "{art.shortDesc}"
+                    </p>
+                  )}
+
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    {art.detailedDescription || art.description}
+                  </p>
+
+                  {art.highlights && art.highlights.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {art.highlights.map((hl, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-0.5 rounded text-[10px] bg-slate-900 text-amber-200 border border-slate-700"
+                        >
+                          ✦ {hl}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   {art.costumeHighlight && (
                     <div className="bg-slate-900/60 p-2.5 rounded-lg border border-slate-700/40 text-xs">
@@ -585,22 +637,27 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
             className="space-y-4"
           >
             <p className="text-xs text-slate-400">
-              Authentic state gastronomy, royal recipes, festive sweets, and GI-tagged delicacies.
+              Authentic state gastronomy, royal recipes, festive sweets, and GI-tagged delicacies of {state.name}.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {state.cuisines.map((food, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 space-y-2 hover:border-amber-500/40 transition-all"
+                  className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 space-y-3 hover:border-amber-500/40 transition-all"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <h4 className="text-sm font-bold text-white">{food.name}</h4>
                         {food.giTag && (
                           <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded">
                             GI Tagged
+                          </span>
+                        )}
+                        {food.origin && (
+                          <span className="bg-slate-900 text-slate-300 border border-slate-700 text-[9px] px-2 py-0.5 rounded">
+                            📍 {food.origin}
                           </span>
                         )}
                       </div>
@@ -617,23 +674,53 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-300 leading-relaxed">{food.description}</p>
+                  {food.image && (
+                    <div className="relative h-32 rounded-xl overflow-hidden border border-slate-700/50">
+                      <img src={food.image} alt={food.name} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                    </div>
+                  )}
 
-                  <div className="pt-2 border-t border-slate-700/40">
-                    <span className="text-[10px] text-slate-400 uppercase tracking-wider block mb-1">
-                      Key Ingredients
-                    </span>
-                    <div className="flex flex-wrap gap-1">
-                      {food.keyIngredients.map((ing, i) => (
+                  {food.shortDesc && (
+                    <p className="text-xs text-amber-200 font-medium italic">
+                      "{food.shortDesc}"
+                    </p>
+                  )}
+
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    {food.detailedDescription || food.description}
+                  </p>
+
+                  {food.highlights && food.highlights.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {food.highlights.map((hl, i) => (
                         <span
                           key={i}
-                          className="text-[10px] px-2 py-0.5 rounded bg-slate-900/80 text-amber-200 border border-slate-700"
+                          className="px-2 py-0.5 rounded text-[10px] bg-slate-900/90 text-amber-300 border border-slate-700"
                         >
-                          {ing}
+                          ✦ {hl}
                         </span>
                       ))}
                     </div>
-                  </div>
+                  )}
+
+                  {food.keyIngredients && food.keyIngredients.length > 0 && (
+                    <div className="pt-2 border-t border-slate-700/40">
+                      <span className="text-[10px] text-slate-400 uppercase tracking-wider block mb-1">
+                        Key Ingredients
+                      </span>
+                      <div className="flex flex-wrap gap-1">
+                        {food.keyIngredients.map((ing, i) => (
+                          <span
+                            key={i}
+                            className="text-[10px] px-2 py-0.5 rounded bg-slate-900/80 text-amber-200 border border-slate-700"
+                          >
+                            {ing}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -692,6 +779,69 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
             animate={{ opacity: 1, y: 0 }}
             className="space-y-5"
           >
+            <p className="text-xs text-slate-400">
+              Traditional clothing, master handlooms, and exquisite craft legacies of {state.name}.
+            </p>
+
+            {/* Featured Attire & Textiles Showcase */}
+            {state.craftsAndAttire.attireItems && state.craftsAndAttire.attireItems.length > 0 && (
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Shirt className="w-3.5 h-3.5" /> Featured Attire & Textiles
+                </h4>
+                <div className="space-y-3">
+                  {state.craftsAndAttire.attireItems.map((attire) => (
+                    <div
+                      key={attire.id}
+                      className="bg-slate-800/70 p-4 rounded-2xl border border-slate-700/70 hover:border-amber-500/50 transition-all space-y-3"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <h5 className="text-base font-bold text-white">{attire.name}</h5>
+                          {attire.origin && (
+                            <span className="text-[11px] text-amber-400 font-medium">
+                              Origin: {attire.origin}
+                            </span>
+                          )}
+                        </div>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                          Handloom & Attire
+                        </span>
+                      </div>
+
+                      {attire.image && (
+                        <div className="relative h-36 rounded-xl overflow-hidden border border-slate-700/50">
+                          <img src={attire.image} alt={attire.name} className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                        </div>
+                      )}
+
+                      <p className="text-xs text-amber-200 font-medium italic">
+                        "{attire.shortDesc}"
+                      </p>
+
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        {attire.detailedDescription}
+                      </p>
+
+                      {attire.highlights && attire.highlights.length > 0 && (
+                        <div className="pt-2 border-t border-slate-700/40 flex flex-wrap gap-1.5">
+                          {attire.highlights.map((hl, i) => (
+                            <span
+                              key={i}
+                              className="px-2.5 py-1 rounded-md text-[10px] bg-slate-900 text-amber-300 border border-slate-700 font-medium"
+                            >
+                              ✦ {hl}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div>
               <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">
                 Traditional Textiles & Weaves

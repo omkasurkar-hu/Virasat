@@ -79,7 +79,27 @@ export const MonumentModal: React.FC<MonumentModalProps> = ({
             <h4 className="text-xs uppercase tracking-wider text-amber-400 font-bold mb-1.5">
               Historical & Architectural Significance
             </h4>
-            <p className="text-sm text-slate-300 leading-relaxed">{monument.description}</p>
+            {monument.shortDesc && (
+              <p className="text-xs text-amber-200 font-medium italic mb-2">
+                "{monument.shortDesc}"
+              </p>
+            )}
+            <p className="text-sm text-slate-300 leading-relaxed">
+              {monument.detailedDescription || monument.description}
+            </p>
+
+            {monument.highlights && monument.highlights.length > 0 && (
+              <div className="mt-3 pt-3 border-t border-slate-800 flex flex-wrap gap-1.5">
+                {monument.highlights.map((h, i) => (
+                  <span
+                    key={i}
+                    className="px-2.5 py-1 rounded-md text-[11px] bg-slate-800/90 text-amber-300 border border-slate-700 font-medium"
+                  >
+                    ✦ {h}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="pt-2 flex items-center justify-between gap-3 border-t border-slate-800">

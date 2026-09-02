@@ -7,6 +7,11 @@ export interface Monument {
   image: string;
   description: string;
   coordinates: [number, number]; // [lat, lng]
+  id?: string;
+  shortDesc?: string;
+  detailedDescription?: string;
+  imagePlaceholder?: string;
+  highlights?: string[];
 }
 
 export interface ArtAndDance {
@@ -14,6 +19,11 @@ export interface ArtAndDance {
   type: 'Dance' | 'Music' | 'Theatre' | 'Martial Art';
   origin: string;
   description: string;
+  id?: string;
+  shortDesc?: string;
+  detailedDescription?: string;
+  highlights?: string[];
+  imagePlaceholder?: string;
   instruments?: string[];
   costumeHighlight?: string;
   image?: string;
@@ -29,6 +39,26 @@ export interface CuisineItem {
   description: string;
   keyIngredients: string[];
   giTag?: boolean;
+  id?: string;
+  shortDesc?: string;
+  detailedDescription?: string;
+  highlights?: string[];
+  origin?: string;
+  flavorProfile?: string;
+  bestPairedWith?: string;
+  image?: string;
+  imagePlaceholder?: string;
+}
+
+export interface AttireItem {
+  id: string;
+  name: string;
+  shortDesc: string;
+  detailedDescription: string;
+  highlights: string[];
+  imagePlaceholder?: string;
+  image?: string;
+  origin?: string;
 }
 
 export interface Festival {
@@ -45,6 +75,7 @@ export interface CraftAndAttire {
   traditionalMenAttire: string;
   traditionalWomenAttire: string;
   giTaggedCrafts?: string[];
+  attireItems?: AttireItem[];
 }
 
 export interface HistoryMilestone {
@@ -56,6 +87,7 @@ export interface HistoryMilestone {
 export interface StateHeritage {
   id: string;
   name: string;
+  stateCode?: string;
   capital: string;
   region: 'North' | 'South' | 'West' | 'East' | 'Central' | 'North-East';
   coordinates: [number, number]; // [lat, lng]

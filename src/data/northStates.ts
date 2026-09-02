@@ -318,6 +318,7 @@ export const NORTH_STATES: StateHeritage[] = [
   {
     id: 'uttar-pradesh',
     name: 'Uttar Pradesh',
+    stateCode: 'UP',
     capital: 'Lucknow',
     region: 'North',
     coordinates: [26.8467, 80.9462],
@@ -332,41 +333,78 @@ export const NORTH_STATES: StateHeritage[] = [
     funFact: 'Varanasi (Kashi) in Uttar Pradesh is widely regarded as one of the oldest continuously inhabited cities on Earth, with history spanning over 3,000 years.',
     monuments: [
       {
+        id: 'taj_mahal',
         name: 'Taj Mahal',
         type: 'Mughal Marble Mausoleum',
         century: '1632 - 1653 AD (17th Century)',
         location: 'Agra',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80',
+        shortDesc: 'UNESCO World Heritage site and one of the Seven Wonders of the World.',
+        detailedDescription: 'Built by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal. It stands as an epitome of ivory-white marble symmetry, calligraphy, and pietra dura gemstone inlays.',
         description: 'UNESCO World Heritage wonder of ivory-white marble commissioned by Mughal Emperor Shah Jahan for Mumtaz Mahal, renowned for symmetry and pietra dura inlay.',
-        coordinates: [27.1751, 78.0421]
+        image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80',
+        imagePlaceholder: 'assets/images/up/monument_taj_mahal.jpg',
+        coordinates: [27.1751, 78.0421],
+        highlights: [
+          'UNESCO World Heritage Site & 7 Wonder of the World',
+          'Pietra Dura marble inlay gemstone craftsmanship',
+          'Symmetrical Persian Charbagh garden setting'
+        ]
       },
       {
+        id: 'ram_mandir',
+        name: 'Shri Ram Janmabhoomi Mandir',
+        type: 'Nagara Style Sacred Temple',
+        century: '2024 AD (21st Century)',
+        location: 'Ayodhya',
+        isUnesco: false,
+        shortDesc: 'Grand Nagara-style Hindu temple in the holy city of Ayodhya.',
+        detailedDescription: 'Located at the sacred birth site of Lord Rama in Ayodhya. Built in the classical Nagara architectural style with pink Bansi Paharpur sandstone from Rajasthan, featuring carved stone pillars, mandapas, and towering shikhara.',
+        description: 'Grand Nagara-style Hindu temple in Ayodhya dedicated to Lord Rama, crafted with intricately carved pink Bansi Paharpur sandstone.',
+        image: 'https://images.unsplash.com/photo-1705861145898-3860b240212f?auto=format&fit=crop&w=800&q=80',
+        imagePlaceholder: 'assets/images/up/monument_ram_mandir.jpg',
+        coordinates: [26.7922, 82.1998],
+        highlights: [
+          'Architecture: Classical Nagara temple style',
+          'Material: Carved pink Bansi Paharpur stone',
+          'Significance: Birthplace of Lord Rama on Sarayu river'
+        ]
+      },
+      {
+        id: 'kashi_vishwanath',
         name: 'Kashi Vishwanath & Dashashwamedh Ghat',
         type: 'Sacred Hindu Temple & Holy Riverfront',
         century: 'Ancient / Rebuilt 1780 AD by Ahilyabai Holkar',
         location: 'Varanasi',
         isUnesco: false,
+        shortDesc: 'Spiritual epicenter of Shiva worship and holy Ganga ghats.',
+        detailedDescription: 'One of the twelve sacred Jyotirlingas of Lord Shiva. Dashashwamedh Ghat hosts the nightly Maha Ganga Aarti with brass lamps and Vedic chants.',
         image: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80',
         description: 'Spiritual epicenter of Shiva worship and the sacred Ganga Aarti where thousands gather nightly at illuminated stone ghats.',
         coordinates: [25.3109, 83.0107]
       },
       {
+        id: 'fatehpur_sikri',
         name: 'Fatehpur Sikri',
         type: 'Red Sandstone Mughal Capital',
         century: '1571 AD (16th Century)',
         location: 'Agra District',
         isUnesco: true,
+        shortDesc: 'Akbar\'s fortified royal capital with Buland Darwaza.',
+        detailedDescription: 'Imperial city founded by Emperor Akbar featuring Buland Darwaza—the highest gateway in the world—and the white marble tomb of Salim Chishti.',
         image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
         description: 'Imperial city founded by Emperor Akbar featuring Buland Darwaza—the highest gateway in the world—and the white marble tomb of Salim Chishti.',
         coordinates: [27.0945, 77.6679]
       },
       {
+        id: 'bara_imambara',
         name: 'Bara Imambara & Rumi Darwaza',
         type: 'Awadhi Architectural Marvel',
         century: '1784 AD (18th Century)',
         location: 'Lucknow',
         isUnesco: false,
+        shortDesc: 'Nawabi architectural complex with unsupported arched hall and maze.',
+        detailedDescription: 'Built by Nawab Asaf-ud-Daula with an unsupported central arched hall and the intricate Bhulbhulaiya labyrinth.',
         image: 'https://images.unsplash.com/photo-1590740608753-f7a35cbdfaa3?auto=format&fit=crop&w=800&q=80',
         description: 'Built by Nawab Asaf-ud-Daula with an unsupported central arched hall and the intricate Bhulbhulaiya labyrinth.',
         coordinates: [26.8689, 80.9129]
@@ -374,14 +412,62 @@ export const NORTH_STATES: StateHeritage[] = [
     ],
     artAndDance: [
       {
-        name: 'Kathak',
+        id: 'kathak',
+        name: 'Kathak (Classical Dance)',
         type: 'Dance',
         origin: 'Varanasi & Lucknow Gharanas',
+        shortDesc: 'Classical dance form known for rapid spins and storytelling.',
+        detailedDescription: 'Kathak is one of the eight major forms of Indian classical dance. Originating from ancient traveling bards (Kathakars), it evolved through Lucknow and Banaras Gharanas into a refined dance of intricate footwork (Tatkar), rapid spins (Chakkars), abhinaya mime, and expressiveness.',
         description: 'Major classical Indian dance form characterized by rapid footwork (Tatkar), pirouettes (Chakkars), and mime depicting Radha-Krishna romances and court poetry.',
+        image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80',
+        imagePlaceholder: 'assets/images/up/dance_kathak.jpg',
         instruments: ['Tabla', 'Pakhawaj', 'Sarangi', 'Ghungroos (Anklet Bells)'],
-        costumeHighlight: 'Anarkali flared dress or Lehenga with 100+ chiming brass Ghungroos.'
+        costumeHighlight: 'Anarkali flared dress or Lehenga with 100+ chiming brass Ghungroos.',
+        highlights: [
+          'Form: Classical Indian Dance (8 Major Forms)',
+          'Key Gharanas: Lucknow & Varanasi',
+          'Technique: Rapid Chakkars (pirouettes) & complex Tatkar footwork'
+        ]
       },
       {
+        id: 'charkula',
+        name: 'Charkula Dance',
+        type: 'Dance',
+        origin: 'Braj Region (Mathura & Vrindavan)',
+        shortDesc: 'Spectacular folk dance balancing heavy multi-tiered oil lamps on the head.',
+        detailedDescription: 'Charkula is a dramatic folk dance from the Braj region performed on the third day after Holi (believed to be Radha\'s birthday). Female dancers balance large circular multi-tiered wooden pyramids (Charkulas) carrying up to 108 lit oil lamps on their heads while dancing gracefully to Rasiya songs.',
+        description: 'Spectacular folk dance from the Braj region where women balance a multi-tiered wooden pyramid with 108 lit oil lamps on their heads.',
+        image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80',
+        imagePlaceholder: 'assets/images/up/dance_charkula.jpg',
+        instruments: ['Nagada', 'Dholak', 'Manjira', 'Harmonium'],
+        costumeHighlight: 'Traditional colorful Braj Ghagra-Choli with head veil securing the pyramid.',
+        highlights: [
+          'Origin: Braj region (Mathura, Vrindavan, Barsana)',
+          'Prop: 108 illuminated oil lamps on a wooden pyramid',
+          'Occasion: Celebrated on Dooj (3rd day after Holi)'
+        ]
+      },
+      {
+        id: 'kajri',
+        name: 'Kajri',
+        type: 'Music',
+        origin: 'Eastern Uttar Pradesh (Mirzapur & Varanasi)',
+        shortDesc: 'Melancholic monsoon folk song expressing longing and joy.',
+        detailedDescription: 'Kajri is a popular folk music genre sung during the monsoon season (Shravan) in eastern UP, particularly Mirzapur and Varanasi. It evokes the fragrance of moist earth, dark rain clouds, the peacocks dancing, and the poignant longing (viraha) of a woman waiting for her beloved.',
+        description: 'Monsoon folk song genre celebrating the onset of Shravan rains, swaying swings, and poetic themes of love and separation.',
+        image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+        imagePlaceholder: 'assets/images/up/music_kajri.jpg',
+        instruments: ['Dholak', 'Harmonium', 'Manjira', 'Flute (Bansuri)'],
+        audioTrackTitle: 'Barsan Laagi Badariya (Kajri)',
+        audioMood: 'Monsoon Devotion & Classical Folk',
+        highlights: [
+          'Season: Monsoon (Shravana month)',
+          'Origin: Mirzapur & Varanasi',
+          'Mood: Romantic longing (Viraha) and joy of monsoon rains'
+        ]
+      },
+      {
+        id: 'raslila_ramlila',
         name: 'Raslila & Ramlila',
         type: 'Theatre',
         origin: 'Braj & Ayodhya',
@@ -389,6 +475,7 @@ export const NORTH_STATES: StateHeritage[] = [
         instruments: ['Harmonium', 'Manjira', 'Pakhawaj']
       },
       {
+        id: 'nautanki',
         name: 'Nautanki',
         type: 'Theatre',
         origin: 'Hathras & Kanpur',
@@ -398,29 +485,57 @@ export const NORTH_STATES: StateHeritage[] = [
     ],
     cuisines: [
       {
-        name: 'Awadhi Biryani & Galouti Kebab',
+        id: 'tunday_kabab',
+        name: 'Galouti / Tunday Kabab',
         category: 'Non-Vegetarian',
-        description: 'Melt-in-the-mouth minced meat kebabs infused with over 150 royal spices, paired with fragrant saffron-infused dum pukht mutton biryani.',
-        keyIngredients: ['Mutton/Lamb', 'Raw Papaya', 'Potli Spices', 'Basmati Rice', 'Saffron', 'Rose Water', 'Kewra']
+        shortDesc: 'Mouth-melting minced meat kebabs infused with over 100 spices.',
+        detailedDescription: 'Originating from the royal kitchens of the Nawabs of Awadh in Lucknow, Galouti Kebabs are famous for their melt-in-the-mouth texture. Finely tenderized minced meat is marinated with raw papaya and a secret potli of more than 100 aromatic spices, pan-fried in pure desi ghee.',
+        description: 'Melt-in-the-mouth minced meat kebabs infused with over 100 royal spices, crafted originally for the Nawabs of Awadh.',
+        keyIngredients: ['Minced Mutton/Lamb', 'Raw Papaya Tenderizer', 'Potli Masala (100+ Spices)', 'Desi Ghee', 'Saffron', 'Rose Essence'],
+        image: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=800&q=80',
+        imagePlaceholder: 'assets/images/up/food_tunday_kabab.jpg',
+        highlights: [
+          'Origin: Lucknow',
+          'Flavor Profile: Mildly spiced, velvety texture',
+          'Best Paired With: Ulte Tawe ka Paratha'
+        ],
+        origin: 'Lucknow',
+        flavorProfile: 'Mildly spiced, velvety melt-in-mouth texture',
+        bestPairedWith: 'Ulte Tawe ka Paratha & Mint Chutney'
       },
       {
+        id: 'petha',
+        name: 'Agra Petha',
+        category: 'Dessert',
+        shortDesc: 'Translucent soft candy made from ash gourd (white pumpkin).',
+        detailedDescription: 'Agra Petha is a world-renowned sweetmeat from Agra. Made by boiling rectangular pieces of ash gourd in sugar syrup and flavored with cardamom, saffron (Kesar), rose water, or stuffed with mawa and nuts. It holds a designated Geographical Indication (GI Tag).',
+        description: 'Translucent soft candy made from ash gourd steeped in flavored sugar syrup, holding an official GI tag.',
+        keyIngredients: ['Ash Gourd (White Pumpkin)', 'Sugar Syrup', 'Cardamom', 'Kesar (Saffron)', 'Rose Water'],
+        giTag: true,
+        image: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80',
+        imagePlaceholder: 'assets/images/up/food_agra_petha.jpg',
+        highlights: [
+          'Origin: Agra',
+          'Key Ingredient: Ash Gourd & Sugar Syrup',
+          'GI Tag: Geographical Indication of Agra'
+        ],
+        origin: 'Agra'
+      },
+      {
+        id: 'banarasi_chaat',
         name: 'Banarasi Chaat & Tamatar Chaat',
         category: 'Street Food',
         description: 'Spiced hot tomato and potato mash tossed with ginger, hing, cumin, lemon juice, and topped with crispy namakpare and sugar syrup drizzle.',
-        keyIngredients: ['Tomatoes', 'Boiled Potatoes', 'Roasted Cumin', 'Hing (Asafoetida)', 'Tamarind', 'Desi Ghee']
+        keyIngredients: ['Tomatoes', 'Boiled Potatoes', 'Roasted Cumin', 'Hing (Asafoetida)', 'Tamarind', 'Desi Ghee'],
+        shortDesc: 'Tangy-sweet hot tomato street chaat served in earthen kulhads.'
       },
       {
-        name: 'Peda (Mathura) & Petha (Agra)',
-        category: 'Dessert',
-        description: 'Caramelized reduced milk mawa fudge from Mathura and translucent candied ash gourd delights from Agra.',
-        keyIngredients: ['Mawa/Khoya', 'Ash Gourd (White Pumpkin)', 'Sugar', 'Cardamom', 'Kesar (Saffron)'],
-        giTag: true
-      },
-      {
+        id: 'bedmi_puri',
         name: 'Bedmi Puri & Aloo Sabzi',
         category: 'Vegetarian',
         description: 'Crisp, urad-dal stuffed fried puris paired with spicy fenugreek-flavored potato curry and tangy pumpkin mash.',
-        keyIngredients: ['Urad Dal', 'Wheat Flour', 'Potatoes', 'Methi Dana', 'Fennel', 'Kashmiri Chili']
+        keyIngredients: ['Urad Dal', 'Wheat Flour', 'Potatoes', 'Methi Dana', 'Fennel', 'Kashmiri Chili'],
+        shortDesc: 'Classic breakfast delicacy of crisp spiced lentil flatbreads.'
       }
     ],
     festivals: [
@@ -451,7 +566,37 @@ export const NORTH_STATES: StateHeritage[] = [
       handicrafts: ['Moradabad Brassware', 'Firozabad Glass Bangles & Chandeliers', 'Saharanpur Wood Carvings', 'Gorakhpur Terracotta', 'Kannauj Natural Attar (Perfume)'],
       traditionalMenAttire: 'Kurta-Churidar with Nehru jacket or embroidered Sherwani, topped with a topi or angavastram.',
       traditionalWomenAttire: 'Banarasi Silk Saree with heavy golden zari border or Chikankari embroidered Georgette/Kurta suit.',
-      giTaggedCrafts: ['Banaras Brocades and Sarees', 'Lucknow Chikan Craft', 'Kannauj Perfume', 'Moradabad Metal Craft', 'Firozabad Glassware', 'Agra Petha']
+      giTaggedCrafts: ['Banaras Brocades and Sarees', 'Lucknow Chikan Craft', 'Kannauj Perfume', 'Moradabad Metal Craft', 'Firozabad Glassware', 'Agra Petha'],
+      attireItems: [
+        {
+          id: 'chikankari',
+          name: 'Chikankari',
+          shortDesc: 'Delicate and artful hand embroidery from Lucknow.',
+          detailedDescription: 'Chikankari is a traditional embroidery style from Lucknow, India. Believed to have been introduced by Nur Jahan, the wife of Mughal Emperor Jahangir, it involves intricate handwork executed on light fabrics like muslin, silk, organza, and chiffon with over 36 distinct stitch styles such as Bakhiya, Phanda, and Tepchi.',
+          highlights: [
+            'Origin: Lucknow',
+            'Technique: White-on-white hand embroidery',
+            'Popular Items: Kurta, Sarees, Dupattas'
+          ],
+          origin: 'Lucknow',
+          image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80',
+          imagePlaceholder: 'assets/images/up/attire_chikankari.jpg'
+        },
+        {
+          id: 'banarasi_silk',
+          name: 'Banarasi Silk Saree',
+          shortDesc: 'Luxurious silk sarees woven with gold and silver brocade.',
+          detailedDescription: 'Banarasi silk sarees are among the finest sarees in India, originating from the holy city of Varanasi (Banaras). Known for their gold and silver brocade or zari, fine silk, and opulent embroidery featuring Persian-inspired floral motifs (Jhallar), Kalga, and Bel patterns.',
+          highlights: [
+            'Origin: Varanasi',
+            'Feature: Real Zari gold/silver threadwork',
+            'Occasion: Weddings & Royal Festivities'
+          ],
+          origin: 'Varanasi',
+          image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80',
+          imagePlaceholder: 'assets/images/up/attire_banarasi.jpg'
+        }
+      ]
     },
     historyTimeline: [
       {
