@@ -47,7 +47,9 @@ export interface CuisineItem {
   flavorProfile?: string;
   bestPairedWith?: string;
   image?: string;
+  imageUrl?: string;
   imagePlaceholder?: string;
+  subcategory?: string;
 }
 
 export interface AttireItem {
@@ -136,6 +138,7 @@ export type HeritageTab =
 export type AppView = 
   | 'home'
   | 'map'
+  | 'state_detail'
   | 'timeline'
   | 'heritage_risk'
   | 'ask_bharat'

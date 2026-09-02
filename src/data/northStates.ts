@@ -484,58 +484,199 @@ export const NORTH_STATES: StateHeritage[] = [
       }
     ],
     cuisines: [
+      // Iconic Non-Vegetarian Dishes
       {
-        id: 'tunday_kabab',
-        name: 'Galouti / Tunday Kabab',
+        id: 'tunday_kebab',
+        name: 'Tunday Kebab',
         category: 'Non-Vegetarian',
-        shortDesc: 'Mouth-melting minced meat kebabs infused with over 100 spices.',
-        detailedDescription: 'Originating from the royal kitchens of the Nawabs of Awadh in Lucknow, Galouti Kebabs are famous for their melt-in-the-mouth texture. Finely tenderized minced meat is marinated with raw papaya and a secret potli of more than 100 aromatic spices, pan-fried in pure desi ghee.',
-        description: 'Melt-in-the-mouth minced meat kebabs infused with over 100 royal spices, crafted originally for the Nawabs of Awadh.',
-        keyIngredients: ['Minced Mutton/Lamb', 'Raw Papaya Tenderizer', 'Potli Masala (100+ Spices)', 'Desi Ghee', 'Saffron', 'Rose Essence'],
-        image: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=800&q=80',
-        imagePlaceholder: 'assets/images/up/food_tunday_kabab.jpg',
+        subcategory: 'Iconic Non-Vegetarian Dishes',
+        shortDesc: 'Spiced, melt-in-your-mouth minced meat kebabs from Tunday Kababi in Lucknow.',
+        detailedDescription: 'Originating from Lucknow, Tunday Kebabs are world-famous for their soft, melt-in-your-mouth texture. Marinated with over 100 aromatic spices, they are traditionally prepared using finely minced meat cooked to perfection on a flat griddle.',
+        description: 'World-famous soft, melt-in-your-mouth minced meat kebabs marinated with over 100 aromatic spices.',
+        keyIngredients: ['Minced Mutton/Buff', 'Raw Papaya Tenderizer', 'Potli Masala (100+ Spices)', 'Desi Ghee', 'Saffron', 'Rose Essence'],
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Tunday_Kebabs.jpg/250px-Tunday_Kebabs.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
+        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Tunday_Kebabs.jpg/250px-Tunday_Kebabs.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
         highlights: [
           'Origin: Lucknow',
-          'Flavor Profile: Mildly spiced, velvety texture',
-          'Best Paired With: Ulte Tawe ka Paratha'
+          'Key Feature: Melt-in-your-mouth texture',
+          'Best Paired With: Paratha or Roomali Roti'
         ],
         origin: 'Lucknow',
-        flavorProfile: 'Mildly spiced, velvety melt-in-mouth texture',
-        bestPairedWith: 'Ulte Tawe ka Paratha & Mint Chutney'
+        flavorProfile: 'Mildly spiced, velvety texture',
+        bestPairedWith: 'Paratha or Roomali Roti'
       },
       {
-        id: 'petha',
+        id: 'galouti_kebab',
+        name: 'Galouti Kebab',
+        category: 'Non-Vegetarian',
+        subcategory: 'Iconic Non-Vegetarian Dishes',
+        shortDesc: 'Delicate, ultra-soft mutton kebabs made with a rich blend of spices.',
+        detailedDescription: 'Crafted for the royal Nawabs of Awadh, Galouti Kebabs are delicate mutton patties infused with green papaya tenderizer and an exotic blend of spices. They offer an ultra-soft texture that literally dissolves on the tongue.',
+        description: 'Delicate royal Awadhi mutton patties infused with raw papaya and exotic aromatic spices that dissolve on the tongue.',
+        keyIngredients: ['Finely Minced Mutton', 'Green Papaya', 'Mughlai Spice Blend', 'Pure Ghee', 'Kewra Water'],
+        image: 'https://i0.wp.com/savorytales.com/wp-content/uploads/2022/04/IMG_6354-scaled.jpg?fit=1920%2C2560&ssl=1',
+        imageUrl: 'https://i0.wp.com/savorytales.com/wp-content/uploads/2022/04/IMG_6354-scaled.jpg?fit=1920%2C2560&ssl=1',
+        highlights: [
+          'Origin: Awadh / Lucknow',
+          'Flavor Profile: Aromatic, rich, and mildly spiced',
+          'Occasion: Royal Nawabi feasts'
+        ],
+        origin: 'Awadh / Lucknow',
+        flavorProfile: 'Aromatic, rich, and mildly spiced',
+        bestPairedWith: 'Ulte Tawe ka Paratha'
+      },
+      {
+        id: 'awadhi_biryani',
+        name: 'Awadhi Biryani',
+        category: 'Non-Vegetarian',
+        subcategory: 'Iconic Non-Vegetarian Dishes',
+        shortDesc: 'Slow-cooked aromatic rice and meat dish prepared using the traditional dum method.',
+        detailedDescription: "Awadhi Biryani is a classic regal dish cooked using the 'Dum' style of slow cooking. Layers of fragrant basmati rice and marinated meat are sealed in a handi (clay pot) with saffron, kewra, and subtle spices to lock in aroma and flavor.",
+        description: 'Regal slow-cooked Dum Pukht rice dish with tender marinated meat, saffron, and subtle Awadhi aromatics.',
+        keyIngredients: ['Aged Long-grain Basmati Rice', 'Mutton/Chicken', 'Kashmiri Saffron', 'Kewra Water', 'Green Cardamom', 'Desi Ghee'],
+        image: 'https://www.indianhealthyrecipes.com/wp-content/uploads/2016/07/awadhi-chicken-biryani-.jpg',
+        imageUrl: 'https://www.indianhealthyrecipes.com/wp-content/uploads/2016/07/awadhi-chicken-biryani-.jpg',
+        highlights: [
+          'Origin: Lucknow',
+          'Cooking Technique: Dum Pukht (slow sealing)',
+          'Aroma: Saffron, cardamom, and kewra water'
+        ],
+        origin: 'Lucknow',
+        flavorProfile: 'Delicate, fragrant, and mildly spiced'
+      },
+      {
+        id: 'nihari',
+        name: 'Nihari',
+        category: 'Non-Vegetarian',
+        subcategory: 'Iconic Non-Vegetarian Dishes',
+        shortDesc: 'A slow-cooked meat stew often eaten with soft kulcha bread for breakfast.',
+        detailedDescription: 'Nihari is a rich, velvety slow-cooked stew made with tender shank meat, marrow, and whole spices. Traditionally simmered overnight in large cauldrons, it is popular as a hearty morning breakfast served alongside hot Kulchas.',
+        description: 'Velvety slow-cooked shank meat stew simmered overnight in aromatic cauldrons, served for royal breakfasts.',
+        keyIngredients: ['Mutton/Beef Shank', 'Bone Marrow', 'Nihari Masala', 'Ginger Juliennes', 'Wheat Flour Roux', 'Fresh Coriander'],
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Nalli_Nihari_India.jpg/250px-Nalli_Nihari_India.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
+        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Nalli_Nihari_India.jpg/250px-Nalli_Nihari_India.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
+        highlights: [
+          'Meal Type: Royal Breakfast',
+          'Best Paired With: Kulcha or Khamiri Roti',
+          'Key Flavor: Deeply spiced broth with ginger & coriander garnishes'
+        ],
+        origin: 'Lucknow & Old Delhi',
+        bestPairedWith: 'Kulcha or Khamiri Roti'
+      },
+
+      // Savory Snacks & Breads
+      {
+        id: 'chaat',
+        name: 'Chaat',
+        category: 'Street Food',
+        subcategory: 'Savory Snacks & Breads',
+        shortDesc: 'Spicy and tangy potato and crisp-fried dough snacks originating from the region.',
+        detailedDescription: 'Uttar Pradesh is the heartland of Indian Chaat culture. Featuring fried potatoes (Aloo Tikki), crispy dough wafers (Papdi), tangy tamarind chutney, mint yogurt, pomegranate seeds, and spicy masala, it delivers an explosive mix of sweet, tangy, and spicy flavors.',
+        description: 'Explosive sweet, tangy, and spicy street snack featuring crispy potato tikkis, spiced curd, and tamarind chutneys.',
+        keyIngredients: ['Crispy Aloo Tikki', 'Papdi Wafers', 'Tamarind Saunth Chutney', 'Mint-Coriander Chutney', 'Sweet Curd', 'Sev & Pomegranate'],
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGGVvJEyyIIUu6Qj-vYJgbiU2jDNpVHr60kOUWaYRZsdKoIALDxvt3jmH_fD7kDLbXPfBLVDTlCDH95ZhYmovNe6-jFtXqmUq_3ACmiEm&s=10',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGGVvJEyyIIUu6Qj-vYJgbiU2jDNpVHr60kOUWaYRZsdKoIALDxvt3jmH_fD7kDLbXPfBLVDTlCDH95ZhYmovNe6-jFtXqmUq_3ACmiEm&s=10',
+        highlights: [
+          'Varieties: Aloo Tikki, Basket Chaat, Matar Chaat',
+          'Flavor Profile: Tangy, sweet, spicy, and crunchy',
+          'Culture: Street food benchmark of UP'
+        ],
+        origin: 'Varanasi, Lucknow & Kanpur'
+      },
+      {
+        id: 'bedmi_poori',
+        name: 'Bedmi Poori',
+        category: 'Vegetarian',
+        subcategory: 'Savory Snacks & Breads',
+        shortDesc: 'Spiced lentil-stuffed fried bread paired with a tangy potato gravy, popular in Agra and Mathura.',
+        detailedDescription: 'A beloved breakfast item in Agra, Mathura, and Varanasi. Bedmi Poori is made with coarse wheat flour mixed with spiced urad dal (black gram). Deep-fried crisp, it is served with a fiery, unmashed potato curry (Aloo Rasa).',
+        description: 'Crisp deep-fried bread stuffed with spiced urad dal, paired with tangy Mathura-style potato gravy.',
+        keyIngredients: ['Coarse Wheat Flour', 'Spiced Urad Dal paste', 'Boiled Potatoes', 'Fenugreek Seeds (Methi)', 'Fennel & Hing', 'Amchur (Dry Mango)'],
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn7PtDUHluKjA4iw739pvXKDumANbd14CTbAJ3WAc90jBvKjUUPr_DT9eXkUTHTLJsX7O7595ZoRz22c985NKfae9ouab09xvM4UqY7frM&s=10',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn7PtDUHluKjA4iw739pvXKDumANbd14CTbAJ3WAc90jBvKjUUPr_DT9eXkUTHTLJsX7O7595ZoRz22c985NKfae9ouab09xvM4UqY7frM&s=10',
+        highlights: [
+          'Origin: Agra & Mathura',
+          'Type: Spiced fried bread',
+          'Accompaniment: Tangy Mathura Aloo Sabzi'
+        ],
+        origin: 'Agra & Mathura',
+        bestPairedWith: 'Tangy Mathura Aloo Sabzi & Methi Chutney'
+      },
+      {
+        id: 'baati_chokha',
+        name: 'Baati Chokha',
+        category: 'Vegetarian',
+        subcategory: 'Savory Snacks & Breads',
+        shortDesc: 'A rustic dish of baked wheat dough balls served with a smoky roasted eggplant and tomato mash.',
+        detailedDescription: 'A traditional, rustic dish originating from Eastern UP (Purvanchal). Baati consists of hard wheat balls stuffed with sattu (roasted gram flour) baked over wood fires, while Chokha is a flavorful mash made of fire-roasted brinjal, tomatoes, and potatoes seasoned with mustard oil.',
+        description: 'Rustic wood-fire baked sattu-stuffed dough balls drenched in pure ghee, served with smoky fire-roasted eggplant chokha.',
+        keyIngredients: ['Whole Wheat Dough', 'Spiced Sattu (Roasted Gram Flour)', 'Fire-roasted Eggplant (Baingan)', 'Tomatoes', 'Raw Mustard Oil', 'Garlic & Green Chilies'],
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSibRH9gx9ufiizCz2h9LyDKhtp5thNPO7Zda9Px3zMdisz_iRDmfpAu8mrsNTry-D-VddACXX331VqP31Uz0AZ8dpclttRLbx6GcHJ86mLEw&s=10',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSibRH9gx9ufiizCz2h9LyDKhtp5thNPO7Zda9Px3zMdisz_iRDmfpAu8mrsNTry-D-VddACXX331VqP31Uz0AZ8dpclttRLbx6GcHJ86mLEw&s=10',
+        highlights: [
+          'Region: Eastern UP / Purvanchal',
+          'Preparation: Wood-fire baked',
+          'Flavor Profile: Earthy, smoky, and garlic-infused'
+        ],
+        origin: 'Eastern UP (Purvanchal)',
+        flavorProfile: 'Earthy, smoky, and garlic-infused'
+      },
+
+      // Traditional Sweets
+      {
+        id: 'agra_petha',
         name: 'Agra Petha',
         category: 'Dessert',
-        shortDesc: 'Translucent soft candy made from ash gourd (white pumpkin).',
-        detailedDescription: 'Agra Petha is a world-renowned sweetmeat from Agra. Made by boiling rectangular pieces of ash gourd in sugar syrup and flavored with cardamom, saffron (Kesar), rose water, or stuffed with mawa and nuts. It holds a designated Geographical Indication (GI Tag).',
-        description: 'Translucent soft candy made from ash gourd steeped in flavored sugar syrup, holding an official GI tag.',
-        keyIngredients: ['Ash Gourd (White Pumpkin)', 'Sugar Syrup', 'Cardamom', 'Kesar (Saffron)', 'Rose Water'],
+        subcategory: 'Traditional Sweets',
+        shortDesc: 'Translucent, chewy candy made from white pumpkin.',
+        detailedDescription: 'Agra Petha is a famous translucent sweet created by boiling ash gourd (white pumpkin) cubes in sweetened sugar syrup. Available in classic dry styles as well as flavored options like Kesar (Saffron), Angoori, and Paan Petha.',
+        description: 'World-renowned translucent candy crafted from ash gourd steeped in flavored sugar syrup, carrying a GI tag.',
+        keyIngredients: ['Ash Gourd (White Pumpkin)', 'Sugar Syrup', 'Cardamom', 'Kesar (Saffron)', 'Rose Water', 'Lime Water'],
         giTag: true,
-        image: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=800&q=80',
-        imagePlaceholder: 'assets/images/up/food_agra_petha.jpg',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsRgKRIO4TEbk-xcEzsVQd1pg98LMj7W4Rhk1s-yGurnV9TFMXPAuPAeC9ZiqZCyv2BUTMwW0o-PnGLStBN6qYRLv4eQTJVgO2HZPxUH1a&s=10',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsRgKRIO4TEbk-xcEzsVQd1pg98LMj7W4Rhk1s-yGurnV9TFMXPAuPAeC9ZiqZCyv2BUTMwW0o-PnGLStBN6qYRLv4eQTJVgO2HZPxUH1a&s=10',
         highlights: [
           'Origin: Agra',
-          'Key Ingredient: Ash Gourd & Sugar Syrup',
+          'Key Ingredient: Ash gourd & Sugar syrup',
           'GI Tag: Geographical Indication of Agra'
         ],
         origin: 'Agra'
       },
       {
-        id: 'banarasi_chaat',
-        name: 'Banarasi Chaat & Tamatar Chaat',
-        category: 'Street Food',
-        description: 'Spiced hot tomato and potato mash tossed with ginger, hing, cumin, lemon juice, and topped with crispy namakpare and sugar syrup drizzle.',
-        keyIngredients: ['Tomatoes', 'Boiled Potatoes', 'Roasted Cumin', 'Hing (Asafoetida)', 'Tamarind', 'Desi Ghee'],
-        shortDesc: 'Tangy-sweet hot tomato street chaat served in earthen kulhads.'
+        id: 'mathura_peda',
+        name: 'Mathura Peda',
+        category: 'Dessert',
+        subcategory: 'Traditional Sweets',
+        shortDesc: 'Dense, slow-roasted caramelized milk fudge.',
+        detailedDescription: 'Synonymous with the holy city of Mathura, these pedas are made by slow-cooking khoya (thickened milk solids) with sugar and cardamom until caramelized into a rich brown hue, then garnished with pistachios or cardamom powder.',
+        description: 'Slow-roasted caramelized milk fudge infused with cardamom and desi ghee, famous as sacred temple prasadam.',
+        keyIngredients: ['Khoya / Mawa (Milk Solids)', 'Bura / Sugar', 'Green Cardamom Powder', 'Pure Desi Ghee', 'Pistachio slivers'],
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWK_Kcfh-XKa5ICZvxnkC5Bq-irZrIiU0rrhcjxTLjUY5D1MMm3uhbTFaY5c13SuBYiP902zGovWKRKXB8G_fRU1t98d01MAKFPUkZExXb&s=10',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWK_Kcfh-XKa5ICZvxnkC5Bq-irZrIiU0rrhcjxTLjUY5D1MMm3uhbTFaY5c13SuBYiP902zGovWKRKXB8G_fRU1t98d01MAKFPUkZExXb&s=10',
+        highlights: [
+          'Origin: Mathura',
+          'Key Ingredient: Caramelized Khoya & Cardamom',
+          'Cultural Link: Prasadam at Lord Krishna temples'
+        ],
+        origin: 'Mathura'
       },
       {
-        id: 'bedmi_puri',
-        name: 'Bedmi Puri & Aloo Sabzi',
-        category: 'Vegetarian',
-        description: 'Crisp, urad-dal stuffed fried puris paired with spicy fenugreek-flavored potato curry and tangy pumpkin mash.',
-        keyIngredients: ['Urad Dal', 'Wheat Flour', 'Potatoes', 'Methi Dana', 'Fennel', 'Kashmiri Chili'],
-        shortDesc: 'Classic breakfast delicacy of crisp spiced lentil flatbreads.'
+        id: 'imarti',
+        name: 'Imarti',
+        category: 'Dessert',
+        subcategory: 'Traditional Sweets',
+        shortDesc: 'Deep-fried, flower-shaped lentil batter soaked in saffron sugar syrup from Jaunpur.',
+        detailedDescription: 'Imarti is a mesmerizing sweet made from urad dal (black gram) batter piped into geometric, flower-like loops, fried to golden crispness, and dipped in saffron-infused sugar syrup. Jaunpur in UP is famous for crafting some of the finest Imartis in India.',
+        description: 'Crisp geometrical flower loops of piped urad dal batter fried in desi ghee and steeped in fragrant saffron sugar syrup.',
+        keyIngredients: ['Urad Dal Batter', 'Saffron (Kesar)', 'Sugar Syrup', 'Cardamom', 'Pure Desi Ghee'],
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSthEuDkrJdAzXEuFZdhoS-0oOGrhiytCGwk8vWjUdJFS3-8fQp8SpJjKk2YtDfFAr36RykhhigAEMeY-l0zbu2YR4P_Rv6USemj5NXhJY&s=10',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSthEuDkrJdAzXEuFZdhoS-0oOGrhiytCGwk8vWjUdJFS3-8fQp8SpJjKk2YtDfFAr36RykhhigAEMeY-l0zbu2YR4P_Rv6USemj5NXhJY&s=10',
+        highlights: [
+          'Famous Hub: Jaunpur',
+          'Batter Base: Urad Dal flour',
+          'Appearance: Intricate flower geometrical loops soaked in saffron syrup'
+        ],
+        origin: 'Jaunpur'
       }
     ],
     festivals: [

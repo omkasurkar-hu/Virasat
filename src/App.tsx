@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { HomePage } from './components/HomePage';
 import { HeritageMap } from './components/HeritageMap';
 import { HeritageDetailsPanel } from './components/HeritageDetailsPanel';
+import { StateDetailPage } from './components/StateDetailPage';
 import { SearchBar } from './components/SearchBar';
 import { MapControls } from './components/MapControls';
 import { MonumentModal } from './components/MonumentModal';
@@ -35,17 +36,12 @@ export default function App() {
   const handleSelectState = (state: StateHeritage) => {
     setSelectedState(state);
     setActiveTab('overview');
-    if (currentView !== 'map') {
-      setCurrentView('map');
-    }
+    setCurrentView('state_detail');
   };
 
   const handleSelectMonument = (monument: Monument, state: StateHeritage) => {
     setActiveMonument({ monument, state });
     setSelectedState(state);
-    if (currentView !== 'map') {
-      setCurrentView('map');
-    }
   };
 
   const handleResetView = () => {
@@ -54,8 +50,8 @@ export default function App() {
 
   return (
     <div id="cultural-heritage-app" className="min-h-screen bg-[#FAF7F2] font-sans selection:bg-[#8B1E22] selection:text-white">
-      {/* Top Global Navigation Bar for non-map and integrated navigation */}
-      {currentView !== 'map' && (
+      {/* Top Global Navigation Bar for standard views */}
+      {currentView !== 'map' && currentView !== 'state_detail' && (
         <Navbar currentView={currentView} onNavigate={setCurrentView} />
       )}
 
@@ -64,6 +60,18 @@ export default function App() {
         <HomePage
           states={STATES_HERITAGE_DATA}
           onExploreVirasat={() => handleOpenMap()}
+          onSelectState={handleSelectState}
+          onSelectMonument={handleSelectMonument}
+        />
+      )}
+
+      {/* Dedicated Full State Detail Page (Picture Left, Text Right) */}
+      {currentView === 'state_detail' && selectedState && (
+        <StateDetailPage
+          state={selectedState}
+          allStates={STATES_HERITAGE_DATA}
+          onBackToMap={() => setCurrentView('map')}
+          onBackToHome={() => setCurrentView('home')}
           onSelectState={handleSelectState}
           onSelectMonument={handleSelectMonument}
         />
@@ -154,26 +162,24 @@ export default function App() {
           />
 
           {/* Quick State Pills Selector (Bottom Center on Large Screens) */}
-          {!selectedState && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 shadow-2xl">
-              <span className="text-xs text-amber-400 font-bold flex items-center gap-1 mr-1">
-                <Compass className="w-3.5 h-3.5" /> Select a State:
-              </span>
-              {STATES_HERITAGE_DATA.slice(0, 6).map((st) => (
-                <button
-                  key={st.id}
-                  onClick={() => handleSelectState(st)}
-                  className="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 border border-slate-700 transition-all cursor-pointer"
-                >
-                  {st.name}
-                </button>
-              ))}
-            </div>
-          )}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 shadow-2xl">
+            <span className="text-xs text-amber-400 font-bold flex items-center gap-1 mr-1">
+              <Compass className="w-3.5 h-3.5" /> Explore State:
+            </span>
+            {STATES_HERITAGE_DATA.slice(0, 6).map((st) => (
+              <button
+                key={st.id}
+                onClick={() => handleSelectState(st)}
+                className="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 border border-slate-700 transition-all cursor-pointer"
+              >
+                {st.name}
+              </button>
+            ))}
+          </div>
 
-          {/* Slide-Over Heritage Details Panel */}
+          {/* Slide-Over Heritage Details Panel as secondary quick view if needed */}
           <AnimatePresence>
-            {selectedState && (
+            {selectedState && currentView === 'map' && (
               <HeritageDetailsPanel
                 state={selectedState}
                 onClose={() => setSelectedState(null)}
@@ -183,30 +189,31 @@ export default function App() {
               />
             )}
           </AnimatePresence>
-
-          {/* Monument Detail Modal */}
-          <AnimatePresence>
-            {activeMonument && (
-              <MonumentModal
-                monument={activeMonument.monument}
-                state={activeMonument.state}
-                onClose={() => setActiveMonument(null)}
-                onExploreState={() => {
-                  setSelectedState(activeMonument.state);
-                  setActiveTab('monuments');
-                }}
-              />
-            )}
-          </AnimatePresence>
-
-          {/* Cultural Trivia Quiz Modal */}
-          <AnimatePresence>
-            {showQuizModal && (
-              <CulturalQuizModal onClose={() => setShowQuizModal(false)} />
-            )}
-          </AnimatePresence>
         </div>
       )}
+
+      {/* Monument Detail Modal (Universal across views) */}
+      <AnimatePresence>
+        {activeMonument && (
+          <MonumentModal
+            monument={activeMonument.monument}
+            state={activeMonument.state}
+            onClose={() => setActiveMonument(null)}
+            onExploreState={() => {
+              setSelectedState(activeMonument.state);
+              setActiveTab('monuments');
+              setCurrentView('state_detail');
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Cultural Trivia Quiz Modal */}
+      <AnimatePresence>
+        {showQuizModal && (
+          <CulturalQuizModal onClose={() => setShowQuizModal(false)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

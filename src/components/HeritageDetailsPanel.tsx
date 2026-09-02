@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   X,
@@ -20,6 +20,9 @@ import {
   Award,
   BookOpen,
   Info,
+  ChevronLeft,
+  ChevronRight,
+  SlidersHorizontal,
 } from 'lucide-react';
 import { StateHeritage, HeritageTab, Monument } from '../types';
 import { heritageAudio } from '../utils/audioSynth';
@@ -43,6 +46,48 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isPlayingFolkAudio, setIsPlayingFolkAudio] = useState(false);
+  const [selectedCuisineSubcategory, setSelectedCuisineSubcategory] = useState<string>('all');
+
+  // Tab Scroll State
+  const tabSliderRef = useRef<HTMLDivElement>(null);
+  const [sliderProgress, setSliderProgress] = useState<number>(0);
+  const [canSlideLeft, setCanSlideLeft] = useState<boolean>(false);
+  const [canSlideRight, setCanSlideRight] = useState<boolean>(true);
+
+  const updateSliderMetrics = () => {
+    if (!tabSliderRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = tabSliderRef.current;
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll > 0) {
+      setSliderProgress((scrollLeft / maxScroll) * 100);
+      setCanSlideLeft(scrollLeft > 4);
+      setCanSlideRight(scrollLeft < maxScroll - 4);
+    } else {
+      setSliderProgress(0);
+      setCanSlideLeft(false);
+      setCanSlideRight(false);
+    }
+  };
+
+  useEffect(() => {
+    const el = tabSliderRef.current;
+    if (!el) return;
+    updateSliderMetrics();
+    el.addEventListener('scroll', updateSliderMetrics);
+    window.addEventListener('resize', updateSliderMetrics);
+    return () => {
+      el.removeEventListener('scroll', updateSliderMetrics);
+      window.removeEventListener('resize', updateSliderMetrics);
+    };
+  }, []);
+
+  const slideTabsDirection = (direction: 'left' | 'right') => {
+    if (!tabSliderRef.current) return;
+    tabSliderRef.current.scrollBy({
+      left: direction === 'left' ? -200 : 200,
+      behavior: 'smooth',
+    });
+  };
 
   const toggleFolkAudio = () => {
     if (isPlayingFolkAudio) {
@@ -256,23 +301,102 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
         )}
       </div>
 
-      {/* Navigation Tabs Bar */}
-      <div className="flex items-center gap-1 px-4 py-2 bg-slate-950/60 border-b border-slate-800 overflow-x-auto scrollbar-none flex-shrink-0">
-        {tabs.map((tab) => (
+      {/* Navigation Tabs Bar with Slider & Scrollbar */}
+      <div className="bg-slate-950/80 border-b border-slate-800 p-2 space-y-1.5 flex-shrink-0">
+        <div className="flex items-center gap-1">
+          {/* Left Arrow */}
           <button
-            key={tab.id}
-            id={`tab-btn-${tab.id}`}
-            onClick={() => onTabChange(tab.id)}
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
-              activeTab === tab.id
-                ? 'bg-amber-500 text-slate-950 font-bold shadow-md'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+            type="button"
+            onClick={() => slideTabsDirection('left')}
+            disabled={!canSlideLeft}
+            className={`p-1.5 rounded-lg border text-slate-300 transition-all flex-shrink-0 cursor-pointer ${
+              canSlideLeft
+                ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white'
+                : 'bg-slate-900 border-slate-800 text-slate-600 opacity-40 cursor-not-allowed'
             }`}
+            title="Slide tabs left"
           >
-            {tab.icon}
-            <span>{tab.label}</span>
+            <ChevronLeft className="w-3.5 h-3.5" />
           </button>
-        ))}
+
+          {/* Horizontally Scrollable Tabs */}
+          <div
+            ref={tabSliderRef}
+            className="flex-1 flex items-center gap-1 overflow-x-auto scrollbar-none py-0.5 scroll-smooth"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                id={`tab-btn-${tab.id}`}
+                onClick={() => {
+                  onTabChange(tab.id);
+                  const el = document.getElementById(`tab-btn-${tab.id}`);
+                  if (el && tabSliderRef.current) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                  }
+                }}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all flex-shrink-0 cursor-pointer ${
+                  activeTab === tab.id
+                    ? 'bg-amber-500 text-slate-950 font-bold shadow-md'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                }`}
+              >
+                {tab.icon}
+                <span>{tab.label}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Right Arrow */}
+          <button
+            type="button"
+            onClick={() => slideTabsDirection('right')}
+            disabled={!canSlideRight}
+            className={`p-1.5 rounded-lg border text-slate-300 transition-all flex-shrink-0 cursor-pointer ${
+              canSlideRight
+                ? 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-white'
+                : 'bg-slate-900 border-slate-800 text-slate-600 opacity-40 cursor-not-allowed'
+            }`}
+            title="Slide tabs right"
+          >
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        {/* Slide Bar Beneath Tabs */}
+        <div className="px-1 flex items-center gap-2">
+          <span className="text-[9px] font-bold text-amber-500/80 uppercase tracking-widest flex items-center gap-1 flex-shrink-0">
+            <SlidersHorizontal className="w-2.5 h-2.5 text-amber-400" /> Slide
+          </span>
+          <div
+            className="flex-1 relative h-1.5 bg-slate-900 rounded-full overflow-hidden border border-slate-800 cursor-pointer"
+            onClick={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              const clickX = e.clientX - rect.left;
+              const percent = Math.max(0, Math.min(1, clickX / rect.width));
+              if (tabSliderRef.current) {
+                const maxScroll =
+                  tabSliderRef.current.scrollWidth - tabSliderRef.current.clientWidth;
+                tabSliderRef.current.scrollTo({
+                  left: maxScroll * percent,
+                  behavior: 'smooth',
+                });
+              }
+            }}
+          >
+            <div
+              className="absolute top-0 bottom-0 bg-amber-500 rounded-full transition-all duration-150"
+              style={{
+                left: `${Math.max(0, Math.min(75, sliderProgress * 0.75))}%`,
+                width: '25%',
+              }}
+            />
+          </div>
+          <span className="text-[9px] text-slate-400 font-mono flex-shrink-0">
+            {Math.round(sliderProgress)}%
+          </span>
+        </div>
       </div>
 
       {/* Tab Content Body */}
@@ -510,7 +634,13 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
 
                   {art.image && (
                     <div className="relative h-36 rounded-xl overflow-hidden border border-slate-700/50">
-                      <img src={art.image} alt={art.name} className="w-full h-full object-cover" />
+                      <img
+                        src={art.image}
+                        alt={art.name}
+                        className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                     </div>
                   )}
@@ -630,102 +760,191 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
         )}
 
         {/* CUISINES TAB */}
-        {activeTab === 'cuisines' && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-4"
-          >
-            <p className="text-xs text-slate-400">
-              Authentic state gastronomy, royal recipes, festive sweets, and GI-tagged delicacies of {state.name}.
-            </p>
+        {activeTab === 'cuisines' && (() => {
+          // Extract unique subcategories if any
+          const subcategories: string[] = Array.from(
+            new Set(
+              state.cuisines
+                .map((f) => f.subcategory)
+                .filter((sub): sub is string => typeof sub === 'string' && sub.length > 0)
+            )
+          );
 
-            <div className="space-y-4">
-              {state.cuisines.map((food, idx) => (
-                <div
-                  key={idx}
-                  className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 space-y-3 hover:border-amber-500/40 transition-all"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h4 className="text-sm font-bold text-white">{food.name}</h4>
-                        {food.giTag && (
-                          <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded">
-                            GI Tagged
-                          </span>
-                        )}
-                        {food.origin && (
-                          <span className="bg-slate-900 text-slate-300 border border-slate-700 text-[9px] px-2 py-0.5 rounded">
-                            📍 {food.origin}
-                          </span>
-                        )}
+          const filteredCuisines =
+            selectedCuisineSubcategory === 'all'
+              ? state.cuisines
+              : state.cuisines.filter(
+                  (f) => f.subcategory === selectedCuisineSubcategory
+                );
+
+          return (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-4"
+            >
+              <div className="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-transparent p-3.5 rounded-xl border border-amber-500/20 text-xs text-amber-200">
+                <span className="font-semibold text-white">Culinary Legacy of {state.name}: </span>
+                {state.id === 'uttar-pradesh'
+                  ? 'Uttar Pradesh is famous for its rich royal Awadhi meals, savory street snacks, and traditional sweets.'
+                  : `Authentic state gastronomy, royal recipes, festive sweets, and GI-tagged delicacies of ${state.name}.`}
+              </div>
+
+              {/* Subcategory Filter Pills */}
+              {subcategories.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 pt-1 pb-1">
+                  <button
+                    onClick={() => setSelectedCuisineSubcategory('all')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                      selectedCuisineSubcategory === 'all'
+                        ? 'bg-amber-500 text-slate-950 shadow-md'
+                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
+                    }`}
+                  >
+                    All Delicacies ({state.cuisines.length})
+                  </button>
+                  {subcategories.map((sub) => (
+                    <button
+                      key={sub}
+                      onClick={() => setSelectedCuisineSubcategory(sub)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                        selectedCuisineSubcategory === sub
+                          ? 'bg-amber-500 text-slate-950 shadow-md'
+                          : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
+                      }`}
+                    >
+                      {sub.includes('Non-Vegetarian')
+                        ? '🍗 '
+                        : sub.includes('Snacks') || sub.includes('Breads')
+                        ? '🥙 '
+                        : sub.includes('Sweets')
+                        ? '🍯 '
+                        : '🍲 '}
+                      {sub}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              <div className="space-y-4">
+                {filteredCuisines.map((food, idx) => (
+                  <div
+                    key={food.id || idx}
+                    className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60 space-y-3 hover:border-amber-500/40 transition-all"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h4 className="text-base font-bold text-white">{food.name}</h4>
+                          {food.giTag && (
+                            <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[9px] font-bold px-2 py-0.5 rounded">
+                              GI Tagged
+                            </span>
+                          )}
+                          {food.origin && (
+                            <span className="bg-slate-900 text-amber-300 border border-slate-700 text-[10px] font-medium px-2 py-0.5 rounded">
+                              📍 {food.origin}
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <span className="text-[11px] text-amber-400 font-medium">{food.category}</span>
+                          {food.subcategory && (
+                            <span className="text-[10px] text-slate-400">
+                              &bull; {food.subcategory}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                      <span className="text-[11px] text-amber-400 font-medium">{food.category}</span>
-                    </div>
-                    <span className="text-lg">
-                      {food.category === 'Dessert'
-                        ? '🍯'
-                        : food.category === 'Beverage'
-                        ? '☕'
-                        : food.category === 'Street Food'
-                        ? '🥙'
-                        : '🍲'}
-                    </span>
-                  </div>
-
-                  {food.image && (
-                    <div className="relative h-32 rounded-xl overflow-hidden border border-slate-700/50">
-                      <img src={food.image} alt={food.name} className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                    </div>
-                  )}
-
-                  {food.shortDesc && (
-                    <p className="text-xs text-amber-200 font-medium italic">
-                      "{food.shortDesc}"
-                    </p>
-                  )}
-
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    {food.detailedDescription || food.description}
-                  </p>
-
-                  {food.highlights && food.highlights.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {food.highlights.map((hl, i) => (
-                        <span
-                          key={i}
-                          className="px-2 py-0.5 rounded text-[10px] bg-slate-900/90 text-amber-300 border border-slate-700"
-                        >
-                          ✦ {hl}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {food.keyIngredients && food.keyIngredients.length > 0 && (
-                    <div className="pt-2 border-t border-slate-700/40">
-                      <span className="text-[10px] text-slate-400 uppercase tracking-wider block mb-1">
-                        Key Ingredients
+                      <span className="text-xl">
+                        {food.category === 'Dessert'
+                          ? '🍯'
+                          : food.category === 'Beverage'
+                          ? '☕'
+                          : food.category === 'Street Food'
+                          ? '🥙'
+                          : food.category === 'Non-Vegetarian'
+                          ? '🍗'
+                          : '🍲'}
                       </span>
-                      <div className="flex flex-wrap gap-1">
-                        {food.keyIngredients.map((ing, i) => (
+                    </div>
+
+                    {(food.imageUrl || food.image) && (
+                      <div className="relative h-36 rounded-xl overflow-hidden border border-slate-700/50 bg-slate-900">
+                        <img
+                          src={food.imageUrl || food.image}
+                          alt={food.name}
+                          className="w-full h-full object-cover"
+                          referrerPolicy="no-referrer"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                      </div>
+                    )}
+
+                    {food.shortDesc && (
+                      <p className="text-xs text-amber-200 font-medium italic">
+                        "{food.shortDesc}"
+                      </p>
+                    )}
+
+                    <p className="text-xs text-slate-300 leading-relaxed">
+                      {food.detailedDescription || food.description}
+                    </p>
+
+                    {food.highlights && food.highlights.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {food.highlights.map((hl, i) => (
                           <span
                             key={i}
-                            className="text-[10px] px-2 py-0.5 rounded bg-slate-900/80 text-amber-200 border border-slate-700"
+                            className="px-2 py-0.5 rounded text-[10px] bg-slate-900/90 text-amber-300 border border-slate-700 font-medium"
                           >
-                            {ing}
+                            ✦ {hl}
                           </span>
                         ))}
                       </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
+                    )}
+
+                    {(food.flavorProfile || food.bestPairedWith) && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
+                        {food.flavorProfile && (
+                          <div className="p-2 rounded-lg bg-slate-900/70 border border-slate-800 text-[11px]">
+                            <span className="text-amber-400 font-semibold block">Flavor Profile:</span>
+                            <span className="text-slate-300">{food.flavorProfile}</span>
+                          </div>
+                        )}
+                        {food.bestPairedWith && (
+                          <div className="p-2 rounded-lg bg-slate-900/70 border border-slate-800 text-[11px]">
+                            <span className="text-amber-400 font-semibold block">Best Paired With:</span>
+                            <span className="text-slate-300">{food.bestPairedWith}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {food.keyIngredients && food.keyIngredients.length > 0 && (
+                      <div className="pt-2 border-t border-slate-700/40">
+                        <span className="text-[10px] text-slate-400 uppercase tracking-wider block mb-1 font-semibold">
+                          Key Ingredients
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {food.keyIngredients.map((ing, i) => (
+                            <span
+                              key={i}
+                              className="text-[10px] px-2 py-0.5 rounded bg-slate-900/80 text-amber-200 border border-slate-700"
+                            >
+                              {ing}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })()}
 
         {/* FESTIVALS TAB */}
         {activeTab === 'festivals' && (
@@ -809,9 +1028,15 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                         </span>
                       </div>
 
-                      {attire.image && (
+                      {(attire.image || attire.imagePlaceholder) && (
                         <div className="relative h-36 rounded-xl overflow-hidden border border-slate-700/50">
-                          <img src={attire.image} alt={attire.name} className="w-full h-full object-cover" />
+                          <img
+                            src={attire.image || attire.imagePlaceholder}
+                            alt={attire.name}
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                            loading="lazy"
+                          />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                         </div>
                       )}
