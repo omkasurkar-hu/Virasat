@@ -33,7 +33,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '1600 AD (17th Century / King Bir Hambir)',
         location: 'Bishnupur, Bankura',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+        image: 'https://rangandatta.wordpress.com/wp-content/uploads/2012/04/shyamrahi-bishnupur.jpg',
         description: 'Unique pyramidical stepped temple adorned with thousands of intricate burnt-clay terracotta panels depicting the Ramayana, Mahabharata, and Krishna Raslila.',
         coordinates: [23.0754, 87.3197]
       },
@@ -53,7 +53,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Natural Biosphere Reserve',
         location: 'Sundarbans Delta',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80',
+        image: 'https://www.naturetravelagency.com/uploads/1698823201tourism%20in%20sundarbans.jpg',
         description: 'Tidal mangrove forest formed by the confluence of Ganga, Brahmaputra, and Meghna rivers, home to the swimming Royal Bengal Tigers and saltwater crocodiles.',
         coordinates: [21.9497, 89.1833]
       }
@@ -61,6 +61,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Baul Sangeet (Mystic Minstrels of Bengal)',
+        image: 'https://caleidoscope.in/wp-content/uploads/2019/11/Baul-culture-of-Bengal-01.jpg',
         type: 'Music',
         origin: 'Birbhum & Nadia (UNESCO Intangible Heritage)',
         description: 'Soul-stirring philosophical folk music sung by wandering mystic minstrels expressing devotion beyond religious boundaries.',
@@ -69,6 +70,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Purulia Chhau Dance',
+        image: 'https://api.banglanatak.com/wp-content/uploads/2025/07/Chhau-Dance-performance-2-scaled.jpg',
         type: 'Martial Art',
         origin: 'Purulia District',
         description: 'Vigorous acrobatic masked martial dance reenacting battles between gods and demons from epics, featuring high jumps and somersaults.',
@@ -77,6 +79,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Dhunuchi Nach (Durga Puja)',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHHHwrWczEzCSTcMkkJm-XMZRxXFsh_-NgynIEAM2o68rNQCb2D0dkHdU&s=10',
         type: 'Dance',
         origin: 'Durga Puja Pandals',
         description: 'Fervent devotional dance performed during evening Aarti holding clay censers burning with coconut husk and fragrant frankincense (Dhuno).',
@@ -86,12 +89,14 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Shorshe Ilish & Kosha Mangsho',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS--93V6iilLCB9ApIUX8Ja1A3USwYD7iCtkZeFf621ci-yZHNtvlv1G08&s=10',
         category: 'Non-Vegetarian',
         description: 'Tender Hilsa fish steamed in pungent yellow mustard-poppy seed paste and green chilies, and slow-braised velvety dark mutton curry with luchi.',
         keyIngredients: ['Hilsa (Ilish) / Mutton', 'Mustard Paste (Shorshe Bata)', 'Mustard Oil', 'Green Chilies', 'Nolen Gur', 'Luchi (Fried Maida Bread)']
       },
       {
         name: 'Rasgulla & Sandesh (Mishti)',
+        image: 'https://static.toiimg.com/thumb/msid-113972025,width-1280,height-720,imgsize-56994,resizemode-6,overlay-toi_sw,pt-32,y_pad-40/photo.jpg',
         category: 'Dessert',
         description: 'Spongy cottage cheese (chhena) spheres boiled in light sugar syrup (invented by Nobin Chandra Das in 1868), and date-palm jaggery (Nolen Gur) Sandesh.',
         keyIngredients: ['Fresh Cow Milk Chhena', 'Sugar Syrup', 'Nolen Gur (Date Palm Jaggery)', 'Cardamom', 'Pistachios'],
@@ -99,12 +104,16 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Kolkata Kathi Roll & Phuchka',
+        image: 'https://static2.tripoto.com/media/filter/tst/img/1446686/TripDocument/1566304969_lrm_export_57267472762996_20190206_152011017_copy.jpg',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kolkata_Rolls.jpg/500px-Kolkata_Rolls.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
         category: 'Street Food',
         description: 'Flaky paratha layered with fried egg, skewered kebab meat, onions, and lime juice (invented at Nizam\'s in 1932); and crisp semolina puchkas with spiced potato mash and tangy tamarind-gondhoraj water.',
         keyIngredients: ['Paratha', 'Egg', 'Chicken/Mutton Seekh', 'Gondhoraj Lime', 'Puchka Puris', 'Tamarind Water']
       },
       {
         name: 'Shukto & Chholar Dal',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYKqTWfI6Fm7q1s3FgH-PRTr10UTV-202Fdi5g30bEBYYtkzzgY3yJOTY&s=10',
+        image: 'https://holycowvegan.net/wp-content/uploads/2014/06/bengali-cholar-dal-recipe.jpg',
         category: 'Vegetarian',
         description: 'Traditional multi-vegetable bitter-sweet stew with bitter gourd, raw banana, and lentil dumplings (bori) in milk-radhuni broth; paired with coconut chholar dal.',
         keyIngredients: ['Bitter Gourd (Uchhe)', 'Drumsticks', 'Raw Banana', 'Radhuni Spice', 'Chana Dal', 'Fried Coconut Bits']
@@ -113,6 +122,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Kolkata Durga Puja',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg/500px-%E0%A6%AC%E0%A6%BE%E0%A6%97%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0_%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A6%9C%E0%A6%A8%E0%A7%80%E0%A6%A8_%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%8B%E0%A7%8E%E0%A6%B8%E0%A6%AC_%E0%A7%A8%E0%A7%A6%E0%A7%A7%E0%A7%AE.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
         timing: 'Ashvin (September - October / 6-10 Days)',
         significance: 'UNESCO World Heritage socio-cultural mega carnival welcoming Goddess Durga\'s annual homecoming with her four divine children.',
         keyRitual: 'Maha Saptami to Dashami, Dhunuchi Nach, Sandhi Puja with 108 lotuses, and Sindoor Khela where married women smear vermilion on each other.',
@@ -120,6 +130,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Poush Mela Santiniketan',
+        image: 'https://www.santiniketan.com/wp-content/uploads/FB_IMG_1514040553100.jpg',
         timing: 'December (Poush 7 - 9)',
         significance: 'Celebration of Bengal\'s rural arts, Baul singers, and Visva-Bharati university founded by Rabindranath Tagore.',
         keyRitual: 'Dawn prayers at Chhatimtala, open-air Baul and folk concerts, and tribal Santhal dance performances.',
@@ -127,6 +138,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Ganga Sagar Mela',
+        image: 'https://www.theindia.co.in/blog/wp-content/uploads/2021/12/GangaSagar-Mela.jpg',
         timing: 'Makar Sankranti (January)',
         significance: 'Second largest spiritual gathering after Kumbh Mela, where pilgrims take a sacred dip at the confluence of the holy Ganga and Bay of Bengal.',
         keyRitual: 'Holy bath at Sagar Island followed by prayers at Kapil Muni Temple.',
@@ -134,31 +146,41 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       }
     ],
     craftsAndAttire: {
-      textiles: ['Baluchari Silk Sarees (Depicting Mythological scenes on Pallu)', 'Jamdani Muslin Sarees', 'Kantha Embroidery (Stitched patchwork)', 'Tant Cotton Handloom Sarees', 'Garad & Korial Silk'],
+      textiles: ['Baluchari Silk Sarees (Depicting Mythological scenes on Pallu)', 'Jamdani Muslin Sarees', 'Kantha Embroidery (Stitched patchwork)'],
+      image: 'https://aditri.co.in/wp-content/uploads/2024/06/7-10.jpg',
+      image: 'https://anvicouture.com/cdn/shop/files/3_22_202512_35_23AM.jpg?v=1742756575',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI5Q1EiS92r_xPWAchedGZU1SpHAXtHpq56b9cl4jrKLh6WK-_mFMEQl9p&s=10',
       handicrafts: ['Bankura Terracotta Horses', 'Bishnupur Dokra Metal Art', 'Kalighat Folk Paintings', 'Sholapith (Pith carving) Durga crowns', 'Darjeeling Orthodox Tea'],
       traditionalMenAttire: 'Dhoti with silk or cotton Kurta (Panjabi), often accompanied by an Uttoriyo (shoulder scarf).',
+      image: 'https://i.pinimg.com/474x/96/4c/b0/964cb001078f83cbb80e9e50cd5328ed.jpg',
       traditionalWomenAttire: 'Lal-Paad Saree (white/cream saree with bright red border) draped in traditional Bengali eight-fold style with a bunch of keys at the pallu.',
+      image: 'https://i.pinimg.com/736x/78/ab/39/78ab394961465c8879e52cebf6926294.jpg',
       giTaggedCrafts: ['Banglar Rasogolla', 'Baluchari Saree', 'Santiniketan Leather Goods', 'Bankura Panchmura Terracotta Craft', 'Purulia Chhau Mask', 'Bengal Patachitra', 'Darjeeling Tea']
     },
     historyTimeline: [
       {
         era: '8th - 12th Century AD',
         title: 'Pala & Sena Dynasties',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Map_of_the_Pala_Empire.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         description: 'The Buddhist Pala Empire patronized Nalanda and Vikramashila universities, exporting Mahayana art across East Asia.'
       },
       {
         era: '1757 AD',
         title: 'Battle of Plassey',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Lord_Clive_meeting_with_Mir_Jafar_after_the_Battle_of_Plassey.jpg/960px-Lord_Clive_meeting_with_Mir_Jafar_after_the_Battle_of_Plassey.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
         description: 'Robert Clive defeated Nawab Siraj-ud-Daulah, beginning the British East India Company\'s territorial dominion over the Indian subcontinent.'
       },
       {
         era: '19th - Early 20th Century AD',
         title: 'The Bengal Renaissance & Freedom Struggle',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRukgtScC0viUCqYvPizqr2d0cQlWuiWnwLqiGN3I8ybqf42NB3hpqiUx1y&s=10',
         description: 'Cultural, artistic, and philosophical rebirth led by Raja Ram Mohan Roy, Ishwar Chandra Vidyasagar, Swami Vivekananda, Rabindranath Tagore, and Subhas Chandra Bose.'
       },
       {
         era: '1947 AD',
         title: 'Partition & Modern State of West Bengal',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqw5K3IWnBBayQsVWu0XG_ZDjtP8ifQx7kF6AxI0VPKxo8svR0X4z7BwA&s=10',
+        image: 'https://cdn.thecultural.me/sob/bengalpartition1905-map_7d37018a63a04228937247825bbb99da_g.jpg',
         description: 'Following Indian independence and partition, West Bengal was integrated into the Indian Union with Kolkata as capital.'
       }
     ]
