@@ -392,7 +392,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '3rd Century BCE (Ashoka) / Rebuilt 5th - 6th Century CE',
         location: 'Bodh Gaya',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1565019001157-1ff1a91e5d3c?auto=format&fit=crop&w=800&q=80',
+        image: 'https://cdn.britannica.com/12/94612-050-B4EEB84A/temple-Buddhist-Mahabodhi-Bihar-India-Bodh-Gaya.jpg',
         description: 'One of the earliest and best-preserved brick temples in India marking the holy spot where Lord Buddha attained supreme enlightenment under the sacred Bodhi Tree.',
         coordinates: [24.6960, 84.9914]
       },
@@ -402,7 +402,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '5th - 12th Century CE (Gupta & Pala Dynasties)',
         location: 'Nalanda District',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+        image: 'https://deih43ym53wif.cloudfront.net/nalanda-india-shutterstock_308393690_936165c6cc.jpeg',
         description: 'Vast archaeological excavation revealing 11 monasteries and 6 brick temples where Xuanzang, Aryabhata, and Nagarjuna taught and studied.',
         coordinates: [25.1357, 85.4452]
       },
@@ -412,7 +412,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '3rd Century BCE (Emperor Ashoka & Dasharatha)',
         location: 'Jehanabad District',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
+        image: 'https://organiser.org/wp-content/uploads/2026/07/whatsapp-image-2026-07-21-at-4.30.00-pm.webp',
         description: 'Granite caves featuring mirror-like Mauryan wall polish and acoustic resonance constructed for the ancient Ajivika sect.',
         coordinates: [25.0050, 85.0620]
       },
@@ -422,7 +422,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '1786 AD (Captain John Garstin)',
         location: 'Patna',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1590740608753-f7a35cbdfaa3?auto=format&fit=crop&w=800&q=80',
+        image: 'https://cdn.yatrigo.com/wb5us2os9u.webp',
         description: 'Colossal pillarless hemispherical grain silo with two spiral staircases of 145 steps winding to the summit overlooking the River Ganga.',
         coordinates: [25.6200, 85.1436]
       }
