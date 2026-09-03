@@ -16,7 +16,7 @@ export interface Monument {
 
 export interface ArtAndDance {
   name: string;
-  type: 'Dance' | 'Music' | 'Theatre' | 'Martial Art';
+  type: 'Dance' | 'Music' | 'Theatre' | 'Martial Art' | 'Painting' | 'Folk Art';
   origin: string;
   description: string;
   id?: string;
@@ -69,6 +69,10 @@ export interface Festival {
   significance: string;
   keyRitual: string;
   highlight: string;
+  image?: string;
+  imageUrl?: string;
+  month?: string;
+  description?: string;
 }
 
 export interface CraftAndAttire {
@@ -76,6 +80,12 @@ export interface CraftAndAttire {
   handicrafts: string[];
   traditionalMenAttire: string;
   traditionalWomenAttire: string;
+  traditionalMenAttireImage?: string;
+  traditionalWomenAttireImage?: string;
+  textileImages?: string[];
+  handicraftImages?: string[];
+  image?: string;
+  images?: string[];
   giTaggedCrafts?: string[];
   attireItems?: AttireItem[];
 }
@@ -84,6 +94,8 @@ export interface HistoryMilestone {
   era: string;
   title: string;
   description: string;
+  image?: string;
+  imageUrl?: string;
 }
 
 export interface StateHeritage {
@@ -97,6 +109,8 @@ export interface StateHeritage {
   bannerImage: string;
   tagline: string;
   overview: string;
+  detailedDescription?: string;
+  keyFacts?: string[];
   officialLanguage: string;
   spokenLanguages: string[];
   stateAnimal?: string;
@@ -106,7 +120,26 @@ export interface StateHeritage {
   cuisines: CuisineItem[];
   festivals: Festival[];
   craftsAndAttire: CraftAndAttire;
+  crafts?: {
+    name: string;
+    description: string;
+    giTag?: boolean;
+  }[];
+  traditionalAttire?: {
+    name: string;
+    description: string;
+    men: string;
+    women: string;
+    image?: string;
+    imagePlaceholder?: string;
+  };
   historyTimeline: HistoryMilestone[];
+  historicalEras?: {
+    era: string;
+    period: string;
+    description: string;
+  }[];
+  history?: string;
   funFact: string;
   folkStory?: {
     title: string;

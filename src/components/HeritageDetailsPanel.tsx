@@ -23,9 +23,12 @@ import {
   ChevronLeft,
   ChevronRight,
   SlidersHorizontal,
+  Eye,
 } from 'lucide-react';
 import { StateHeritage, HeritageTab, Monument } from '../types';
 import { heritageAudio } from '../utils/audioSynth';
+import { AdaptiveImage } from './AdaptiveImage';
+import { ClearImageLightboxModal, LightboxImageItem } from './ClearImageLightboxModal';
 
 interface HeritageDetailsPanelProps {
   state: StateHeritage;
@@ -47,6 +50,8 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
   const [copied, setCopied] = useState(false);
   const [isPlayingFolkAudio, setIsPlayingFolkAudio] = useState(false);
   const [selectedCuisineSubcategory, setSelectedCuisineSubcategory] = useState<string>('all');
+  const [lightboxImage, setLightboxImage] = useState<LightboxImageItem | null>(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   // Tab Scroll State
   const tabSliderRef = useRef<HTMLDivElement>(null);
@@ -511,19 +516,26 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                   onClick={() => onSelectMonument(m, state)}
                   className="group bg-slate-800/60 hover:bg-slate-800 rounded-2xl overflow-hidden border border-slate-700/60 hover:border-amber-500/60 transition-all cursor-pointer shadow-lg"
                 >
-                  <div className="relative h-44 w-full overflow-hidden">
-                    <img
+                  <div className="relative w-full">
+                    <AdaptiveImage
                       src={m.image}
                       alt={m.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                      title={m.name}
+                      subtitle={`${m.century} • ${m.type}`}
+                      description={m.detailedDescription || m.description}
+                      category="Monument"
+                      heightClass="h-44 sm:h-52"
+                      onOpenModal={(item) => {
+                        setLightboxImage(item);
+                        setIsLightboxOpen(true);
+                      }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
                     {m.isUnesco && (
-                      <span className="absolute top-3 left-3 bg-emerald-500 text-slate-950 text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
+                      <span className="absolute top-3 left-3 z-20 bg-emerald-500 text-slate-950 text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
                         <Award className="w-3 h-3" /> UNESCO World Heritage
                       </span>
                     )}
-                    <span className="absolute bottom-3 right-3 bg-slate-900/90 text-amber-300 text-[11px] font-medium px-2 py-0.5 rounded-md border border-amber-500/30">
+                    <span className="absolute bottom-3 right-3 z-20 bg-slate-900/90 text-amber-300 text-[11px] font-medium px-2 py-0.5 rounded-md border border-amber-500/30 shadow">
                       {m.century}
                     </span>
                   </div>
@@ -870,15 +882,20 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                     </div>
 
                     {(food.imageUrl || food.image) && (
-                      <div className="relative h-36 rounded-xl overflow-hidden border border-slate-700/50 bg-slate-900">
-                        <img
+                      <div className="relative w-full">
+                        <AdaptiveImage
                           src={food.imageUrl || food.image}
                           alt={food.name}
-                          className="w-full h-full object-cover"
-                          referrerPolicy="no-referrer"
-                          loading="lazy"
+                          title={food.name}
+                          subtitle={`${food.category}${food.subcategory ? ` • ${food.subcategory}` : ''}`}
+                          description={food.detailedDescription || food.description}
+                          category="Cuisine"
+                          heightClass="h-40 sm:h-48"
+                          onOpenModal={(item) => {
+                            setLightboxImage(item);
+                            setIsLightboxOpen(true);
+                          }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                       </div>
                     )}
 
@@ -967,13 +984,31 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                     <div>
                       <h4 className="text-base font-bold text-amber-300">{fest.name}</h4>
                       <span className="text-xs text-slate-400 block mt-0.5">
-                        🗓️ {fest.timing}
+                        🗓️ {fest.timing || fest.month}
                       </span>
                     </div>
                     <span className="text-xl">🎉</span>
                   </div>
 
-                  <p className="text-xs text-slate-300 leading-relaxed">{fest.significance}</p>
+                  {(fest.image || fest.imageUrl) && (
+                    <div className="relative w-full">
+                      <AdaptiveImage
+                        src={(fest.image || fest.imageUrl)!}
+                        alt={fest.name}
+                        title={fest.name}
+                        subtitle={`Festival • ${fest.timing || fest.month || ''}`}
+                        description={fest.description || fest.significance}
+                        category="Festival"
+                        heightClass="h-40 sm:h-48"
+                        onOpenModal={(item) => {
+                          setLightboxImage(item);
+                          setIsLightboxOpen(true);
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  <p className="text-xs text-slate-300 leading-relaxed">{fest.description || fest.significance}</p>
 
                   <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-700/40 space-y-2 text-xs">
                     <div>
@@ -1029,15 +1064,20 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                       </div>
 
                       {(attire.image || attire.imagePlaceholder) && (
-                        <div className="relative h-36 rounded-xl overflow-hidden border border-slate-700/50">
-                          <img
-                            src={attire.image || attire.imagePlaceholder}
+                        <div className="relative w-full">
+                          <AdaptiveImage
+                            src={attire.image || attire.imagePlaceholder!}
                             alt={attire.name}
-                            className="w-full h-full object-cover"
-                            referrerPolicy="no-referrer"
-                            loading="lazy"
+                            title={attire.name}
+                            subtitle={attire.origin ? `Origin: ${attire.origin}` : 'Handloom & Attire'}
+                            description={attire.detailedDescription || attire.description}
+                            category="Craft & Attire"
+                            heightClass="h-40 sm:h-48"
+                            onOpenModal={(item) => {
+                              setLightboxImage(item);
+                              setIsLightboxOpen(true);
+                            }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                         </div>
                       )}
 
@@ -1081,6 +1121,27 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                   </span>
                 ))}
               </div>
+
+              {state.craftsAndAttire.textileImages && state.craftsAndAttire.textileImages.length > 0 && (
+                <div className="grid grid-cols-3 gap-2 mt-3">
+                  {state.craftsAndAttire.textileImages.map((tImg, i) => (
+                    <div key={i}>
+                      <AdaptiveImage
+                        src={tImg}
+                        alt="Textile pattern"
+                        title={state.craftsAndAttire.textiles[i] || `${state.name} Textile`}
+                        subtitle="Handloom Weave"
+                        category="Handloom"
+                        heightClass="h-24 sm:h-28"
+                        onOpenModal={(item) => {
+                          setLightboxImage(item);
+                          setIsLightboxOpen(true);
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div>
@@ -1097,22 +1158,77 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                   </div>
                 ))}
               </div>
+
+              {state.craftsAndAttire.handicraftImages && state.craftsAndAttire.handicraftImages.length > 0 && (
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3">
+                  {state.craftsAndAttire.handicraftImages.map((cImg, i) => (
+                    <div key={i}>
+                      <AdaptiveImage
+                        src={cImg}
+                        alt="Handicraft"
+                        title={state.craftsAndAttire.handicrafts[i] || `${state.name} Craft`}
+                        subtitle="Handicraft & Art"
+                        category="Craft"
+                        heightClass="h-24 sm:h-28"
+                        onOpenModal={(item) => {
+                          setLightboxImage(item);
+                          setIsLightboxOpen(true);
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
-                <span className="text-[10px] text-amber-400 font-bold uppercase block mb-1">
+              <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50 space-y-2">
+                <span className="text-[10px] text-amber-400 font-bold uppercase block">
                   Men's Traditional Attire
                 </span>
+                {state.craftsAndAttire.traditionalMenAttireImage && (
+                  <div className="w-full">
+                    <AdaptiveImage
+                      src={state.craftsAndAttire.traditionalMenAttireImage}
+                      alt="Men's Traditional Attire"
+                      title="Men's Traditional Attire"
+                      subtitle={state.name}
+                      description={state.craftsAndAttire.traditionalMenAttire}
+                      category="Traditional Attire"
+                      heightClass="h-32 sm:h-36"
+                      onOpenModal={(item) => {
+                        setLightboxImage(item);
+                        setIsLightboxOpen(true);
+                      }}
+                    />
+                  </div>
+                )}
                 <p className="text-xs text-slate-300 leading-relaxed">
                   {state.craftsAndAttire.traditionalMenAttire}
                 </p>
               </div>
 
-              <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
-                <span className="text-[10px] text-amber-400 font-bold uppercase block mb-1">
+              <div className="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50 space-y-2">
+                <span className="text-[10px] text-amber-400 font-bold uppercase block">
                   Women's Traditional Attire
                 </span>
+                {state.craftsAndAttire.traditionalWomenAttireImage && (
+                  <div className="w-full">
+                    <AdaptiveImage
+                      src={state.craftsAndAttire.traditionalWomenAttireImage}
+                      alt="Women's Traditional Attire"
+                      title="Women's Traditional Attire"
+                      subtitle={state.name}
+                      description={state.craftsAndAttire.traditionalWomenAttire}
+                      category="Traditional Attire"
+                      heightClass="h-32 sm:h-36"
+                      onOpenModal={(item) => {
+                        setLightboxImage(item);
+                        setIsLightboxOpen(true);
+                      }}
+                    />
+                  </div>
+                )}
                 <p className="text-xs text-slate-300 leading-relaxed">
                   {state.craftsAndAttire.traditionalWomenAttire}
                 </p>
@@ -1145,13 +1261,30 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
 
             <div className="relative pl-6 space-y-6 border-l-2 border-amber-500/30">
               {state.historyTimeline.map((item, idx) => (
-                <div key={idx} className="relative group">
+                <div key={idx} className="relative group space-y-2">
                   <div className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-900 border-2 border-amber-400 group-hover:scale-125 transition-transform" />
                   <span className="text-[11px] font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30">
                     {item.era}
                   </span>
                   <h4 className="text-sm font-bold text-white mt-1.5">{item.title}</h4>
-                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">{item.description}</p>
+                  {(item.image || item.imageUrl) && (
+                    <div className="w-full">
+                      <AdaptiveImage
+                        src={(item.image || item.imageUrl)!}
+                        alt={item.title}
+                        title={item.title}
+                        subtitle={`Chronicle • ${item.era}`}
+                        description={item.description}
+                        category="History & Dynasties"
+                        heightClass="h-44 sm:h-52"
+                        onOpenModal={(img) => {
+                          setLightboxImage(img);
+                          setIsLightboxOpen(true);
+                        }}
+                      />
+                    </div>
+                  )}
+                  <p className="text-xs text-slate-300 leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -1243,6 +1376,13 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
           </motion.div>
         )}
       </div>
+
+      {/* Lightbox Modal for Complete & Clear Image View */}
+      <ClearImageLightboxModal
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+        image={lightboxImage}
+      />
     </motion.aside>
   );
 };

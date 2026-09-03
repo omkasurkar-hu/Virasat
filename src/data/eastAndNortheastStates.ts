@@ -104,16 +104,16 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Kolkata Kathi Roll & Phuchka',
-        image: 'https://static2.tripoto.com/media/filter/tst/img/1446686/TripDocument/1566304969_lrm_export_57267472762996_20190206_152011017_copy.jpg',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kolkata_Rolls.jpg/500px-Kolkata_Rolls.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
+        imageUrl: 'https://static2.tripoto.com/media/filter/tst/img/1446686/TripDocument/1566304969_lrm_export_57267472762996_20190206_152011017_copy.jpg',
         category: 'Street Food',
         description: 'Flaky paratha layered with fried egg, skewered kebab meat, onions, and lime juice (invented at Nizam\'s in 1932); and crisp semolina puchkas with spiced potato mash and tangy tamarind-gondhoraj water.',
         keyIngredients: ['Paratha', 'Egg', 'Chicken/Mutton Seekh', 'Gondhoraj Lime', 'Puchka Puris', 'Tamarind Water']
       },
       {
         name: 'Shukto & Chholar Dal',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYKqTWfI6Fm7q1s3FgH-PRTr10UTV-202Fdi5g30bEBYYtkzzgY3yJOTY&s=10',
         image: 'https://holycowvegan.net/wp-content/uploads/2014/06/bengali-cholar-dal-recipe.jpg',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYKqTWfI6Fm7q1s3FgH-PRTr10UTV-202Fdi5g30bEBYYtkzzgY3yJOTY&s=10',
         category: 'Vegetarian',
         description: 'Traditional multi-vegetable bitter-sweet stew with bitter gourd, raw banana, and lentil dumplings (bori) in milk-radhuni broth; paired with coconut chholar dal.',
         keyIngredients: ['Bitter Gourd (Uchhe)', 'Drumsticks', 'Raw Banana', 'Radhuni Spice', 'Chana Dal', 'Fried Coconut Bits']
@@ -147,14 +147,16 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Baluchari Silk Sarees (Depicting Mythological scenes on Pallu)', 'Jamdani Muslin Sarees', 'Kantha Embroidery (Stitched patchwork)'],
-      image: 'https://aditri.co.in/wp-content/uploads/2024/06/7-10.jpg',
-      image: 'https://anvicouture.com/cdn/shop/files/3_22_202512_35_23AM.jpg?v=1742756575',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI5Q1EiS92r_xPWAchedGZU1SpHAXtHpq56b9cl4jrKLh6WK-_mFMEQl9p&s=10',
+      textileImages: [
+        'https://aditri.co.in/wp-content/uploads/2024/06/7-10.jpg',
+        'https://anvicouture.com/cdn/shop/files/3_22_202512_35_23AM.jpg?v=1742756575',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI5Q1EiS92r_xPWAchedGZU1SpHAXtHpq56b9cl4jrKLh6WK-_mFMEQl9p&s=10'
+      ],
       handicrafts: ['Bankura Terracotta Horses', 'Bishnupur Dokra Metal Art', 'Kalighat Folk Paintings', 'Sholapith (Pith carving) Durga crowns', 'Darjeeling Orthodox Tea'],
       traditionalMenAttire: 'Dhoti with silk or cotton Kurta (Panjabi), often accompanied by an Uttoriyo (shoulder scarf).',
-      image: 'https://i.pinimg.com/474x/96/4c/b0/964cb001078f83cbb80e9e50cd5328ed.jpg',
+      traditionalMenAttireImage: 'https://i.pinimg.com/474x/96/4c/b0/964cb001078f83cbb80e9e50cd5328ed.jpg',
       traditionalWomenAttire: 'Lal-Paad Saree (white/cream saree with bright red border) draped in traditional Bengali eight-fold style with a bunch of keys at the pallu.',
-      image: 'https://i.pinimg.com/736x/78/ab/39/78ab394961465c8879e52cebf6926294.jpg',
+      traditionalWomenAttireImage: 'https://i.pinimg.com/736x/78/ab/39/78ab394961465c8879e52cebf6926294.jpg',
       giTaggedCrafts: ['Banglar Rasogolla', 'Baluchari Saree', 'Santiniketan Leather Goods', 'Bankura Panchmura Terracotta Craft', 'Purulia Chhau Mask', 'Bengal Patachitra', 'Darjeeling Tea']
     },
     historyTimeline: [
@@ -180,7 +182,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         era: '1947 AD',
         title: 'Partition & Modern State of West Bengal',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqw5K3IWnBBayQsVWu0XG_ZDjtP8ifQx7kF6AxI0VPKxo8svR0X4z7BwA&s=10',
-        image: 'https://cdn.thecultural.me/sob/bengalpartition1905-map_7d37018a63a04228937247825bbb99da_g.jpg',
+        imageUrl: 'https://cdn.thecultural.me/sob/bengalpartition1905-map_7d37018a63a04228937247825bbb99da_g.jpg',
         description: 'Following Indian independence and partition, West Bengal was integrated into the Indian Union with Kolkata as capital.'
       }
     ]
@@ -329,18 +331,22 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Sambalpuri Bandha Saree (Double Ikat)', 'Bomkai Silk & Cotton', 'Berhampuri Patta (Kumbha borders)'],
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXLTakHaofr_lsa_4n9QQt2T7uFyVKOhybrWFPIafg0NxaOsUxLRYpL94&s=10',
-      image:'https://content-d11d.kxcdn.com/media/catalog/product/a/d/adi492.5342.jpg',
-      image:'https://cdn.shopaccino.com/nirguna/products/tri3dnirguna-2021071514silkset290sowmyasriside2021-7-15-19-28-491600x2400-173281_m.jpg?v=731',
+      textileImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXLTakHaofr_lsa_4n9QQt2T7uFyVKOhybrWFPIafg0NxaOsUxLRYpL94&s=10',
+        'https://content-d11d.kxcdn.com/media/catalog/product/a/d/adi492.5342.jpg',
+        'https://cdn.shopaccino.com/nirguna/products/tri3dnirguna-2021071514silkset290sowmyasriside2021-7-15-19-28-491600x2400-173281_m.jpg?v=731'
+      ],
       handicrafts: ['Pattachitra Paintings of Raghurajpur', 'Cuttack Tarakasi (Silver Filigree Jewelry)', 'Pipili Appliqué Work (Chandua)', 'Dhokra Metal Casting'],
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYWNZ6786fYWxoWTVwRrfBT5Sqf-9JLFNnWsxDXe9X7Rq31h2kSm0rlYob&s=10',
-      image:'https://static.toiimg.com/thumb/msid-108183267,width-1280,height-720,resizemode-4/108183267.jpg',
-      image:'https://gaatha.org/wp-content/uploads/puri-applique-craft.jpg.webp',
-      image:'https://vajiramias.sgp1.cdn.digitaloceanspaces.com/wp/current-affairs/2025/03/what_is_dokra_metal_crafts.jpg?v=2',
+      handicraftImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYWNZ6786fYWxoWTVwRrfBT5Sqf-9JLFNnWsxDXe9X7Rq31h2kSm0rlYob&s=10',
+        'https://static.toiimg.com/thumb/msid-108183267,width-1280,height-720,resizemode-4/108183267.jpg',
+        'https://gaatha.org/wp-content/uploads/puri-applique-craft.jpg.webp',
+        'https://vajiramias.sgp1.cdn.digitaloceanspaces.com/wp/current-affairs/2025/03/what_is_dokra_metal_crafts.jpg?v=2'
+      ],
       traditionalMenAttire: 'Dhoti with Kurta and Gamucha draped over the shoulder.',
-      image:'https://www.indiatravel.app/wp-content/uploads/2024/10/Pata-Dhoti-227x300.png',
+      traditionalMenAttireImage: 'https://www.indiatravel.app/wp-content/uploads/2024/10/Pata-Dhoti-227x300.png',
       traditionalWomenAttire: 'Sambalpuri Ikat or Bomkai Silk Saree with distinctive temple border and silver filigree ornaments.',
-      image:'https://www.bunkarvalley.com/wp-content/uploads/2025/02/Tribal-Fashion-of-Odisha.jpg',
+      traditionalWomenAttireImage: 'https://www.bunkarvalley.com/wp-content/uploads/2025/02/Tribal-Fashion-of-Odisha.jpg',
       giTaggedCrafts: ['Odisha Rasagola', 'Sambalpuri Bandha Saree', 'Kotpad Handloom', 'Odisha Pattachitra', 'Pipili Applique Work', 'Cuttack Silver Filigree (Tarakasi)', 'Kandhamal Haldi (Turmeric)']
     },
     historyTimeline: [
@@ -512,19 +518,23 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Bhagalpuri Tussar Silk (The Silk City)', 'Sujani Embroidery (Storytelling Quilts)', 'Bawan Buti Handloom Weaves'],
-      image: 'https://th.bing.com/th/id/R.953a0e2ad04ccd65c0f95c7f9764622c?rik=whki%2fyft0nSv7Q&riu=http%3a%2f%2fwww.banarasee.in%2fcdn%2fshop%2ffiles%2fIMG_9878.jpg%3fv%3d1685679822&ehk=h3tiwinpvxjCxGCcqVbU%2b0UzHKP7rHPANdqUfxoKMxc%3d&risl=&pid=ImgRaw&r=0',
-      image: 'https://anjushree.co.in/assets/sujani-embroidery.CA1u4jgF.jpg',
-      image: 'https://tse1.mm.bing.net/th/id/OIP.M5rpVUDCLB_58aV5UWfvSAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      textileImages: [
+        'https://th.bing.com/th/id/R.953a0e2ad04ccd65c0f95c7f9764622c?rik=whki%2fyft0nSv7Q&riu=http%3a%2f%2fwww.banarasee.in%2fcdn%2fshop%2ffiles%2fIMG_9878.jpg%3fv%3d1685679822&ehk=h3tiwinpvxjCxGCcqVbU%2b0UzHKP7rHPANdqUfxoKMxc%3d&risl=&pid=ImgRaw&r=0',
+        'https://anjushree.co.in/assets/sujani-embroidery.CA1u4jgF.jpg',
+        'https://tse1.mm.bing.net/th/id/OIP.M5rpVUDCLB_58aV5UWfvSAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
+      ],
       handicrafts: ['Madhubani Paintings on Handmade Paper', 'Sikki Grass Craft (Golden Grass woven boxes)', 'Manjusha Angika Art (Snake Paintings)', 'Khatwa Appliqué Work', 'Stone Carvings of Gaya'],
-      image: 'https://5.imimg.com/data5/SELLER/Default/2023/8/332467286/EK/OO/QW/80080160/painting-p-3-1000x1000.jpeg',
-      image: 'https://th.bing.com/th/id/R.296bb2940902dbdf97721da7134c8af3?rik=RM2ZOBInd2M5kQ&riu=http%3a%2f%2fpunarnawa.com%2fcdn%2fshop%2ffiles%2fpunarnawa-soul-of-artistry-kauna-grass-basket-default-title-moonj-grass-storage-box-32440494063673.jpg%3fv%3d1705104468&ehk=GLP1drjlS96UZQNyVWFQ05raQZPcFj%2bTM2SrPUbONdc%3d&risl=&pid=ImgRaw&r=0',
-      image: 'https://tse3.mm.bing.net/th/id/OIP.gNjJBGdZkXfaKdkwBY0mCAHaFb?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://tse3.mm.bing.net/th/id/OIP.qvGUkB8rZpKWttowhnAAEgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image:'https://c8.alamy.com/comp/2SRDC3C/carved-buddha-on-mahabodhi-temple-wall-bodh-gaya-bihar-india-asia-2SRDC3C.jpg',
+      handicraftImages: [
+        'https://5.imimg.com/data5/SELLER/Default/2023/8/332467286/EK/OO/QW/80080160/painting-p-3-1000x1000.jpeg',
+        'https://th.bing.com/th/id/R.296bb2940902dbdf97721da7134c8af3?rik=RM2ZOBInd2M5kQ&riu=http%3a%2f%2fpunarnawa.com%2fcdn%2fshop%2ffiles%2fpunarnawa-soul-of-artistry-kauna-grass-basket-default-title-moonj-grass-storage-box-32440494063673.jpg%3fv%3d1705104468&ehk=GLP1drjlS96UZQNyVWFQ05raQZPcFj%2bTM2SrPUbONdc%3d&risl=&pid=ImgRaw&r=0',
+        'https://tse3.mm.bing.net/th/id/OIP.gNjJBGdZkXfaKdkwBY0mCAHaFb?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://tse3.mm.bing.net/th/id/OIP.qvGUkB8rZpKWttowhnAAEgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://c8.alamy.com/comp/2SRDC3C/carved-buddha-on-mahabodhi-temple-wall-bodh-gaya-bihar-india-asia-2SRDC3C.jpg'
+      ],
       traditionalMenAttire: 'Dhoti-Kurta with Mirjai jacket and Angavastram (Gamchha) draped around the neck.',
-      image: 'https://tse4.mm.bing.net/th/id/OIP.qM_gjhMTPlZnjedTLX7BYQHaJ3?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      traditionalMenAttireImage: 'https://tse4.mm.bing.net/th/id/OIP.qM_gjhMTPlZnjedTLX7BYQHaJ3?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       traditionalWomenAttire: 'Bhagalpuri Tussar Silk Saree or Seedha-Pallu cotton saree with traditional Tikli and Bichhiya jewelry.',
-      image: 'https://www.loomfolks.com/wp-content/uploads/2021/01/Pleasing-Pearl-White-Pure-Desi-Bhagalpuri-Tussar-Silk-Saree.jpg',
+      traditionalWomenAttireImage: 'https://www.loomfolks.com/wp-content/uploads/2021/01/Pleasing-Pearl-White-Pure-Desi-Bhagalpuri-Tussar-Silk-Saree.jpg',
       giTaggedCrafts: ['Madhubani Paintings', 'Bhagalpur Silk', 'Silao Khaja', 'Sujani Embroidery', 'Khatwa Craft', 'Shahi Litchi of Muzaffarpur', 'Zardalu Mango', 'Katarni Rice', 'Magahi Paan']
     },
     historyTimeline: [
@@ -653,7 +663,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Sarhul Festival',
-        image:'https://www.bunkarvalley.com/wp-content/uploads/2025/07/Sarhul-Festival.jpg';
+        image: 'https://www.bunkarvalley.com/wp-content/uploads/2025/07/Sarhul-Festival.jpg',
         timing: 'Chaitra Shukla Tritiya (Spring - March/April)',
         significance: 'Most important nature festival of the Adivasis (Oraon, Munda, Ho, Santhal) celebrating the blooming of the sacred Sal tree (Sarjom ba).',
         keyRitual: 'Village priest (Pahan) conducts prayers at the sacred grove (Jaher / Sarna), distributing Sal blossoms to every household.',
@@ -678,17 +688,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Kuchai Silk (Wild Organic Tussar Silk)', 'Santhali Panchi and Parhan Handwoven Attire'],
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUvrKGmw32cCyN-lrVD0Iy9TQ40qepZkdkN70VgVQHpiXT2Cf-7xlQsPx3&s=10',
-      image:'https://www.utsavpedia.com/wp-content/uploads/2013/07/Traditional-Costume-of-Jharkhand3.jpg',
+      textileImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUvrKGmw32cCyN-lrVD0Iy9TQ40qepZkdkN70VgVQHpiXT2Cf-7xlQsPx3&s=10',
+        'https://www.utsavpedia.com/wp-content/uploads/2013/07/Traditional-Costume-of-Jharkhand3.jpg'
+      ],
       handicrafts: ['Sohrai and Khovar Wall Paintings', 'Dhokra Brass Craft (Malhor tribe)', 'Bamboo & Sal Wood Carvings', 'Seraikela Chhau Masks'],
-      image:'https://imp-art.org/wp-content/uploads/2025/07/sohrai-painting-10L.jpg',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWxwcpSfhRrMLcRffoOmKoHLV0hT9hdX9AkYCkCkxOzKY1sn_WptkzZxci&s=10',
-      image:'https://img1.exportersindia.com/product_images/bc-full/dir_148/4431941/bamboo-handicrafts-1499766381-3121014.jpeg',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRle2Kvp9jKRP82quSWF5EHeXUnrlunVrYBl5dCsEOhmhiIMC-aAFV4LkA&s=10',
+      handicraftImages: [
+        'https://imp-art.org/wp-content/uploads/2025/07/sohrai-painting-10L.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWxwcpSfhRrMLcRffoOmKoHLV0hT9hdX9AkYCkCkxOzKY1sn_WptkzZxci&s=10',
+        'https://img1.exportersindia.com/product_images/bc-full/dir_148/4431941/bamboo-handicrafts-1499766381-3121014.jpeg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRle2Kvp9jKRP82quSWF5EHeXUnrlunVrYBl5dCsEOhmhiIMC-aAFV4LkA&s=10'
+      ],
       traditionalMenAttire: 'Bhagwan (cotton loinwrap) or Kurta-Pajama with traditional gamcha.',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ71au6mhAxJjAfvmjN-2RFXLcAlMYCjq7LYgPD2EPPAbxmNgb44UJyzk25&s=10',
+      traditionalMenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ71au6mhAxJjAfvmjN-2RFXLcAlMYCjq7LYgPD2EPPAbxmNgb44UJyzk25&s=10',
       traditionalWomenAttire: 'Panchi-Parhan (traditional red and white woven two-piece cotton drape) with silver Hansuli necklace and brass armlets.',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSagH19JquwUKjkpDVlPd15bmJ8Dc7LQ_iCBRYe-yup9VBB_ZwrIaNlizoX&s=10',
+      traditionalWomenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSagH19JquwUKjkpDVlPd15bmJ8Dc7LQ_iCBRYe-yup9VBB_ZwrIaNlizoX&s=10',
       giTaggedCrafts: ['Sohrai - Khovar Painting', 'Kuchai Silk']
     },
     historyTimeline: [
@@ -851,19 +865,23 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       }
     ],
     craftsAndAttire: {
-      textiles: ['Muga Silk (Golden Silk found only in Assam)','Pat Silk', 'Gamosa (White and Red Embroidered Cotton Scarf of Respect)'],
-      image:'https://upload.wikimedia.org/wikipedia/commons/c/c0/Assamese_Muga_With_Japi.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
-      image:'https://ethnohues.com/wp-content/uploads/2026/02/saree-p1.webp',
-      image:'https://images.meesho.com/images/products/1002512707/wxyt6_512.webp?width=512',
-      handicrafts: ['Assamese Jaapi (Conical Woven Bamboo Hat with floral motifs)', 'Majuli Handcrafted Bamboo Masks (Mukha)', 'Sarthebari Bell Metal Utensils','Assamese Gold Jewelry (Dholbiri, Jonbiri, Gamkharu)'],
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbs4DfwKrZqwH4RD4Z_mkORtTB-J3oL-VX6hQWDXM1qGtCql2NOlxb2IQJ&s=10',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4W6UJ-Dk7favZb3EIvoLj_oHGCy0-XL0oiGGviM-qwanQ4aLX8E03AT8&s=10',
-      image:'https://yehaindia.com/wp-content/uploads/2021/08/cover-1.jpg',
-      image:'https://zangfai.in/image/cache/catalog/products/mainset/IMG_JZNB2907-550x550.jpg',
+      textiles: ['Muga Silk (Golden Silk found only in Assam)', 'Pat Silk', 'Gamosa (White and Red Embroidered Cotton Scarf of Respect)'],
+      textileImages: [
+        'https://upload.wikimedia.org/wikipedia/commons/c/c0/Assamese_Muga_With_Japi.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
+        'https://ethnohues.com/wp-content/uploads/2026/02/saree-p1.webp',
+        'https://images.meesho.com/images/products/1002512707/wxyt6_512.webp?width=512'
+      ],
+      handicrafts: ['Assamese Jaapi (Conical Woven Bamboo Hat with floral motifs)', 'Majuli Handcrafted Bamboo Masks (Mukha)', 'Sarthebari Bell Metal Utensils', 'Assamese Gold Jewelry (Dholbiri, Jonbiri, Gamkharu)'],
+      handicraftImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbs4DfwKrZqwH4RD4Z_mkORtTB-J3oL-VX6hQWDXM1qGtCql2NOlxb2IQJ&s=10',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4W6UJ-Dk7favZb3EIvoLj_oHGCy0-XL0oiGGviM-qwanQ4aLX8E03AT8&s=10',
+        'https://yehaindia.com/wp-content/uploads/2021/08/cover-1.jpg',
+        'https://zangfai.in/image/cache/catalog/products/mainset/IMG_JZNB2907-550x550.jpg'
+      ],
       traditionalMenAttire: 'Dhoti-Kurta with Seleng Chador and Gamosa worn around the neck.',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTejrlVLqIlJhewyyGNpXIsrMUcnCynCmE66kvbNa232BjOYYY43KHc-X65&s=10',
+      traditionalMenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTejrlVLqIlJhewyyGNpXIsrMUcnCynCmE66kvbNa232BjOYYY43KHc-X65&s=10',
       traditionalWomenAttire: 'Mekhela Chador (two-piece garment of Muga or Eri silk with golden Kingkhap motifs) and Riha drape.',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLwrdb8qcxJUH3PjR8MzP7dOCnu1ukAG7czpK6c4gL-3ny-U_Oq-gPmzjf&s=10',
+      traditionalWomenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLwrdb8qcxJUH3PjR8MzP7dOCnu1ukAG7czpK6c4gL-3ny-U_Oq-gPmzjf&s=10',
       giTaggedCrafts: ['Muga Silk of Assam', 'Assam Karbi Anglong Ginger', 'Tezpur Litchi', 'Jhotiya Pitha', 'Assam Gamosa', 'Assam Orthodox Tea', 'Chokuwa Rice (Soft Magic Rice)']
     },
     historyTimeline: [
@@ -970,8 +988,8 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Sikkimese Momos & Thukpa with Churpi Soup',
-        image:'https://www.clubmahindra.com/blog/media/section_images/bannerlarg-a3b2d550ed98d17.jpg',
-        image:'https://i0.wp.com/mayuris-jikoni.com/wp-content/uploads/2019/09/thukpa-1.jpg?fit=3024%2C4032&ssl=1',
+        image: 'https://www.clubmahindra.com/blog/media/section_images/bannerlarg-a3b2d550ed98d17.jpg',
+        imageUrl: 'https://i0.wp.com/mayuris-jikoni.com/wp-content/uploads/2019/09/thukpa-1.jpg?fit=3024%2C4032&ssl=1',
         category: 'Vegetarian',
         description: 'Delicate steamed flour dumplings filled with organic vegetables or minced meat and local spices, paired with fiery Dalle Khursani chili chutney and rich yak cheese soup.',
         keyIngredients: ['Flour', 'Minced Meat / Vegetables', 'Dalle Khursani (Cherry Peppers)', 'Churpi (Fermented Yak Cheese)', 'Garlic']
@@ -1026,18 +1044,22 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Lepcha Handwoven Fabrics (Dumdem)', 'Bhutia Hand-knotted Woolen Carpets', 'Sikkim Silk Weaves'],
-      image:'https://asiainch.org/wp-content/uploads/2017/11/0003977_handmade-lepcha-weave-hardcover-toiletry-bag.jpeg',
-      image:'https://5.imimg.com/data5/SELLER/Default/2024/5/421611941/RA/JN/AI/120435373/img-20240103-181237.jpg',
-      image:'https://cdn.exoticindia.com/images/products/original/textiles/sea94-rumbared.jpg',
+      textileImages: [
+        'https://asiainch.org/wp-content/uploads/2017/11/0003977_handmade-lepcha-weave-hardcover-toiletry-bag.jpeg',
+        'https://5.imimg.com/data5/SELLER/Default/2024/5/421611941/RA/JN/AI/120435373/img-20240103-181237.jpg',
+        'https://cdn.exoticindia.com/images/products/original/textiles/sea94-rumbared.jpg'
+      ],
       handicrafts: ['Carved Wood Choktse Folding Tables', 'Thangka Paintings', 'Bamboo & Cane Baskets', 'Buddhist Prayer Wheels (Mani)'],
-      image:'https://blogmedia.oaklores.com/uploads/2026/01/Screenshot-2026-01-04-015507.png',
-      image:'https://cdn.shopify.com/s/files/1/2545/2216/files/Lucky_Thanka_3.jpg?v=1690267890',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVdpTPKRgSzrdK-qNc9gBgneDcph01mWhuNTcP0U4_-wmX7o7PJlq7LUQ&s=10',
-      image:'https://cdn.britannica.com/76/137776-050-6CB215D1/Prayer-wheels-Swayambhunath-Temple-Nepal-Kathmandu.jpg',
+      handicraftImages: [
+        'https://blogmedia.oaklores.com/uploads/2026/01/Screenshot-2026-01-04-015507.png',
+        'https://cdn.shopify.com/s/files/1/2545/2216/files/Lucky_Thanka_3.jpg?v=1690267890',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVdpTPKRgSzrdK-qNc9gBgneDcph01mWhuNTcP0U4_-wmX7o7PJlq7LUQ&s=10',
+        'https://cdn.britannica.com/76/137776-050-6CB215D1/Prayer-wheels-Swayambhunath-Temple-Nepal-Kathmandu.jpg'
+      ],
       traditionalMenAttire: 'Bakhu / Kho (long loose-fitting cloak tied at the waist with a silk sash) with Yenthatse shirt and Gyathok hat.',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmfu75B4EbISJ5oe0U9E3b1umSIWDa5Y27LC__-HQv5OBkpq5rL1KorWxn&s=10',
+      traditionalMenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmfu75B4EbISJ5oe0U9E3b1umSIWDa5Y27LC__-HQv5OBkpq5rL1KorWxn&s=10',
       traditionalWomenAttire: 'Full-length Bakhu with Honju (long-sleeved silk blouse) and Pangden (vibrant striped apron for married women) adorned with turquoise and gold.',
-      image:'https://i.etsystatic.com/10690294/r/il/9622cb/3526784934/il_fullxfull.3526784934_70ad.jpg',
+      traditionalWomenAttireImage: 'https://i.etsystatic.com/10690294/r/il/9622cb/3526784934/il_fullxfull.3526784934_70ad.jpg',
       giTaggedCrafts: ['Sikkim Large Cardamom', 'Dalle Khursani (Fire Red Cherry Pepper)', 'Sikkim Handknotted Carpets']
     },
     historyTimeline: [
@@ -1192,19 +1214,23 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Apatani Geometric Weaves', 'Monpa Woolen Carpets', 'Mishmi Diamond-pattern Jackets', 'Adi Gale Weaves (Wraparound skirts)'],
-      image: 'https://img.perniaspopupshop.com/store-locator-v2/uploads/PWA_Main_Image_Apatani_6fd6e4aca0.jpg',
-      image: 'https://tse1.mm.bing.net/th/id/OIP.g713D0Wrf7uZB7cgSWWT-gHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://tse2.mm.bing.net/th/id/OIP.kPGs6lYX92kl2rgIsQHovAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://tse3.mm.bing.net/th/id/OIP.Cfv9bOpZ5Ms8V4gGANSezwHaEt?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      textileImages: [
+        'https://img.perniaspopupshop.com/store-locator-v2/uploads/PWA_Main_Image_Apatani_6fd6e4aca0.jpg',
+        'https://tse1.mm.bing.net/th/id/OIP.g713D0Wrf7uZB7cgSWWT-gHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://tse2.mm.bing.net/th/id/OIP.kPGs6lYX92kl2rgIsQHovAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://tse3.mm.bing.net/th/id/OIP.Cfv9bOpZ5Ms8V4gGANSezwHaEt?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
+      ],
       handicrafts: ['Monpa Handmade Shugu Paper', 'Cane and Bamboo Helmets (Bopa)', 'Wood Carvings of Wancho and Tangsa', 'Silver and Brass Amulet Jewelry'],
-      image: 'https://nagalandtribune.in/wp-content/uploads/2022/12/Arunachals-Monpas-look-up-to-e-platforms-for-preserving-hand-made-paper-1-1024x489.jpg',
-      image: 'https://tse2.mm.bing.net/th/id/OIP.PFoCKiQO3RJ2AD5dhZsZ-AHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://preview.redd.it/traditional-filipino-wood-carving-art-v0-vlljsjsofiv91.jpg?width=1080&format=pjpg&auto=webp&s=09300e5dadfe49dd46cce7877709c03ed3c840de',
-      image: 'https://i.pinimg.com/736x/ba/c8/5c/bac85c50e19b70679d0c563220cefe85.jpg',
+      handicraftImages: [
+        'https://nagalandtribune.in/wp-content/uploads/2022/12/Arunachals-Monpas-look-up-to-e-platforms-for-preserving-hand-made-paper-1-1024x489.jpg',
+        'https://tse2.mm.bing.net/th/id/OIP.PFoCKiQO3RJ2AD5dhZsZ-AHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://preview.redd.it/traditional-filipino-wood-carving-art-v0-vlljsjsofiv91.jpg?width=1080&format=pjpg&auto=webp&s=09300e5dadfe49dd46cce7877709c03ed3c840de',
+        'https://i.pinimg.com/736x/ba/c8/5c/bac85c50e19b70679d0c563220cefe85.jpg'
+      ],
       traditionalMenAttire: 'Cane hat decorated with Great Hornbill beak and feathers, handwoven sleeveless jacket, and Daos (traditional sword).',
-      image: 'https://thumbs.dreamstime.com/b/nishi-man-tribesman-wearing-traditional-head-dress-having-great-hornbill-beak-36775786.jpg',
+      traditionalMenAttireImage: 'https://thumbs.dreamstime.com/b/nishi-man-tribesman-wearing-traditional-head-dress-having-great-hornbill-beak-36775786.jpg',
       traditionalWomenAttire: 'Gale (vibrant handwoven wraparound skirt) with embroidered blouse and heavy turquoise, amber, and coral bead necklaces.',
-      image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlpwB9s_GL0xhssJLxWNWRCUZa55VkOsC6qu6GMF2aFmxEPzPOABHpw-Ct5uD24yygxVvsuLL1hksAlRe72uQXNsWsd7WvUb32VXelaenb7m5nkjLF2kZSl-G_3g111Fka35XOz_fy380/s1600/5ff43333d1c589d1ff865698e41655b7.jpg',
+      traditionalWomenAttireImage: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlpwB9s_GL0xhssJLxWNWRCUZa55VkOsC6qu6GMF2aFmxEPzPOABHpw-Ct5uD24yygxVvsuLL1hksAlRe72uQXNsWsd7WvUb32VXelaenb7m5nkjLF2kZSl-G_3g111Fka35XOz_fy380/s1600/5ff43333d1c589d1ff865698e41655b7.jpg',
       giTaggedCrafts: ['Arunachal Yak Churpi (Cheese)', 'Arunachal Wakro Orange', 'Idumishmi Textiles', 'Monpa Handmade Paper', 'Wancho Wooden Craft', 'Khamti Rice']
     },
     historyTimeline: [
