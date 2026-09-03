@@ -1,0 +1,1427 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import {
+  ArrowLeft,
+  MapPin,
+  Landmark,
+  Music,
+  Utensils,
+  Shirt,
+  Sparkles,
+  History,
+  BookOpen,
+  Volume2,
+  VolumeX,
+  Share2,
+  Bookmark,
+  BookmarkCheck,
+  ExternalLink,
+  Compass,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  Bot,
+  Send,
+  Award,
+  CheckCircle2,
+  Play,
+  Pause,
+  SlidersHorizontal,
+} from 'lucide-react';
+import { StateHeritage, HeritageTab, Monument, CuisineItem, ArtAndDance } from '../types';
+import { heritageAudio } from '../utils/audioSynth';
+
+interface StateDetailPageProps {
+  state: StateHeritage;
+  allStates: StateHeritage[];
+  onBackToMap: () => void;
+  onBackToHome: () => void;
+  onSelectState: (state: StateHeritage) => void;
+  onSelectMonument: (monument: Monument, state: StateHeritage) => void;
+}
+
+interface VisualGalleryItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  imageUrl: string;
+  description?: string;
+  giTag?: boolean;
+  isUnesco?: boolean;
+}
+
+export const StateDetailPage: React.FC<StateDetailPageProps> = ({
+  state,
+  allStates,
+  onBackToMap,
+  onBackToHome,
+  onSelectState,
+  onSelectMonument,
+}) => {
+  const [activeTab, setActiveTab] = useState<HeritageTab>('overview');
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
+  const [copied, setCopied] = useState<boolean>(false);
+  const [isPlayingFolkAudio, setIsPlayingFolkAudio] = useState<boolean>(false);
+  const [selectedCuisineSubcategory, setSelectedCuisineSubcategory] = useState<string>('all');
+  const [isFullscreenImage, setIsFullscreenImage] = useState<boolean>(false);
+
+  // Tab Slider Track Ref and Scroll Position
+  const tabScrollContainerRef = useRef<HTMLDivElement>(null);
+  const [tabScrollProgress, setTabScrollProgress] = useState<number>(0);
+  const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
+  const [canScrollRight, setCanScrollRight] = useState<boolean>(true);
+
+  // Update tab scroll metrics
+  const updateTabScrollMetrics = () => {
+    if (!tabScrollContainerRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = tabScrollContainerRef.current;
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll > 0) {
+      setTabScrollProgress((scrollLeft / maxScroll) * 100);
+      setCanScrollLeft(scrollLeft > 4);
+      setCanScrollRight(scrollLeft < maxScroll - 4);
+    } else {
+      setTabScrollProgress(0);
+      setCanScrollLeft(false);
+      setCanScrollRight(false);
+    }
+  };
+
+  useEffect(() => {
+    const el = tabScrollContainerRef.current;
+    if (!el) return;
+    updateTabScrollMetrics();
+    el.addEventListener('scroll', updateTabScrollMetrics);
+    window.addEventListener('resize', updateTabScrollMetrics);
+    return () => {
+      el.removeEventListener('scroll', updateTabScrollMetrics);
+      window.removeEventListener('resize', updateTabScrollMetrics);
+    };
+  }, []);
+
+  const handleSlideTabs = (direction: 'left' | 'right') => {
+    if (!tabScrollContainerRef.current) return;
+    const scrollAmount = 240;
+    tabScrollContainerRef.current.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
+  const handleTabSelect = (tabId: HeritageTab) => {
+    setActiveTab(tabId);
+    // Smoothly ensure active tab is in view
+    const tabEl = document.getElementById(`tab-item-${tabId}`);
+    if (tabEl && tabScrollContainerRef.current) {
+      tabEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  };
+
+  // AI Guide Chat State
+  const [aiQuery, setAiQuery] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [chatHistory, setChatHistory] = useState<
+    Array<{ role: 'user' | 'assistant'; text: string; fallback?: boolean }>
+  >([
+    {
+      role: 'assistant',
+      text: `Namaste! I am your AI Cultural Scholar for ${state.name}. Ask me anything about ${state.name}'s architecture, royal recipes, ancient dynasties, folk arts, or sacred lore!`,
+    },
+  ]);
+
+  // Construct a comprehensive list of images for the state
+  const visualGallery: VisualGalleryItem[] = [
+    {
+      id: 'hero-state',
+      title: `${state.name} Heritage`,
+      subtitle: state.tagline,
+      category: 'Landscape & Culture',
+      imageUrl:
+        state.image ||
+        (state.monuments[0]?.image ??
+          'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1600&q=80'),
+      description: state.overview,
+    },
+    ...state.monuments.map((m, idx) => ({
+      id: `monument-${idx}`,
+      title: m.name,
+      subtitle: `${m.century} • ${m.type}`,
+      category: 'Monument',
+      imageUrl: m.image,
+      description: m.detailedDescription || m.description,
+      isUnesco: m.isUnesco,
+    })),
+    ...state.cuisines.map((c, idx) => ({
+      id: `cuisine-${idx}`,
+      title: c.name,
+      subtitle: `${c.category}${c.origin ? ` • ${c.origin}` : ''}`,
+      category: 'Cuisine',
+      imageUrl:
+        c.imageUrl ||
+        c.image ||
+        'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+      description: c.detailedDescription || c.description,
+      giTag: c.giTag,
+    })),
+    ...state.artAndDance.map((a, idx) => ({
+      id: `art-${idx}`,
+      title: a.name,
+      subtitle: `${a.type} • Origin: ${a.origin}`,
+      category: 'Performing Art',
+      imageUrl:
+        a.image ||
+        'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+      description: a.detailedDescription || a.description,
+      giTag: a.giTag,
+    })),
+    ...(state.traditionalAttire
+      ? [
+          {
+            id: 'attire-main',
+            title: state.traditionalAttire.name,
+            subtitle: `Handloom & Attire • ${state.name}`,
+            category: 'Craft & Attire',
+            imageUrl:
+              state.traditionalAttire.image ||
+              state.traditionalAttire.imagePlaceholder ||
+              'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80',
+            description: state.traditionalAttire.description,
+          },
+        ]
+      : []),
+  ];
+
+  // Reset indices and audio when state changes
+  useEffect(() => {
+    setActiveImageIndex(0);
+    setActiveTab('overview');
+    setSelectedCuisineSubcategory('all');
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+    if (isPlayingFolkAudio) {
+      heritageAudio.stopAll();
+      setIsPlayingFolkAudio(false);
+    }
+    setChatHistory([
+      {
+        role: 'assistant',
+        text: `Namaste! I am your AI Cultural Scholar for ${state.name}. Ask me anything about ${state.name}'s architecture, royal recipes, ancient dynasties, folk arts, or sacred lore!`,
+      },
+    ]);
+  }, [state.id]);
+
+  const currentVisual = visualGallery[activeImageIndex] || visualGallery[0];
+
+  // Prev / Next State navigation
+  const currentIndex = allStates.findIndex((s) => s.id === state.id);
+  const prevState = allStates[(currentIndex - 1 + allStates.length) % allStates.length];
+  const nextState = allStates[(currentIndex + 1) % allStates.length];
+
+  // Audio controls
+  const toggleFolkAudio = () => {
+    if (isPlayingFolkAudio) {
+      heritageAudio.stopAll();
+      setIsPlayingFolkAudio(false);
+    } else {
+      setIsPlayingFolkAudio(true);
+      heritageAudio.playFolkSongPreview(state.name, () => {
+        setIsPlayingFolkAudio(false);
+      });
+    }
+  };
+
+  const toggleSpeech = () => {
+    if (!('speechSynthesis' in window)) {
+      alert('Text-to-speech is not supported on this browser.');
+      return;
+    }
+
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    } else {
+      const textToRead = `${state.name}. ${state.tagline}. ${state.overview} Capital is ${state.capital}. Official language is ${state.officialLanguage}.`;
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      utterance.rate = 0.95;
+      utterance.pitch = 1.0;
+      utterance.onend = () => setIsSpeaking(false);
+      utterance.onerror = () => setIsSpeaking(false);
+      window.speechSynthesis.speak(utterance);
+      setIsSpeaking(true);
+    }
+  };
+
+  const handleShare = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(
+        `Explore the heritage of ${state.name} on Virasat - Discover the Soul of India: ${state.tagline}`
+      );
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  const handleAskAI = async (customPrompt?: string) => {
+    const promptToSend = customPrompt || aiQuery;
+    if (!promptToSend.trim() || aiLoading) return;
+
+    const userMessage = { role: 'user' as const, text: promptToSend };
+    setChatHistory((prev) => [...prev, userMessage]);
+    setAiQuery('');
+    setAiLoading(true);
+
+    try {
+      const response = await fetch('/api/ask-bharat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: promptToSend,
+          stateName: state.name,
+          context: `State: ${state.name}, Capital: ${state.capital}, Region: ${state.region}. Overview: ${state.overview}. Monuments: ${state.monuments.map((m) => m.name).join(', ')}. Cuisines: ${state.cuisines.map((c) => c.name).join(', ')}. Dance: ${state.artAndDance.map((d) => d.name).join(', ')}.`,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setChatHistory((prev) => [
+          ...prev,
+          { role: 'assistant', text: data.answer || 'No response received.' },
+        ]);
+      } else {
+        throw new Error('Fallback triggered');
+      }
+    } catch {
+      // Local fallback response
+      let fallbackText = `${state.name} is one of India's most celebrated cultural jewels. `;
+      if (promptToSend.toLowerCase().includes('food') || promptToSend.toLowerCase().includes('recipe') || promptToSend.toLowerCase().includes('dish')) {
+        fallbackText += `Key culinary specialties include ${state.cuisines.map((c) => c.name).join(', ')}.`;
+      } else if (promptToSend.toLowerCase().includes('dance') || promptToSend.toLowerCase().includes('music')) {
+        fallbackText += `Prominent performing arts include ${state.artAndDance.map((a) => a.name).join(', ')}.`;
+      } else {
+        fallbackText += `${state.overview} Notable monuments include ${state.monuments.map((m) => m.name).join(', ')}.`;
+      }
+      setChatHistory((prev) => [
+        ...prev,
+        { role: 'assistant', text: fallbackText, fallback: true },
+      ]);
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
+  const unescoCount = state.monuments.filter((m) => m.isUnesco).length;
+
+  return (
+    <div className="min-h-screen bg-[#FAF7F2] text-slate-900 pb-24">
+      {/* Top Breadcrumb & Navigation Bar */}
+      <header className="sticky top-0 z-30 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-stone-200 shadow-sm px-4 sm:px-8 py-3.5">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+          {/* Left: Back Controls & Breadcrumbs */}
+          <div className="flex items-center gap-2 sm:gap-4">
+            <button
+              onClick={onBackToMap}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-stone-100 text-[#8B1E22] border border-stone-300 text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer group"
+              title="Return to Map"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              <span>Back to Map</span>
+            </button>
+
+            <button
+              onClick={onBackToHome}
+              className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-transparent hover:bg-stone-200/60 text-stone-700 text-xs font-semibold transition-all cursor-pointer"
+            >
+              <span>Virasat Home</span>
+            </button>
+
+            <span className="hidden sm:inline text-stone-400">&bull;</span>
+
+            <div className="flex items-center gap-2">
+              <span className="px-2.5 py-0.5 rounded-md bg-[#8B1E22]/10 text-[#8B1E22] font-serif font-bold text-xs">
+                {state.region}
+              </span>
+              <span className="font-serif font-bold text-sm sm:text-base text-stone-900">
+                {state.name}
+              </span>
+            </div>
+          </div>
+
+          {/* Right: State Switcher & Quick Actions */}
+          <div className="flex items-center gap-2">
+            {/* Prev / Next State Navigation */}
+            <div className="flex items-center bg-white rounded-xl border border-stone-300 p-0.5 shadow-sm">
+              <button
+                onClick={() => onSelectState(prevState)}
+                className="p-1.5 hover:bg-stone-100 text-stone-700 rounded-lg transition-colors cursor-pointer"
+                title={`Previous: ${prevState.name}`}
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <span className="text-[11px] font-semibold text-stone-600 px-2 select-none border-x border-stone-200">
+                {state.code || state.name.slice(0, 3).toUpperCase()}
+              </span>
+              <button
+                onClick={() => onSelectState(nextState)}
+                className="p-1.5 hover:bg-stone-100 text-stone-700 rounded-lg transition-colors cursor-pointer"
+                title={`Next: ${nextState.name}`}
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Audio Folk Song Button */}
+            <button
+              onClick={toggleFolkAudio}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-sm cursor-pointer ${
+                isPlayingFolkAudio
+                  ? 'bg-amber-500 text-slate-950 font-bold animate-pulse shadow-md'
+                  : 'bg-white hover:bg-amber-50 text-amber-900 border border-amber-300'
+              }`}
+              title="Play Traditional Folk Music Preview"
+            >
+              {isPlayingFolkAudio ? (
+                <>
+                  <Pause className="w-3.5 h-3.5 fill-current" />
+                  <span className="hidden md:inline">Playing Folk Song</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 fill-current" />
+                  <span className="hidden md:inline">Folk Melody</span>
+                </>
+              )}
+            </button>
+
+            {/* TTS Narration */}
+            <button
+              onClick={toggleSpeech}
+              className={`p-2 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                isSpeaking
+                  ? 'bg-[#8B1E22] text-white border-[#8B1E22] animate-pulse'
+                  : 'bg-white hover:bg-stone-100 text-stone-700 border-stone-300'
+              }`}
+              title={isSpeaking ? 'Stop Narration' : 'Listen to State Overview'}
+            >
+              {isSpeaking ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            </button>
+
+            {/* Share / Copy */}
+            <button
+              onClick={handleShare}
+              className="p-2 rounded-xl bg-white hover:bg-stone-100 text-stone-700 border border-stone-300 text-xs transition-all cursor-pointer relative"
+              title="Share State Link"
+            >
+              {copied ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <Share2 className="w-4 h-4" />}
+            </button>
+
+            {/* Bookmark */}
+            <button
+              onClick={() => setIsBookmarked(!isBookmarked)}
+              className={`p-2 rounded-xl border text-xs transition-all cursor-pointer ${
+                isBookmarked
+                  ? 'bg-amber-100 border-amber-400 text-amber-800'
+                  : 'bg-white hover:bg-stone-100 text-stone-700 border-stone-300'
+              }`}
+              title="Bookmark State"
+            >
+              {isBookmarked ? (
+                <BookmarkCheck className="w-4 h-4 fill-amber-500 text-amber-700" />
+              ) : (
+                <Bookmark className="w-4 h-4" />
+              )}
+            </button>
+
+            {/* Open on Map */}
+            <button
+              onClick={onBackToMap}
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#8B1E22] hover:bg-[#73181b] text-white text-xs font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer"
+            >
+              <Compass className="w-4 h-4" />
+              <span className="hidden sm:inline">Explore on Map</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Container: 2-Column Split View (Picture on Left, Text on Right) */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* ============================================================ */}
+          {/* LEFT COLUMN: Clear Picture Showcase, Gallery & Quick Stats */}
+          {/* ============================================================ */}
+          <div className="lg:col-span-5 xl:col-span-5 lg:sticky lg:top-20 space-y-5">
+            {/* Main Picture Frame */}
+            <div className="group relative w-full h-[380px] sm:h-[460px] rounded-3xl overflow-hidden shadow-2xl border-2 border-stone-300/80 bg-stone-900 transition-all">
+              <img
+                src={currentVisual.imageUrl}
+                alt={currentVisual.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                referrerPolicy="no-referrer"
+                loading="eager"
+              />
+
+              {/* Gradient Overlays for optimal readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
+
+              {/* Top Badges over image */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-10">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold border border-amber-500/30 uppercase tracking-wider shadow">
+                    {currentVisual.category}
+                  </span>
+                  {currentVisual.isUnesco && (
+                    <span className="px-2.5 py-1 rounded-full bg-emerald-600/90 backdrop-blur-md text-white text-[10px] font-bold tracking-wider uppercase shadow flex items-center gap-1">
+                      <Award className="w-3 h-3" /> UNESCO Site
+                    </span>
+                  )}
+                  {currentVisual.giTag && (
+                    <span className="px-2.5 py-1 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-[10px] font-bold tracking-wider uppercase shadow">
+                      GI Tagged
+                    </span>
+                  )}
+                </div>
+
+                <button
+                  onClick={() => setIsFullscreenImage(true)}
+                  className="p-2 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white border border-white/20 transition-all cursor-pointer"
+                  title="Expand Picture"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
+              {/* Bottom Caption Overlay */}
+              <div className="absolute bottom-4 left-4 right-4 z-10 space-y-1">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-md">
+                  {currentVisual.title}
+                </h3>
+                <p className="text-xs text-amber-200 font-medium line-clamp-1 drop-shadow">
+                  {currentVisual.subtitle}
+                </p>
+                {currentVisual.description && (
+                  <p className="text-xs text-stone-300 line-clamp-2 leading-relaxed pt-1 drop-shadow opacity-90">
+                    {currentVisual.description}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Gallery Selector Thumbnails */}
+            <div className="bg-white p-3.5 rounded-2xl border border-stone-200 shadow-sm space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-stone-700 uppercase tracking-wider">
+                  Visual Gallery ({visualGallery.length} Photos)
+                </span>
+                <span className="text-[11px] text-stone-400">
+                  {activeImageIndex + 1} of {visualGallery.length}
+                </span>
+              </div>
+
+              <div className="flex gap-2.5 overflow-x-auto pb-1.5 scrollbar-thin scrollbar-thumb-stone-300">
+                {visualGallery.map((item, idx) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setActiveImageIndex(idx)}
+                    className={`relative flex-shrink-0 w-20 h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
+                      activeImageIndex === idx
+                        ? 'border-[#8B1E22] ring-2 ring-[#8B1E22]/30 scale-105 shadow-md'
+                        : 'border-stone-200 opacity-70 hover:opacity-100'
+                    }`}
+                    title={item.title}
+                  >
+                    <img
+                      src={item.imageUrl}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <span className="absolute bottom-1 left-1 right-1 text-[9px] text-white font-bold truncate block">
+                      {item.title}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick State Facts Card */}
+            <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+              <h4 className="font-serif font-bold text-sm text-stone-900 border-b border-stone-100 pb-2 flex items-center justify-between">
+                <span>State Fast Facts</span>
+                <span className="text-xs text-[#8B1E22] font-sans font-semibold">📍 {state.region}</span>
+              </h4>
+
+              <div className="grid grid-cols-2 gap-3 text-xs">
+                <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-100">
+                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-medium">
+                    Capital
+                  </span>
+                  <span className="font-bold text-stone-900 mt-0.5 block">
+                    {state.capital}
+                  </span>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-100">
+                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-medium">
+                    Official Language
+                  </span>
+                  <span className="font-bold text-stone-900 mt-0.5 block">
+                    {state.officialLanguage}
+                  </span>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-100">
+                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-medium">
+                    UNESCO Sites
+                  </span>
+                  <span className="font-bold text-emerald-700 mt-0.5 block">
+                    {unescoCount > 0 ? `${unescoCount} World Heritage Sites` : 'Rich Living Heritage'}
+                  </span>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-100">
+                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-medium">
+                    Coordinates
+                  </span>
+                  <span className="font-bold text-stone-900 mt-0.5 block font-mono text-[11px]">
+                    {state.coordinates[0].toFixed(2)}° N, {state.coordinates[1].toFixed(2)}° E
+                  </span>
+                </div>
+              </div>
+
+              {state.notableDynasties && state.notableDynasties.length > 0 && (
+                <div className="pt-2 border-t border-stone-100">
+                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block mb-1 font-semibold">
+                    Historic Dynasties & Rulers
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {state.notableDynasties.map((dyn, i) => (
+                      <span
+                        key={i}
+                        className="px-2.5 py-0.5 rounded-lg bg-stone-100 text-stone-800 text-[11px] font-medium border border-stone-200"
+                      >
+                        👑 {dyn}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* ============================================================ */}
+          {/* RIGHT COLUMN: Text Related to State with Full Category Tabs */}
+          {/* ============================================================ */}
+          <div className="lg:col-span-7 xl:col-span-7 space-y-6">
+            {/* Header Title Section */}
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-sm space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full bg-[#8B1E22]/10 text-[#8B1E22] text-xs font-bold uppercase tracking-widest">
+                  {state.region} India
+                </span>
+                {unescoCount > 0 && (
+                  <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+                    {unescoCount} UNESCO Sites
+                  </span>
+                )}
+              </div>
+
+              <div>
+                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-stone-900 tracking-tight leading-none">
+                  {state.name}
+                </h1>
+                <p className="font-serif text-base sm:text-lg text-[#8B1E22] italic mt-2">
+                  "{state.tagline}"
+                </p>
+              </div>
+
+              <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+                {state.overview}
+              </p>
+            </div>
+
+            {/* Navigation Tabs with Interactive Slider Track & Beneath Slide Bar */}
+            <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-2 sticky top-16 z-20 space-y-2">
+              <div className="flex items-center gap-1.5">
+                {/* Left Slide Arrow */}
+                <button
+                  type="button"
+                  onClick={() => handleSlideTabs('left')}
+                  disabled={!canScrollLeft}
+                  className={`p-2 rounded-xl border text-stone-700 transition-all flex-shrink-0 cursor-pointer ${
+                    canScrollLeft
+                      ? 'bg-stone-50 hover:bg-stone-200 border-stone-300 text-stone-900 shadow-sm'
+                      : 'bg-stone-100/50 border-stone-200 text-stone-300 cursor-not-allowed opacity-50'
+                  }`}
+                  title="Slide Tabs Left"
+                  aria-label="Slide tabs left"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+
+                {/* Horizontally Scrollable Tabs Track */}
+                <div
+                  ref={tabScrollContainerRef}
+                  className="flex-1 flex items-center gap-1.5 overflow-x-auto scroll-smooth py-1 px-0.5 scrollbar-none select-none"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                  {[
+                    { id: 'overview', label: 'Overview', icon: BookOpen },
+                    { id: 'monuments', label: `Monuments (${state.monuments.length})`, icon: Landmark },
+                    { id: 'dance_music', label: `Dance & Music (${state.artAndDance.length})`, icon: Music },
+                    { id: 'cuisines', label: `Cuisines (${state.cuisines.length})`, icon: Utensils },
+                    { id: 'crafts_attire', label: `Crafts & Attire`, icon: Shirt },
+                    { id: 'festivals', label: `Festivals (${state.festivals.length})`, icon: Sparkles },
+                    { id: 'history', label: 'History', icon: History },
+                    { id: 'ai_guide', label: 'Ask AI Scholar', icon: Bot },
+                  ].map((tab) => {
+                    const Icon = tab.icon;
+                    const isActive = activeTab === tab.id;
+                    return (
+                      <button
+                        key={tab.id}
+                        id={`tab-item-${tab.id}`}
+                        onClick={() => handleTabSelect(tab.id as HeritageTab)}
+                        className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap flex-shrink-0 transition-all cursor-pointer ${
+                          isActive
+                            ? 'bg-[#8B1E22] text-white shadow-md scale-100 ring-2 ring-[#8B1E22]/20'
+                            : 'text-stone-700 hover:text-[#8B1E22] bg-stone-50 hover:bg-stone-100 border border-stone-200'
+                        }`}
+                      >
+                        <Icon className="w-3.5 h-3.5" />
+                        <span>{tab.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Right Slide Arrow */}
+                <button
+                  type="button"
+                  onClick={() => handleSlideTabs('right')}
+                  disabled={!canScrollRight}
+                  className={`p-2 rounded-xl border text-stone-700 transition-all flex-shrink-0 cursor-pointer ${
+                    canScrollRight
+                      ? 'bg-stone-50 hover:bg-stone-200 border-stone-300 text-stone-900 shadow-sm'
+                      : 'bg-stone-100/50 border-stone-200 text-stone-300 cursor-not-allowed opacity-50'
+                  }`}
+                  title="Slide Tabs Right"
+                  aria-label="Slide tabs right"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Interactive Slide Bar Beneath Tabs */}
+              <div className="pt-1 px-1 flex items-center gap-3">
+                <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider flex items-center gap-1 flex-shrink-0">
+                  <SlidersHorizontal className="w-3 h-3 text-[#8B1E22]" /> Slide Tabs
+                </span>
+
+                {/* Track Slider Bar */}
+                <div
+                  className="flex-1 relative h-2 bg-stone-100 rounded-full overflow-hidden border border-stone-200/80 cursor-pointer group"
+                  onClick={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const percent = Math.max(0, Math.min(1, clickX / rect.width));
+                    if (tabScrollContainerRef.current) {
+                      const maxScroll =
+                        tabScrollContainerRef.current.scrollWidth -
+                        tabScrollContainerRef.current.clientWidth;
+                      tabScrollContainerRef.current.scrollTo({
+                        left: maxScroll * percent,
+                        behavior: 'smooth',
+                      });
+                    }
+                  }}
+                  title="Click or drag to slide between Cuisines, Festivals, Monuments & more"
+                >
+                  <div
+                    className="absolute top-0 bottom-0 bg-gradient-to-r from-[#8B1E22] via-amber-600 to-[#8B1E22] rounded-full transition-all duration-150 group-hover:brightness-110 shadow-sm"
+                    style={{
+                      left: `${Math.max(0, Math.min(75, tabScrollProgress * 0.75))}%`,
+                      width: '25%',
+                    }}
+                  />
+                </div>
+
+                <div className="text-[10px] font-bold text-stone-500 font-mono flex-shrink-0">
+                  {Math.round(tabScrollProgress)}%
+                </div>
+              </div>
+            </div>
+
+            {/* Tab Content Display */}
+            <div className="space-y-6">
+              
+              {/* ---------------- OVERVIEW TAB ---------------- */}
+              {activeTab === 'overview' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-6"
+                >
+                  {/* Detailed Cultural Narrative */}
+                  <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+                    <h3 className="font-serif text-xl font-bold text-stone-900 flex items-center gap-2">
+                      <Sparkles className="w-5 h-5 text-amber-600" />
+                      Civilizational & Cultural Legacy
+                    </h3>
+                    <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+                      {state.detailedDescription || state.overview}
+                    </p>
+                  </div>
+
+                  {/* Highlights Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-2">
+                      <h4 className="font-serif font-bold text-stone-900 text-sm flex items-center gap-2">
+                        <Landmark className="w-4 h-4 text-[#8B1E22]" />
+                        Architectural Marvels
+                      </h4>
+                      <p className="text-xs text-stone-600 leading-relaxed">
+                        Home to {state.monuments.length} iconic architectural landmarks, including {state.monuments.map((m) => m.name).slice(0, 3).join(', ')}.
+                      </p>
+                      <button
+                        onClick={() => setActiveTab('monuments')}
+                        className="text-xs font-bold text-[#8B1E22] hover:underline pt-1 block"
+                      >
+                        Explore all monuments &rarr;
+                      </button>
+                    </div>
+
+                    <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-2">
+                      <h4 className="font-serif font-bold text-stone-900 text-sm flex items-center gap-2">
+                        <Utensils className="w-4 h-4 text-amber-600" />
+                        Gastronomic Specialties
+                      </h4>
+                      <p className="text-xs text-stone-600 leading-relaxed">
+                        Famous for royal recipes, street flavors, and GI-certified delicacies such as {state.cuisines.map((c) => c.name).slice(0, 3).join(', ')}.
+                      </p>
+                      <button
+                        onClick={() => setActiveTab('cuisines')}
+                        className="text-xs font-bold text-[#8B1E22] hover:underline pt-1 block"
+                      >
+                        Browse authentic dishes &rarr;
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Key Insights & Cultural Quotes */}
+                  {state.keyFacts && state.keyFacts.length > 0 && (
+                    <div className="bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-transparent p-6 rounded-2xl border border-amber-200/80 space-y-3">
+                      <h4 className="font-serif font-bold text-stone-900 text-base flex items-center gap-2">
+                        <span>✦</span> Essential Cultural Facts
+                      </h4>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        {state.keyFacts.map((fact, idx) => (
+                          <li key={idx} className="text-xs text-stone-800 flex items-start gap-2 bg-white/80 p-2.5 rounded-xl border border-amber-200/60">
+                            <span className="text-[#8B1E22] font-bold">•</span>
+                            <span>{fact}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+
+              {/* ---------------- MONUMENTS TAB ---------------- */}
+              {activeTab === 'monuments' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-4"
+                >
+                  <p className="text-xs text-stone-600">
+                    Discover {state.monuments.length} protected architectural wonders, ancient temple complexes, and royal palaces in {state.name}.
+                  </p>
+
+                  <div className="space-y-4">
+                    {state.monuments.map((monument, idx) => (
+                      <div
+                        key={idx}
+                        className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md hover:border-[#8B1E22]/40 transition-all flex flex-col sm:flex-row gap-5"
+                      >
+                        <div className="sm:w-48 h-36 flex-shrink-0 rounded-xl overflow-hidden border border-stone-200 relative bg-stone-100">
+                          <img
+                            src={monument.image}
+                            alt={monument.name}
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                            loading="lazy"
+                          />
+                          {monument.isUnesco && (
+                            <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-emerald-700 text-white text-[9px] font-bold uppercase shadow">
+                              UNESCO
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="flex-1 flex flex-col justify-between space-y-2">
+                          <div>
+                            <div className="flex items-center justify-between gap-2">
+                              <h4 className="font-serif font-bold text-lg text-stone-900">
+                                {monument.name}
+                              </h4>
+                              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-stone-100 text-[#8B1E22]">
+                                {monument.century}
+                              </span>
+                            </div>
+
+                            <span className="text-xs text-stone-500 font-medium block mt-0.5">
+                              {monument.location} &bull; {monument.type}
+                            </span>
+
+                            <p className="text-xs text-stone-700 leading-relaxed mt-2">
+                              {monument.detailedDescription || monument.description}
+                            </p>
+                          </div>
+
+                          <div className="flex items-center justify-between pt-2 border-t border-stone-100">
+                            <button
+                              onClick={() => {
+                                const matchedIdx = visualGallery.findIndex((v) => v.title === monument.name);
+                                if (matchedIdx >= 0) setActiveImageIndex(matchedIdx);
+                              }}
+                              className="text-xs font-semibold text-stone-600 hover:text-[#8B1E22] transition-colors cursor-pointer"
+                            >
+                              📷 View on Left Picture
+                            </button>
+
+                            <button
+                              onClick={() => onSelectMonument(monument, state)}
+                              className="px-3 py-1.5 rounded-lg bg-[#8B1E22] hover:bg-[#73181b] text-white text-xs font-semibold transition-all shadow-sm cursor-pointer"
+                            >
+                              Deep Dive &rarr;
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* ---------------- DANCE & MUSIC TAB ---------------- */}
+              {activeTab === 'dance_music' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-4"
+                >
+                  <p className="text-xs text-stone-600">
+                    Classical rhythms, folk ballads, and indigenous theatrical traditions of {state.name}.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {state.artAndDance.map((art, idx) => (
+                      <div
+                        key={idx}
+                        className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-3 flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-start justify-between gap-2">
+                            <div>
+                              <span className="text-[10px] font-bold text-[#8B1E22] uppercase tracking-wider">
+                                {art.type}
+                              </span>
+                              <h4 className="font-serif font-bold text-base text-stone-900">
+                                {art.name}
+                              </h4>
+                            </div>
+                            <span className="text-xs text-stone-500 font-medium">
+                              📍 {art.origin}
+                            </span>
+                          </div>
+
+                          {art.image && (
+                            <div className="mt-2 h-36 rounded-xl overflow-hidden border border-stone-200">
+                              <img
+                                src={art.image}
+                                alt={art.name}
+                                className="w-full h-full object-cover"
+                                referrerPolicy="no-referrer"
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
+
+                          <p className="text-xs text-stone-700 leading-relaxed mt-2.5">
+                            {art.detailedDescription || art.description}
+                          </p>
+                        </div>
+
+                        {art.instruments && art.instruments.length > 0 && (
+                          <div className="pt-2 border-t border-stone-100">
+                            <span className="text-[10px] text-stone-500 uppercase tracking-wider block mb-1">
+                              Instruments Used
+                            </span>
+                            <div className="flex flex-wrap gap-1">
+                              {art.instruments.map((ins, i) => (
+                                <span
+                                  key={i}
+                                  className="text-[10px] px-2 py-0.5 rounded bg-stone-100 text-stone-800 border border-stone-200"
+                                >
+                                  🎵 {ins}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* ---------------- CUISINES TAB ---------------- */}
+              {activeTab === 'cuisines' && (() => {
+                const subcategories: string[] = Array.from(
+                  new Set(
+                    state.cuisines
+                      .map((f) => f.subcategory)
+                      .filter((sub): sub is string => typeof sub === 'string' && sub.length > 0)
+                  )
+                );
+
+                const filteredCuisines =
+                  selectedCuisineSubcategory === 'all'
+                    ? state.cuisines
+                    : state.cuisines.filter(
+                        (f) => f.subcategory === selectedCuisineSubcategory
+                      );
+
+                return (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="space-y-4"
+                  >
+                    <div className="bg-amber-500/10 p-4 rounded-2xl border border-amber-200 text-xs text-amber-950 font-medium">
+                      <span className="font-bold text-[#8B1E22]">Gastronomy of {state.name}: </span>
+                      {state.id === 'uttar-pradesh'
+                        ? 'Uttar Pradesh is famous for its rich royal Awadhi meals, savory street snacks, and traditional sweets.'
+                        : `Authentic state gastronomy, royal recipes, festive sweets, and GI-tagged delicacies of ${state.name}.`}
+                    </div>
+
+                    {/* Subcategory Filter Pills */}
+                    {subcategories.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        <button
+                          onClick={() => setSelectedCuisineSubcategory('all')}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                            selectedCuisineSubcategory === 'all'
+                              ? 'bg-[#8B1E22] text-white shadow-md'
+                              : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
+                          }`}
+                        >
+                          All Delicacies ({state.cuisines.length})
+                        </button>
+                        {subcategories.map((sub) => (
+                          <button
+                            key={sub}
+                            onClick={() => setSelectedCuisineSubcategory(sub)}
+                            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                              selectedCuisineSubcategory === sub
+                                ? 'bg-[#8B1E22] text-white shadow-md'
+                                : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
+                            }`}
+                          >
+                            {sub.includes('Non-Vegetarian')
+                              ? '🍗 '
+                              : sub.includes('Snacks') || sub.includes('Breads')
+                              ? '🥙 '
+                              : sub.includes('Sweets')
+                              ? '🍯 '
+                              : '🍲 '}
+                            {sub}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {filteredCuisines.map((food, idx) => (
+                        <div
+                          key={food.id || idx}
+                          className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md transition-all space-y-3 flex flex-col justify-between"
+                        >
+                          <div>
+                            <div className="flex items-start justify-between gap-2">
+                              <div>
+                                <div className="flex items-center gap-2 flex-wrap">
+                                  <h4 className="font-serif font-bold text-base text-stone-900">
+                                    {food.name}
+                                  </h4>
+                                  {food.giTag && (
+                                    <span className="bg-emerald-100 text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded border border-emerald-200">
+                                      GI Tag
+                                    </span>
+                                  )}
+                                  {food.origin && (
+                                    <span className="bg-stone-100 text-stone-700 text-[10px] font-medium px-2 py-0.5 rounded">
+                                      📍 {food.origin}
+                                    </span>
+                                  )}
+                                </div>
+                                <span className="text-[11px] text-[#8B1E22] font-semibold block mt-0.5">
+                                  {food.category} {food.subcategory ? `• ${food.subcategory}` : ''}
+                                </span>
+                              </div>
+                            </div>
+
+                            {(food.imageUrl || food.image) && (
+                              <div className="mt-2 h-40 rounded-xl overflow-hidden border border-stone-200 bg-stone-100">
+                                <img
+                                  src={food.imageUrl || food.image}
+                                  alt={food.name}
+                                  className="w-full h-full object-cover"
+                                  referrerPolicy="no-referrer"
+                                  loading="lazy"
+                                />
+                              </div>
+                            )}
+
+                            {food.shortDesc && (
+                              <p className="text-xs text-[#8B1E22] font-medium italic mt-2">
+                                "{food.shortDesc}"
+                              </p>
+                            )}
+
+                            <p className="text-xs text-stone-700 leading-relaxed mt-2">
+                              {food.detailedDescription || food.description}
+                            </p>
+                          </div>
+
+                          <div>
+                            {food.highlights && food.highlights.length > 0 && (
+                              <div className="flex flex-wrap gap-1 pt-2">
+                                {food.highlights.map((hl, i) => (
+                                  <span
+                                    key={i}
+                                    className="px-2 py-0.5 rounded text-[10px] bg-stone-100 text-stone-800 border border-stone-200 font-medium"
+                                  >
+                                    ✦ {hl}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+
+                            {food.keyIngredients && food.keyIngredients.length > 0 && (
+                              <div className="pt-2 mt-2 border-t border-stone-100">
+                                <span className="text-[10px] text-stone-500 uppercase tracking-wider block mb-1 font-semibold">
+                                  Key Ingredients
+                                </span>
+                                <div className="flex flex-wrap gap-1">
+                                  {food.keyIngredients.map((ing, i) => (
+                                    <span
+                                      key={i}
+                                      className="text-[10px] px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200"
+                                    >
+                                      {ing}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })()}
+
+              {/* ---------------- CRAFTS & ATTIRE TAB ---------------- */}
+              {activeTab === 'crafts_attire' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-6"
+                >
+                  {/* Traditional Attire Section */}
+                  {state.traditionalAttire && (
+                    <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+                      <div className="flex items-center gap-2">
+                        <Shirt className="w-5 h-5 text-[#8B1E22]" />
+                        <h4 className="font-serif font-bold text-lg text-stone-900">
+                          Traditional Attire: {state.traditionalAttire.name}
+                        </h4>
+                      </div>
+
+                      {(state.traditionalAttire.image || state.traditionalAttire.imagePlaceholder) && (
+                        <div className="h-48 rounded-xl overflow-hidden border border-stone-200">
+                          <img
+                            src={state.traditionalAttire.image || state.traditionalAttire.imagePlaceholder}
+                            alt={state.traditionalAttire.name}
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+
+                      <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                        {state.traditionalAttire.description}
+                      </p>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs">
+                          <span className="font-bold text-stone-900 block mb-1">Men's Traditional Dress</span>
+                          <span className="text-stone-600">{state.traditionalAttire.men}</span>
+                        </div>
+                        <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs">
+                          <span className="font-bold text-stone-900 block mb-1">Women's Traditional Dress</span>
+                          <span className="text-stone-600">{state.traditionalAttire.women}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* GI-Tagged Handicrafts & Handlooms */}
+                  <div className="space-y-3">
+                    <h4 className="font-serif font-bold text-base text-stone-900">
+                      GI-Tagged Handicrafts & Living Crafts
+                    </h4>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {state.crafts.map((craft, idx) => (
+                        <div
+                          key={idx}
+                          className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-2"
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <h5 className="font-serif font-bold text-stone-900 text-sm">
+                              {craft.name}
+                            </h5>
+                            {craft.giTag && (
+                              <span className="bg-blue-100 text-blue-800 text-[9px] font-bold px-2 py-0.5 rounded border border-blue-200">
+                                GI Tagged
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs text-stone-600 leading-relaxed">
+                            {craft.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* ---------------- FESTIVALS TAB ---------------- */}
+              {activeTab === 'festivals' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-4"
+                >
+                  <p className="text-xs text-stone-600">
+                    Grand spiritual gatherings, harvest carnivals, and cultural fairs in {state.name}.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {state.festivals.map((fest, idx) => (
+                      <div
+                        key={idx}
+                        className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-2"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <h4 className="font-serif font-bold text-base text-stone-900">
+                            {fest.name}
+                          </h4>
+                          <span className="text-xs font-semibold px-2 py-0.5 rounded bg-amber-100 text-amber-900">
+                            🗓️ {fest.month}
+                          </span>
+                        </div>
+                        <p className="text-xs text-stone-700 leading-relaxed">
+                          {fest.description}
+                        </p>
+                        {fest.significance && (
+                          <div className="pt-2 border-t border-stone-100 text-[11px] text-stone-600">
+                            <span className="font-semibold text-stone-800">Significance: </span>
+                            {fest.significance}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* ---------------- HISTORY & DYNASTIES TAB ---------------- */}
+              {activeTab === 'history' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-4"
+                >
+                  <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+                    <h4 className="font-serif font-bold text-lg text-stone-900">
+                      Chronicles of {state.name}
+                    </h4>
+                    <p className="text-stone-700 text-sm leading-relaxed">
+                      {state.history || state.detailedDescription || state.overview}
+                    </p>
+                  </div>
+
+                  {state.historicalEras && state.historicalEras.length > 0 && (
+                    <div className="space-y-3">
+                      <h5 className="font-serif font-bold text-stone-900 text-sm">
+                        Historical Eras & Milestones
+                      </h5>
+                      <div className="space-y-3">
+                        {state.historicalEras.map((era, i) => (
+                          <div
+                            key={i}
+                            className="bg-white p-4 rounded-xl border border-stone-200 shadow-sm space-y-1"
+                          >
+                            <div className="flex items-center justify-between">
+                              <span className="font-bold text-sm text-[#8B1E22]">{era.era}</span>
+                              <span className="text-xs font-mono text-stone-500">{era.period}</span>
+                            </div>
+                            <p className="text-xs text-stone-700 leading-relaxed">
+                              {era.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+
+              {/* ---------------- AI CULTURAL SCHOLAR TAB ---------------- */}
+              {activeTab === 'ai_guide' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4"
+                >
+                  <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#8B1E22] text-white flex items-center justify-center font-bold">
+                      <Bot className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif font-bold text-base text-stone-900">
+                        AI Cultural Scholar &bull; {state.name}
+                      </h4>
+                      <p className="text-xs text-stone-500">
+                        Ask deep questions about folk mythology, recipes, dynastic battles, or music.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Chat message bubbles */}
+                  <div className="space-y-3 max-h-80 overflow-y-auto pr-1">
+                    {chatHistory.map((msg, idx) => (
+                      <div
+                        key={idx}
+                        className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                      >
+                        <div
+                          className={`max-w-[85%] p-3.5 rounded-2xl text-xs leading-relaxed ${
+                            msg.role === 'user'
+                              ? 'bg-[#8B1E22] text-white font-medium rounded-br-none'
+                              : 'bg-stone-100 text-stone-800 rounded-bl-none border border-stone-200'
+                          }`}
+                        >
+                          {msg.text}
+                        </div>
+                      </div>
+                    ))}
+                    {aiLoading && (
+                      <div className="flex justify-start">
+                        <div className="bg-stone-100 p-3 rounded-2xl text-xs text-stone-500 animate-pulse">
+                          Consulting ancient archives for {state.name}...
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Suggested Prompts */}
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {[
+                      `What is the history behind ${state.monuments[0]?.name || 'the royal palaces'}?`,
+                      `Explain the authentic secret of ${state.cuisines[0]?.name || 'the traditional dishes'}.`,
+                      `Tell me a folk legend of ${state.name}.`,
+                    ].map((p, i) => (
+                      <button
+                        key={i}
+                        onClick={() => handleAskAI(p)}
+                        className="text-[11px] px-2.5 py-1 rounded-full bg-stone-100 hover:bg-[#8B1E22]/10 text-stone-700 hover:text-[#8B1E22] border border-stone-200 transition-all cursor-pointer"
+                      >
+                        💡 {p}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Input Form */}
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleAskAI();
+                    }}
+                    className="flex gap-2 pt-2"
+                  >
+                    <input
+                      type="text"
+                      value={aiQuery}
+                      onChange={(e) => setAiQuery(e.target.value)}
+                      placeholder={`Ask anything about ${state.name}...`}
+                      className="flex-1 px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#8B1E22]/30 bg-stone-50"
+                    />
+                    <button
+                      type="submit"
+                      disabled={aiLoading || !aiQuery.trim()}
+                      className="px-4 py-2.5 rounded-xl bg-[#8B1E22] hover:bg-[#73181b] disabled:opacity-50 text-white text-xs font-bold transition-all shadow cursor-pointer flex items-center gap-1"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                    </button>
+                  </form>
+                </motion.div>
+              )}
+            </div>
+          </div>
+        </div>
+      </main>
+
+      {/* Fullscreen Image Lightbox Modal */}
+      <AnimatePresence>
+        {isFullscreenImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsFullscreenImage(false)}
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 sm:p-8 cursor-pointer"
+          >
+            <div className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
+              <img
+                src={currentVisual.imageUrl}
+                alt={currentVisual.title}
+                className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl"
+                referrerPolicy="no-referrer"
+              />
+              <div className="text-center mt-3 text-white">
+                <h3 className="font-serif text-lg font-bold">{currentVisual.title}</h3>
+                <p className="text-xs text-amber-300">{currentVisual.subtitle}</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
