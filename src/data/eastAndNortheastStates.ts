@@ -377,7 +377,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'East',
     coordinates: [25.0961, 85.3131],
     zoomLevel: 7,
-    bannerImage: 'https://ourjharkhand.com/wp-content/uploads/2022/08/Best-Places-to-Visit-in-Jharkhand-1024x577.jpg',
+    bannerImage: 'https://static.toiimg.com/thumb/95509969/Bodhi-Tree-in-Bodh-Gaya-Bihar.jpg?width=1200&height=900',
     tagline: 'Cradle of Religions, Nalanda University & Sacred Mahabodhi Bodhi Tree',
     overview: 'Bihar is one of the greatest civilizational centers in world history. It is the sacred land where Siddhartha Gautama attained enlightenment beneath the Bodhi Tree in Bodh Gaya, where Lord Mahavira attained Nirvana, where Nalanda—the world\'s first residential university—flourished, and where Emperor Ashoka ruled ancient Magadha.',
     officialLanguage: 'Hindi, Maithili',
