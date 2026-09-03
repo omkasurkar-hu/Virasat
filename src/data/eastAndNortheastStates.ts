@@ -1006,7 +1006,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'North-East',
     coordinates: [28.2180, 94.7278],
     zoomLevel: 7,
-    bannerImage: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://boutindia.s3.us-east-2.amazonaws.com/images/blog/images/2025-01-08-16-33-35-677e5b87eb6a8-tawang.jpg',
     tagline: 'Land of Dawn-lit Mountains, Tawang Monastery & 26 Indigenous Tribes',
     overview: 'Arunachal Pradesh is the easternmost frontier of India—the first place in the country to greet the rising sun. A pristine biodiversity haven of snow peaks, misty orchid valleys, the majestic 400-year-old Tawang Monastery (birthplace of the 6th Dalai Lama), and 26 distinct indigenous tribes celebrating nature.',
     officialLanguage: 'English',
@@ -1021,7 +1021,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '1680 - 1681 AD (Merak Lama Lodre Gyatso)',
         location: 'Tawang',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+        image: 'https://tse3.mm.bing.net/th/id/OIP.hxjbCrIW5R3eo30AFsbAcwHaEq?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         description: 'Largest monastery in India and second largest in the world after the Potala Palace, perched at 10,000 feet, housing an 18-foot gilded Buddha and priceless manuscripts.',
         coordinates: [27.5861, 91.8600]
       },
@@ -1031,7 +1031,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '13,700 Feet Altitude (Memorial to Jaswant Singh Rawat)',
         location: 'Tawang - West Kameng Border',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        image: 'https://as2.ftcdn.net/v2/jpg/04/27/14/43/1000_F_427144345_u9WSASQWJiVMehKW0TpSXCIePSTAsSLc.jpg',
         description: 'Snow-clad mountain pass named after Sela, a tribal Monpa woman who assisted rifleman Jaswant Singh Rawat in the 1962 war; surrounded by 101 sacred lakes.',
         coordinates: [27.5036, 92.1039]
       },
@@ -1041,7 +1041,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '14th - 15th Century AD (Chutiya Kingdom)',
         location: 'Itanagar, Papum Pare',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+        image: 'https://itanagar.in/images/ita-fort.jpg',
         description: 'Historic irregular fort built with over 8 million kiln-burnt bricks, from which the state capital Itanagar derives its name.',
         coordinates: [27.0945, 93.6267]
       }
@@ -1049,6 +1049,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Aji Lhamu & Lion Dance',
+        image: 'https://kalapeet.com/wp-content/uploads/2020/10/aji.jpg',
         type: 'Dance',
         origin: 'Monpa Tribe of Tawang',
         description: 'Tibetan-style mythological masked dance narrating the Tibetan epic of King Norzang, performed during the Losar New Year festival.',
@@ -1057,6 +1058,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Bardo Chham & Ponung',
+        image: 'https://tse1.mm.bing.net/th/id/OIP.YnpV1N8nvu071I7af_3a9AHaEk?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         type: 'Dance',
         origin: 'Sherdukpen & Adi Tribes',
         description: 'Bardo Chham (dance of the zodiac animals depicting victory of good over evil) and Ponung (graceful women\'s community harvest dance led by a Miri priest).',
@@ -1064,6 +1066,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Monpa Handmade Wood & Paper Craft',
+        image: 'https://tse3.mm.bing.net/th/id/OIP.gIMKyL-a8wsh9DwZ0CKYPwHaGM?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         type: 'Theatre',
         origin: 'Tawang & West Kameng',
         description: 'Ancient tree-bark paper making (Sukso from Shugu Sheng plant) and wood turning (hand-carved painted cups and bowls).',
@@ -1073,18 +1076,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Thukpa, Zan & Lukter',
+        image: 'https://c.ndtvimg.com/2023-05/740b45a8_thupka_625x300_16_May_23.jpg',
         category: 'Non-Vegetarian',
         description: 'Zan: porridge of roasted millet flour with forest vegetables and smoked meat; served with Lukter: fiery dry chili paste with smoked beef/pork.',
         keyIngredients: ['Millet Flour', 'Smoked Meat', 'Bhut Jolokia (King Chili)', 'Local Himalayan Herbs', 'Fermented Bamboo Shoots']
       },
       {
         name: 'Pika Pila & Bamboo Shoot Pork',
+        image: 'https://tse3.mm.bing.net/th/id/OIP.V753ce4vg5UKscN6eq0gbAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         category: 'Non-Vegetarian',
         description: 'Iconic Apatani pickle prepared from pork fat, bamboo shoot vinegar, and fiery green chilies; and pork cooked in hollow green bamboo poles over open embers.',
         keyIngredients: ['Pork Fat', 'Fermented Bamboo Shoots', 'Green Chilies', 'Garlic', 'Mustard Oil']
       },
       {
         name: 'Apong (Millet / Rice Beer)',
+        image: 'https://oddessemania.in/wp-content/uploads/2024/12/Apong-rice-beer-food-of-Arunachal-Pradesh.jpg',
         category: 'Beverage',
         description: 'Organic traditional fermented beer brewed using roasted paddy husk and yeast cultures, served in bamboo cups during Solung and Nyokum festivals.',
         keyIngredients: ['Rice / Finger Millet', 'Roasted Paddy Husk', 'Natural Herbal Yeast (Epo)']
@@ -1093,6 +1099,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Losar Festival',
+        image: 'https://i0.wp.com/www.tusktravel.com/blog/wp-content/uploads/2021/02/Losar-Festival-Ladakh.jpg?fit=1024%2C683&ssl=1',
         timing: 'February - March (5 to 15 Days)',
         significance: 'Monpa New Year festival in Tawang celebrated with prayers, hoisting colorful prayer flags, and masked monastic dances.',
         keyRitual: 'Cleaning homes, offering Guthuk porridge, and visiting Tawang Monastery for Losar prayers.',
@@ -1100,6 +1107,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Nyokum Yullo',
+        image: 'https://cdn.guidetour.in/wp-content/uploads/2023/04/Nyokum-Yullo.jpg.webp',
         timing: 'February 26',
         significance: 'Grand agricultural festival of the Nyishi tribe invoking Goddess Nyokum for communal harmony, bumper harvest, and health.',
         keyRitual: 'Priest (Nyibu) performs sacred chanting and animal sacrifice at the Yugang altar decorated with bamboo shavings.',
@@ -1107,6 +1115,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Dree Festival (Apatani Valley)',
+        image: 'https://tse4.mm.bing.net/th/id/OIP.4yK7yE71kYI0b4i9u5D9sQHaEZ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         timing: 'July 5',
         significance: 'Agricultural festival of the Apatani tribe in the lush Ziro Valley praying for pest protection and rich paddy yields.',
         keyRitual: 'Traditional priests offer sacrifices to agricultural deities (Tamu, Harniang, Danyi), followed by cucumber distribution.',
@@ -1115,30 +1124,44 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Apatani Geometric Weaves', 'Monpa Woolen Carpets', 'Mishmi Diamond-pattern Jackets', 'Adi Gale Weaves (Wraparound skirts)'],
+      image: 'https://img.perniaspopupshop.com/store-locator-v2/uploads/PWA_Main_Image_Apatani_6fd6e4aca0.jpg',
+      image: 'https://tse1.mm.bing.net/th/id/OIP.g713D0Wrf7uZB7cgSWWT-gHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      image: 'https://tse2.mm.bing.net/th/id/OIP.kPGs6lYX92kl2rgIsQHovAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      image: 'https://tse3.mm.bing.net/th/id/OIP.Cfv9bOpZ5Ms8V4gGANSezwHaEt?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       handicrafts: ['Monpa Handmade Shugu Paper', 'Cane and Bamboo Helmets (Bopa)', 'Wood Carvings of Wancho and Tangsa', 'Silver and Brass Amulet Jewelry'],
+      image: 'https://nagalandtribune.in/wp-content/uploads/2022/12/Arunachals-Monpas-look-up-to-e-platforms-for-preserving-hand-made-paper-1-1024x489.jpg',
+      image: 'https://tse2.mm.bing.net/th/id/OIP.PFoCKiQO3RJ2AD5dhZsZ-AHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      image: 'https://preview.redd.it/traditional-filipino-wood-carving-art-v0-vlljsjsofiv91.jpg?width=1080&format=pjpg&auto=webp&s=09300e5dadfe49dd46cce7877709c03ed3c840de',
+      image: 'https://i.pinimg.com/736x/ba/c8/5c/bac85c50e19b70679d0c563220cefe85.jpg',
       traditionalMenAttire: 'Cane hat decorated with Great Hornbill beak and feathers, handwoven sleeveless jacket, and Daos (traditional sword).',
+      image: 'https://thumbs.dreamstime.com/b/nishi-man-tribesman-wearing-traditional-head-dress-having-great-hornbill-beak-36775786.jpg',
       traditionalWomenAttire: 'Gale (vibrant handwoven wraparound skirt) with embroidered blouse and heavy turquoise, amber, and coral bead necklaces.',
+      image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlpwB9s_GL0xhssJLxWNWRCUZa55VkOsC6qu6GMF2aFmxEPzPOABHpw-Ct5uD24yygxVvsuLL1hksAlRe72uQXNsWsd7WvUb32VXelaenb7m5nkjLF2kZSl-G_3g111Fka35XOz_fy380/s1600/5ff43333d1c589d1ff865698e41655b7.jpg',
       giTaggedCrafts: ['Arunachal Yak Churpi (Cheese)', 'Arunachal Wakro Orange', 'Idumishmi Textiles', 'Monpa Handmade Paper', 'Wancho Wooden Craft', 'Khamti Rice']
     },
     historyTimeline: [
       {
         era: 'Ancient Era - 16th Century',
         title: 'Chutiya Kingdom & Bhismaknagar',
+        image: 'https://tse2.mm.bing.net/th/id/OIP.EWfBV85XDOuC4jnymU1ZuwHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         description: 'Built fortified brick cities like Bhismaknagar and Ita Fort, engaging in trans-Himalayan trade along the Brahmaputra tributaries.'
       },
       {
         era: '1680 AD',
         title: 'Foundation of Tawang Monastery',
+        image: 'https://tse4.mm.bing.net/th/id/OIP.x2Hj5oPciUntj2qSnCeoZwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         description: 'Merak Lama founded Tawang Monastery on the instructions of the 5th Dalai Lama; birthplace of the 6th Dalai Lama, Tsangyang Gyatso (1683).'
       },
       {
         era: '1914 AD',
         title: 'McMahon Line & NEFA',
+        image: 'https://nenow.in/wp-content/uploads/2023/03/mac-mohan-line.jpg',
         description: 'The Indo-Tibetan boundary (McMahon Line) was drawn at the Simla Convention, later administered as the North-East Frontier Agency (NEFA).'
       },
       {
         era: '1987 AD',
         title: 'Full Statehood of Arunachal Pradesh',
+        image: 'https://spmiasacademy.com/currentaffairs/wp-content/uploads/2026/02/image-18.jpeg',
         description: 'Elevated from Union Territory to full statehood as the 24th state of India on 20 February 1987 with Itanagar as capital.'
       }
     ]
