@@ -380,7 +380,7 @@ export const NORTH_STATES: StateHeritage[] = [
     region: 'North',
     coordinates: [26.8467, 80.9462],
     zoomLevel: 7,
-    bannerImage: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://indiano.travel/wp-content/uploads/2022/11/Rumi-Darwaza-Gate-in-Islamic-Architecture-built-by-Nawab-Asaf-Ud-doula-in-1784-at-Lucknow.jpg',
     tagline: 'Heartland of Indian Civilization, Ganga-Jamuni Tehzeeb & Timeless Epics',
     overview: 'Uttar Pradesh is the spiritual and cultural cradle of India, home to the sacred river Ganga, holy Varanasi ghats, the Taj Mahal, Ayodhya, Mathura, and the refined Awadhi court culture of Lucknow.',
     officialLanguage: 'Hindi',
@@ -399,7 +399,7 @@ export const NORTH_STATES: StateHeritage[] = [
         shortDesc: 'UNESCO World Heritage site and one of the Seven Wonders of the World.',
         detailedDescription: 'Built by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal. It stands as an epitome of ivory-white marble symmetry, calligraphy, and pietra dura gemstone inlays.',
         description: 'UNESCO World Heritage wonder of ivory-white marble commissioned by Mughal Emperor Shah Jahan for Mumtaz Mahal, renowned for symmetry and pietra dura inlay.',
-        image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80',
+        image: 'https://vwitours.com/wp-content/uploads/2023/04/Agra-tajmahal.jpeg',
         imagePlaceholder: 'assets/images/up/monument_taj_mahal.jpg',
         coordinates: [27.1751, 78.0421],
         highlights: [
@@ -418,7 +418,7 @@ export const NORTH_STATES: StateHeritage[] = [
         shortDesc: 'Grand Nagara-style Hindu temple in the holy city of Ayodhya.',
         detailedDescription: 'Located at the sacred birth site of Lord Rama in Ayodhya. Built in the classical Nagara architectural style with pink Bansi Paharpur sandstone from Rajasthan, featuring carved stone pillars, mandapas, and towering shikhara.',
         description: 'Grand Nagara-style Hindu temple in Ayodhya dedicated to Lord Rama, crafted with intricately carved pink Bansi Paharpur sandstone.',
-        image: 'https://images.unsplash.com/photo-1705861145898-3860b240212f?auto=format&fit=crop&w=800&q=80',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Shri_Ram_Janambhoomi_Mandir%2C_Ayodhya_Dham.jpg?utm_source=hi.wikipedia.org&utm_campaign=index&utm_content=original',
         imagePlaceholder: 'assets/images/up/monument_ram_mandir.jpg',
         coordinates: [26.7922, 82.1998],
         highlights: [
@@ -436,7 +436,7 @@ export const NORTH_STATES: StateHeritage[] = [
         isUnesco: false,
         shortDesc: 'Spiritual epicenter of Shiva worship and holy Ganga ghats.',
         detailedDescription: 'One of the twelve sacred Jyotirlingas of Lord Shiva. Dashashwamedh Ghat hosts the nightly Maha Ganga Aarti with brass lamps and Vedic chants.',
-        image: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Benares-_The_Golden_Temple%2C_India%2C_ca._1915_%28IMP-CSCNWW33-OS14-66%29.jpg?utm_source=mai.wikipedia.org&utm_campaign=index&utm_content=original',
         description: 'Spiritual epicenter of Shiva worship and the sacred Ganga Aarti where thousands gather nightly at illuminated stone ghats.',
         coordinates: [25.3109, 83.0107]
       },
@@ -449,7 +449,7 @@ export const NORTH_STATES: StateHeritage[] = [
         isUnesco: true,
         shortDesc: 'Akbar\'s fortified royal capital with Buland Darwaza.',
         detailedDescription: 'Imperial city founded by Emperor Akbar featuring Buland Darwaza—the highest gateway in the world—and the white marble tomb of Salim Chishti.',
-        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+        image: 'https://www.tajmahal.gov.in/images/monuments/fatehpur-sikri/9.jpg',
         description: 'Imperial city founded by Emperor Akbar featuring Buland Darwaza—the highest gateway in the world—and the white marble tomb of Salim Chishti.',
         coordinates: [27.0945, 77.6679]
       },
@@ -462,7 +462,7 @@ export const NORTH_STATES: StateHeritage[] = [
         isUnesco: false,
         shortDesc: 'Nawabi architectural complex with unsupported arched hall and maze.',
         detailedDescription: 'Built by Nawab Asaf-ud-Daula with an unsupported central arched hall and the intricate Bhulbhulaiya labyrinth.',
-        image: 'https://images.unsplash.com/photo-1590740608753-f7a35cbdfaa3?auto=format&fit=crop&w=800&q=80',
+        image: 'https://static.toiimg.com/photo/103890972.cms',
         description: 'Built by Nawab Asaf-ud-Daula with an unsupported central arched hall and the intricate Bhulbhulaiya labyrinth.',
         coordinates: [26.8689, 80.9129]
       }
@@ -476,7 +476,7 @@ export const NORTH_STATES: StateHeritage[] = [
         shortDesc: 'Classical dance form known for rapid spins and storytelling.',
         detailedDescription: 'Kathak is one of the eight major forms of Indian classical dance. Originating from ancient traveling bards (Kathakars), it evolved through Lucknow and Banaras Gharanas into a refined dance of intricate footwork (Tatkar), rapid spins (Chakkars), abhinaya mime, and expressiveness.',
         description: 'Major classical Indian dance form characterized by rapid footwork (Tatkar), pirouettes (Chakkars), and mime depicting Radha-Krishna romances and court poetry.',
-        image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80',
+        image: 'https://www.drishtiias.com/images/uploads/1579336257_image4.jpg',
         imagePlaceholder: 'assets/images/up/dance_kathak.jpg',
         instruments: ['Tabla', 'Pakhawaj', 'Sarangi', 'Ghungroos (Anklet Bells)'],
         costumeHighlight: 'Anarkali flared dress or Lehenga with 100+ chiming brass Ghungroos.',
@@ -494,7 +494,7 @@ export const NORTH_STATES: StateHeritage[] = [
         shortDesc: 'Spectacular folk dance balancing heavy multi-tiered oil lamps on the head.',
         detailedDescription: 'Charkula is a dramatic folk dance from the Braj region performed on the third day after Holi (believed to be Radha\'s birthday). Female dancers balance large circular multi-tiered wooden pyramids (Charkulas) carrying up to 108 lit oil lamps on their heads while dancing gracefully to Rasiya songs.',
         description: 'Spectacular folk dance from the Braj region where women balance a multi-tiered wooden pyramid with 108 lit oil lamps on their heads.',
-        image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80',
+        image: 'https://www.charkula.com/wp-content/uploads/2023/04/charkuladance1.jpg',
         imagePlaceholder: 'assets/images/up/dance_charkula.jpg',
         instruments: ['Nagada', 'Dholak', 'Manjira', 'Harmonium'],
         costumeHighlight: 'Traditional colorful Braj Ghagra-Choli with head veil securing the pyramid.',
@@ -512,7 +512,7 @@ export const NORTH_STATES: StateHeritage[] = [
         shortDesc: 'Melancholic monsoon folk song expressing longing and joy.',
         detailedDescription: 'Kajri is a popular folk music genre sung during the monsoon season (Shravan) in eastern UP, particularly Mirzapur and Varanasi. It evokes the fragrance of moist earth, dark rain clouds, the peacocks dancing, and the poignant longing (viraha) of a woman waiting for her beloved.',
         description: 'Monsoon folk song genre celebrating the onset of Shravan rains, swaying swings, and poetic themes of love and separation.',
-        image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.bhaskarassets.com/thumb/1200x900/web2images/521/2024/09/26/971a1cf1-793e-4e2e-8e64-7a282a283e58_1727287651645.jpg',
         imagePlaceholder: 'assets/images/up/music_kajri.jpg',
         instruments: ['Dholak', 'Harmonium', 'Manjira', 'Flute (Bansuri)'],
         audioTrackTitle: 'Barsan Laagi Badariya (Kajri)',
@@ -526,6 +526,7 @@ export const NORTH_STATES: StateHeritage[] = [
       {
         id: 'raslila_ramlila',
         name: 'Raslila & Ramlila',
+        image:'https://staticimg.amarujala.com/assets/images/2019/01/28/ramleela_1548650661.jpeg',
         type: 'Theatre',
         origin: 'Braj & Ayodhya',
         description: 'UNESCO-inscribed dramatic reenactments of the life of Lord Krishna and the epic Ramayana during Dussehra.',
@@ -534,6 +535,7 @@ export const NORTH_STATES: StateHeritage[] = [
       {
         id: 'nautanki',
         name: 'Nautanki',
+        image:'https://img.jagranjosh.com/images/2025/11/17/article/image/city-of-nautanki-up-1763363012329.webp',
         type: 'Theatre',
         origin: 'Hathras & Kanpur',
         description: 'Popular operatic folk theatre featuring vibrant musical dialogues, comedic interludes, and social satire.',
@@ -739,6 +741,7 @@ export const NORTH_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Kumbh Mela',
+        image:'https://www.seecitydestination.com/laravel/storage/app/public/blog_images/odsw0CR1ZOmkUTvOAQDfQcUsKKDGyW2tIIot92yF.jpg',
         timing: 'Every 12 Years (Prayagraj)',
         significance: 'The world\'s largest peaceful gathering of humanity (UNESCO World Heritage) at the sacred Triveni Sangam.',
         keyRitual: 'Shahi Snan (Royal Holy Bath) by sadhus and millions of pilgrims in the Ganga-Yamuna-Saraswati confluence.',
@@ -746,6 +749,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Lathmar Holi (Barsana & Nandgaon)',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcbhjM9KiDd4I5rMH63NGkx8ZEAtT5ygx99-Xqcznkf2bBwtKh4Yv_ZDVb&s=10',
         timing: 'Phalguna (February - March)',
         significance: 'Unique recreation of Lord Krishna teasing Radha, where women playfully beat men with sticks while men defend with shields.',
         keyRitual: 'Smearing herbal Gulal, traditional Braj folk songs, and Thandai celebrations.',
@@ -753,6 +757,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Dev Deepawali (Varanasi)',
+        image:'https://dharmikbharatyatra.com/wp-content/uploads/2025/09/New-Project-1.webp',
         timing: 'Kartik Purnima (15 days after Diwali)',
         significance: 'Night of the Gods, when over a million earthen diyas illuminate all 84 ghats of Kashi.',
         keyRitual: 'Mega Maha Aarti on the ghats and floating clay lamps on the holy Ganga.',
@@ -761,9 +766,20 @@ export const NORTH_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Banarasi Brocade Silk Sarees', 'Lucknowi Chikankari Hand Embroidery', 'Zardozi Gold-thread Embroidery', 'Varanasi Zari Weaving'],
+      image:'https://assets0.mirraw.com/images/11974612/image_zoom.jpeg?1698302463',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJgkvLDPNNdj3eGBzQQbtCpJF0-AIo9cw2QVyd4VCs4xwk02f3EI_TIud_&s=10',
+      image:'https://m.media-amazon.com/images/I/81KjZoWnEML.jpg',
+      image:'https://gaatha.com/wp-content/uploads/Banarak-silk-work.jpg',
       handicrafts: ['Moradabad Brassware', 'Firozabad Glass Bangles & Chandeliers', 'Saharanpur Wood Carvings', 'Gorakhpur Terracotta', 'Kannauj Natural Attar (Perfume)'],
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2JW_PEUPoOj4vMCuk8Vt8F-3_vqXa2G_ITmF_f8yhTFCm3oTG0_bvKNCu&s=10',
+      image:'https://media.assettype.com/outlooktraveller/2025-02-19/zzeyrtnb/shutterstock1381696904.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true',
+      image:'https://cultureandheritage.org/wp-content/uploads/2021/10/abcd-24.jpg',
+      image:'https://images.bhaskarassets.com/thumb/1200x900/web2images/521/2025/09/29/F6EEE2C4-2206-4A8B-A93A-B23E40879B91_1759120088153.jpg',
+      image:'https://m.media-amazon.com/images/I/71ya4R+SewL._AC_UF350,350_QL80_.jpg',
       traditionalMenAttire: 'Kurta-Churidar with Nehru jacket or embroidered Sherwani, topped with a topi or angavastram.',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdg9Tlc8gZRjZsgVc4_wbmoj6GRBmEi1jYXXQCX_kLTMiSBLOJUU08_CsX&s=10',
       traditionalWomenAttire: 'Banarasi Silk Saree with heavy golden zari border or Chikankari embroidered Georgette/Kurta suit.',
+      image:'https://assets0.mirraw.com/images/13771899/image_original_zoom.jpeg?1771230394'
       giTaggedCrafts: ['Banaras Brocades and Sarees', 'Lucknow Chikan Craft', 'Kannauj Perfume', 'Moradabad Metal Craft', 'Firozabad Glassware', 'Agra Petha'],
       attireItems: [
         {
@@ -777,7 +793,7 @@ export const NORTH_STATES: StateHeritage[] = [
             'Popular Items: Kurta, Sarees, Dupattas'
           ],
           origin: 'Lucknow',
-          image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80',
+          image: 'https://i.etsystatic.com/16188957/r/il/7c5992/2248384893/il_570xN.2248384893_r5kx.jpg',
           imagePlaceholder: 'assets/images/up/attire_chikankari.jpg'
         },
         {
@@ -791,7 +807,7 @@ export const NORTH_STATES: StateHeritage[] = [
             'Occasion: Weddings & Royal Festivities'
           ],
           origin: 'Varanasi',
-          image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80',
+          image: 'https://zaribanaras.com/cdn/shop/files/6_7924bf60-3599-4ca1-8adf-57ffb982b0f0.webp?v=1779173931&width=1800',
           imagePlaceholder: 'assets/images/up/attire_banarasi.jpg'
         }
       ]
@@ -800,21 +816,25 @@ export const NORTH_STATES: StateHeritage[] = [
       {
         era: 'c. 1500 - 500 BCE',
         title: 'Vedic Civilization & Mahajanapadas',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYi_Me_BeP-lQx2xZRS1YHdjBNbldWGKIiqwT66g_MvxBN5X0QWixkoDA&s=10',
         description: 'Flourishing of Kashi, Kosala, and Panchala kingdoms; birthland of epics Ramayana (Ayodhya) and Mahabharata (Hastinapur).'
       },
       {
         era: '528 BCE & 3rd Century BCE',
         title: 'Lord Buddha at Sarnath & Ashoka\'s Pillars',
+        image:'https://www.travelladda.com/package/ashoak12.jpg',
         description: 'Gautama Buddha preached his first sermon at Sarnath (Dhammacakkappavattana Sutta); Emperor Ashoka erected the Lion Capital (India\'s national emblem).'
       },
       {
         era: '16th - 18th Century AD',
         title: 'Mughal & Awadhi Splendor',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL9ybA_ULf3m3lNxcvjwc69oa-kPM99Xh0-UorAD4FSvCayOSJqRhrnig&s=10',
         description: 'Agra served as imperial capital producing the Taj Mahal, while the Nawabs of Awadh established Lucknow as the cultural capital of poetry, dance, and gastronomy.'
       },
       {
         era: '1857 AD',
         title: 'First War of Indian Independence',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsqZ8t3ZkXLH3LgFXvPis80nDwmtSMrLijMAQYBXHaTdPJp4-Q0iNFkcc&s=10',
         description: 'Historic rebellion ignited at Meerut, spreading through Jhansi (Rani Lakshmibai), Kanpur (Nana Saheb), and Lucknow (Begum Hazrat Mahal).'
       }
     ]
