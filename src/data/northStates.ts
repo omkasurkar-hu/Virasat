@@ -146,21 +146,25 @@ export const NORTH_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Bandhani (Tie & Dye)', 'Bagru Block Printing', 'Sanganeri Print', 'Kota Doria Weaves', 'Leheriya Sarees'],
-      image:'https://apkamart.com/cdn/shop/articles/Bandhni-tie-and-dye.jpg?v=1586947526&width=2048',
-      image:'https://gaatha.org/wp-content/uploads/h3.jpg',
-      image:'https://m.media-amazon.com/images/I/919FfsSFB3L._AC_UF1000,1000_QL80_.jpg',
-      image:'https://images.squarespace-cdn.com/content/v1/5961c8ce3e00be4fb1decc32/1549791909754-V2ZHPMD0DEAIH55HTZ62/kota-doria-sari-weaving-in-kaithun-rajasthan-india+crop+7.jpg',
-      image:'https://yuvti.co.in/cdn/shop/files/0H8A3721.jpg?v=1748523989',
+      textileImages: [
+        'https://apkamart.com/cdn/shop/articles/Bandhni-tie-and-dye.jpg?v=1586947526&width=2048',
+        'https://gaatha.org/wp-content/uploads/h3.jpg',
+        'https://m.media-amazon.com/images/I/919FfsSFB3L._AC_UF1000,1000_QL80_.jpg',
+        'https://images.squarespace-cdn.com/content/v1/5961c8ce3e00be4fb1decc32/1549791909754-V2ZHPMD0DEAIH55HTZ62/kota-doria-sari-weaving-in-kaithun-rajasthan-india+crop+7.jpg',
+        'https://yuvti.co.in/cdn/shop/files/0H8A3721.jpg?v=1748523989'
+      ],
       handicrafts: ['Jaipur Blue Pottery', 'Thewa Gold-on-Glass Jewelry', 'Meenakari Enamel Work', 'Molded Camel Leather Mojaris', 'Marble Inlay Sculptures'],
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrHU2fig_c1e5zcnjOAHtR4LMj78jf2RmYPKPU6yV-H1qs5w1wgs33sxA&s=10',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzFwJxGmgXAqD6yilKwF5wCN3nNdIbZRiHSIrmUVBQJlDYDgXn3x892h1z&s=10',
-      image:'https://www.archedu.org/blog/wp-content/uploads/2018/06/Florals-Peacock-Meenakari-1015x1024.jpg',
-      image:'https://rajasthaneshop.com/wp-content/uploads/2025/05/Jaipuri-juti.webp',
-      image:'https://theindiacrafthouse.com/cdn/shop/products/MarbleInlayRoundPlateCuriowithStand-AN07TB.jpg?v=1601572054',
+      handicraftImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrHU2fig_c1e5zcnjOAHtR4LMj78jf2RmYPKPU6yV-H1qs5w1wgs33sxA&s=10',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzFwJxGmgXAqD6yilKwF5wCN3nNdIbZRiHSIrmUVBQJlDYDgXn3x892h1z&s=10',
+        'https://www.archedu.org/blog/wp-content/uploads/2018/06/Florals-Peacock-Meenakari-1015x1024.jpg',
+        'https://rajasthaneshop.com/wp-content/uploads/2025/05/Jaipuri-juti.webp',
+        'https://theindiacrafthouse.com/cdn/shop/products/MarbleInlayRoundPlateCuriowithStand-AN07TB.jpg?v=1601572054'
+      ],
       traditionalMenAttire: 'Angrakha or Kurta with Dhoti and vibrant 9-meter Safa / Pagri (Turban).',
-      image:'https://i.pinimg.com/originals/32/9e/94/329e941e2b73ae564cc10f832a933d68.jpg?nii=t',
+      traditionalMenAttireImage: 'https://i.pinimg.com/originals/32/9e/94/329e941e2b73ae564cc10f832a933d68.jpg?nii=t',
       traditionalWomenAttire: 'Ghaghra (swirling pleated skirt), Choli (blouse), and Odhani (veil with Gotta-Patti work).',
-      image:'https://images.meesho.com/images/products/868415789/vxvop_512.webp?width=512',
+      traditionalWomenAttireImage: 'https://images.meesho.com/images/products/868415789/vxvop_512.webp?width=512',
       giTaggedCrafts: ['Jaipur Blue Pottery', 'Kota Doria', 'Bagru Hand Block Printing', 'Sanganeri Block Printing', 'Kathputlis of Rajasthan']
     },
     historyTimeline: [
@@ -323,18 +327,22 @@ export const NORTH_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Phulkari (Embroidered Silk on Khaddar)', 'Bagh Embroidery', 'Punjabi Durries', 'Gotta Patti Borders'],
-      image:'https://masakalee.com/cdn/shop/files/handmade-designer-phulkari-dupatta-in-khaddar-cotton-2385227.jpg?v=1779433455',
-      image:'https://imp-art.org/wp-content/uploads/1970/01/bagh.jpg',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrtqyxqeO8USfTPlrUYiuE4WXX9NujGNsA7vlQOnZsmh73_yfVuxizr-c&s=10',
-      image:'https://i.etsystatic.com/42779058/r/il/75826a/6088662867/il_570xN.6088662867_l0ji.jpg',
+      textileImages: [
+        'https://masakalee.com/cdn/shop/files/handmade-designer-phulkari-dupatta-in-khaddar-cotton-2385227.jpg?v=1779433455',
+        'https://imp-art.org/wp-content/uploads/1970/01/bagh.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrtqyxqeO8USfTPlrUYiuE4WXX9NujGNsA7vlQOnZsmh73_yfVuxizr-c&s=10',
+        'https://i.etsystatic.com/42779058/r/il/75826a/6088662867/il_570xN.6088662867_l0ji.jpg'
+      ],
       handicrafts: ['Hand-stitched Amritsari Tilla Juttis', 'Brass & Copper Utensils of Jandiala Guru (UNESCO Intangible Heritage)', 'Inlaid Wooden Furniture'],
-      image:'https://sandoori.com/wp-content/uploads/2025/05/IMG_4812-scaled-e1748711272549.jpeg',
-      image:'https://asiainch.org/wp-content/uploads/2014/07/IMG_20210831_195806-1024x695.jpg',
-      image:'https://www.inlayworld.co/images/products/Furniture-Items/futniture-05.png',
+      handicraftImages: [
+        'https://sandoori.com/wp-content/uploads/2025/05/IMG_4812-scaled-e1748711272549.jpeg',
+        'https://asiainch.org/wp-content/uploads/2014/07/IMG_20210831_195806-1024x695.jpg',
+        'https://www.inlayworld.co/images/products/Furniture-Items/futniture-05.png'
+      ],
       traditionalMenAttire: 'Kurta-Pyjama or Chadar with a royal Punjabi Pagri / Turban.',
-      image:'https://blog.indianweddingsaree.com/wp-content/uploads/2018/05/Eid-Special-Punjabi-Kurta-Pajama.jpg',
+      traditionalMenAttireImage: 'https://blog.indianweddingsaree.com/wp-content/uploads/2018/05/Eid-Special-Punjabi-Kurta-Pajama.jpg',
       traditionalWomenAttire: 'Punjabi Salwar Suit with bright Phulkari Dupatta and braided Paranda.',
-      image:'https://i.pinimg.com/736x/0b/de/34/0bde34dd039d0e9f785c5fce9bb00068.jpg',
+      traditionalWomenAttireImage: 'https://i.pinimg.com/736x/0b/de/34/0bde34dd039d0e9f785c5fce9bb00068.jpg',
       giTaggedCrafts: ['Phulkari Embroidery', 'Handcrafted Metal Utensils of Jandiala Guru']
     },
     historyTimeline: [

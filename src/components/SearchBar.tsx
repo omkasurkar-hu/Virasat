@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, MapPin, Landmark, Utensils, Music, Sparkles, Dices, X } from 'lucide-react';
+import { Search, MapPin, Landmark, Utensils, Music, Sparkles, Dices, X, ChevronLeft, ChevronRight, SlidersHorizontal } from 'lucide-react';
 import { StateHeritage, Monument } from '../types';
 
 interface SearchBarProps {
@@ -24,6 +24,35 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  // Check scroll capability for the slide bar
+  const checkScroll = () => {
+    if (!sliderRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 4);
+  };
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
+
+  const handleSlideLeft = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: -220, behavior: 'smooth' });
+    }
+  };
+
+  const handleSlideRight = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: 220, behavior: 'smooth' });
+    }
+  };
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -103,13 +132,19 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   const regions = [
-    { label: 'All States', value: null },
-    { label: 'North', value: 'North' },
-    { label: 'South', value: 'South' },
-    { label: 'West', value: 'West' },
-    { label: 'East', value: 'East' },
-    { label: 'North-East', value: 'North-East' },
+    { label: 'All India', value: null, icon: '🇮🇳', count: states.length },
+    { label: 'North', value: 'North', icon: '🏔️', count: states.filter((s) => s.region === 'North').length },
+    { label: 'South', value: 'South', icon: '🥥', count: states.filter((s) => s.region === 'South').length },
+    { label: 'West', value: 'West', icon: '🏜️', count: states.filter((s) => s.region === 'West').length },
+    { label: 'Central', value: 'Central', icon: '🏛️', count: states.filter((s) => s.region === 'Central').length },
+    { label: 'East', value: 'East', icon: '🛕', count: states.filter((s) => s.region === 'East').length },
+    { label: 'North-East', value: 'North-East', icon: '🌿', count: states.filter((s) => s.region === 'North-East').length },
   ];
+
+  // Quick states for currently active region
+  const filteredStatesForSlider = filterRegion
+    ? states.filter((s) => s.region === filterRegion)
+    : [];
 
   return (
     <div className={`w-full pointer-events-auto ${className || ''}`}>
@@ -336,23 +371,91 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         )}
       </div>
 
-      {/* Region Filter Chips Bar */}
-      <div className="flex items-center gap-1.5 mt-2.5 overflow-x-auto pb-1 scrollbar-none">
-        {regions.map((reg) => (
-          <button
-            key={reg.label}
-            id={`filter-region-${reg.label.toLowerCase().replace(/\s+/g, '-')}`}
-            onClick={() => onFilterRegion(reg.value)}
-            className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shadow-lg backdrop-blur-md border transition-all ${
-              filterRegion === reg.value
-                ? 'bg-amber-500 text-slate-950 border-amber-300 font-bold'
-                : 'bg-slate-900/90 text-slate-300 border-slate-700 hover:border-amber-500/50 hover:bg-slate-800'
-            }`}
-          >
-            {reg.label}
-          </button>
-        ))}
+      {/* Interactive Region Slide Bar with Left & Right Slide Controls */}
+      <div className="relative mt-2.5 flex items-center group/slider">
+        {/* Left Slide Button */}
+        <button
+          type="button"
+          onClick={handleSlideLeft}
+          className={`absolute left-0 z-10 p-1.5 rounded-full bg-slate-900/90 text-amber-300 hover:text-white hover:bg-amber-500 hover:text-slate-950 border border-slate-700/80 shadow-xl transition-all duration-200 transform -translate-x-2 ${
+            canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+          title="Slide Left"
+          aria-label="Slide Left"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+
+        {/* Slide Bar Track */}
+        <div
+          ref={sliderRef}
+          onScroll={checkScroll}
+          className="flex items-center gap-2 overflow-x-auto py-1 px-1 scroll-smooth select-none scrollbar-none w-full"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {regions.map((reg) => {
+            const isSelected = filterRegion === reg.value;
+            return (
+              <button
+                key={reg.label}
+                id={`filter-region-${reg.label.toLowerCase().replace(/\s+/g, '-')}`}
+                onClick={() => {
+                  onFilterRegion(reg.value);
+                }}
+                className={`group/chip flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap shadow-lg backdrop-blur-md border transition-all duration-200 cursor-pointer flex-shrink-0 ${
+                  isSelected
+                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 border-amber-300 font-bold shadow-amber-500/20 scale-105'
+                    : 'bg-slate-900/90 hover:bg-slate-800 text-slate-200 hover:text-amber-200 border-slate-700 hover:border-amber-500/50'
+                }`}
+              >
+                <span className="text-sm leading-none">{reg.icon}</span>
+                <span>{reg.label}</span>
+                <span
+                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                    isSelected
+                      ? 'bg-slate-950/30 text-slate-950 font-bold'
+                      : 'bg-slate-800 text-slate-400 group-hover/chip:text-amber-300'
+                  }`}
+                >
+                  {reg.count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Right Slide Button */}
+        <button
+          type="button"
+          onClick={handleSlideRight}
+          className={`absolute right-0 z-10 p-1.5 rounded-full bg-slate-900/90 text-amber-300 hover:text-white hover:bg-amber-500 hover:text-slate-950 border border-slate-700/80 shadow-xl transition-all duration-200 transform translate-x-2 ${
+            canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+          title="Slide Right"
+          aria-label="Slide Right"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
       </div>
+
+      {/* Sub-Slide Bar: State Quick-Chips when a region is selected */}
+      {filteredStatesForSlider.length > 0 && (
+        <div className="flex items-center gap-1.5 mt-2 overflow-x-auto py-1 px-1 scroll-smooth select-none scrollbar-none animate-fadeIn">
+          <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider whitespace-nowrap mr-1 flex items-center gap-1">
+            <SlidersHorizontal className="w-3 h-3" /> {filterRegion} States:
+          </span>
+          {filteredStatesForSlider.map((st) => (
+            <button
+              key={st.id}
+              onClick={() => onSelectState(st)}
+              className="px-2.5 py-1 rounded-lg text-[11px] font-medium bg-slate-900/80 hover:bg-amber-500 hover:text-slate-950 text-slate-300 border border-slate-800 hover:border-amber-300 shadow-md backdrop-blur-md whitespace-nowrap transition-all cursor-pointer flex-shrink-0"
+            >
+              {st.name}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
+

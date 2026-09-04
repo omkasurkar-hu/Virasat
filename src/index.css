@@ -28,6 +28,84 @@
   border: none;
 }
 
+/* Hyper-Visual Leaflet Popup & Tooltip Styles */
+.leaflet-tooltip.virasat-monument-hover-tooltip {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.leaflet-tooltip-top.virasat-monument-hover-tooltip::before,
+.leaflet-tooltip-bottom.virasat-monument-hover-tooltip::before,
+.leaflet-tooltip-left.virasat-monument-hover-tooltip::before,
+.leaflet-tooltip-right.virasat-monument-hover-tooltip::before {
+  display: none !important;
+}
+
+.state-map-embedded-label {
+  background: transparent;
+  border: none;
+  pointer-events: auto;
+}
+
+.custom-heritage-popup .leaflet-popup-content-wrapper {
+  background: rgba(15, 23, 42, 0.96) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.15) !important;
+  border-radius: 1.25rem !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  color: #f1f5f9 !important;
+}
+
+.custom-heritage-popup .leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+  width: 320px !important;
+  max-width: 340px !important;
+}
+
+.custom-heritage-popup .leaflet-popup-tip-container {
+  margin-top: -1px;
+}
+
+.custom-heritage-popup .leaflet-popup-tip {
+  background: rgba(15, 23, 42, 0.96) !important;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.custom-heritage-popup .leaflet-popup-close-button {
+  top: 10px !important;
+  right: 10px !important;
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 9999px !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #f8fafc !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  padding: 0 !important;
+  z-index: 30 !important;
+  transition: all 0.2s ease !important;
+}
+
+.custom-heritage-popup .leaflet-popup-close-button:hover {
+  background: #8b1e22 !important;
+  color: #ffffff !important;
+  border-color: rgba(245, 158, 11, 0.8) !important;
+  transform: scale(1.1);
+}
+
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
@@ -46,3 +124,4 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(245, 158, 11, 0.8);
 }
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { StateHeritage, Monument } from '../types';
 import { Compass, Sparkles, Landmark, ArrowRight, ShieldCheck, BookOpen, Layers } from 'lucide-react';
@@ -16,20 +16,6 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectState,
   onSelectMonument,
 }) => {
-  const [activeNav, setActiveNav] = useState<'home' | 'map' | 'gallery' | 'about'>('home');
-
-  const scrollToSection = (id: string, navKey: 'home' | 'map' | 'gallery' | 'about') => {
-    setActiveNav(navKey);
-    if (navKey === 'map') {
-      onExploreVirasat();
-      return;
-    }
-    const elem = document.getElementById(id);
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   // Curated showcase items
   const featuredMonuments = states
     .flatMap((st) => st.monuments.map((m) => ({ monument: m, state: st })))
@@ -38,75 +24,6 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <div id="virasat-homepage" className="min-h-screen bg-[#FAF7F2] text-slate-900 flex flex-col font-sans selection:bg-[#8B1E22] selection:text-white">
-      {/* Top Header Navigation matching exact layout */}
-      <header className="sticky top-0 z-40 bg-[#FAF7F2]/90 backdrop-blur-md border-b border-stone-200/60 px-6 sm:px-12 md:px-20 py-5 transition-all">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <div
-            onClick={() => scrollToSection('hero-section', 'home')}
-            className="cursor-pointer group flex items-center gap-1"
-          >
-            <span className="font-serif text-2xl sm:text-3xl font-bold tracking-wide text-[#8B1E22] transition-opacity group-hover:opacity-90">
-              Virasat
-            </span>
-          </div>
-
-          {/* Center Nav Links */}
-          <nav className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection('hero-section', 'home')}
-              className={`text-xs uppercase tracking-widest font-semibold pb-1 transition-all ${
-                activeNav === 'home'
-                  ? 'text-[#8B1E22] border-b-2 border-[#8B1E22]'
-                  : 'text-slate-600 hover:text-[#8B1E22]'
-              }`}
-            >
-              HOME
-            </button>
-            <button
-              onClick={onExploreVirasat}
-              className={`text-xs uppercase tracking-widest font-semibold pb-1 transition-all ${
-                activeNav === 'map'
-                  ? 'text-[#8B1E22] border-b-2 border-[#8B1E22]'
-                  : 'text-slate-600 hover:text-[#8B1E22]'
-              }`}
-            >
-              MAP
-            </button>
-            <button
-              onClick={() => scrollToSection('gallery-section', 'gallery')}
-              className={`text-xs uppercase tracking-widest font-semibold pb-1 transition-all ${
-                activeNav === 'gallery'
-                  ? 'text-[#8B1E22] border-b-2 border-[#8B1E22]'
-                  : 'text-slate-600 hover:text-[#8B1E22]'
-              }`}
-            >
-              GALLERY
-            </button>
-            <button
-              onClick={() => scrollToSection('about-section', 'about')}
-              className={`text-xs uppercase tracking-widest font-semibold pb-1 transition-all ${
-                activeNav === 'about'
-                  ? 'text-[#8B1E22] border-b-2 border-[#8B1E22]'
-                  : 'text-slate-600 hover:text-[#8B1E22]'
-              }`}
-            >
-              ABOUT
-            </button>
-          </nav>
-
-          {/* Right Action */}
-          <div>
-            <button
-              onClick={onExploreVirasat}
-              className="text-xs uppercase tracking-widest font-bold text-[#8B1E22] hover:opacity-75 transition-all py-1 px-2"
-            >
-              EXPLORE
-            </button>
-          </div>
-        </div>
-      </header>
-
       {/* Main Hero Section with Heritage Artwork Background */}
       <main className="flex-1">
         <section

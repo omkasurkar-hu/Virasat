@@ -1,8 +1,6 @@
 import React from 'react';
 import { AppView } from '../types';
 import { 
-  Home, 
-  MapPin, 
   Clock, 
   ShieldAlert, 
   Sparkles, 
@@ -21,8 +19,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const navItems: { id: AppView; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
-    { id: 'home', label: 'Home', icon: Home },
-    { id: 'map', label: 'Discover India', icon: MapPin },
     { id: 'timeline', label: 'Through the Ages', icon: Clock },
     { id: 'heritage_risk', label: 'Save Our Heritage', icon: ShieldAlert },
     { id: 'ask_bharat', label: 'Ask Bharat', icon: Sparkles },
