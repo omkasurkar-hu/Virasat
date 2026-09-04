@@ -1915,7 +1915,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         era: '1986 AD',
-        image: '',
+        image: 'https://cf-img-a-in.tosshub.com/lingo/itne/images/story/202206/e5gz7s4uyailb5i.jpg',
         title: 'Historic Mizo Peace Accord',
         description: 'Prime Minister Rajiv Gandhi and MNF leader Laldenga signed the Mizo Peace Accord, ending decades of insurgency and establishing enduring peace.'
       },
@@ -1934,7 +1934,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'North-East',
     coordinates: [23.8315, 91.2868],
     zoomLevel: 8,
-    bannerImage: 'https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://ttdcl.tripura.cloud/images/tour/1661754729/35.jpg',
     tagline: 'Land of Manikya Kings, Neermahal Water Palace, Unakoti Rock Carvings & 14 Gods',
     overview: 'Tripura is an enchanting historic kingdom bordered by Bangladesh on three sides. It preserves the colossal 8th-century rock-cut Shiva bas-reliefs of Unakoti, the floating white marble Neermahal water palace, the sacred Tripura Sundari Shakti Peetha temple, and the intricate bamboo craft of 19 indigenous tribes.',
     officialLanguage: 'Bengali, Kokborok, English',
@@ -1945,6 +1945,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     monuments: [
       {
         name: 'Neermahal (Water Palace of Twijilik)',
+        image:'https://img-cdn.publive.online/fit-in/1200x675/filters:format(webp)/30-stades/media/media_files/nE7cXHzVi1pInLvfqElG.jpg',
         type: 'Lake Palace Complex (Rudrasagar Lake)',
         century: '1930 - 1938 AD (Maharaja Bir Bikram Kishore Manikya)',
         location: 'Melaghar, Sepahijala District',
@@ -1955,31 +1956,31 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Unakoti Heritage Rock Carvings',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE-bJttkGW7YeL6V35LlL1zPaypNndCnszZ4pmM_pRmrt2q4H4yrgLpNQ&s=10',
         type: 'Ancient Bas-Relief Mountain Sculpture',
         century: '8th - 9th Century AD',
         location: 'Kailashahar, Unakoti District',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
         description: 'Colossal 30-foot carved rock head of Unakotiswara Kal Bhairava and giant Ganeshas carved into stone cliffs surrounded by waterfalls in deep forests.',
         coordinates: [24.3217, 92.0167]
       },
       {
         name: 'Tripura Sundari Temple (Matabari)',
+        image:'https://s7ap1.scene7.com/is/image/incredibleindia/tripura-sundari-temple-agartala-tripura-2-attr-hero?qlt=82&ts=1726651006473',
         type: '51 Shakti Peethas Sanctum (Tortoise Shaped)',
         century: '1501 AD (Maharaja Dhanya Manikya)',
         location: 'Udaipur, Gomati District',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
         description: 'Ancient square sanctum resembling a tortoise (Kurma Pitha) where Goddess Sati\'s right foot fell, dedicated to Goddess Kali / Tripurasundari.',
         coordinates: [23.5117, 91.4983]
       },
       {
         name: 'Ujjayanta Palace',
+        image:'https://upload.wikimedia.org/wikipedia/commons/c/c8/Ujjayanta_palace_Tripura_State_Museum_Agartala_India.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         type: 'Neoclassical Royal Palace',
         century: '1901 AD (Maharaja Radha Kishore Manikya)',
         location: 'Agartala',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
         description: 'Majestic white palace with tiled domes and Mughal gardens (named by Rabindranath Tagore), now functioning as the state heritage museum.',
         coordinates: [23.8378, 91.2819]
       }
@@ -1987,6 +1988,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Hojagiri Dance',
+        image:'https://pbs.twimg.com/media/E223O3SWYAEPZGK.jpg:large',
         type: 'Dance',
         origin: 'Reang (Bru) Tribe',
         description: 'Acrobatic balance dance where young women balance an earthen lamp or bottle on their heads and stand on the edge of a spinning brass plate (Kansha).',
@@ -1995,6 +1997,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Garia & Lebang Boomani Dance',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJFTTQLPTih2fcBmL9k5k5f6Z8CEW-qKJKtKashOLqkeW2-1wuey8o_-E&s=10',
         type: 'Dance',
         origin: 'Tripuri Indigenous Tribes',
         description: 'Garia (devotional dance with bamboo pole deities) and Lebang Boomani (harvest dance catching colorful chirping insects using clappers).',
@@ -2002,6 +2005,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Tripuri Bamboo & Cane Craft',
+        image:'https://www.indianetzone.com/images/Bamboo_and_Cane_crafts_of_Tripu.jpg',
         type: 'Theatre',
         origin: 'Indigenous Villages across Tripura',
         description: 'World-renowned fine bamboo weaving creating lampshades, folding screens, umbrellas, and delicate woven wall hangings.',
@@ -2011,18 +2015,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Mui Borok & Berma Chakhwi',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnroP09LDprR7rIQIvRhnOiIudIvEA-c1Xh-l-2gUIA7gS35RZouUIVGuc&s=10',
         category: 'Non-Vegetarian',
         description: 'Authentic Tripuri traditional dish cooked without oil, featuring fermented dried fish (Berma), bamboo shoots, green chilies, and wood ash alkaline water.',
         keyIngredients: ['Berma (Fermented Fish)', 'Bamboo Shoots', 'Baking Soda / Wood Ash', 'King Chilies', 'Garlic']
       },
       {
         name: 'Gudok & Wahan Mosdeng',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe2XJkXx6e4_wOHBgsjQ05r5UqUggXKw4ef2jHPXdx9yaC65m3La9ABCEi&s=10',
         category: 'Non-Vegetarian',
         description: 'Mashed potato, yardlong bean, and berma delicacy prepared in hollow green bamboo; and grilled pork salad tossed with charred green chilies and onions.',
         keyIngredients: ['Pork / Fish', 'Berma', 'Charred Green Chilies', 'Ginger', 'Coriander']
       },
       {
         name: 'Chakhwi & Awandru',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPbvH1S3apvXK63RNPXIxw71QKg1r7gGj_bIQPFEO3h2wHXVeZNEU4JyA&s=10',
         category: 'Vegetarian',
         description: 'Aromatic rice flour gravy soup cooked with bamboo shoots, jackfruit seeds, and local green herbs.',
         keyIngredients: ['Rice Flour Batter', 'Bamboo Shoots', 'Jackfruit Seeds', 'Green Leaves', 'Chili Paste']
@@ -2031,6 +2038,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Kharchi Puja (Worship of the 14 Gods)',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKp7E198_XZx_ubaLSPcspQPLkA_WgJRp6IFswrFijGjCeusXAoGyDNJ0&s=10',
         timing: 'Ashadha (July / 7 Days)',
         significance: 'Historic state festival in Old Agartala where 14 royal dynasty deities (Chaturdasha Devata) are worshipped to cleanse Mother Earth.',
         keyRitual: 'Procession of 14 brass deity heads to the sacred Howrah River for morning bathing, followed by royal palace rituals.',
@@ -2038,6 +2046,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Garia Puja',
+        image:'https://pbs.twimg.com/media/FQ3WIe5aUAUcfis.jpg',
         timing: 'Baisakh (April / 7 Days)',
         significance: 'Post-Jhum harvest festival honoring Baba Garia, the deity of livestock, peace, and agricultural abundance.',
         keyRitual: 'Worshipping a decorated green bamboo pole representing Lord Garia with fowl, cotton thread, and rice beer.',
@@ -2045,6 +2054,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Diwali at Matabari (Tripura Sundari)',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHE2ch9Rjq6e6AjKhmYfHWnc2Qabs_cka92RkTrfVnxCcxpYpnWmlhtSc&s=10',
         timing: 'Kartik Amavasya (October - November)',
         significance: 'Grand religious gathering of over 500,000 pilgrims at the historic Tripura Sundari Temple in Udaipur.',
         keyRitual: 'Illumination of the Kalyan Sagar lake with thousands of earthen lamps and holy dip with sacred tortoises.',
@@ -2053,29 +2063,42 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Risa (Traditional Narrow Handwoven Chest Drape)', 'Rignai (Indigenous Loincloth Wraparound)', 'Rikutu (Upper Body Drape)'],
+      image:'https://static.fibre2fashion.com//articleresources/images/106/10557/Cover-s_Small.jpg',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrydAfVQSB_XJfKN1uTyBc7LoHAK8Z0DCMNLyvrtWa97pqlkz4YqMqyjJ&s=10',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK0XmXq-3rPtF4hjwzTxaKRcJ79xZiQ2llVT0drBNILjsTjnwlnfDEB3g&s=10',
       handicrafts: ['Tripura Bamboo & Cane Furniture', 'Bamboo Lampshades and Screens', 'Carved Wooden Masks', 'Sitalpati Cold Bamboo Mats'],
+      image:'https://www.indianetzone.com/images/Bamboo_and_Cane_crafts_of_Tripu.jpg',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAERmlQgirkdPi3i-NUa7zzmOgZhkGSUm4I_NoJc_Scm7W4srZpxdG1ed6&s=10',
+      image:'https://trovecraftindia.com/cdn/shop/files/Wooden_wall_mask_female_1.jpg?v=1779432673&width=1445',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT34znRcup-K-JJG3aGNjqVBNwBFzBUk8aALvLIF9rsQeY2t8m9JjKU9ks&s=10',
       traditionalMenAttire: 'Dhoti with Rikutu scarf and Pagri (Turban).',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXoScVDFJ4hsBIEnoyvL1VhLzgrzieLNEGGce9AeGQwV6lAcf3wVl8o8M&s=10',
       traditionalWomenAttire: 'Rignai (patterned wraparound) tied with a colorful handwoven Risa across the chest and multi-strand silver coin necklaces.',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSssZ2bLsvY5MpCT0AvRZvsXBFPd7twbrNOAMNP486wZmtREKyr2Wrvl5I&s=10',
       giTaggedCrafts: ['Tripura Queen Pineapple', 'Tripura Risa Handloom (Textile)']
     },
     historyTimeline: [
       {
         era: 'c. 1400 - 1949 AD',
+        image:'https://upload.wikimedia.org/wikipedia/commons/d/da/Coat_of_Arms_of_Tripura_Princely_State.gif?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         title: 'The Manikya Dynasty of Tripura',
         description: 'Longest continuous ruling royal dynasty in Indian history (over 180 successive kings recorded in the Sanskrit chronicle Rajmala).'
       },
       {
         era: '1890 - 1940 AD',
+        image:'https://staticprintenglish.theprint.in/wp-content/uploads/2025/07/feature-image-21-696x392.jpg?compress=true&quality=80&w=376&dpr=2.6',
         title: 'Rabindranath Tagore & Tripura Monarchy',
         description: 'Nobel laureate Rabindranath Tagore was patronized by Maharaja Bir Chandra and Radha Kishore Manikya, setting novels like Rajarshi in Tripura.'
       },
       {
         era: '1947 - 1949 AD',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwXovtic6NQuxWsTGKtVR1IMqPmEhKac1iasvgP4MDaG6U_22VCdn4MFWw&s=10',
         title: 'Integration into Indian Union',
         description: 'Maharani Kanchan Prabha Devi signed the Tripura Merger Agreement on 9 September 1949, joining the Indian Union.'
       },
       {
         era: '1972 AD',
+        image:'https://philaindia.info/wp-content/uploads/2022/01/50-Years-of-full-Statehood-of-Tripura-2022.jpg',
         title: 'Full Statehood of Tripura',
         description: 'Granted full statehood on 21 January 1972 under the North-Eastern Areas Reorganisation Act with Agartala as capital.'
       }
