@@ -764,11 +764,22 @@ export const NORTH_STATES: StateHeritage[] = [
         highlight: 'Golden reflections transforming the entire riverbank into a celestial galaxy.'
       }
     ],
-    craftsAndAttire: {
+   craftsAndAttire: {
       textiles: ['Banarasi Brocade Silk Sarees', 'Lucknowi Chikankari Hand Embroidery', 'Zardozi Gold-thread Embroidery', 'Varanasi Zari Weaving'],
+      image:'https://assets0.mirraw.com/images/11974612/image_zoom.jpeg?1698302463',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJgkvLDPNNdj3eGBzQQbtCpJF0-AIo9cw2QVyd4VCs4xwk02f3EI_TIud_&s=10',
+      image:'https://m.media-amazon.com/images/I/81KjZoWnEML.jpg',
+      image:'https://gaatha.com/wp-content/uploads/Banarak-silk-work.jpg',
       handicrafts: ['Moradabad Brassware', 'Firozabad Glass Bangles & Chandeliers', 'Saharanpur Wood Carvings', 'Gorakhpur Terracotta', 'Kannauj Natural Attar (Perfume)'],
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2JW_PEUPoOj4vMCuk8Vt8F-3_vqXa2G_ITmF_f8yhTFCm3oTG0_bvKNCu&s=10',
+      image:'https://media.assettype.com/outlooktraveller/2025-02-19/zzeyrtnb/shutterstock1381696904.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true',
+      image:'https://cultureandheritage.org/wp-content/uploads/2021/10/abcd-24.jpg',
+      image:'https://images.bhaskarassets.com/thumb/1200x900/web2images/521/2025/09/29/F6EEE2C4-2206-4A8B-A93A-B23E40879B91_1759120088153.jpg',
+      image:'https://m.media-amazon.com/images/I/71ya4R+SewL._AC_UF350,350_QL80_.jpg',
       traditionalMenAttire: 'Kurta-Churidar with Nehru jacket or embroidered Sherwani, topped with a topi or angavastram.',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdg9Tlc8gZRjZsgVc4_wbmoj6GRBmEi1jYXXQCX_kLTMiSBLOJUU08_CsX&s=10',
       traditionalWomenAttire: 'Banarasi Silk Saree with heavy golden zari border or Chikankari embroidered Georgette/Kurta suit.',
+      image:'https://assets0.mirraw.com/images/13771899/image_original_zoom.jpeg?1771230394'
       giTaggedCrafts: ['Banaras Brocades and Sarees', 'Lucknow Chikan Craft', 'Kannauj Perfume', 'Moradabad Metal Craft', 'Firozabad Glassware', 'Agra Petha'],
       attireItems: [
         {
