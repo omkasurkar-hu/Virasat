@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowLeft,
@@ -20,13 +20,10 @@ import {
   ChevronLeft,
   ChevronRight,
   Maximize2,
-  Bot,
-  Send,
   Award,
   CheckCircle2,
   Play,
   Pause,
-  SlidersHorizontal,
   Eye,
 } from 'lucide-react';
 import { StateHeritage, HeritageTab, Monument, CuisineItem, ArtAndDance } from '../types';
@@ -92,69 +89,9 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
     }
   };
 
-  // Tab Slider Track Ref and Scroll Position
-  const tabScrollContainerRef = useRef<HTMLDivElement>(null);
-  const [tabScrollProgress, setTabScrollProgress] = useState<number>(0);
-  const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
-  const [canScrollRight, setCanScrollRight] = useState<boolean>(true);
-
-  // Update tab scroll metrics
-  const updateTabScrollMetrics = () => {
-    if (!tabScrollContainerRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = tabScrollContainerRef.current;
-    const maxScroll = scrollWidth - clientWidth;
-    if (maxScroll > 0) {
-      setTabScrollProgress((scrollLeft / maxScroll) * 100);
-      setCanScrollLeft(scrollLeft > 4);
-      setCanScrollRight(scrollLeft < maxScroll - 4);
-    } else {
-      setTabScrollProgress(0);
-      setCanScrollLeft(false);
-      setCanScrollRight(false);
-    }
-  };
-
-  useEffect(() => {
-    const el = tabScrollContainerRef.current;
-    if (!el) return;
-    updateTabScrollMetrics();
-    el.addEventListener('scroll', updateTabScrollMetrics);
-    window.addEventListener('resize', updateTabScrollMetrics);
-    return () => {
-      el.removeEventListener('scroll', updateTabScrollMetrics);
-      window.removeEventListener('resize', updateTabScrollMetrics);
-    };
-  }, []);
-
-  const handleSlideTabs = (direction: 'left' | 'right') => {
-    if (!tabScrollContainerRef.current) return;
-    const scrollAmount = 240;
-    tabScrollContainerRef.current.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth',
-    });
-  };
-
   const handleTabSelect = (tabId: HeritageTab) => {
     setActiveTab(tabId);
-    // Smoothly ensure active tab is in view
-    const tabEl = document.getElementById(`tab-item-${tabId}`);
-    if (tabEl && tabScrollContainerRef.current) {
-      tabEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
   };
-
-  // AI Guide Chat State
-  const [aiQuery, setAiQuery] = useState('');
-  const [aiLoading, setAiLoading] = useState(false);
-  const [chatHistory, setChatHistory] = useState<
-    Array<{ role: 'user' | 'assistant'; text: string; fallback?: boolean }>
-  >([
-    {
-      role: 'assistant',
-      text: `Namaste! I am your AI Cultural Scholar for ${state.name}. Ask me anything about ${state.name}'s architecture, royal recipes, ancient dynasties, folk arts, or sacred lore!`,
-    },
-  ]);
 
   // Construct a comprehensive list of images for the state
   const visualGallery: VisualGalleryItem[] = [
@@ -309,12 +246,6 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
       heritageAudio.stopAll();
       setIsPlayingFolkAudio(false);
     }
-    setChatHistory([
-      {
-        role: 'assistant',
-        text: `Namaste! I am your AI Cultural Scholar for ${state.name}. Ask me anything about ${state.name}'s architecture, royal recipes, ancient dynasties, folk arts, or sacred lore!`,
-      },
-    ]);
   }, [state.id]);
 
   const openLightbox = (
@@ -388,54 +319,6 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
       );
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const handleAskAI = async (customPrompt?: string) => {
-    const promptToSend = customPrompt || aiQuery;
-    if (!promptToSend.trim() || aiLoading) return;
-
-    const userMessage = { role: 'user' as const, text: promptToSend };
-    setChatHistory((prev) => [...prev, userMessage]);
-    setAiQuery('');
-    setAiLoading(true);
-
-    try {
-      const response = await fetch('/api/ask-bharat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          question: promptToSend,
-          stateName: state.name,
-          context: `State: ${state.name}, Capital: ${state.capital}, Region: ${state.region}. Overview: ${state.overview}. Monuments: ${state.monuments.map((m) => m.name).join(', ')}. Cuisines: ${state.cuisines.map((c) => c.name).join(', ')}. Dance: ${state.artAndDance.map((d) => d.name).join(', ')}.`,
-        }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setChatHistory((prev) => [
-          ...prev,
-          { role: 'assistant', text: data.answer || 'No response received.' },
-        ]);
-      } else {
-        throw new Error('Fallback triggered');
-      }
-    } catch {
-      // Local fallback response
-      let fallbackText = `${state.name} is one of India's most celebrated cultural jewels. `;
-      if (promptToSend.toLowerCase().includes('food') || promptToSend.toLowerCase().includes('recipe') || promptToSend.toLowerCase().includes('dish')) {
-        fallbackText += `Key culinary specialties include ${state.cuisines.map((c) => c.name).join(', ')}.`;
-      } else if (promptToSend.toLowerCase().includes('dance') || promptToSend.toLowerCase().includes('music')) {
-        fallbackText += `Prominent performing arts include ${state.artAndDance.map((a) => a.name).join(', ')}.`;
-      } else {
-        fallbackText += `${state.overview} Notable monuments include ${state.monuments.map((m) => m.name).join(', ')}.`;
-      }
-      setChatHistory((prev) => [
-        ...prev,
-        { role: 'assistant', text: fallbackText, fallback: true },
-      ]);
-    } finally {
-      setAiLoading(false);
     }
   };
 
@@ -579,18 +462,39 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
         className="relative min-h-[46vh] sm:min-h-[52vh] md:min-h-[58vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-12 pb-16 overflow-hidden select-none"
       >
         {/* State Banner Image Canvas - High Clarity & Clear Visibility */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+        <div 
+          onClick={() => {
+            openLightbox({
+              src: heroBannerSrc,
+              alt: state.name,
+              title: state.name,
+              subtitle: `${state.region} India • Capital: ${state.capital}`,
+              description: state.description,
+              category: 'State Heritage Panorama',
+            });
+          }}
+          className="absolute inset-0 overflow-hidden cursor-pointer select-none group"
+          title="Click to zoom state hero banner"
+        >
           <img
             src={heroBannerSrc}
             alt={state.name}
             onError={handleBannerImageError}
-            className="w-full h-full object-cover object-center brightness-[0.92] contrast-[1.06] transition-transform duration-1000 scale-100 hover:scale-105"
+            className="w-full h-full object-cover object-center brightness-[0.92] contrast-[1.06] transition-transform duration-1000 scale-100 group-hover:scale-105"
             referrerPolicy="no-referrer"
           />
           {/* Subtle cinematic scrim & bottom fade so photo is vivid and text is crisp */}
-          <div className="absolute inset-0 bg-black/25 pointer-events-none" />
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#FAF7F2] via-[#FAF7F2]/40 to-transparent pointer-events-none" />
-          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-black/25" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#FAF7F2] via-[#FAF7F2]/40 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/35 to-transparent" />
+
+          {/* Click to Zoom Badge */}
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-8 opacity-90 group-hover:opacity-100 transition-opacity z-20">
+            <span className="px-3 py-1.5 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white text-xs font-semibold border border-white/25 flex items-center gap-1.5 shadow-lg">
+              <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
+              <span>Zoom Banner</span>
+            </span>
+          </div>
         </div>
 
         <motion.div
@@ -730,120 +634,41 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
           )}
         </div>
 
-        {/* Navigation Tabs with Interactive Slider Track & Beneath Slide Bar */}
-        <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-2 sticky top-16 z-20 space-y-2">
-              <div className="flex items-center gap-1.5">
-                {/* Left Slide Arrow */}
+        {/* Navigation Tabs */}
+        <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-2 sticky top-16 z-20 overflow-x-auto scrollbar-none">
+          <div className="flex items-center justify-center gap-1.5 min-w-max mx-auto">
+            {[
+              { id: 'overview', label: 'Overview', icon: BookOpen },
+              { id: 'monuments', label: `Monuments (${state.monuments.length})`, icon: Landmark },
+              { id: 'dance_music', label: `Dance & Music (${state.artAndDance.length})`, icon: Music },
+              { id: 'cuisines', label: `Cuisines (${state.cuisines.length})`, icon: Utensils },
+              { id: 'crafts_attire', label: `Crafts & Attire`, icon: Shirt },
+              { id: 'festivals', label: `Festivals (${state.festivals.length})`, icon: Sparkles },
+              { id: 'history', label: 'History', icon: History },
+            ].map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
                 <button
-                  type="button"
-                  onClick={() => handleSlideTabs('left')}
-                  disabled={!canScrollLeft}
-                  className={`p-2 rounded-xl border text-stone-700 transition-all flex-shrink-0 cursor-pointer ${
-                    canScrollLeft
-                      ? 'bg-stone-50 hover:bg-stone-200 border-stone-300 text-stone-900 shadow-sm'
-                      : 'bg-stone-100/50 border-stone-200 text-stone-300 cursor-not-allowed opacity-50'
+                  key={tab.id}
+                  id={`tab-item-${tab.id}`}
+                  onClick={() => handleTabSelect(tab.id as HeritageTab)}
+                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap flex-shrink-0 transition-all cursor-pointer ${
+                    isActive
+                      ? 'bg-[#8B1E22] text-white shadow-md scale-100 ring-2 ring-[#8B1E22]/20'
+                      : 'text-stone-700 hover:text-[#8B1E22] bg-stone-50 hover:bg-stone-100 border border-stone-200'
                   }`}
-                  title="Slide Tabs Left"
-                  aria-label="Slide tabs left"
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5" />
+                  <span>{tab.label}</span>
                 </button>
+              );
+            })}
+          </div>
+        </div>
 
-                {/* Horizontally Scrollable Tabs Track */}
-                <div
-                  ref={tabScrollContainerRef}
-                  className="flex-1 flex items-center gap-1.5 overflow-x-auto scroll-smooth py-1 px-0.5 scrollbar-none select-none"
-                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                >
-                  {[
-                    { id: 'overview', label: 'Overview', icon: BookOpen },
-                    { id: 'monuments', label: `Monuments (${state.monuments.length})`, icon: Landmark },
-                    { id: 'dance_music', label: `Dance & Music (${state.artAndDance.length})`, icon: Music },
-                    { id: 'cuisines', label: `Cuisines (${state.cuisines.length})`, icon: Utensils },
-                    { id: 'crafts_attire', label: `Crafts & Attire`, icon: Shirt },
-                    { id: 'festivals', label: `Festivals (${state.festivals.length})`, icon: Sparkles },
-                    { id: 'history', label: 'History', icon: History },
-                    { id: 'ai_guide', label: 'Ask AI Scholar', icon: Bot },
-                  ].map((tab) => {
-                    const Icon = tab.icon;
-                    const isActive = activeTab === tab.id;
-                    return (
-                      <button
-                        key={tab.id}
-                        id={`tab-item-${tab.id}`}
-                        onClick={() => handleTabSelect(tab.id as HeritageTab)}
-                        className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap flex-shrink-0 transition-all cursor-pointer ${
-                          isActive
-                            ? 'bg-[#8B1E22] text-white shadow-md scale-100 ring-2 ring-[#8B1E22]/20'
-                            : 'text-stone-700 hover:text-[#8B1E22] bg-stone-50 hover:bg-stone-100 border border-stone-200'
-                        }`}
-                      >
-                        <Icon className="w-3.5 h-3.5" />
-                        <span>{tab.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Right Slide Arrow */}
-                <button
-                  type="button"
-                  onClick={() => handleSlideTabs('right')}
-                  disabled={!canScrollRight}
-                  className={`p-2 rounded-xl border text-stone-700 transition-all flex-shrink-0 cursor-pointer ${
-                    canScrollRight
-                      ? 'bg-stone-50 hover:bg-stone-200 border-stone-300 text-stone-900 shadow-sm'
-                      : 'bg-stone-100/50 border-stone-200 text-stone-300 cursor-not-allowed opacity-50'
-                  }`}
-                  title="Slide Tabs Right"
-                  aria-label="Slide tabs right"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Interactive Slide Bar Beneath Tabs */}
-              <div className="pt-1 px-1 flex items-center gap-3">
-                <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider flex items-center gap-1 flex-shrink-0">
-                  <SlidersHorizontal className="w-3 h-3 text-[#8B1E22]" /> Slide Tabs
-                </span>
-
-                {/* Track Slider Bar */}
-                <div
-                  className="flex-1 relative h-2 bg-stone-100 rounded-full overflow-hidden border border-stone-200/80 cursor-pointer group"
-                  onClick={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    const clickX = e.clientX - rect.left;
-                    const percent = Math.max(0, Math.min(1, clickX / rect.width));
-                    if (tabScrollContainerRef.current) {
-                      const maxScroll =
-                        tabScrollContainerRef.current.scrollWidth -
-                        tabScrollContainerRef.current.clientWidth;
-                      tabScrollContainerRef.current.scrollTo({
-                        left: maxScroll * percent,
-                        behavior: 'smooth',
-                      });
-                    }
-                  }}
-                  title="Click or drag to slide between Cuisines, Festivals, Monuments & more"
-                >
-                  <div
-                    className="absolute top-0 bottom-0 bg-gradient-to-r from-[#8B1E22] via-amber-600 to-[#8B1E22] rounded-full transition-all duration-150 group-hover:brightness-110 shadow-sm"
-                    style={{
-                      left: `${Math.max(0, Math.min(75, tabScrollProgress * 0.75))}%`,
-                      width: '25%',
-                    }}
-                  />
-                </div>
-
-                <div className="text-[10px] font-bold text-stone-500 font-mono flex-shrink-0">
-                  {Math.round(tabScrollProgress)}%
-                </div>
-              </div>
-            </div>
-
-            {/* Tab Content Display */}
-            <div className="space-y-6">
+        {/* Tab Content Display */}
+        <div className="space-y-6">
               
               {/* ---------------- OVERVIEW TAB ---------------- */}
               {activeTab === 'overview' && (
@@ -1682,97 +1507,6 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                       </div>
                     </div>
                   )}
-                </motion.div>
-              )}
-
-              {/* ---------------- AI CULTURAL SCHOLAR TAB ---------------- */}
-              {activeTab === 'ai_guide' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4"
-                >
-                  <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#8B1E22] text-white flex items-center justify-center font-bold">
-                      <Bot className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-serif font-bold text-base text-stone-900">
-                        AI Cultural Scholar &bull; {state.name}
-                      </h4>
-                      <p className="text-xs text-stone-500">
-                        Ask deep questions about folk mythology, recipes, dynastic battles, or music.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Chat message bubbles */}
-                  <div className="space-y-3 max-h-80 overflow-y-auto pr-1">
-                    {chatHistory.map((msg, idx) => (
-                      <div
-                        key={idx}
-                        className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                      >
-                        <div
-                          className={`max-w-[85%] p-3.5 rounded-2xl text-xs leading-relaxed ${
-                            msg.role === 'user'
-                              ? 'bg-[#8B1E22] text-white font-medium rounded-br-none'
-                              : 'bg-stone-100 text-stone-800 rounded-bl-none border border-stone-200'
-                          }`}
-                        >
-                          {msg.text}
-                        </div>
-                      </div>
-                    ))}
-                    {aiLoading && (
-                      <div className="flex justify-start">
-                        <div className="bg-stone-100 p-3 rounded-2xl text-xs text-stone-500 animate-pulse">
-                          Consulting ancient archives for {state.name}...
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Suggested Prompts */}
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {[
-                      `What is the history behind ${state.monuments[0]?.name || 'the royal palaces'}?`,
-                      `Explain the authentic secret of ${state.cuisines[0]?.name || 'the traditional dishes'}.`,
-                      `Tell me a folk legend of ${state.name}.`,
-                    ].map((p, i) => (
-                      <button
-                        key={i}
-                        onClick={() => handleAskAI(p)}
-                        className="text-[11px] px-2.5 py-1 rounded-full bg-stone-100 hover:bg-[#8B1E22]/10 text-stone-700 hover:text-[#8B1E22] border border-stone-200 transition-all cursor-pointer"
-                      >
-                        💡 {p}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Input Form */}
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      handleAskAI();
-                    }}
-                    className="flex gap-2 pt-2"
-                  >
-                    <input
-                      type="text"
-                      value={aiQuery}
-                      onChange={(e) => setAiQuery(e.target.value)}
-                      placeholder={`Ask anything about ${state.name}...`}
-                      className="flex-1 px-4 py-2.5 rounded-xl border border-stone-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#8B1E22]/30 bg-stone-50"
-                    />
-                    <button
-                      type="submit"
-                      disabled={aiLoading || !aiQuery.trim()}
-                      className="px-4 py-2.5 rounded-xl bg-[#8B1E22] hover:bg-[#73181b] disabled:opacity-50 text-white text-xs font-bold transition-all shadow cursor-pointer flex items-center gap-1"
-                    >
-                      <Send className="w-3.5 h-3.5" />
-                    </button>
-                  </form>
                 </motion.div>
               )}
             </div>

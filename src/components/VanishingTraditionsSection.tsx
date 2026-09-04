@@ -3,6 +3,7 @@ import { RARE_INSTRUMENTS_DATA, VANISHING_TRADITIONS_DATA } from '../data/vanish
 import { RareInstrument, VanishingTradition } from '../types';
 import { heritageAudio } from '../utils/audioSynth';
 import { StateBlogsSection } from './StateBlogsSection';
+import { AdaptiveImage } from './AdaptiveImage';
 import { 
   ShieldAlert, 
   Music, 
@@ -144,20 +145,23 @@ export const VanishingTraditionsSection: React.FC = () => {
 
             {/* Detailed display card */}
             <div className="lg:col-span-8 bg-white rounded-2xl border border-stone-200 shadow-sm p-6 sm:p-8">
-              <div className="relative rounded-xl overflow-hidden aspect-16/9 mb-6 border border-stone-200 shadow-xs">
-                <img
+              <div className="relative mb-6">
+                <AdaptiveImage
                   src={selectedTradition.image}
                   alt={selectedTradition.name}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
+                  title={selectedTradition.name}
+                  subtitle={`${selectedTradition.type} • Origin: ${selectedTradition.originState}`}
+                  description={`${selectedTradition.history} | Technique: ${selectedTradition.howMade}`}
+                  category="Endangered Cultural Heritage"
+                  heightClass="h-64 sm:h-80"
                 />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full bg-stone-900/85 backdrop-blur-md text-amber-300 text-xs font-bold uppercase tracking-wider">
+                <div className="absolute top-3 left-3 z-20 pointer-events-none">
+                  <span className="px-3 py-1 rounded-full bg-stone-900/85 backdrop-blur-md text-amber-300 text-xs font-bold uppercase tracking-wider shadow-sm">
                     {selectedTradition.type}
                   </span>
                 </div>
-                <div className="absolute bottom-4 right-4">
-                  <span className="px-3 py-1 rounded-full bg-red-950/90 text-red-200 text-xs font-semibold">
+                <div className="absolute bottom-3 right-3 z-20 pointer-events-none">
+                  <span className="px-3 py-1 rounded-full bg-red-950/90 text-red-200 text-xs font-semibold shadow-sm">
                     Estimated Artisans: {selectedTradition.activeArtisansEstimated}
                   </span>
                 </div>
@@ -263,14 +267,17 @@ export const VanishingTraditionsSection: React.FC = () => {
                     }`}
                   >
                     <div>
-                      <div className="relative aspect-16/10 overflow-hidden bg-stone-900">
-                        <img
+                      <div className="relative">
+                        <AdaptiveImage
                           src={inst.image}
                           alt={inst.name}
-                          className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-500"
-                          referrerPolicy="no-referrer"
+                          title={inst.name}
+                          subtitle={`${inst.category} • Origin: ${inst.originRegion}`}
+                          description={inst.description}
+                          category="Rare Acoustic Instrument"
+                          heightClass="h-48 sm:h-52"
                         />
-                        <div className="absolute top-3 left-3">
+                        <div className="absolute top-3 left-3 z-20 pointer-events-none">
                           <span className="px-2.5 py-0.5 rounded-md bg-stone-950/80 backdrop-blur-sm text-amber-300 text-[10px] font-bold uppercase tracking-wider">
                             {inst.category}
                           </span>
@@ -278,7 +285,7 @@ export const VanishingTraditionsSection: React.FC = () => {
                         <button
                           id={`btn-play-${inst.id}`}
                           onClick={() => handlePlayInstrument(inst)}
-                          className={`absolute bottom-3 right-3 flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold shadow-lg transition-all duration-200 cursor-pointer ${
+                          className={`absolute bottom-3 right-3 z-20 flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold shadow-lg transition-all duration-200 cursor-pointer ${
                             isPlaying
                               ? 'bg-amber-400 text-stone-950 animate-pulse'
                               : 'bg-[#8B1E22] text-white hover:bg-[#721519]'

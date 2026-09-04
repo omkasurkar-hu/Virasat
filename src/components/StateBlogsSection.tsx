@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { StateExperienceBlog } from '../types';
 import { INITIAL_STATE_BLOGS } from '../data/stateBlogsData';
 import { STATES_HERITAGE_DATA } from '../data/statesData';
+import { ClearImageLightboxModal, LightboxImageItem } from './ClearImageLightboxModal';
 import { 
   PenTool, 
   Search, 
@@ -20,7 +21,8 @@ import {
   Trash2,
   BookOpen,
   Image as ImageIcon,
-  Upload
+  Upload,
+  Maximize2
 } from 'lucide-react';
 
 const COMMON_TAGS = [
@@ -58,6 +60,8 @@ export const StateBlogsSection: React.FC = () => {
   // Modal / Reader state
   const [readingBlog, setReadingBlog] = useState<StateExperienceBlog | null>(null);
   const [isWriteModalOpen, setIsWriteModalOpen] = useState<boolean>(false);
+  const [lightboxImage, setLightboxImage] = useState<LightboxImageItem | null>(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
   const [likedBlogIds, setLikedBlogIds] = useState<Set<string>>(() => {
     try {
       const savedLikes = localStorage.getItem('virasat_liked_blogs');
@@ -657,15 +661,36 @@ export const StateBlogsSection: React.FC = () => {
             <div>
               {/* Modal Header: Cover Image (scrolls up with content) or Editorial Header */}
               {readingBlog.coverImage ? (
-                <div className="relative aspect-21/9 sm:aspect-16/7 w-full overflow-hidden bg-stone-900">
+                <div 
+                  onClick={() => {
+                    setLightboxImage({
+                      src: readingBlog.coverImage!,
+                      alt: readingBlog.title,
+                      title: readingBlog.title,
+                      subtitle: `${readingBlog.stateName} • ${readingBlog.authorName}`,
+                      description: readingBlog.content.slice(0, 150) + '...',
+                      category: 'Travel Chronicle',
+                    });
+                    setIsLightboxOpen(true);
+                  }}
+                  className="relative aspect-21/9 sm:aspect-16/7 w-full overflow-hidden bg-stone-900 cursor-pointer group"
+                  title="Click to zoom cover photo in full resolution"
+                >
                   <img
                     src={readingBlog.coverImage}
                     alt={readingBlog.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent" />
                   
+                  {/* Click to Zoom Badge */}
+                  <div className="absolute top-4 left-6 opacity-90 group-hover:opacity-100 transition-opacity">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-semibold border border-white/20 flex items-center gap-1.5 shadow-md">
+                      <Maximize2 className="w-3.5 h-3.5 text-amber-300" /> Click to Zoom
+                    </span>
+                  </div>
+
                   <div className="absolute bottom-4 left-6 right-16">
                     <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                       <span className="px-3 py-1 rounded-full bg-[#8B1E22] text-white text-[11px] font-bold uppercase tracking-wider">
@@ -1151,6 +1176,14 @@ export const StateBlogsSection: React.FC = () => {
             </form>
           </div>
         </div>
+      )}
+      {/* Lightbox for Chronicle Images */}
+      {isLightboxOpen && lightboxImage && (
+        <ClearImageLightboxModal
+          isOpen={isLightboxOpen}
+          onClose={() => setIsLightboxOpen(false)}
+          image={lightboxImage}
+        />
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FESTIVALS_CALENDAR_DATA } from '../data/festivalsCalendarData';
 import { DetailedFestival } from '../types';
+import { AdaptiveImage } from './AdaptiveImage';
 import { 
   Calendar as CalendarIcon, 
   Sparkles, 
@@ -157,24 +158,22 @@ export const FestivalsCalendarSection: React.FC = () => {
 
             {/* Festival Detail Card */}
             <div className={`${searchQuery ? 'lg:col-span-8' : 'lg:col-span-12'} bg-white rounded-2xl border border-stone-200 shadow-sm p-6 sm:p-8 space-y-6`}>
-              <div className="relative rounded-xl overflow-hidden aspect-16/9 border border-stone-200 shadow-xs">
-                <img
+              <div className="relative">
+                <AdaptiveImage
                   src={selectedFestival.image}
                   alt={selectedFestival.name}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
+                  title={selectedFestival.name}
+                  subtitle={`${selectedFestival.monthName} • ${selectedFestival.category} • ${selectedFestival.primaryStates.join(', ')}`}
+                  description={`${selectedFestival.culturalSignificance} | Calendar Timing: ${selectedFestival.lunarOrGregorianDate}`}
+                  category="Festival & Celebration"
+                  heightClass="h-64 sm:h-80"
                 />
-                <div className="absolute top-4 left-4 flex gap-2">
-                  <span className="px-3 py-1 rounded-full bg-stone-950/85 backdrop-blur-md text-amber-300 text-xs font-bold uppercase tracking-wider">
+                <div className="absolute top-3 left-3 z-20 flex gap-2 pointer-events-none">
+                  <span className="px-3 py-1 rounded-full bg-stone-950/85 backdrop-blur-md text-amber-300 text-xs font-bold uppercase tracking-wider shadow-sm">
                     {selectedFestival.monthName}
                   </span>
-                  <span className="px-3 py-1 rounded-full bg-amber-900/85 backdrop-blur-md text-white text-xs font-semibold">
+                  <span className="px-3 py-1 rounded-full bg-amber-900/85 backdrop-blur-md text-white text-xs font-semibold shadow-sm">
                     {selectedFestival.category}
-                  </span>
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-md p-3.5 rounded-xl border border-white/10 text-white">
-                  <span className="text-[11px] text-amber-300 font-bold block">
-                    🗓️ Calendar Timing: {selectedFestival.lunarOrGregorianDate}
                   </span>
                 </div>
               </div>

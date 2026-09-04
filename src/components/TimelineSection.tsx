@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TIMELINE_ERAS } from '../data/timelineData';
 import { TimelineEra } from '../types';
+import { AdaptiveImage } from './AdaptiveImage';
 import { 
   Clock, 
   Landmark, 
@@ -251,41 +252,54 @@ export const TimelineSection: React.FC = () => {
           </div>
 
           {/* Interactive Slide Bar Beneath Categories */}
-          <div className="pt-0.5 px-1 flex items-center gap-3">
-            <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider flex items-center gap-1 flex-shrink-0">
-              <SlidersHorizontal className="w-3 h-3 text-amber-800" /> Slide Categories
-            </span>
+          <div className="pt-1 px-1 space-y-2">
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider flex items-center gap-1.5 flex-shrink-0">
+                <SlidersHorizontal className="w-3.5 h-3.5 text-amber-800" /> Slide Categories
+              </span>
 
-            {/* Track Slider Bar */}
-            <div
-              className="flex-1 relative h-2 bg-stone-100 rounded-full overflow-hidden border border-stone-200/80 cursor-pointer group"
-              onClick={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const clickX = e.clientX - rect.left;
-                const percent = Math.max(0, Math.min(1, clickX / rect.width));
-                if (catScrollContainerRef.current) {
-                  const maxScroll =
-                    catScrollContainerRef.current.scrollWidth -
-                    catScrollContainerRef.current.clientWidth;
-                  catScrollContainerRef.current.scrollTo({
-                    left: maxScroll * percent,
-                    behavior: 'smooth',
-                  });
-                }
-              }}
-              title="Click or drag to slide between Art & Crafts, Science, Clothing, Music & more"
-            >
-              <div
-                className="absolute top-0 bottom-0 bg-gradient-to-r from-amber-800 via-amber-600 to-amber-900 rounded-full transition-all duration-150 group-hover:brightness-110 shadow-xs"
-                style={{
-                  left: `${Math.max(0, Math.min(75, catScrollProgress * 0.75))}%`,
-                  width: '25%',
-                }}
-              />
+              {/* Range Scrubber Bar */}
+              <div className="flex-1 relative flex items-center">
+                <input
+                  type="range"
+                  min={0}
+                  max={categories.length - 1}
+                  step={1}
+                  value={categories.findIndex((c) => c.id === activeCategory)}
+                  onChange={(e) => {
+                    const idx = Number(e.target.value);
+                    if (categories[idx]) {
+                      handleCategorySelect(categories[idx].id);
+                    }
+                  }}
+                  className="w-full h-2.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-amber-800 transition-all focus:outline-hidden"
+                  aria-label="Slide between historical categories"
+                  title="Slide to switch between Art & Craft, Clothing, Architecture and more"
+                />
+              </div>
+
+              <div className="text-[11px] font-bold text-amber-900 bg-amber-100 px-2 py-0.5 rounded-md font-mono flex-shrink-0 border border-amber-200">
+                {categories.findIndex((c) => c.id === activeCategory) + 1} / {categories.length}
+              </div>
             </div>
 
-            <div className="text-[10px] font-bold text-stone-500 font-mono flex-shrink-0">
-              {Math.round(catScrollProgress)}%
+            {/* Quick Category Labels Bar */}
+            <div className="hidden sm:flex justify-between items-center text-[10px] text-stone-500 px-1 select-none">
+              {categories.map((c, i) => {
+                const isCur = activeCategory === c.id;
+                return (
+                  <button
+                    key={c.id}
+                    type="button"
+                    onClick={() => handleCategorySelect(c.id)}
+                    className={`transition-all truncate max-w-[90px] cursor-pointer text-left ${
+                      isCur ? 'text-amber-900 font-bold scale-105' : 'hover:text-stone-800'
+                    }`}
+                  >
+                    {i + 1}. {c.label.split(' ')[0]}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -328,19 +342,15 @@ export const TimelineSection: React.FC = () => {
                   </div>
                 </div>
                 <div className="lg:col-span-5">
-                  <div className="relative rounded-xl overflow-hidden shadow-md aspect-4/3 border border-stone-200">
-                    <img
-                      src={era.architecture.image}
-                      alt={era.architecture.title}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-4">
-                      <span className="text-white text-xs font-medium drop-shadow-sm">
-                        {era.architecture.title} • {era.name}
-                      </span>
-                    </div>
-                  </div>
+                  <AdaptiveImage
+                    src={era.architecture.image}
+                    alt={era.architecture.title}
+                    title={era.architecture.title}
+                    subtitle={`${era.name} (${era.period})`}
+                    description={era.architecture.description}
+                    category="Historical Architecture"
+                    heightClass="h-64 sm:h-72"
+                  />
                 </div>
               </div>
             )}
@@ -373,14 +383,15 @@ export const TimelineSection: React.FC = () => {
                   </div>
                 </div>
                 <div className="lg:col-span-5">
-                  <div className="relative rounded-xl overflow-hidden shadow-md aspect-4/3 border border-stone-200">
-                    <img
-                      src={era.artAndCraft.image}
-                      alt={era.artAndCraft.title}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
+                  <AdaptiveImage
+                    src={era.artAndCraft.image}
+                    alt={era.artAndCraft.title}
+                    title={era.artAndCraft.title}
+                    subtitle={`${era.name} (${era.period})`}
+                    description={era.artAndCraft.description}
+                    category="Visual Arts & Crafts"
+                    heightClass="h-64 sm:h-72"
+                  />
                 </div>
               </div>
             )}

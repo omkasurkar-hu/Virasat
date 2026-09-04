@@ -221,7 +221,21 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
       className="fixed inset-y-0 right-0 w-full sm:w-[480px] md:w-[540px] bg-slate-900/95 backdrop-blur-xl border-l border-slate-700/60 shadow-2xl z-40 flex flex-col overflow-hidden text-slate-100"
     >
       {/* Banner & Header: State Name and Banner Image Overlap Just Like Home Page */}
-      <div className="relative h-60 sm:h-64 w-full overflow-hidden flex-shrink-0 select-none">
+      <div 
+        onClick={() => {
+          setLightboxImage({
+            src: state.bannerImage || state.image || state.monuments[0]?.image || '/images/virasat_hero_bg.jpg',
+            alt: state.name,
+            title: state.name,
+            subtitle: `${state.region} India • Capital: ${state.capital}`,
+            description: state.description,
+            category: 'State Heritage Panorama',
+          });
+          setIsLightboxOpen(true);
+        }}
+        className="relative h-60 sm:h-64 w-full overflow-hidden flex-shrink-0 select-none cursor-pointer group"
+        title="Click to zoom state banner"
+      >
         <img
           src={state.bannerImage || state.image || state.monuments[0]?.image || '/images/virasat_hero_bg.jpg'}
           alt={state.name}
@@ -231,14 +245,36 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
               target.src = state.monuments[0]?.image || '/images/virasat_hero_bg.jpg';
             }
           }}
-          className="w-full h-full object-cover brightness-[0.92] contrast-[1.05] scale-105 transition-transform duration-700"
+          className="w-full h-full object-cover brightness-[0.92] contrast-[1.05] scale-105 group-hover:scale-110 transition-transform duration-700"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
 
         {/* Top Floating Action Buttons */}
-        <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+        <div 
+          onClick={(e) => e.stopPropagation()}
+          className="absolute top-4 right-4 flex items-center gap-2 z-10"
+        >
+          <button
+            id="btn-zoom-banner-panel"
+            onClick={() => {
+              setLightboxImage({
+                src: state.bannerImage || state.image || state.monuments[0]?.image || '/images/virasat_hero_bg.jpg',
+                alt: state.name,
+                title: state.name,
+                subtitle: `${state.region} India • Capital: ${state.capital}`,
+                description: state.description,
+                category: 'State Heritage Panorama',
+              });
+              setIsLightboxOpen(true);
+            }}
+            className="p-2 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700 text-slate-200 hover:text-amber-400 hover:bg-slate-800 transition-all"
+            title="Click to Zoom Banner"
+          >
+            <Eye className="w-4 h-4" />
+          </button>
+
           <button
             id="btn-voice-narrate"
             onClick={toggleSpeech}
@@ -481,7 +517,17 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                 {state.monuments.slice(0, 2).map((m, idx) => (
                   <div
                     key={idx}
-                    onClick={() => onSelectMonument(m, state)}
+                    onClick={() => {
+                      setLightboxImage({
+                        src: m.image,
+                        alt: m.name,
+                        title: m.name,
+                        subtitle: `${m.century} • ${m.type} • ${state.name}`,
+                        description: m.detailedDescription || m.description,
+                        category: 'Monument',
+                      });
+                      setIsLightboxOpen(true);
+                    }}
                     className="group relative h-32 rounded-xl overflow-hidden cursor-pointer border border-slate-700/60 hover:border-amber-500 transition-all"
                   >
                     <img
@@ -651,15 +697,20 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
                   </div>
 
                   {art.image && (
-                    <div className="relative h-36 rounded-xl overflow-hidden border border-slate-700/50">
-                      <img
+                    <div className="mt-1">
+                      <AdaptiveImage
                         src={art.image}
                         alt={art.name}
-                        className="w-full h-full object-cover"
-                        referrerPolicy="no-referrer"
-                        loading="lazy"
+                        title={art.name}
+                        subtitle={`${art.type} • Origin: ${art.origin}`}
+                        description={art.description}
+                        category="Performing Arts & Traditions"
+                        heightClass="h-40 sm:h-48"
+                        onOpenModal={(item) => {
+                          setLightboxImage(item);
+                          setIsLightboxOpen(true);
+                        }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                     </div>
                   )}
 
