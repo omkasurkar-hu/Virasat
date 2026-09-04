@@ -197,7 +197,7 @@ export const NORTH_STATES: StateHeritage[] = [
     region: 'North',
     coordinates: [31.1471, 75.3412],
     zoomLevel: 7,
-    bannerImage: 'https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://cdn.britannica.com/06/162706-050-E566DC89/Harmandir-Sahib-Teja-Singh-Samudri-Hall-Clock.jpg',
     tagline: 'Land of Five Rivers, Golden Sanctum, Bhangra & Big Hearts',
     overview: 'Punjab—named from Persian Panj (Five) and Aab (Water)—is the vibrant agrarian heartland of India. Famous for the serene Golden Temple, soul-stirring Gurbani hymns, energetic Bhangra and Giddha, colorful Phulkari embroidery, and lavish tandoori cuisine.',
     officialLanguage: 'Punjabi',
@@ -212,7 +212,7 @@ export const NORTH_STATES: StateHeritage[] = [
         century: '1589 AD (16th Century)',
         location: 'Amritsar',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=800&q=80',
+        image: 'https://cdn.bega.com/cdn-cgi/image/w=600,h=900,fit=cover,gravity=0.66x0.54,f=auto/https://images.ctfassets.net/w2xcep4i3dcd/uJw9iRWCVxDGecgB1NFdg/39ccbf8cfaaad6399ed8170f982b13d6/Harmandir_Sahib-HERO.jpg',
         description: 'The holiest Gurdwara of Sikhism, plated with pure gold foil in 1830 by Maharaja Ranjit Singh, surrounded by the holy Amrit Sarovar lake.',
         coordinates: [31.6200, 74.8765]
       },
@@ -222,7 +222,7 @@ export const NORTH_STATES: StateHeritage[] = [
         century: '1919 AD (20th Century)',
         location: 'Amritsar',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=800&q=80',
+        image: 'https://s7ap1.scene7.com/is/image/incredibleindia/jallianwala-bagh-amritsar-punjab-1-attr-hero?qlt=82&ts=1726662275638',
         description: 'National memorial honoring hundreds of innocent freedom fighters and citizens martyred on Baisakhi Day in 1919; bullet marks still preserved.',
         coordinates: [31.6208, 74.8801]
       },
@@ -232,7 +232,7 @@ export const NORTH_STATES: StateHeritage[] = [
         century: '6th Century AD (Rebuilt 11th Century)',
         location: 'Bathinda',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQip2T2gjmkjE-rPcDY4QXj3LfD4DOBwrGPWehkVfzqXXy08GK-HQSokgY&s=10',
         description: 'One of the oldest surviving forts in India where Razia Sultan, first female monarch of Delhi Sultanate, was imprisoned.',
         coordinates: [30.2110, 74.9455]
       }
@@ -240,6 +240,7 @@ export const NORTH_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Bhangra',
+        image:'https://asiasamachar.com/wp-content/uploads/2018/06/RedDot-Singapore-Bhangra-Dance-Competition-4a.jpg',
         type: 'Dance',
         origin: 'Majha & Malwa Regions',
         description: 'Energetic, acrobatic harvest dance performed with high-energy kicks, arm pumps, and shoulder rolls to the thumping beat of the Dhol.',
@@ -248,6 +249,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Giddha',
+        image:'https://cultureandheritage.org/wp-content/uploads/2021/05/11-12.jpg',
         type: 'Dance',
         origin: 'Punjab',
         description: 'Graceful, rhythmic clap-dance by women accompanied by humorous and emotional couplets called Boliyaan.',
@@ -256,6 +258,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Gatka',
+        image:'https://akm-img-a-in.tosshub.com/aajtak/images/story/201503/punjabi_gatka_s_650_031015105918.jpg?size=948:533',
         type: 'Martial Art',
         origin: 'Sikh Martial Tradition',
         description: 'Sacred Sikh martial art of weapon-handling, agility, and spiritual defense associated with Guru Hargobind Ji.',
@@ -265,24 +268,28 @@ export const NORTH_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Makki di Roti & Sarson da Saag',
+        image:'https://www.secondrecipe.com/wp-content/uploads/2019/11/makke-ki-roti.jpg',
         category: 'Vegetarian',
         description: 'Slow-cooked spiced mustard greens and bathua simmered in earthen pots, served with yellow cornmeal flatbread, homemade white butter (Makhan), and jaggery.',
         keyIngredients: ['Mustard Leaves (Sarson)', 'Bathua', 'Cornmeal Flour (Makki)', 'Desi White Butter', 'Ginger-Garlic', 'Green Chilies']
       },
       {
         name: 'Amritsari Kulcha & Chole',
+        image:'https://i.redd.it/5ea5tweohm851.jpg',
         category: 'Vegetarian',
         description: 'Crispy layered tandoor-baked flatbread stuffed with spiced potatoes and onions, served with tangy dark chickpea curry and onion-tamarind chutney.',
         keyIngredients: ['Flour', 'Potatoes', 'Chickpeas', 'Anardana (Pomegranate Seeds)', 'Ghee', 'Kasuri Methi']
       },
       {
         name: 'Butter Chicken & Tandoori Chicken',
+        image:'https://www.licious.in/blog/wp-content/uploads/2020/10/butter-chicken--600x600.jpg',
         category: 'Non-Vegetarian',
         description: 'Succulent yogurt-marinated chicken grilled in clay tandoor and simmered in a silky, sweet-spiced tomato, cashew, butter, and cream gravy.',
         keyIngredients: ['Chicken', 'Tomatoes', 'Butter', 'Fresh Cream', 'Cashew Paste', 'Kashmiri Chilies']
       },
       {
         name: 'Pinni',
+        image:'https://www.cookwithmanali.com/wp-content/uploads/2023/01/Atta-Pinni.jpg',
         category: 'Dessert',
         description: 'Winter specialty roasted whole wheat and urad dal sweet loaded with desi ghee, dry fruits, gond (edible gum), and cardamom.',
         keyIngredients: ['Whole Wheat Flour', 'Desi Ghee', 'Gond', 'Almonds', 'Cashews', 'Jaggery']
@@ -291,6 +298,7 @@ export const NORTH_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Baisakhi',
+        image:'https://www.thestatesman.com/wp-content/uploads/2023/04/5E1C6DA0-4687-4272-A912-6F5434D00AF3.jpeg',
         timing: 'April 13 or 14',
         significance: 'Spring harvest festival marking the founding of the Khalsa Panth by Guru Gobind Singh Ji in 1699.',
         keyRitual: 'Nagar Kirtan processions, early morning Ardas at Gurdwaras, and spirited Bhangra performances.',
@@ -298,6 +306,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Lohri',
+        image:'https://c.ndtvimg.com/2025-01/iojkrvu_lohri-celebrations_625x300_08_January_25.jpeg',
         timing: 'January 13',
         significance: 'Bonfire harvest festival celebrating the winter solstice and the agrarian abundance of sugarcane and mustard.',
         keyRitual: 'Circling community bonfires, offering rewri, peanuts, and popcorn to the fire, singing Dulha Bhatti folk songs.',
@@ -305,6 +314,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Hola Mohalla',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT09FDkOIBqOKp71bTnW0vza0qSJRgSI6tNIMszj665TmhfCDwy1_JMjjU&s=10',
         timing: 'March (Day after Holi)',
         significance: 'Grand three-day military martial festival instituted by Guru Gobind Singh Ji at Anandpur Sahib.',
         keyRitual: 'Displays of Gatka swordsmanship, tent-pegging, horse-riding, and devotional poetry.',
@@ -313,30 +323,43 @@ export const NORTH_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Phulkari (Embroidered Silk on Khaddar)', 'Bagh Embroidery', 'Punjabi Durries', 'Gotta Patti Borders'],
+      image:'https://masakalee.com/cdn/shop/files/handmade-designer-phulkari-dupatta-in-khaddar-cotton-2385227.jpg?v=1779433455',
+      image:'https://imp-art.org/wp-content/uploads/1970/01/bagh.jpg',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrtqyxqeO8USfTPlrUYiuE4WXX9NujGNsA7vlQOnZsmh73_yfVuxizr-c&s=10',
+      image:'https://i.etsystatic.com/42779058/r/il/75826a/6088662867/il_570xN.6088662867_l0ji.jpg',
       handicrafts: ['Hand-stitched Amritsari Tilla Juttis', 'Brass & Copper Utensils of Jandiala Guru (UNESCO Intangible Heritage)', 'Inlaid Wooden Furniture'],
+      image:'https://sandoori.com/wp-content/uploads/2025/05/IMG_4812-scaled-e1748711272549.jpeg',
+      image:'https://asiainch.org/wp-content/uploads/2014/07/IMG_20210831_195806-1024x695.jpg',
+      image:'https://www.inlayworld.co/images/products/Furniture-Items/futniture-05.png',
       traditionalMenAttire: 'Kurta-Pyjama or Chadar with a royal Punjabi Pagri / Turban.',
+      image:'https://blog.indianweddingsaree.com/wp-content/uploads/2018/05/Eid-Special-Punjabi-Kurta-Pajama.jpg',
       traditionalWomenAttire: 'Punjabi Salwar Suit with bright Phulkari Dupatta and braided Paranda.',
+      image:'https://i.pinimg.com/736x/0b/de/34/0bde34dd039d0e9f785c5fce9bb00068.jpg',
       giTaggedCrafts: ['Phulkari Embroidery', 'Handcrafted Metal Utensils of Jandiala Guru']
     },
     historyTimeline: [
       {
         era: 'c. 1500 BCE',
         title: 'Composition of the Rigveda in Saptasindhu',
+        image:'https://upload.wikimedia.org/wikipedia/commons/d/d5/Rigvedic_geography.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         description: 'Vedic hymns were composed along the river valleys of ancient Punjab (the land of seven sacred rivers).'
       },
       {
         era: '1469 - 1708 AD',
         title: 'The Sikh Gurus & Foundation of Khalsa',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1fVaxEyhXYP3QyIkvkq83p6buW3yNN_cxjH9dbsWVea5rSIVUIEpm3Kw&s=10',
         description: 'Guru Nanak Dev Ji founded Sikhism promoting equality, culminating in Guru Gobind Singh Ji creating the Khalsa brotherhood in 1699.'
       },
       {
         era: '1799 - 1839 AD',
         title: 'The Sikh Empire under Maharaja Ranjit Singh',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLuUS532IaIjLtAp0BkchMQ2pR0IHxbPFOlcqwCI5Xxg&s=10',
         description: 'Lion of Punjab united the misls into a sovereign, secular, and powerful empire extending from the Khyber Pass to Tibet.'
       },
       {
         era: '1966 AD',
         title: 'Modern Statehood & Green Revolution',
+        image:'https://imgv2-2-f.scribdassets.com/img/document/51708614/original/1323532db9/1?v=1',
         description: 'Reorganized on linguistic lines, Punjab spearheaded India\'s Green Revolution, becoming the nation\'s primary breadbasket.'
       }
     ]
