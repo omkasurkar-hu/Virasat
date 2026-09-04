@@ -1173,7 +1173,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'North-East',
     coordinates: [25.4670, 91.3662],
     zoomLevel: 8,
-    bannerImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://s3.india.com/wp-content/uploads/2024/08/ancient-ruins-in-shrillong.jpg?impolicy=Medium_Widthonly&w=800&h=541',
     tagline: 'Abode of Clouds, Living Root Bridges, Cherrapunji Rains & Matrilineal Harmony',
     overview: 'Meghalaya is a lush cloud-crowned paradise home to the wettest places on planet Earth (Mawsynram & Cherrapunji), crystalline rivers (Umngot in Dawki), the architectural bio-engineering marvel of Living Root Bridges, Scotland of the East (Shillong), and the world\'s largest surviving matrilineal society (Khasi, Garo, Jaintia).',
     officialLanguage: 'English',
@@ -1188,7 +1188,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Centuries-old Indigenous Ficus elastica Craft',
         location: 'Nongriat, Cherrapunji (Sohra)',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+        image: 'https://api.breakbag.com/storage/images/istock-540129900-1-fg2oith3619seyys-1721825966222.jpg',
         description: 'Two-tier bridge grown over centuries by indigenous Khasi villagers by guiding the aerial roots of rubber fig trees across raging river gorges; grows stronger with age.',
         coordinates: [25.2505, 91.6708]
       },
@@ -1198,7 +1198,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Natural Geological Formation',
         location: 'Cherrapunji (Sohra)',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80',
+        image: 'https://www.worldatlas.com/r/w1200-q80/upload/cb/ed/e3/shutterstock-1190743909.jpg',
         description: 'Tallest plunge waterfall in India dropping 1,115 feet (340 m) off the verdant Sohra plateau into an emerald-green natural water pool.',
         coordinates: [25.2757, 91.6853]
       },
@@ -1208,7 +1208,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Natural Biosphere',
         location: 'Dawki, West Jaintia Hills',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        image: 'https://global-uploads.webflow.com/5e93226606600f15bcd785e2/626a6eedbd1480f02993e0be_mondakranta-saikia-Xqw7XgnvU3w-unsplash.jpg',
         description: 'Crystal-clear river along the Indo-Bangladesh border where water is so transparent that wooden boats appear to float in mid-air above the riverbed.',
         coordinates: [25.1878, 92.0208]
       }
@@ -1216,6 +1216,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Nongkrem Dance (Shad Nongkrem)',
+        image: 'https://i0.wp.com/nenow.in/wp-content/uploads/2019/11/EIwyDX2U8AExE8P.jpg?fit=1030%2C583&ssl=1',
         type: 'Dance',
         origin: 'Khasi Kingdom of Hima Khyrim (Smit)',
         description: 'Sacred 5-day harvest and thanksgiving festival dance performed by virgin maidens in heavy gold and silver ornaments, accompanied by male warriors wielding swords and fly whisks.',
@@ -1224,6 +1225,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Wangala (100 Drums Festival)',
+        image: 'https://static-blog.treebo.com/wp-content/uploads/2023/11/Wangala-Festival-2-1024x675.jpg',
         type: 'Dance',
         origin: 'Garo Tribe (Asanang, Tura)',
         description: 'Post-harvest thanksgiving dance honoring Saljong (Sun God of Fertility), featuring 100 synchronized drummers and feathered headgears.',
@@ -1232,6 +1234,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Behdienkhlam Festival Dance',
+        image: 'https://www.meghalaya.gov.in/sites/default/files/inline-images/behdeinkhlam.jpg',
         type: 'Theatre',
         origin: 'Jaintia (Pnar) Tribe of Jowai',
         description: 'Spectacular ritual where tall, vibrantly decorated wooden towers (Rot) are carried into the sacred pool of Aitnar to drive away plague and evil spirits.',
@@ -1241,18 +1244,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Jadoh with Dohneiiong (Black Sesame Pork)',
+        image: 'https://2.bp.blogspot.com/-8VOfZw361mg/VGMHoo0BmGI/AAAAAAAACAE/efcYkeBmZzQ/s1600/DSC_0054.JPG',
         category: 'Non-Vegetarian',
         description: 'Signature Khasi dish of short-grain aromatic rice cooked in rich meat broth, paired with succulent pork braised in roasted black sesame seed paste (Neiiong).',
         keyIngredients: ['Minikit Rice', 'Pork / Chicken', 'Roasted Black Sesame Paste', 'Ginger-Garlic', 'Bay Leaves', 'Onions']
       },
       {
         name: 'Dohkhlieh & Tungrymbai',
+        image: 'https://blog.swiggy.com/wp-content/uploads/2024/09/Image-No-2-Dohkhlieh-768x403.png',
         category: 'Non-Vegetarian',
         description: 'Pork salad tossed with finely chopped onions, ginger, green chilies, and pork brains; paired with fermented soybean paste (Tungrymbai) cooked with black sesame.',
         keyIngredients: ['Boiled Pork', 'Fresh Ginger', 'Fermented Soybeans (Tungrymbai)', 'Black Sesame', 'Green Chilies']
       },
       {
         name: 'Pukhlein & Cha Khoo',
+        image: 'https://www.awesomecuisine.com/wp-content/uploads/2025/02/Pukhlein.jpg',
         category: 'Dessert',
         description: 'Crispy deep-fried sweet bread made of pounded rice flour and melted sugarcane jaggery, enjoyed with steaming red hill tea.',
         keyIngredients: ['Rice Powder', 'Sugarcane Jaggery', 'Mustard Oil']
@@ -1261,6 +1267,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Wangala Festival (100 Drums Festival)',
+        image: 'https://tse1.explicit.bing.net/th/id/OIP.eQj8YA6Xxx8Y7YFoRAJKewHaEJ?r=0&w=626&h=351&rs=1&pid=ImgDetMain&o=7&rm=3',
         timing: 'November (Post-Harvest)',
         significance: 'Grandest harvest festival of the Garo tribe paying homage to Misi Saljong, the Great Sun God of Agrarian Fertility.',
         keyRitual: 'Village elders perform the Rugala incense ceremony, followed by 100 male drummers and female dancers dancing in synchronized lines.',
@@ -1268,6 +1275,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Shad Suk Mynsiem (Dance of Joyful Hearts)',
+        image: 'https://oddessemania.in/wp-content/uploads/2024/04/Shad-suk-mynsiem-folk-dances-of-Meghalaya.jpg',
         timing: 'April (Spring / 3 Days)',
         significance: 'Annual Khasi thanksgiving dance celebrating the rebirth of nature, fertility, and community brotherhood.',
         keyRitual: 'Unmarried women dance in the inner circle representing purity and modesty, while men dance in the outer ring protecting them.',
@@ -1275,6 +1283,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Cherry Blossom Festival Shillong',
+        image: 'https://festivation.com/images/shillong-cherry-blossom-festival-2025-guide.webp',
         timing: 'November (Autumn)',
         significance: 'Unique autumn flowering festival celebrating the blooming of wild Himalayan cherry blossoms across Shillong.',
         keyRitual: 'International music concerts, cosplay, local wine tasting, and illuminated night walks.',
@@ -1283,29 +1292,42 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Ryndia Silk (Organic Eri Eco-Silk colored with plant dyes)', 'Dakmanda (Garo handwoven wraparound with eye borders)', 'Jainsem & Dhara (Khasi silk draped attire)'],
+      image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWEFhFoGoW69AYagO10K_dcy2rb5KJ1O8SHUroXCDVXYoYbaKWlEUO70n3rgUFPgDOCFQDLTvHzmQQO5TvAbEMArAZ1awWNUpeZZT5-R5QR3WjPFtsdzIs60Tm5oNYecMb_BlIUlA31PI6/s2639/IMG_20190221_112952.jpg',
+      image: 'https://garrowmandai.com/wp-content/uploads/2026/02/4500.jpeg',
+      image: 'https://tse1.mm.bing.net/th/id/OIP.CJfLgJ-UxjfcoCrjFDL9mQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       handicrafts: ['Tlieng (Waterproof Khasi Cane Mats)', 'Bamboo Rain Shields (Knup)', 'Cane & Bamboo Stools (Mora)', 'Black Clay Pottery of Larnai'],
+      image: 'https://www.postoast.com/wp-content/uploads/2020/06/Cane-mats-meghalaya.jpg',
+      image: 'https://chalohoppo.com/wp-content/uploads/2023/03/Bamboo-Rain-Shields-Knup-of-Meghalaya.jpg',
+      image: 'https://m.media-amazon.com/images/I/71sGmGl4KwL._AC_.jpg',
+      image: 'https://artsandcraftmeghalaya.com/wp-content/uploads/2024/10/P1050117__.jpg',
       traditionalMenAttire: 'Jymphong (sleeveless cotton jacket open in front) with Dhoti and turban (Spong).',
+      image: 'https://tse2.mm.bing.net/th/id/OIP.fwDi31Le1gc_JjedyTMf0gAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       traditionalWomenAttire: 'Jainsem (two-piece silk garment pinned at both shoulders) covered by a Dhara or Jainkup woolen mantle with 24k gold Kynjri chains.',
+      image: 'https://static.fibre2fashion.com/articleresources/images/106/10563/Cover-b_Big.jpg',
       giTaggedCrafts: ['Meghalaya Memang Narang (Wild Orange)', 'Khasi Mandarin', 'Lakadong Turmeric (World\'s highest curcumin content ~7-12%)']
     },
     historyTimeline: [
       {
         era: 'Ancient Times - 19th Century',
+        image: 'https://vishnuias.com/wp-content/uploads/2021/05/The-Khasis-One-of-the-Worlds-Largest-MATRILINEAL-society-upsc-anthropology-vishnu-ias.jpg',
         title: 'Khasi Syiemships & Matrilineal System',
         description: 'Independent Khasi democratic confederacies (Syiemships) ruled through village councils (Durbar Shnong), preserving pristine sacred forests (Law Kyntang).'
       },
       {
         era: '1829 - 1833 AD',
+        image: 'https://tse2.mm.bing.net/th/id/OIP.mzJp2oLta3TwvHFiaWMZAAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         title: 'U Tirot Sing & Anglo-Khasi War',
         description: 'Heroic Khasi king of Nongkhlaw, U Tirot Sing, fought the British East India Company using guerrilla warfare in the rugged gorges.'
       },
       {
-        era: '1874 AD',
+        era: '1874 AD',    
+        image: 'https://as1.ftcdn.net/v2/jpg/05/76/92/70/1000_F_576927066_ZrKVW1XYp6ntXpDObVnXGrUaWuKYzlhp.jpg',
         title: 'Shillong Made Capital of Chief Commissionership of Assam',
         description: 'Chosen as the administrative headquarters due to its pleasant temperate climate, earning the moniker "Scotland of the East".'
       },
       {
         era: '1972 AD',
+        image: 'https://media1.thrillophilia.com/filestore/kf9q8z6v3lt8i9frunsoidu1wpq2_nohkalikai-falls-in-meghalaya.webp',
         title: 'Statehood of Meghalaya',
         description: 'Carved out of Assam as a full-fledged autonomous state on 21 January 1972 under the North-Eastern Areas Reorganisation Act.'
       }
@@ -1318,7 +1340,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'North-East',
     coordinates: [26.1584, 94.5624],
     zoomLevel: 8,
-    bannerImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://tse2.mm.bing.net/th/id/OIP.oAVzt7n0h-4RaVQCartoWgHaGv?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
     tagline: 'Land of Festivals, 16 Naga Warrior Tribes, Hornbill Carnival & Dzüko Valley',
     overview: 'Nagaland is the rugged, mist-shrouded frontier of 16 distinct Naga tribes, celebrated for their warrior lore, intricate tribal shawls, the world-famous Hornbill Festival, the emerald serenity of Dzüko Valley, and the historic WWII Battle of Kohima.',
     officialLanguage: 'English',
@@ -1333,7 +1355,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '1944 AD (Battle of Kohima)',
         location: 'Garrison Hill, Kohima',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.moneycontrol.com/static-mcnews/2020/08/5-stalingrad-of-the-east.jpg',
         description: 'Memorial marking the turning point of WWII where British and Indian forces halted the Japanese invasion; features the famous Kohima Epitaph: "When you go home, tell them of us and say, For your tomorrow, we gave our today".',
         coordinates: [25.6700, 94.1060]
       },
@@ -1343,7 +1365,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Natural Biosphere (2,452 m Altitude)',
         location: 'Nagaland - Manipur Border',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        image: 'https://www.savaari.com/blog/wp-content/uploads/2024/01/7.-japfu-peak-1.jpg',
         description: 'Rolling emerald valley famous for its endemic Dzüko Lily, sweeping bamboo brush landscapes, and the world\'s tallest rhododendron tree on Mt. Japfü (108 ft).',
         coordinates: [25.5500, 94.0667]
       },
@@ -1353,7 +1375,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '700+ Years Old (First Green Village of Asia)',
         location: 'Kohima District',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+        image: 'https://tse2.mm.bing.net/th/id/OIP.modwbe_McBLFNzQYkvV2ewHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         description: 'Historic village renowned for resisting British expeditions in 1879, now celebrated as India\'s pioneer community conservation village with terraced paddy fields.',
         coordinates: [25.6469, 94.0208]
       }
@@ -1361,6 +1383,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Hornbill Festival Warrior Dances',
+        image: 'https://c8.alamy.com/comp/HK6R4A/warrior-of-the-khiamniungan-tribe-perform-ritual-dances-at-hornbill-HK6R4A.jpg',
         type: 'Dance',
         origin: 'Kisama Heritage Village',
         description: 'Grand congregation of 16 Naga tribes performing high-kicking warrior victory dances, war cries, spear-spinning drills, and fire-making rituals.',
@@ -1369,6 +1392,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Log Drumming of Konyak & Ao Tribes',
+         image: 'https://www.vanishingculturesphotography.com/img/s/v-10/p102851827-3.jpg',
         type: 'Music',
         origin: 'Mon & Mokokchung Morungs',
         description: 'Sacred community drumming where 30+ men beat rhythmically on a massive hollowed tree trunk (Log Drum) installed in the youth dormitory (Morung).',
@@ -1376,6 +1400,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Naga Folk Ballads & Choirs',
+         image: 'https://assets.telegraphindia.com/telegraph/2025/Oct/1761785944_new-project-2025-10-30t041712-632.jpg',
         type: 'Music',
         origin: 'Naga Churches & Traditional Morungs',
         description: 'Soulful multi-part vocal harmonies blending indigenous oral poetry with four-part choral mastery.',
@@ -1385,18 +1410,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Smoked Pork with Axone (Fermented Soybeans)',
+         image: 'https://bestofnortheast.com/wp-content/uploads/2026/03/nagaland-smoked-pork-axone.webp',
         category: 'Non-Vegetarian',
         description: 'Woodsmoke-cured pork braised with pungent fermented soybean paste (Axone), crushed Raja Mircha (Bhut Jolokia), ginger, and wild mustard leaves.',
         keyIngredients: ['Smoked Pork', 'Axone (Fermented Soybeans)', 'Raja Mircha (King Chili)', 'Tomatoes', 'Ginger', 'Mustard Greens']
       },
       {
         name: 'Anishi Pork (Fermented Yam Leaves)',
+         image: 'https://s3-media0.fl.yelpcdn.com/bphoto/uNGyEcqW9_amOsErorqlBA/348s.jpg',
         category: 'Non-Vegetarian',
         description: 'Ao tribe specialty of smoked pork cooked with sun-dried fermented yam leaf cakes (Anishi) and fiery chilies into a dark, savory stew.',
         keyIngredients: ['Smoked Pork', 'Anishi (Fermented Yam Cakes)', 'King Chili', 'Ginger-Garlic', 'Salt']
       },
       {
         name: 'Galho & Zutho (Naga Rice Beer)',
+         image: 'https://tse1.mm.bing.net/th/id/OIP.9qkPNL-_tEW7XtiZJOarfAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         category: 'Vegetarian',
         description: 'Comforting soupy rice porridge with wild forest herbs and greens; paired with frothy, sweet-sour unpasteurized white rice beer (Zutho).',
         keyIngredients: ['Rice', 'Wild Seasonal Greens', 'Fermented Bamboo Shoots', 'Yeast Culture (Zutho)']
@@ -1405,6 +1433,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Hornbill Festival (Festival of Festivals)',
+         image: 'https://tse2.mm.bing.net/th/id/OIP.LkFE57wKz7qlwKl4jO-gnAHaEc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         timing: 'December 1 - 10 (Kisama Heritage Village)',
         significance: 'Grand state carnival uniting all 16 Naga tribes under one roof, showcasing indigenous tribal crafts, music, dance, and food.',
         keyRitual: 'Traditional Naga Morung village displays, Naga King Chili eating championship, rock festivals, and traditional wrestling.',
@@ -1412,6 +1441,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Moatsu Mong (Ao Naga Festival)',
+         image: 'https://tse1.mm.bing.net/th/id/OIP.-Jz5MnQuc98amP01jIgn0gHaDt?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         timing: 'May 1 - 3 (Post-Sowing)',
         significance: 'Spring festival of the Ao tribe celebrated in Mokokchung after completing the clearing and sowing of Jhum fields.',
         keyRitual: 'Sangpangtu ceremony where men and women sit around large bonfires eating and singing poetic love songs.',
@@ -1419,6 +1449,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Sekrenyi (Angami Purification Festival)',
+         image: 'https://tse3.mm.bing.net/th/id/OIP.flwVtwqENzML6hsMnhLIiAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         timing: 'February (Phousnyi / 10 Days)',
         significance: 'Annual purification festival of the Angami tribe to cleanse body, spirit, and village from past sins before the agricultural season.',
         keyRitual: 'Young men bathe in sacred village wells at dawn (Kizie) and make new fires using ancient friction sticks.',
@@ -1427,29 +1458,43 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Tsüngkotepsü (Ao Warrior Shawl with tiger/mithun motifs)', 'Loramhoushü (Angami Black-Red-Green Shawl)', 'Sumi Peacock Shawls', 'Chakhesang Rira Shawls'],
+      image: 'https://thumbs.dreamstime.com/b/ao-naga-significa-tradicional-chal-de-shawl-tsungkotepsu-creado-por-tejida-mano-guerrero-278479325.jpg',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.S0LyN2vViOjdZVGEw5RAzwHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      image: 'https://th.bing.com/th/id/R.8ba08d8368eaf22ccfd756c8cf70bda4?rik=tyMXaReBmsARjg&riu=http%3a%2f%2fpearlsandpetals.co.uk%2fcdn%2fshop%2ffiles%2f1_b88f8609-e787-4db8-a43f-db606c05e1a5_grande.jpg%3fv%3d1759317476&ehk=Nc00%2fD8UF9SV0ahOOkuRuPG5%2b4G9Ft0Rt7IJOJ27biM%3d&risl=&pid=ImgRaw&r=0',
+      image: 'https://digitalgi.in/wp-content/uploads/2024/07/Naga-Chakhesang-Shawl-1024x689.jpg',
       handicrafts: ['Konyak Wood Carvings', 'Naga Bamboo & Cane Baskets', 'Naga Spears with Red Dyed Goat Hair', 'Boar Tusk & Carnelian Bead Necklaces'],
+      image: 'https://oddessemania.in/wp-content/uploads/2024/07/Konyak-Tribes-wood-Carving-art-of-Nagaland.jpg',
+      image: 'https://purbashree.com/image/cache/catalog/BASKET%20AND%20TRAYS/BASKET/34b-550x688h.jpg.webp',
+      image: 'https://www.mandarinmansion.com/sites/default/files/styles/item_image/public/2024-10/multicolor-tufted-naga-spear4.jpg?itok=sYO0cWTL',
+      image: 'https://i.etsystatic.com/8645839/r/il/6c6f9b/5655821407/il_1080xN.5655821407_3g2m.jpg',
       traditionalMenAttire: 'Embroidered warrior kilt with feathered hornbill crown, boar tusk neckband, brass armlets, and woven tribal shawl.',
+      image: 'https://media.istockphoto.com/id/1161932839/pt/foto/portrait-of-a-naga-warrior-at-hornbill-festival.jpg?s=612x612&w=0&k=20&c=WCe34jscSi_Z2vVAfBJSjZVh09f1WyuGLqCwjSjzYWo=',
       traditionalWomenAttire: 'Neikhro (wraparound skirt) with embroidered blouse and multi-layered red carnelian and yellow glass bead necklaces.',
+      image: 'https://i.pinimg.com/originals/2b/76/66/2b76665425c2332135908e4933e511c7.jpg',
       giTaggedCrafts: ['Naga King Chili (Bhut Jolokia / Raja Mircha)', 'Naga Tree Tomato', 'Naga Sweet Cucumber', 'Chakhesang Shawls']
     },
     historyTimeline: [
       {
         era: 'Ancient Era - 19th Century',
+        image: 'https://morungexpress.com/uploads/2023/11/31854533_1700738369_p8.jpg',
         title: 'Morung Village Republics & Headhunting Lore',
         description: 'Independent fortified hill villages with sovereign democratic councils; youth trained in martial defense, customs, and art inside Morungs.'
       },
       {
         era: '1879 AD',
+        image: 'https://nagalandgk.com/wp-content/uploads/2021/08/battle-of-khonoma-3-e1628678824805.jpg',
         title: 'Battle of Khonoma',
         description: 'Angami warriors of Khonoma fought British military forces, resulting in treaties respecting Naga customary laws and land rights.'
       },
       {
         era: '1944 AD',
+        image: 'https://tse4.mm.bing.net/th/id/OIP.DaDZ24lb1sysA7CAs_O-jgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         title: 'Battle of Kohima (World War II)',
         description: 'Decisive battle fought at the Tennis Court in Kohima where Allied troops halted the Japanese 31st Division advance.'
       },
       {
         era: '1963 AD',
+        image: 'https://liamtra.com/blog/wp-content/uploads/2024/05/1-1.jpg',
         title: 'Statehood of Nagaland',
         description: 'Inaugurated as the 16th state of the Indian Union on 1 December 1963 with special constitutional protections under Article 371A.'
       }
@@ -1462,7 +1507,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'North-East',
     coordinates: [24.6637, 93.9063],
     zoomLevel: 8,
-    bannerImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://ghughuti.org/wp-content/uploads/2024/01/pakhangba-temple-at-kangla-fort-1536x1152.jpg',
     tagline: 'Jewel of India, Classical Manipuri Raas, Loktak Floating Phumdis & Sangai Deer',
     overview: 'Manipur ("Land of Jewels", so christened by Lord Mountbatten) is a breathtaking valley kingdom surrounded by nine hill ranges. Famed for classical Manipuri Raas Leela, the world\'s only floating national park on Loktak Lake, the dancing Sangai brow-antlered deer, Thang-Ta martial arts, and the modern birthplace of Polo (Sagol Kangjei).',
     officialLanguage: 'Meitei (Manipuri)',
@@ -1477,7 +1522,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Natural Biosphere (Ramsar Wetland)',
         location: 'Bishnupur District',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        image: 'https://indiano.travel/wp-content/uploads/2022/05/Floating-National-park-in-India-Keibul-Lamjao-Netional-park-at-loktak-Lake-Manipur-and-its-surrounding-areas-like-floating-homestay-and-Karang-Island.jpg',
         description: 'Largest freshwater lake in Northeast India, famous for its circular floating vegetative biomass islands (Phumdis) and the last natural sanctuary of the endangered Sangai dancing deer.',
         coordinates: [24.5000, 93.8000]
       },
@@ -1487,7 +1532,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Ancient Antiquity (Rebuilt by King Khagemba 1608 AD)',
         location: 'Imphal',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+        image: 'https://thumbs.dreamstime.com/b/historic-grandeur-kangla-fort-imphal-kangla-fort-imphal-manipur-india-showcases-traditional-meitei-architecture-rich-348255048.jpg',
         description: 'Historic seat of the Meitei royal kingdom situated on the banks of the Imphal River, housing the sacred Kangla Sha dragon statues and ancient coronation halls.',
         coordinates: [24.8108, 93.9417]
       },
@@ -1497,7 +1542,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '500+ Years Old (16th Century)',
         location: 'Khwairamband Bazaar, Imphal',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1590740608753-f7a35cbdfaa3?auto=format&fit=crop&w=800&q=80',
+        image: 'https://www.clubmahindra.com/blog/images/Ima-Keithel-Womans-Market-resized.jpg',
         description: 'Vibrant historic commercial market run exclusively by over 5,000 married women (Imas), selling fresh local vegetables, fish, handloom Phaneks, and handicrafts.',
         coordinates: [24.8075, 93.9358]
       }
@@ -1506,6 +1551,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       {
         name: 'Manipuri Classical Dance (Raas Leela)',
         type: 'Dance',
+        image: 'https://i.pinimg.com/originals/87/ea/6a/87ea6a63e7abb63fb41419fc524a5f21.png',
         origin: 'King Bhagyachandra (18th Century)',
         description: 'One of the eight classical Indian dances, famous for gentle curved movements, soft floating footwork, and devotion depicting the divine love of Radha and Krishna.',
         instruments: ['Pung (Mridang drum)', 'Kartal (Cymbals)', 'Flute', 'Pena (Bowed string instrument)'],
@@ -1513,6 +1559,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Thang-Ta (Huyen Langlon)',
+        image: 'https://1.bp.blogspot.com/-2OIrq7grcjA/XRxkYr-4PEI/AAAAAAAACc0/0opW2aYASgc66r0u2IKlTD_lDHDSrnrFgCLcBGAs/s1600/99.jpg',
         type: 'Martial Art',
         origin: 'Ancient Meitei Military Tradition',
         description: 'Graceful martial art combining sword (Thang), spear (Ta), and shield drills with breath control and spiritual meditation.',
@@ -1520,6 +1567,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Pung Cholom & Pena Singing',
+        image: 'https://live.staticflickr.com/4089/5007835565_51df7253d8_b.jpg',
         type: 'Dance',
         origin: 'Sankirtana of Manipur (UNESCO Intangible Heritage)',
         description: 'Acrobatic drumming dance where male performers leap, twirl, and play the cylindrical Pung drum simultaneously.',
@@ -1529,12 +1577,14 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Eromba & Kangshoi',
+        image: 'https://3.bp.blogspot.com/-qIQH68zp0MQ/WaEtOKiL9hI/AAAAAAAAAHM/ROJu3VX00NsnlCT_LvuDu5jOXKiB2tV-QCLcBGAs/s1600/iromba-1024x701.jpg',
         category: 'Vegetarian',
         description: 'Wholesome mash of boiled seasonal vegetables, red potatoes, and fermented fish (Ngari) garnished with fresh coriander and chameleon leaves (Toningkhok).',
         keyIngredients: ['Boiled Vegetables', 'Ngari (Fermented Fish)', 'King Chili (U-Morok)', 'Coriander', 'Spring Onions']
       },
       {
         name: 'Chak-Hao Kheer (Black Rice Pudding)',
+        image: 'https://tse2.mm.bing.net/th/id/OIP.aYRf2rCqHjE1t0HlRjtDlwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         category: 'Dessert',
         description: 'Royal purple dessert made from GI-tagged organic Manipuri black sticky rice (Chak-Hao) simmered slowly with milk, cardamom, bay leaves, and cashews.',
         keyIngredients: ['Manipuri Black Rice (Chak-Hao)', 'Full Cream Milk', 'Sugar', 'Cardamom', 'Cashews', 'Bay Leaf'],
@@ -1542,6 +1592,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Singju Salad',
+        image: 'https://tse1.mm.bing.net/th/id/OIP.hg9JorsAStoflK3xlhQaMAHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         category: 'Street Food',
         description: 'Crisp spicy salad prepared with finely shredded cabbage, lotus stems, banana blossoms, roasted perilla seeds (Thoiding), and roasted pea powder.',
         keyIngredients: ['Finely Shredded Cabbage', 'Banana Flower', 'Roasted Gram Powder', 'Roasted Perilla Seeds', 'Ngari / Salt', 'Green Chilies']
@@ -1550,6 +1601,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Lai Haraoba',
+        image: 'https://i.pinimg.com/originals/6a/00/35/6a0035e4b2dae19474f7a5b1da5a0cc2.jpg',
         timing: 'April - May (Cheiraoba Season)',
         significance: 'Ancient religious festival celebrating the creation of the universe and honoring the ancestral Umang Lai deities.',
         keyRitual: 'Ritualistic dances performed by female priests (Maibis) depicting the cosmic creation of life, weaving, and house-building.',
@@ -1557,6 +1609,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Sangai Festival',
+        image: 'https://tse1.mm.bing.net/th/id/OIP.noSpgfdNSjsiU-TjBxdnQwHaEh?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         timing: 'November 21 - 30',
         significance: 'Grand state cultural carnival named after the state animal, celebrating Manipuri arts, handlooms, adventure sports, and Sagol Kangjei (Polo).',
         keyRitual: 'International Polo tournament on Manipuri ponies, Raas Leela performances, and floating water sports at Loktak.',
@@ -1564,6 +1617,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Yaoshang (Manipuri Holi / 5 Days)',
+        image: 'https://th.bing.com/th/id/OIP.liZ9UmFQnmjA743HKa6fygHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
         timing: 'Phalguna Purnima (March)',
         significance: 'Five-day festival blending Vaishnavism with indigenous Meitei traditions, featuring sports festivals and Thabal Chongba.',
         keyRitual: 'Burning the straw Yaoshang hut on the first night, followed by Thabal Chongba (moonlight community circle dance by youth).',
@@ -1572,29 +1626,42 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Shaphee Lanphee (Warrior Shawl with astronomical motifs)', 'Moirang Phee (Temple border design)', 'Wangkei Phee (Fine sheer cotton)', 'Phanek Mayek Naiba (Striped skirt)'],
+      image: 'https://img.indiahandmade.com/catalog/product/cache/dee0bc41489afb86ae85561eae1bc64e/i/m/img_20250918_144445643_hdr_ae_-_sahil_thakur_1.jpg',
+      image: 'https://th.bing.com/th/id/OIP.i-pam4KmPGOn5WTd3UocsAHaJ4?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.QNsD8sMnEsPFfRj43pvfbAHaGq?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.N_-pMCattdXh2SyxoXM6YQHaE6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       handicrafts: ['Longpi Black Pottery (Stone-clay made without potter\'s wheel)', 'Kauna Grass Mats and Baskets', 'Wood and Bamboo Sculptures'],
+      image: 'https://dmcfinder.com/wp-content/uploads/2025/02/Longpi-black-pottery-manipur.jpg',
+      image: 'https://www.ethicaonline.com/wp-content/uploads/2024/01/Kauna-Grass-14.jpg',
+      image: 'https://tse1.mm.bing.net/th/id/OIP.8HCthXbsBvNWXRvM2toJIwHaGy?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       traditionalMenAttire: 'Khamen Chatpa Dhoti (royal printed silk) with white Kurta and turban.',
+      image: 'https://ik.imagekit.io/ldqsn9vvwgg/images/1757580.jpg',
       traditionalWomenAttire: 'Phanek (handwoven wraparound skirt) with Innaphi (sheer embroidered shawl) draped around the upper body.',
+      image: 'https://tse1.mm.bing.net/th/id/OIP.YS0bszRyW5HOOG9FTX_M7wAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       giTaggedCrafts: ['Chak-Hao (Black Rice)', 'Shaphee Lanphee', 'Moirang Phee', 'Wangkei Phee', 'Kachai Lemon', 'Sirarakhong Hathei Chili']
     },
     historyTimeline: [
       {
         era: '33 AD',
+        image: 'https://tse3.mm.bing.net/th/id/OIP.UJfxZIUjIT4YDMxOLJaGzgAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         title: 'Reign of Nongda Lairen Pakhangba',
         description: 'Coronation of the first historical ruler of the Ningthouja dynasty at Kangla Fort, establishing the Cheitharol Kumbaba royal chronicle.'
       },
       {
         era: '1764 - 1798 AD',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Ching-Thang_Khomba_2000_stamp_of_India.jpg/250px-Ching-Thang_Khomba_2000_stamp_of_India.jpg',
         title: 'Golden Age of Maharaja Bhagyachandra',
         description: 'Created the classical Manipuri Raas Leela dance-drama and established the Govindaji Temple following visions of Lord Krishna.'
       },
       {
         era: '1891 AD',
+        image: 'https://tse1.mm.bing.net/th/id/OIP.PBPQnTPL9viFJedwtmSw8QHaFD?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         title: 'Anglo-Manipur War & Battle of Khongjom',
         description: 'Major Paona Brajabasi fought valiantly against British forces at Khongjom to safeguard Manipuri independence.'
       },
       {
         era: '1972 AD',
+        image: 'https://images.delhimetrotimes.in/photos/images/manipur-tourism.jpg',
         title: 'Full Statehood of Manipur',
         description: 'Conferred full statehood on 21 January 1972 with Imphal as capital.'
       }
@@ -1607,7 +1674,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'North-East',
     coordinates: [23.1645, 92.9376],
     zoomLevel: 8,
-    bannerImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://i.pinimg.com/originals/b4/c9/5e/b4c95e6e37bdcf722d80d64ad837b9c9.jpg',
     tagline: 'Land of Blue Mountains, Cheraw Bamboo Dance & High Literacy Haven',
     overview: 'Mizoram ("Land of the Mizo People") is a tranquil paradise of serrated blue mountain ridges, deep bamboo valleys, high literacy (>91%), the world-renowned Cheraw bamboo dance, and an egalitarian society governed by the ethics of "Tlawmngaihna" (selfless service to others).',
     officialLanguage: 'Mizo, English',
@@ -1622,7 +1689,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '1996 - 2017 AD (21st Century)',
         location: 'Chawlhhmun, Aizawl',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
+        image: 'https://th.bing.com/th/id/OIP.VnFf9aOfBpAg5nhp1lGqxgHaEK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
         description: 'Magnificent white marble church complex built with four towers and twelve main doors symbolizing the twelve tribes of Israel, seating 3,000 people.',
         coordinates: [23.7547, 92.6883]
       },
@@ -1632,7 +1699,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Natural Mountain Biosphere (2,157 m Altitude)',
         location: 'Lawngtlai District',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        image: 'https://tse2.mm.bing.net/th/id/OIP.WTdx_Sj82LEK_XxlQUUNHwHaFV?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         description: 'Sacred abode of the mountain goddess Sangau, known for sheer cliff faces (Thlazuang Kham), rare orchids, clouded leopards, and panoramic views of Myanmar.',
         coordinates: [22.6317, 93.0567]
       },
@@ -1642,7 +1709,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Natural Waterfall (750 ft / 229 m)',
         location: 'Thenzawl, Serchhip District',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80',
+        image: 'https://media.tripinvites.com/places/aizawl/vantawng-falls/vantawng-falls-featured.jpg',
         description: 'Breathtaking two-tiered waterfall cascading 750 feet amidst dense bamboo and pine forests along the Vanva River.',
         coordinates: [23.3289, 92.7933]
       }
@@ -1650,6 +1717,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Cheraw (Bamboo Dance)',
+        image: 'https://tse2.mm.bing.net/th/id/OIP.OdVgJ0-5SIaMwGLnyYLbhwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         type: 'Dance',
         origin: 'Ancient Mizo Cultural Heritage',
         description: 'World-famous synchronized dance where men rhythmically clap pairs of long horizontal bamboo poles on the ground while agile female dancers step in and out of the closing grids.',
@@ -1658,6 +1726,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Khuallam & Chheihlam',
+        image: 'https://northeastindia24.com/wp-content/uploads/2025/03/Khuallam-dance.jpg',
         type: 'Dance',
         origin: 'Mizo Celebrations',
         description: 'Khuallam ("Dance of the Guests" performed in Puandum shawls) and Chheihlam (exuberant seated circle dance with clapping and chanting).',
@@ -1665,6 +1734,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Mizo Choral Music',
+        image: 'https://i.ytimg.com/vi/aac2LeFuSO4/maxresdefault.jpg',
         type: 'Music',
         origin: 'Mizo Churches & Cultural Troupes',
         description: 'World-class four-part gospel and folk choral harmony characterized by pitch perfection and rich resonance.',
@@ -1674,18 +1744,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Bai with Rice & Vawksa Rep',
+        image: 'https://tse4.mm.bing.net/th/id/OIP.ov_ua3WANok3Ekn4I031lgHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         category: 'Non-Vegetarian',
         description: 'Nutritious boiling vegetable and bamboo shoot stew with pork fat and cooking soda, paired with woodsmoked tender pork with mustard greens.',
         keyIngredients: ['Seasonal Green Vegetables', 'Bamboo Shoots', 'Chingal (Wood Ash Soda)', 'Smoked Pork (Vawksa Rep)', 'Ginger']
       },
       {
         name: 'Sanpiau & Sawhchiar',
+        image: 'https://images.slurrp.com/prod/articles/n8fic39wk6.webp',
         category: 'Non-Vegetarian',
         description: 'Popular street food rice porridge garnished with ground spices, coriander, onion, and fish sauce; and fragrant rice-meat stew.',
         keyIngredients: ['Rice Porridge', 'Pork / Chicken', 'Fish Sauce', 'Crisp Garlic Flakes', 'Black Pepper']
       },
       {
         name: 'Mizo Zu (Traditional Rice Beer)',
+        image: 'https://tse2.mm.bing.net/th/id/OIP.r3G_274DJT9zMQ289u60xwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         category: 'Beverage',
         description: 'Indigenous fermented rice beverage brewed for community feasts and festive celebrations.',
         keyIngredients: ['Rice', 'Natural Yeast Cake']
@@ -1694,6 +1767,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Chapchar Kut',
+        image: 'https://media.assettype.com/outlooktraveller/2025-03-05/9jlayszm/CherawMizoram.jpg?w=1024&auto=format%2Ccompress&fit=max',
         timing: 'First Friday of March (Spring)',
         significance: 'Most joyous and premier harvest festival of Mizoram celebrated after the grueling clearing of bamboo jhum forests.',
         keyRitual: 'Chai dance with everyone forming circles singing folk songs, feasting on meat banquets, and Cheraw dance displays.',
@@ -1701,6 +1775,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Mim Kut & Pawl Kut',
+        image: 'https://tse3.mm.bing.net/th/id/OIP.clyTksgT-JB7GxheHGNzJwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         timing: 'August & December',
         significance: 'Maize harvest (Mim Kut) remembering departed ancestors with bread offerings, and post-harvest winter festival (Pawl Kut).',
         keyRitual: 'Family feasts, sharing of harvested crops with neighbors, and community choir singing.',
@@ -1708,6 +1783,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Thalfavang Kut',
+        image: 'https://i.ytimg.com/vi/oq5XLFOJvQw/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVyhWMA8=&rs=AOn4CLB1MrnZ568WeEOIrZJKpYd0uEHDog',
         timing: 'November',
         significance: 'Pre-harvest festival celebrated when weeding of paddy fields is completed.',
         keyRitual: 'Cultural dances by youth organizations showcasing Mizo heritage.',
@@ -1716,29 +1792,42 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Puanchei (Magnificent Festive Handwoven Wraparound)', 'Puandum (Black, red, and yellow striped shawl of honor)', 'Ngotekherh (Checkered traditional Puan)', 'Tawlhlohpuan (Bravery shawl)'],
+      image: 'https://indyhaat.co.in/wp-content/uploads/2025/05/Mizo-Puanchei-Handwoven-Lenbuang-and-Sakeizangzia-Pattern.jpg',
+      image: 'https://vaiphei.com/wp-content/uploads/2026/01/puandum-1024x535.jpeg',
+      image: 'https://th-i.thgim.com/public/life-and-style/fashion/article19854684.ece/alternates/LANDSCAPE_1200/puanchei-JiksawPhotographyjpg',
+      image: 'https://s7ap1.scene7.com/is/image/incredibleindia/tawlhlohpuan-mizoram-craft-body?qlt=82&ts=1726641355490',
       handicrafts: ['Mizo Bamboo Hats (Khumbeu made from waterproof wild leaves)', 'Thul Bamboo Storage Baskets', 'Handmade Cane Furniture'],
+      image: 'https://1.bp.blogspot.com/_PIRG-kRWEQc/TFBV-LlqAII/AAAAAAAAAC0/O9mn9WsBUfg/s1600/DSC_4373.JPG',
+      image: 'https://m.media-amazon.com/images/I/81j9p7IgfbL.jpg',
+      image: 'https://3.imimg.com/data3/KK/MF/FCP-5852639/01036600-b-1-bamboo-cane-sofa-set-500x500.jpg',
       traditionalMenAttire: 'Plain white cotton coat with colorful Puandum shawl draped across the shoulders.',
+      image: 'https://tse2.mm.bing.net/th/id/OIP.jsRxl8SEJKEYUnxNTW5KIAHaJh?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       traditionalWomenAttire: 'Kawrchei (embroidered blouse) with Puanchei skirt and Vakiria feather headdress.',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.sPEEjekcJ3zrePsNoa8qFwHaJQ?r=0&w=1440&h=1800&rs=1&pid=ImgDetMain&o=7&rm=3',
       giTaggedCrafts: ['Mizo Puanchei', 'Tawlhlohpuan', 'Puandum', 'Ngotekherh', 'Mizo Chilli (Bird\'s Eye Chili)', 'Mizo Ginger']
     },
     historyTimeline: [
       {
         era: '16th - 18th Century AD',
+        image: 'https://tse2.mm.bing.net/th/id/OIP.70PtLY3cJW0NVnhdBWxxSAHaFT?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
         title: 'Migration & Autonomous Chieftainships',
         description: 'Mizo clans migrated from the Chin Hills into the Lushai Hills, establishing autonomous villages governed by Lal (Village Chiefs).'
       },
       {
         era: '1894 AD',
+        image: 'https://media.gettyimages.com/id/89864949/photo/an-english-mission-in-new-guinea-1904.jpg?s=594x594&w=gi&k=20&c=6hNlE4APTGNXQDcbyhhkhECgibsprljXHkJgpAOsdvM=',
         title: 'Arrival of Christian Missionaries & Education',
         description: 'Missionaries developed the written Mizo alphabet in Roman script, establishing schools that created one of the highest literacy rates in India.'
       },
       {
         era: '1986 AD',
+        image: '',
         title: 'Historic Mizo Peace Accord',
         description: 'Prime Minister Rajiv Gandhi and MNF leader Laldenga signed the Mizo Peace Accord, ending decades of insurgency and establishing enduring peace.'
       },
       {
         era: '1987 AD',
+        image: 'https://as1.ftcdn.net/v2/jpg/11/17/36/94/1000_F_1117369432_qAdf1JSgBg4KOBsJkGdFQYdvKDrPO1p6.jpg',
         title: 'Full Statehood of Mizoram',
         description: 'Inaugurated as the 23rd state of India on 20 February 1987 with Aizawl as capital.'
       }
