@@ -21,7 +21,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   const navItems: { id: AppView; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'timeline', label: 'Through the Ages', icon: Clock },
     { id: 'heritage_risk', label: 'Save Our Heritage', icon: ShieldAlert },
-    { id: 'ask_bharat', label: 'Ask Bharat', icon: Sparkles },
     { id: 'festivals', label: 'Festival Calendar', icon: Calendar },
     { id: 'quiz', label: 'State Quizzes', icon: HelpCircle },
   ];

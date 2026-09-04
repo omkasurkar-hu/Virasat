@@ -59,8 +59,8 @@ Provide a rich, fascinating, vivid, and culturally accurate answer in 2-3 struct
     }
   });
 
-  // Ask Bharat - General Cultural Assistant API
-  app.post("/api/ask-bharat", async (req, res) => {
+  // Ask Vira - General Cultural Assistant API
+  const handleViraAI = async (req: express.Request, res: express.Response) => {
     try {
       const { query } = req.body;
       if (!query) {
@@ -79,7 +79,7 @@ Provide a rich, fascinating, vivid, and culturally accurate answer in 2-3 struct
         });
       }
 
-      const prompt = `You are 'Bharat', an erudite, warm, and inspiring cultural scholar and storyteller of India's living civilizational heritage, architecture, classical dances, endangered crafts, ancient sciences, and festive cuisines.
+      const prompt = `You are 'Vira', an erudite, warm, and inspiring AI cultural scholar and storyteller of India's living civilizational heritage, architecture, classical dances, endangered crafts, ancient sciences, and festive cuisines.
 User question: "${query}"
 
 Respond concisely in 2-3 engaging, culturally accurate paragraphs. At the end, propose 2 short follow-up questions formatted as:
@@ -112,13 +112,16 @@ FOLLOW_UPS:
         ]
       });
     } catch (error: any) {
-      console.error("Ask Bharat Error:", error);
+      console.error("Ask Vira Error:", error);
       return res.status(500).json({
-        error: "Failed to query Bharat guide",
+        error: "Failed to query Vira guide",
         details: error.message
       });
     }
-  });
+  };
+
+  app.post("/api/ask-vira", handleViraAI);
+  app.post("/api/ask-bharat", handleViraAI);
 
   // Vite middleware in dev mode only
   if (process.env.NODE_ENV !== "production") {

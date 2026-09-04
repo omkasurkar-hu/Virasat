@@ -10,9 +10,9 @@ import { MonumentModal } from './components/MonumentModal';
 import { CulturalQuizModal } from './components/CulturalQuizModal';
 import { TimelineSection } from './components/TimelineSection';
 import { VanishingTraditionsSection } from './components/VanishingTraditionsSection';
-import { AskBharatSection } from './components/AskBharatSection';
 import { FestivalsCalendarSection } from './components/FestivalsCalendarSection';
 import { StateQuizSection } from './components/StateQuizSection';
+import { FloatingViraBot } from './components/FloatingViraBot';
 
 import { STATES_HERITAGE_DATA } from './data/statesData';
 import { StateHeritage, Monument, MapLayerStyle, HeritageTab, AppView } from './types';
@@ -84,13 +84,6 @@ export default function App() {
       {currentView === 'timeline' && <TimelineSection />}
 
       {currentView === 'heritage_risk' && <VanishingTraditionsSection />}
-
-      {currentView === 'ask_bharat' && (
-        <AskBharatSection
-          states={STATES_HERITAGE_DATA}
-          onSelectState={handleSelectState}
-        />
-      )}
 
       {currentView === 'festivals' && <FestivalsCalendarSection />}
 
@@ -205,6 +198,12 @@ export default function App() {
           <CulturalQuizModal onClose={() => setShowQuizModal(false)} />
         )}
       </AnimatePresence>
+
+      {/* Floating AI Cultural Guide - Vira */}
+      <FloatingViraBot
+        states={STATES_HERITAGE_DATA}
+        onSelectState={handleSelectState}
+      />
     </div>
   );
 }
