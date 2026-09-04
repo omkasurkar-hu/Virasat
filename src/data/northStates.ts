@@ -8,7 +8,7 @@ export const NORTH_STATES: StateHeritage[] = [
     region: 'North',
     coordinates: [26.9124, 75.7873],
     zoomLevel: 7,
-    bannerImage: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://s7ap1.scene7.com/is/image/incredibleindia/hawa-mahal-jaipur-rajasthan-city-1-hero?qlt=82&ts=1742200253577',
     tagline: 'The Land of Kings, Desert Forts & Royal Splendor',
     overview: 'Rajasthan is globally renowned for its invincible hill forts, vibrant desert culture, Thar sand dunes, opulent Rajput palaces, intricate Haveli frescoes, and colorful celebrations of royalty.',
     officialLanguage: 'Hindi',
@@ -23,7 +23,7 @@ export const NORTH_STATES: StateHeritage[] = [
         century: '1799 AD (18th Century)',
         location: 'Jaipur',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/1/14/Hawa_Mahal_Palace_%28Palace_of_Winds%29%2C_famous_landmark_of_Jaipur.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original',
         description: 'Five-story red and pink sandstone honeycomb façade with 953 jharokhas (small casements) engineered for royal ladies to view street festivals.',
         coordinates: [26.9239, 75.8267]
       },
@@ -33,7 +33,7 @@ export const NORTH_STATES: StateHeritage[] = [
         century: '1459 AD (15th Century)',
         location: 'Jodhpur',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?auto=format&fit=crop&w=800&q=80',
+        image: 'https://media1.thrillophilia.com/filestore/33kyjezwxbqo5jlvp5eolr115cry_Mehrangarh-fortress-Jodhpur-Rajasthan-India.png',
         description: 'Perched 410 feet above the Blue City of Jodhpur, enclosed by formidable thick walls preserving burnished cannonballs and ornate Rajput royal palanquins.',
         coordinates: [26.2978, 73.0185]
       },
@@ -43,7 +43,7 @@ export const NORTH_STATES: StateHeritage[] = [
         century: '1592 AD (16th Century)',
         location: 'Amer, Jaipur',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=800&q=80',
+        image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/d3/a8/57/images-30-largejpg.jpg?w=700&h=400&s=1',
         description: 'Overlooking Maota Lake, famous for its Sheesh Mahal (Mirror Palace) where a single candle flame illuminates the entire chamber through convex glass mirrors.',
         coordinates: [26.9855, 75.8513]
       },
@@ -53,7 +53,7 @@ export const NORTH_STATES: StateHeritage[] = [
         century: '1559 AD (16th Century)',
         location: 'Udaipur',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1615836245337-f5b9b2303f10?auto=format&fit=crop&w=800&q=80',
+        image: 'https://udaipurtourism.co.in/images/v2/places-to-visit/city-palace-udaipur-tourism-header.jpg',
         description: 'Towering marble and granite monumental palace complex perched on the banks of Lake Pichola, showcasing Mewar dynasty royal artifacts.',
         coordinates: [24.5764, 73.6835]
       }
@@ -61,6 +61,7 @@ export const NORTH_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Ghoomar',
+        image:'https://upload.wikimedia.org/wikipedia/commons/d/dc/Ghoomar_dancers_%28Rajasthan%2C_India%2C_2023%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         type: 'Dance',
         origin: 'Bhil Tribe & Rajput Royalty',
         description: 'Traditional folk dance where women in colorful swirling Ghaghras twirl gracefully to rhythmic clapping and songs.',
@@ -69,6 +70,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Kalbelia',
+        image:'https://www.swantour.com/blogs/wp-content/uploads/2019/02/Kalbelia-Dance-Festival-Rajasthan.jpg',
         type: 'Dance',
         origin: 'Kalbelia Snake Charmer Community',
         description: 'Sensuous, agile UNESCO-inscribed folk dance mimicking serpent movements with rhythmic black embroidered skirts.',
@@ -77,6 +79,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Kathputli Puppetry',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb7D-9thLZcYslphQSkYnuUxtVHek8s1sanPd_Hkp1ZEQNDUaCn-7L8eo&s=10',
         type: 'Theatre',
         origin: 'Bhat Community',
         description: 'Centuries-old string marionette storytelling depicting legends of warrior heroes like Amar Singh Rathore.',
@@ -86,6 +89,7 @@ export const NORTH_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Dal Baati Churma',
+        image:'https://www.secondrecipe.com/wp-content/uploads/2020/11/dal-bati-churma.jpg',
         category: 'Vegetarian',
         description: 'Hard wheat flour dough balls baked over charcoal, dipped in pure desi ghee, served with five-lentil Panchmel dal and sweet powdered jaggery Churma.',
         keyIngredients: ['Whole Wheat Flour', 'Ghee', 'Panchmel Dal (5 Lentils)', 'Jaggery/Sugar', 'Cardamom'],
@@ -93,12 +97,14 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Laal Maas',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6CrhJV1v1mxhfhQWh_GcOOG6OrpDjcsmMhFvnJ--Kuo3QlAKD2McAB3tU&s=10',
         category: 'Non-Vegetarian',
         description: 'Fiery royal Rajasthani mutton curry simmered with Mathania red chilies, garlic, yogurt, and whole roasted spices.',
         keyIngredients: ['Mutton', 'Mathania Red Chilies', 'Mustard Oil', 'Garlic', 'Yogurt', 'Coriander']
       },
       {
         name: 'Ghevar',
+        image:'https://www.cookwithmanali.com/wp-content/uploads/2016/08/Ghevar-Indian-Sweet-500x375.jpg',
         category: 'Dessert',
         description: 'Honeycomb-disc pastry soaked in saffron-cardamom sugar syrup, topped with thick reduced milk (rabri) and slivered almonds.',
         keyIngredients: ['Refined Flour', 'Ghee', 'Milk', 'Saffron', 'Pistachios'],
@@ -106,6 +112,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Pyaaz Kachori',
+        image:'https://static.toiimg.com/thumb/59606392.cms?imgsize=319995&width=800&height=800',
         category: 'Street Food',
         description: 'Crisp, flaky deep-fried pastry stuffed with a spiced onion-fennel-gram flour mixture, served with sweet tamarind and mint chutneys.',
         keyIngredients: ['Flour', 'Onions', 'Fennel Seeds', 'Coriander Seeds', 'Asafoetida']
@@ -114,6 +121,7 @@ export const NORTH_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Pushkar Camel Fair',
+        image:'https://visit-apac.com/wp-content/uploads/2024/11/PushkarCamelFair.jpg',
         timing: 'Kartik Purnima (October - November)',
         significance: 'World\'s largest traditional livestock and cultural fair set alongside the holy Pushkar Lake.',
         keyRitual: 'Holy dip in Pushkar Sarovar, camel beauty contests, and Rajasthani folk music competitions.',
@@ -121,6 +129,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Desert Festival Jaisalmer',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwYYB0hx4BoucikL0zfvg7ubIUMCdz0haMk1xnia2hJovpF7b6rasQLd0&s=10',
         timing: 'February (Magh Shukla Trayodashi)',
         significance: 'Celebration of Thar desert traditions with camel races, turban tying, and Mr. Desert contests.',
         keyRitual: 'Folk performances at Sam Sand Dunes under the full moon.',
@@ -128,6 +137,7 @@ export const NORTH_STATES: StateHeritage[] = [
       },
       {
         name: 'Teej Festival',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmXu0eQOYEtPNfs-0MKWavZl5IyWW9gbg4_V81YTTR-M8CyIoS2gAGFms&s=10',
         timing: 'Shravana (July - August)',
         significance: 'Welcoming the monsoon and celebrating the sacred union of Goddess Parvati and Lord Shiva.',
         keyRitual: 'Women dress in green leheriya sarees, apply henna, and ride flower-decorated swings.',
@@ -136,30 +146,46 @@ export const NORTH_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Bandhani (Tie & Dye)', 'Bagru Block Printing', 'Sanganeri Print', 'Kota Doria Weaves', 'Leheriya Sarees'],
+      image:'https://apkamart.com/cdn/shop/articles/Bandhni-tie-and-dye.jpg?v=1586947526&width=2048',
+      image:'https://gaatha.org/wp-content/uploads/h3.jpg',
+      image:'https://m.media-amazon.com/images/I/919FfsSFB3L._AC_UF1000,1000_QL80_.jpg',
+      image:'https://images.squarespace-cdn.com/content/v1/5961c8ce3e00be4fb1decc32/1549791909754-V2ZHPMD0DEAIH55HTZ62/kota-doria-sari-weaving-in-kaithun-rajasthan-india+crop+7.jpg',
+      image:'https://yuvti.co.in/cdn/shop/files/0H8A3721.jpg?v=1748523989',
       handicrafts: ['Jaipur Blue Pottery', 'Thewa Gold-on-Glass Jewelry', 'Meenakari Enamel Work', 'Molded Camel Leather Mojaris', 'Marble Inlay Sculptures'],
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrHU2fig_c1e5zcnjOAHtR4LMj78jf2RmYPKPU6yV-H1qs5w1wgs33sxA&s=10',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzFwJxGmgXAqD6yilKwF5wCN3nNdIbZRiHSIrmUVBQJlDYDgXn3x892h1z&s=10',
+      image:'https://www.archedu.org/blog/wp-content/uploads/2018/06/Florals-Peacock-Meenakari-1015x1024.jpg',
+      image:'https://rajasthaneshop.com/wp-content/uploads/2025/05/Jaipuri-juti.webp',
+      image:'https://theindiacrafthouse.com/cdn/shop/products/MarbleInlayRoundPlateCuriowithStand-AN07TB.jpg?v=1601572054',
       traditionalMenAttire: 'Angrakha or Kurta with Dhoti and vibrant 9-meter Safa / Pagri (Turban).',
+      image:'https://i.pinimg.com/originals/32/9e/94/329e941e2b73ae564cc10f832a933d68.jpg?nii=t',
       traditionalWomenAttire: 'Ghaghra (swirling pleated skirt), Choli (blouse), and Odhani (veil with Gotta-Patti work).',
+      image:'https://images.meesho.com/images/products/868415789/vxvop_512.webp?width=512',
       giTaggedCrafts: ['Jaipur Blue Pottery', 'Kota Doria', 'Bagru Hand Block Printing', 'Sanganeri Block Printing', 'Kathputlis of Rajasthan']
     },
     historyTimeline: [
       {
         era: 'Ancient Era (c. 2500 BCE)',
         title: 'Indus Valley Civilisation at Kalibangan',
+        image:'https://cdn.britannica.com/22/196822-050-0E40EBC2/Ruins-city-Harappa-Pakistan-Punjab.jpg',
         description: 'Excavations in northern Rajasthan revealed planned ploughed agricultural fields and fire altars from the Harappan age.'
       },
       {
         era: '6th - 12th Century AD',
         title: 'Rise of Gurjara-Pratihara & Rajput Clans',
+        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Map_of_the_Gurjara-Pratiharas_%28circa_800-950_CE%29.png/330px-Map_of_the_Gurjara-Pratiharas_%28circa_800-950_CE%29.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
         description: 'Emergence of chivalric Rajput dynasties including the Chauhans, Rathores, Sisodias, and Kachwahas who built fortified hilltop citadels.'
       },
       {
         era: '1568 - 1576 AD',
         title: 'Mewar Resistance under Maharana Pratap',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGW6hlQwHSv0NlGBblxOhbTZ4jYEOVH_XO2VkMz5jD4A&s=10',
         description: 'Historic Battle of Haldighati where Maharana Pratap fought against the imperial Mughal army to safeguard Rajput independence.'
       },
       {
         era: '1949 AD',
         title: 'Integration into United State of Rajasthan',
+        image:'https://rajras.in/wp-content/uploads/2025/07/image159-1024x937.png',
         description: '22 princely states and estates voluntarily unified under Sardar Vallabhbhai Patel to form modern Rajasthan with Jaipur as capital.'
       }
     ]
