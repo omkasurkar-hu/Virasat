@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { HomePage } from './components/HomePage';
 import { HeritageMap } from './components/HeritageMap';
-import { HeritageDetailsPanel } from './components/HeritageDetailsPanel';
 import { StateDetailPage } from './components/StateDetailPage';
 import { SearchBar } from './components/SearchBar';
 import { MapControls } from './components/MapControls';
@@ -41,7 +40,6 @@ export default function App() {
 
   const handleSelectMonument = (monument: Monument, state: StateHeritage) => {
     setActiveMonument({ monument, state });
-    setSelectedState(state);
   };
 
   const handleResetView = () => {
@@ -65,13 +63,19 @@ export default function App() {
         />
       )}
 
-      {/* Dedicated Full State Detail Page (Picture Left, Text Right) */}
+      {/* Dedicated Full State Detail Page */}
       {currentView === 'state_detail' && selectedState && (
         <StateDetailPage
           state={selectedState}
           allStates={STATES_HERITAGE_DATA}
-          onBackToMap={() => setCurrentView('map')}
-          onBackToHome={() => setCurrentView('home')}
+          onBackToMap={() => {
+            setSelectedState(null);
+            setCurrentView('map');
+          }}
+          onBackToHome={() => {
+            setSelectedState(null);
+            setCurrentView('home');
+          }}
           onSelectState={handleSelectState}
           onSelectMonument={handleSelectMonument}
         />
@@ -176,19 +180,6 @@ export default function App() {
               </button>
             ))}
           </div>
-
-          {/* Slide-Over Heritage Details Panel as secondary quick view if needed */}
-          <AnimatePresence>
-            {selectedState && currentView === 'map' && (
-              <HeritageDetailsPanel
-                state={selectedState}
-                onClose={() => setSelectedState(null)}
-                onSelectMonument={handleSelectMonument}
-                activeTab={activeTab}
-                onTabChange={setActiveTab}
-              />
-            )}
-          </AnimatePresence>
         </div>
       )}
 

@@ -63,14 +63,11 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
   onSelectMonument,
 }) => {
   const [activeTab, setActiveTab] = useState<HeritageTab>('overview');
-  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
   const [copied, setCopied] = useState<boolean>(false);
   const [isPlayingFolkAudio, setIsPlayingFolkAudio] = useState<boolean>(false);
   const [selectedCuisineSubcategory, setSelectedCuisineSubcategory] = useState<string>('all');
-  const [isFullscreenImage, setIsFullscreenImage] = useState<boolean>(false);
-  const [leftImageFitMode, setLeftImageFitMode] = useState<'contain' | 'cover'>('contain');
   const [lightboxImage, setLightboxImage] = useState<LightboxImageItem | null>(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
   const [lightboxGallery, setLightboxGallery] = useState<LightboxImageItem[]>([]);
@@ -301,10 +298,7 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
       : []),
   ];
 
-  const currentVisual = visualGallery[activeImageIndex] || visualGallery[0];
-
   useEffect(() => {
-    setActiveImageIndex(0);
     setActiveTab('overview');
     setSelectedCuisineSubcategory('all');
     if ('speechSynthesis' in window) {
@@ -613,12 +607,10 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
             </span>
           </div>
 
-          {/* Bold & Highlighted State Name Overlapping Banner - Sized smaller for elegant balance */}
-          <div className="px-6 py-2 sm:px-8 sm:py-2.5 rounded-2xl bg-white/85 backdrop-blur-md border border-white/80 shadow-2xl my-1">
-            <h1 className="font-serif font-black tracking-[0.08em] text-[#8B1E22] text-2xl sm:text-3xl md:text-4xl lg:text-[42px] leading-tight select-none uppercase text-center drop-shadow-xs">
-              {state.name}
-            </h1>
-          </div>
+          {/* Bold State Name Overlapping Banner (No Text Background) */}
+          <h1 className="font-serif font-black tracking-[0.06em] text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight select-none uppercase text-center drop-shadow-[0_3px_20px_rgba(0,0,0,0.9)] my-2">
+            {state.name}
+          </h1>
 
           {/* State Tagline */}
           <p className="font-serif italic text-xs sm:text-sm md:text-base text-stone-100 font-medium max-w-2xl mt-3 px-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] text-center">
@@ -647,278 +639,99 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
         </motion.div>
       </section>
 
-      {/* Main Container: 2-Column Split View (Picture on Left, Text on Right) */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* ============================================================ */}
-          {/* LEFT COLUMN: Clear Picture Showcase, Gallery & Quick Stats */}
-          {/* ============================================================ */}
-          <div className="lg:col-span-5 xl:col-span-5 lg:sticky lg:top-20 space-y-5">
-            {/* Main Picture Frame */}
-            <div
-              onClick={() =>
-                openLightbox(
-                  {
-                    src: currentVisual.imageUrl,
-                    alt: currentVisual.title,
-                    title: currentVisual.title,
-                    subtitle: currentVisual.subtitle,
-                    description: currentVisual.description,
-                    category: currentVisual.category,
-                  },
-                  undefined,
-                  activeImageIndex
-                )
-              }
-              className="group relative w-full h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl border-2 border-stone-300/80 bg-stone-950 transition-all cursor-pointer select-none"
-            >
-              {/* Ambient Blurred Aura Background (Eliminates harsh black bars, gives warm atmospheric glow) */}
-              <img
-                src={currentVisual.imageUrl}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-125 pointer-events-none transition-opacity duration-500"
-                referrerPolicy="no-referrer"
-              />
+      {/* Main Container: Full-Width Heritage Showcase */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-20 space-y-8">
+        {/* Heritage Chronicle & Cultural Overview Card */}
+        <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-sm space-y-6">
+          <div className="flex items-center justify-between flex-wrap gap-2 border-b border-stone-100 pb-3">
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 rounded-full bg-[#8B1E22]/10 text-[#8B1E22] text-xs font-bold uppercase tracking-widest">
+                Heritage Chronicle
+              </span>
+              <span className="text-xs text-stone-500 font-medium">
+                {state.region} Region &bull; Capital: {state.capital}
+              </span>
+            </div>
+            {unescoCount > 0 && (
+              <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+                {unescoCount} UNESCO World Heritage Sites
+              </span>
+            )}
+          </div>
 
-              {/* Foreground Image - Complete uncropped view by default */}
-              <img
-                src={currentVisual.imageUrl}
-                alt={currentVisual.title}
-                className={`relative z-10 w-full h-full transition-all duration-300 ${
-                  leftImageFitMode === 'contain'
-                    ? 'object-contain p-3'
-                    : 'object-cover group-hover:scale-105'
-                }`}
-                referrerPolicy="no-referrer"
-                loading="eager"
-              />
+          <div>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+              The Cultural Soul of {state.name}
+            </h2>
+            <p className="font-serif text-sm sm:text-base text-[#8B1E22] italic mt-1 font-medium">
+              "{state.tagline}"
+            </p>
+          </div>
 
-              {/* Gradient Overlays for optimal readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none z-10" />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none z-10" />
+          <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
+            {state.overview}
+          </p>
 
-              {/* Top Badges & Interactive Controls over image */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-20">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-amber-300 text-xs font-bold border border-amber-500/30 uppercase tracking-wider shadow">
-                    {currentVisual.category}
-                  </span>
-                  {currentVisual.isUnesco && (
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-600/90 backdrop-blur-md text-white text-[10px] font-bold tracking-wider uppercase shadow flex items-center gap-1">
-                      <Award className="w-3 h-3" /> UNESCO Site
-                    </span>
-                  )}
-                  {currentVisual.giTag && (
-                    <span className="px-2.5 py-1 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-[10px] font-bold tracking-wider uppercase shadow">
-                      GI Tagged
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
-                  {/* Complete View / Fill View Toggle */}
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setLeftImageFitMode((m) => (m === 'contain' ? 'cover' : 'contain'))
-                    }
-                    className="px-2.5 py-1.5 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md text-white text-xs font-semibold border border-white/20 transition-all cursor-pointer flex items-center gap-1 shadow"
-                    title={
-                      leftImageFitMode === 'contain'
-                        ? 'Switch to Filled View'
-                        : 'Switch to Complete View (Uncropped)'
-                    }
-                  >
-                    <Eye className="w-3.5 h-3.5 text-amber-300" />
-                    <span className="text-[11px]">
-                      {leftImageFitMode === 'contain' ? 'Complete View' : 'Fill View'}
-                    </span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openLightbox(
-                        {
-                          src: currentVisual.imageUrl,
-                          alt: currentVisual.title,
-                          title: currentVisual.title,
-                          subtitle: currentVisual.subtitle,
-                          description: currentVisual.description,
-                          category: currentVisual.category,
-                        },
-                        undefined,
-                        activeImageIndex
-                      )
-                    }
-                    className="p-2 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md text-white border border-white/20 transition-all cursor-pointer shadow"
-                    title="Open Full Clear View (Zoom & Pan)"
-                  >
-                    <Maximize2 className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Bottom Caption Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 z-20 space-y-1">
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-md">
-                  {currentVisual.title}
-                </h3>
-                <p className="text-xs text-amber-200 font-medium line-clamp-1 drop-shadow">
-                  {currentVisual.subtitle}
-                </p>
-                {currentVisual.description && (
-                  <p className="text-xs text-stone-300 line-clamp-2 leading-relaxed pt-1 drop-shadow opacity-90">
-                    {currentVisual.description}
-                  </p>
-                )}
-              </div>
+          {/* Quick State Facts Metrics Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-stone-100 text-xs">
+            <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/60">
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-semibold">
+                Capital
+              </span>
+              <span className="font-bold text-stone-900 mt-0.5 block text-sm">
+                {state.capital}
+              </span>
             </div>
 
-            {/* Gallery Selector Thumbnails */}
-            <div className="bg-white p-3.5 rounded-2xl border border-stone-200 shadow-sm space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-stone-700 uppercase tracking-wider">
-                  Visual Gallery ({visualGallery.length} Photos)
-                </span>
-                <span className="text-[11px] text-stone-400">
-                  {activeImageIndex + 1} of {visualGallery.length}
-                </span>
-              </div>
-
-              <div className="flex gap-2.5 overflow-x-auto pb-1.5 scrollbar-thin scrollbar-thumb-stone-300">
-                {visualGallery.map((item, idx) => (
-                  <button
-                    key={item.id}
-                    onClick={() => setActiveImageIndex(idx)}
-                    className={`relative flex-shrink-0 w-20 h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
-                      activeImageIndex === idx
-                        ? 'border-[#8B1E22] ring-2 ring-[#8B1E22]/30 scale-105 shadow-md'
-                        : 'border-stone-200 opacity-70 hover:opacity-100'
-                    }`}
-                    title={item.title}
-                  >
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <span className="absolute bottom-1 left-1 right-1 text-[9px] text-white font-bold truncate block">
-                      {item.title}
-                    </span>
-                  </button>
-                ))}
-              </div>
+            <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/60">
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-semibold">
+                Official Language
+              </span>
+              <span className="font-bold text-stone-900 mt-0.5 block text-sm">
+                {state.officialLanguage}
+              </span>
             </div>
 
-            {/* Quick State Facts Card */}
-            <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-3">
-              <h4 className="font-serif font-bold text-sm text-stone-900 border-b border-stone-100 pb-2 flex items-center justify-between">
-                <span>State Fast Facts</span>
-                <span className="text-xs text-[#8B1E22] font-sans font-semibold">📍 {state.region}</span>
-              </h4>
+            <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/60">
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-semibold">
+                UNESCO Sites
+              </span>
+              <span className="font-bold text-emerald-700 mt-0.5 block text-sm">
+                {unescoCount > 0 ? `${unescoCount} World Heritage Sites` : 'Rich Living Heritage'}
+              </span>
+            </div>
 
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-100">
-                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-medium">
-                    Capital
-                  </span>
-                  <span className="font-bold text-stone-900 mt-0.5 block">
-                    {state.capital}
-                  </span>
-                </div>
-
-                <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-100">
-                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-medium">
-                    Official Language
-                  </span>
-                  <span className="font-bold text-stone-900 mt-0.5 block">
-                    {state.officialLanguage}
-                  </span>
-                </div>
-
-                <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-100">
-                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-medium">
-                    UNESCO Sites
-                  </span>
-                  <span className="font-bold text-emerald-700 mt-0.5 block">
-                    {unescoCount > 0 ? `${unescoCount} World Heritage Sites` : 'Rich Living Heritage'}
-                  </span>
-                </div>
-
-                <div className="p-2.5 rounded-xl bg-stone-50 border border-stone-100">
-                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-medium">
-                    Coordinates
-                  </span>
-                  <span className="font-bold text-stone-900 mt-0.5 block font-mono text-[11px]">
-                    {state.coordinates[0].toFixed(2)}° N, {state.coordinates[1].toFixed(2)}° E
-                  </span>
-                </div>
-              </div>
-
-              {state.notableDynasties && state.notableDynasties.length > 0 && (
-                <div className="pt-2 border-t border-stone-100">
-                  <span className="text-[10px] text-stone-500 uppercase tracking-wider block mb-1 font-semibold">
-                    Historic Dynasties & Rulers
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {state.notableDynasties.map((dyn, i) => (
-                      <span
-                        key={i}
-                        className="px-2.5 py-0.5 rounded-lg bg-stone-100 text-stone-800 text-[11px] font-medium border border-stone-200"
-                      >
-                        👑 {dyn}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
+            <div className="p-3 rounded-xl bg-stone-50 border border-stone-200/60">
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider block font-semibold">
+                Coordinates
+              </span>
+              <span className="font-bold text-stone-900 mt-0.5 block font-mono text-xs">
+                {state.coordinates[0].toFixed(2)}° N, {state.coordinates[1].toFixed(2)}° E
+              </span>
             </div>
           </div>
 
-          {/* ============================================================ */}
-          {/* RIGHT COLUMN: Text Related to State with Full Category Tabs */}
-          {/* ============================================================ */}
-          <div className="lg:col-span-7 xl:col-span-7 space-y-6">
-            {/* Heritage Chronicle & Cultural Overview Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-sm space-y-4">
-              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-stone-100 pb-3">
-                <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-[#8B1E22]/10 text-[#8B1E22] text-xs font-bold uppercase tracking-widest">
-                    Heritage Chronicle
+          {state.notableDynasties && state.notableDynasties.length > 0 && (
+            <div className="pt-2 border-t border-stone-100">
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider block mb-1.5 font-semibold">
+                Historic Dynasties & Rulers
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {state.notableDynasties.map((dyn, i) => (
+                  <span
+                    key={i}
+                    className="px-2.5 py-0.5 rounded-lg bg-stone-100 text-stone-800 text-[11px] font-medium border border-stone-200"
+                  >
+                    👑 {dyn}
                   </span>
-                  <span className="text-xs text-stone-500 font-medium">
-                    {state.region} Region &bull; Capital: {state.capital}
-                  </span>
-                </div>
-                {unescoCount > 0 && (
-                  <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                    {unescoCount} UNESCO World Heritage Sites
-                  </span>
-                )}
+                ))}
               </div>
-
-              <div>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
-                  The Cultural Soul of {state.name}
-                </h2>
-                <p className="font-serif text-sm sm:text-base text-[#8B1E22] italic mt-1 font-medium">
-                  "{state.tagline}"
-                </p>
-              </div>
-
-              <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
-                {state.overview}
-              </p>
             </div>
+          )}
+        </div>
 
-            {/* Navigation Tabs with Interactive Slider Track & Beneath Slide Bar */}
-            <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-2 sticky top-16 z-20 space-y-2">
+        {/* Navigation Tabs with Interactive Slider Track & Beneath Slide Bar */}
+        <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-2 sticky top-16 z-20 space-y-2">
               <div className="flex items-center gap-1.5">
                 {/* Left Slide Arrow */}
                 <button
@@ -1159,17 +972,7 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                             </p>
                           </div>
 
-                          <div className="flex items-center justify-between pt-2 border-t border-stone-100">
-                            <button
-                              onClick={() => {
-                                const matchedIdx = visualGallery.findIndex((v) => v.title === monument.name);
-                                if (matchedIdx >= 0) setActiveImageIndex(matchedIdx);
-                              }}
-                              className="text-xs font-semibold text-stone-600 hover:text-[#8B1E22] transition-colors cursor-pointer"
-                            >
-                              📷 View on Left Picture
-                            </button>
-
+                          <div className="flex items-center justify-end pt-2 border-t border-stone-100">
                             <button
                               onClick={() => onSelectMonument(monument, state)}
                               className="px-3 py-1.5 rounded-lg bg-[#8B1E22] hover:bg-[#73181b] text-white text-xs font-semibold transition-all shadow-sm cursor-pointer"
@@ -1973,8 +1776,6 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                 </motion.div>
               )}
             </div>
-          </div>
-        </div>
       </main>
 
       {/* Complete & Clear Fullscreen Image Lightbox Modal with Zoom & Navigation */}
@@ -1983,12 +1784,12 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
         onClose={() => setIsLightboxOpen(false)}
         image={
           lightboxImage || {
-            src: currentVisual.imageUrl,
-            alt: currentVisual.title,
-            title: currentVisual.title,
-            subtitle: currentVisual.subtitle,
-            description: currentVisual.description,
-            category: currentVisual.category,
+            src: heroBannerSrc,
+            alt: state.name,
+            title: state.name,
+            subtitle: `${state.region} India • ${state.name}`,
+            description: state.overview,
+            category: 'Heritage',
           }
         }
         gallery={lightboxGallery.length > 0 ? lightboxGallery : undefined}
