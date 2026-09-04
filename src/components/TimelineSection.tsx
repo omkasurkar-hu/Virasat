@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TIMELINE_ERAS } from '../data/timelineData';
 import { TimelineEra } from '../types';
@@ -14,6 +14,8 @@ import {
   Package, 
   ArrowRight, 
   ChevronRight,
+  ChevronLeft,
+  SlidersHorizontal,
   CheckCircle2
 } from 'lucide-react';
 
@@ -30,6 +32,10 @@ type EraCategory =
 export const TimelineSection: React.FC = () => {
   const [selectedEraIndex, setSelectedEraIndex] = useState<number>(0);
   const [activeCategory, setActiveCategory] = useState<EraCategory>('architecture');
+  const catScrollContainerRef = useRef<HTMLDivElement>(null);
+  const [catScrollProgress, setCatScrollProgress] = useState<number>(0);
+  const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
+  const [canScrollRight, setCanScrollRight] = useState<boolean>(true);
 
   const era = TIMELINE_ERAS[selectedEraIndex];
 
@@ -43,6 +49,54 @@ export const TimelineSection: React.FC = () => {
     { id: 'religion', label: 'Traditions & Customs', icon: Sparkles },
     { id: 'artifacts', label: 'Historical Artifacts', icon: Package },
   ];
+
+  // Update tab scroll metrics
+  const updateScrollState = () => {
+    if (!catScrollContainerRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = catScrollContainerRef.current;
+    const maxScroll = scrollWidth - clientWidth;
+    
+    setCanScrollLeft(scrollLeft > 10);
+    setCanScrollRight(scrollLeft < maxScroll - 10);
+
+    if (maxScroll > 0) {
+      const progress = (scrollLeft / maxScroll) * 100;
+      setCatScrollProgress(Math.min(100, Math.max(0, progress)));
+    } else {
+      setCatScrollProgress(0);
+    }
+  };
+
+  useEffect(() => {
+    const el = catScrollContainerRef.current;
+    if (!el) return;
+
+    updateScrollState();
+    el.addEventListener('scroll', updateScrollState, { passive: true });
+    window.addEventListener('resize', updateScrollState);
+
+    return () => {
+      el.removeEventListener('scroll', updateScrollState);
+      window.removeEventListener('resize', updateScrollState);
+    };
+  }, []);
+
+  const handleSlideCategories = (direction: 'left' | 'right') => {
+    if (!catScrollContainerRef.current) return;
+    const offset = direction === 'left' ? -260 : 260;
+    catScrollContainerRef.current.scrollBy({
+      left: offset,
+      behavior: 'smooth',
+    });
+  };
+
+  const handleCategorySelect = (catId: EraCategory) => {
+    setActiveCategory(catId);
+    const catEl = document.getElementById(`btn-cat-${catId}`);
+    if (catEl && catScrollContainerRef.current) {
+      catEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  };
 
   return (
     <div id="timeline-section" className="min-h-screen bg-[#FAF7F2] text-stone-900 pb-24">
@@ -132,27 +186,108 @@ export const TimelineSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Category Pills Selector */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-6 scrollbar-none">
-          {categories.map((cat) => {
-            const Icon = cat.icon;
-            const isActive = activeCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                id={`btn-cat-${cat.id}`}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`flex-shrink-0 flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                  isActive
-                    ? 'bg-amber-900 text-amber-100 shadow-sm font-bold'
-                    : 'bg-white text-stone-600 hover:text-stone-900 hover:bg-stone-100 border border-stone-200'
-                }`}
-              >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-amber-400' : 'text-stone-400'}`} />
-                <span>{cat.label}</span>
-              </button>
-            );
-          })}
+        {/* Category Pills Navigation with Slide Bar */}
+        <div className="bg-white/80 backdrop-blur-xs rounded-2xl border border-stone-200/90 shadow-xs p-3 sm:p-4 mb-6 space-y-2.5">
+          {/* Controls + Scrollable Tabs Row */}
+          <div className="flex items-center gap-2">
+            {/* Left Slide Arrow */}
+            <button
+              type="button"
+              onClick={() => handleSlideCategories('left')}
+              disabled={!canScrollLeft}
+              className={`p-2 rounded-xl border text-stone-700 transition-all flex-shrink-0 cursor-pointer ${
+                canScrollLeft
+                  ? 'bg-stone-50 hover:bg-stone-200 border-stone-300 text-stone-900 shadow-xs'
+                  : 'bg-stone-100/50 border-stone-200 text-stone-300 cursor-not-allowed opacity-50'
+              }`}
+              title="Slide Categories Left"
+              aria-label="Slide categories left"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            {/* Horizontally Scrollable Categories Track */}
+            <div
+              ref={catScrollContainerRef}
+              className="flex-1 flex items-center gap-2 overflow-x-auto scroll-smooth py-1 px-0.5 scrollbar-none select-none"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {categories.map((cat) => {
+                const Icon = cat.icon;
+                const isActive = activeCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    id={`btn-cat-${cat.id}`}
+                    onClick={() => handleCategorySelect(cat.id)}
+                    className={`flex-shrink-0 flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                      isActive
+                        ? 'bg-amber-900 text-amber-100 shadow-md font-bold ring-2 ring-amber-900/20'
+                        : 'bg-white text-stone-600 hover:text-stone-900 hover:bg-stone-100 border border-stone-200'
+                    }`}
+                  >
+                    <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-amber-400' : 'text-stone-400'}`} />
+                    <span>{cat.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right Slide Arrow */}
+            <button
+              type="button"
+              onClick={() => handleSlideCategories('right')}
+              disabled={!canScrollRight}
+              className={`p-2 rounded-xl border text-stone-700 transition-all flex-shrink-0 cursor-pointer ${
+                canScrollRight
+                  ? 'bg-stone-50 hover:bg-stone-200 border-stone-300 text-stone-900 shadow-xs'
+                  : 'bg-stone-100/50 border-stone-200 text-stone-300 cursor-not-allowed opacity-50'
+              }`}
+              title="Slide Categories Right"
+              aria-label="Slide categories right"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Interactive Slide Bar Beneath Categories */}
+          <div className="pt-0.5 px-1 flex items-center gap-3">
+            <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider flex items-center gap-1 flex-shrink-0">
+              <SlidersHorizontal className="w-3 h-3 text-amber-800" /> Slide Categories
+            </span>
+
+            {/* Track Slider Bar */}
+            <div
+              className="flex-1 relative h-2 bg-stone-100 rounded-full overflow-hidden border border-stone-200/80 cursor-pointer group"
+              onClick={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const percent = Math.max(0, Math.min(1, clickX / rect.width));
+                if (catScrollContainerRef.current) {
+                  const maxScroll =
+                    catScrollContainerRef.current.scrollWidth -
+                    catScrollContainerRef.current.clientWidth;
+                  catScrollContainerRef.current.scrollTo({
+                    left: maxScroll * percent,
+                    behavior: 'smooth',
+                  });
+                }
+              }}
+              title="Click or drag to slide between Art & Crafts, Science, Clothing, Music & more"
+            >
+              <div
+                className="absolute top-0 bottom-0 bg-gradient-to-r from-amber-800 via-amber-600 to-amber-900 rounded-full transition-all duration-150 group-hover:brightness-110 shadow-xs"
+                style={{
+                  left: `${Math.max(0, Math.min(75, catScrollProgress * 0.75))}%`,
+                  width: '25%',
+                }}
+              />
+            </div>
+
+            <div className="text-[10px] font-bold text-stone-500 font-mono flex-shrink-0">
+              {Math.round(catScrollProgress)}%
+            </div>
+          </div>
         </div>
 
         {/* Dynamic Category Detail View */}
