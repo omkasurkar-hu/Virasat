@@ -76,6 +76,25 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
   const [lightboxGallery, setLightboxGallery] = useState<LightboxImageItem[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState<number>(0);
 
+  // Active Hero Banner Image URL with robust fallback cascade
+  const [heroBannerSrc, setHeroBannerSrc] = useState<string>(() => {
+    return state.bannerImage || state.image || state.monuments[0]?.image || '/images/virasat_hero_bg.jpg';
+  });
+
+  useEffect(() => {
+    setHeroBannerSrc(state.bannerImage || state.image || state.monuments[0]?.image || '/images/virasat_hero_bg.jpg');
+  }, [state.id, state.bannerImage]);
+
+  const handleBannerImageError = () => {
+    if (heroBannerSrc === state.bannerImage && state.monuments[0]?.image) {
+      setHeroBannerSrc(state.monuments[0].image);
+    } else if (state.monuments[1]?.image && heroBannerSrc !== state.monuments[1].image) {
+      setHeroBannerSrc(state.monuments[1].image);
+    } else if (heroBannerSrc !== '/images/virasat_hero_bg.jpg') {
+      setHeroBannerSrc('/images/virasat_hero_bg.jpg');
+    }
+  };
+
   // Tab Slider Track Ref and Scroll Position
   const tabScrollContainerRef = useRef<HTMLDivElement>(null);
   const [tabScrollProgress, setTabScrollProgress] = useState<number>(0);
@@ -560,8 +579,76 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
         </div>
       </header>
 
+      {/* State Hero Banner Section: Name and Banner Image Overlap Just Like Home Page */}
+      <section
+        id="state-hero-banner"
+        className="relative min-h-[46vh] sm:min-h-[52vh] md:min-h-[58vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-12 pb-16 overflow-hidden select-none"
+      >
+        {/* State Banner Image Canvas - High Clarity & Clear Visibility */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src={heroBannerSrc}
+            alt={state.name}
+            onError={handleBannerImageError}
+            className="w-full h-full object-cover object-center brightness-[0.92] contrast-[1.06] transition-transform duration-1000 scale-100 hover:scale-105"
+            referrerPolicy="no-referrer"
+          />
+          {/* Subtle cinematic scrim & bottom fade so photo is vivid and text is crisp */}
+          <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#FAF7F2] via-[#FAF7F2]/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="relative z-10 max-w-4xl mx-auto flex flex-col items-center px-3"
+        >
+          {/* Heritage Region Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/30 text-white text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] mb-3 shadow-lg">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <span>
+              {state.region} INDIA &bull; {state.stateCode || state.code || state.name.slice(0, 3).toUpperCase()}
+            </span>
+          </div>
+
+          {/* Bold & Highlighted State Name Overlapping Banner - Sized smaller for elegant balance */}
+          <div className="px-6 py-2 sm:px-8 sm:py-2.5 rounded-2xl bg-white/85 backdrop-blur-md border border-white/80 shadow-2xl my-1">
+            <h1 className="font-serif font-black tracking-[0.08em] text-[#8B1E22] text-2xl sm:text-3xl md:text-4xl lg:text-[42px] leading-tight select-none uppercase text-center drop-shadow-xs">
+              {state.name}
+            </h1>
+          </div>
+
+          {/* State Tagline */}
+          <p className="font-serif italic text-xs sm:text-sm md:text-base text-stone-100 font-medium max-w-2xl mt-3 px-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] text-center">
+            "{state.tagline}"
+          </p>
+
+          {/* Quick Cultural Highlight Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-4">
+            <span className="px-3.5 py-1 rounded-full bg-black/45 backdrop-blur-md border border-white/25 text-white text-xs font-semibold shadow-md">
+              🏛️ {state.monuments.length} Protected Monuments
+            </span>
+            {unescoCount > 0 && (
+              <span className="px-3.5 py-1 rounded-full bg-emerald-700/80 backdrop-blur-md border border-emerald-300/40 text-emerald-100 text-xs font-bold shadow-md">
+                ✨ {unescoCount} UNESCO World Heritage Sites
+              </span>
+            )}
+            <span className="px-3.5 py-1 rounded-full bg-black/45 backdrop-blur-md border border-white/25 text-white text-xs font-semibold shadow-md">
+              📍 Capital: {state.capital}
+            </span>
+            {state.officialLanguage && (
+              <span className="px-3.5 py-1 rounded-full bg-black/45 backdrop-blur-md border border-white/25 text-white text-xs font-semibold shadow-md">
+                🗣️ {state.officialLanguage}
+              </span>
+            )}
+          </div>
+        </motion.div>
+      </section>
+
       {/* Main Container: 2-Column Split View (Picture on Left, Text on Right) */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* ============================================================ */}
@@ -798,24 +885,29 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
           {/* RIGHT COLUMN: Text Related to State with Full Category Tabs */}
           {/* ============================================================ */}
           <div className="lg:col-span-7 xl:col-span-7 space-y-6">
-            {/* Header Title Section */}
+            {/* Heritage Chronicle & Cultural Overview Card */}
             <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-sm space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full bg-[#8B1E22]/10 text-[#8B1E22] text-xs font-bold uppercase tracking-widest">
-                  {state.region} India
-                </span>
+              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-stone-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-full bg-[#8B1E22]/10 text-[#8B1E22] text-xs font-bold uppercase tracking-widest">
+                    Heritage Chronicle
+                  </span>
+                  <span className="text-xs text-stone-500 font-medium">
+                    {state.region} Region &bull; Capital: {state.capital}
+                  </span>
+                </div>
                 {unescoCount > 0 && (
                   <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                    {unescoCount} UNESCO Sites
+                    {unescoCount} UNESCO World Heritage Sites
                   </span>
                 )}
               </div>
 
               <div>
-                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-stone-900 tracking-tight leading-none">
-                  {state.name}
-                </h1>
-                <p className="font-serif text-base sm:text-lg text-[#8B1E22] italic mt-2">
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+                  The Cultural Soul of {state.name}
+                </h2>
+                <p className="font-serif text-sm sm:text-base text-[#8B1E22] italic mt-1 font-medium">
                   "{state.tagline}"
                 </p>
               </div>

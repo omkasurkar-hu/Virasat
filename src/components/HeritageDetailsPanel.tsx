@@ -220,14 +220,22 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
       transition={{ type: 'spring', damping: 25, stiffness: 200 }}
       className="fixed inset-y-0 right-0 w-full sm:w-[480px] md:w-[540px] bg-slate-900/95 backdrop-blur-xl border-l border-slate-700/60 shadow-2xl z-40 flex flex-col overflow-hidden text-slate-100"
     >
-      {/* Banner & Header */}
-      <div className="relative h-56 sm:h-64 w-full overflow-hidden flex-shrink-0">
+      {/* Banner & Header: State Name and Banner Image Overlap Just Like Home Page */}
+      <div className="relative h-60 sm:h-64 w-full overflow-hidden flex-shrink-0 select-none">
         <img
-          src={state.bannerImage}
+          src={state.bannerImage || state.image || state.monuments[0]?.image || '/images/virasat_hero_bg.jpg'}
           alt={state.name}
-          className="w-full h-full object-cover brightness-[0.75] border-[#f1f6f9]"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (target.src !== '/images/virasat_hero_bg.jpg') {
+              target.src = state.monuments[0]?.image || '/images/virasat_hero_bg.jpg';
+            }
+          }}
+          className="w-full h-full object-cover brightness-[0.92] contrast-[1.05] scale-105 transition-transform duration-700"
+          referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
 
         {/* Top Floating Action Buttons */}
         <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
@@ -276,25 +284,23 @@ export const HeritageDetailsPanel: React.FC<HeritageDetailsPanelProps> = ({
           </button>
         </div>
 
-        {/* State Title on Banner */}
-        <div className="absolute bottom-3 left-6 right-6">
+        {/* State Title on Banner - Overlapping Bold & Highlighted Typography */}
+        <div className="absolute bottom-3.5 left-5 right-5">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
-            {state.stateCode && (
-              <span className="px-2 py-0.5 rounded-md text-[11px] font-extrabold bg-amber-500 text-slate-950 shadow">
-                {state.stateCode}
-              </span>
-            )}
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40">
-              {state.region} India
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/20 backdrop-blur-md text-amber-300 border border-amber-500/40 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              {state.region} INDIA {state.stateCode ? `• ${state.stateCode}` : ''}
             </span>
             <span className="text-xs text-slate-300 flex items-center gap-1">
               <MapPin className="w-3 h-3 text-amber-400" /> Capital: {state.capital}
             </span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-serif">
+
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-[0.04em] font-serif uppercase drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)] leading-tight">
             {state.name}
           </h2>
-          <p className="text-xs sm:text-sm text-amber-200/90 font-medium italic line-clamp-1">
+
+          <p className="text-xs sm:text-sm text-amber-100/90 font-serif italic line-clamp-1 mt-0.5 drop-shadow-sm">
             "{state.tagline}"
           </p>
         </div>

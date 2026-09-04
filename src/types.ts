@@ -308,3 +308,21 @@ export interface StateQuizQuestion {
   topic: 'Monuments' | 'Dance & Music' | 'Cuisine' | 'History' | 'Festivals' | 'Handicrafts';
 }
 
+// User State Experience Blog
+export interface StateExperienceBlog {
+  id: string;
+  title: string;
+  stateId: string;
+  stateName: string;
+  authorName: string;
+  authorBio?: string;
+  date: string;
+  readTime: string;
+  coverImage?: string;
+  content: string;
+  tags: string[];
+  preservationTip?: string;
+  likes: number;
+  isUserAuthored?: boolean;
+}
+
