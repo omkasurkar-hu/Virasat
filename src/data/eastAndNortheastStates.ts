@@ -104,16 +104,16 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Kolkata Kathi Roll & Phuchka',
-        image: 'https://static2.tripoto.com/media/filter/tst/img/1446686/TripDocument/1566304969_lrm_export_57267472762996_20190206_152011017_copy.jpg',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kolkata_Rolls.jpg/500px-Kolkata_Rolls.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail',
+        imageUrl: 'https://static2.tripoto.com/media/filter/tst/img/1446686/TripDocument/1566304969_lrm_export_57267472762996_20190206_152011017_copy.jpg',
         category: 'Street Food',
         description: 'Flaky paratha layered with fried egg, skewered kebab meat, onions, and lime juice (invented at Nizam\'s in 1932); and crisp semolina puchkas with spiced potato mash and tangy tamarind-gondhoraj water.',
         keyIngredients: ['Paratha', 'Egg', 'Chicken/Mutton Seekh', 'Gondhoraj Lime', 'Puchka Puris', 'Tamarind Water']
       },
       {
         name: 'Shukto & Chholar Dal',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYKqTWfI6Fm7q1s3FgH-PRTr10UTV-202Fdi5g30bEBYYtkzzgY3yJOTY&s=10',
         image: 'https://holycowvegan.net/wp-content/uploads/2014/06/bengali-cholar-dal-recipe.jpg',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYKqTWfI6Fm7q1s3FgH-PRTr10UTV-202Fdi5g30bEBYYtkzzgY3yJOTY&s=10',
         category: 'Vegetarian',
         description: 'Traditional multi-vegetable bitter-sweet stew with bitter gourd, raw banana, and lentil dumplings (bori) in milk-radhuni broth; paired with coconut chholar dal.',
         keyIngredients: ['Bitter Gourd (Uchhe)', 'Drumsticks', 'Raw Banana', 'Radhuni Spice', 'Chana Dal', 'Fried Coconut Bits']
@@ -147,14 +147,16 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Baluchari Silk Sarees (Depicting Mythological scenes on Pallu)', 'Jamdani Muslin Sarees', 'Kantha Embroidery (Stitched patchwork)'],
-      image: 'https://aditri.co.in/wp-content/uploads/2024/06/7-10.jpg',
-      image: 'https://anvicouture.com/cdn/shop/files/3_22_202512_35_23AM.jpg?v=1742756575',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI5Q1EiS92r_xPWAchedGZU1SpHAXtHpq56b9cl4jrKLh6WK-_mFMEQl9p&s=10',
+      textileImages: [
+        'https://aditri.co.in/wp-content/uploads/2024/06/7-10.jpg',
+        'https://anvicouture.com/cdn/shop/files/3_22_202512_35_23AM.jpg?v=1742756575',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI5Q1EiS92r_xPWAchedGZU1SpHAXtHpq56b9cl4jrKLh6WK-_mFMEQl9p&s=10'
+      ],
       handicrafts: ['Bankura Terracotta Horses', 'Bishnupur Dokra Metal Art', 'Kalighat Folk Paintings', 'Sholapith (Pith carving) Durga crowns', 'Darjeeling Orthodox Tea'],
       traditionalMenAttire: 'Dhoti with silk or cotton Kurta (Panjabi), often accompanied by an Uttoriyo (shoulder scarf).',
-      image: 'https://i.pinimg.com/474x/96/4c/b0/964cb001078f83cbb80e9e50cd5328ed.jpg',
+      traditionalMenAttireImage: 'https://i.pinimg.com/474x/96/4c/b0/964cb001078f83cbb80e9e50cd5328ed.jpg',
       traditionalWomenAttire: 'Lal-Paad Saree (white/cream saree with bright red border) draped in traditional Bengali eight-fold style with a bunch of keys at the pallu.',
-      image: 'https://i.pinimg.com/736x/78/ab/39/78ab394961465c8879e52cebf6926294.jpg',
+      traditionalWomenAttireImage: 'https://i.pinimg.com/736x/78/ab/39/78ab394961465c8879e52cebf6926294.jpg',
       giTaggedCrafts: ['Banglar Rasogolla', 'Baluchari Saree', 'Santiniketan Leather Goods', 'Bankura Panchmura Terracotta Craft', 'Purulia Chhau Mask', 'Bengal Patachitra', 'Darjeeling Tea']
     },
     historyTimeline: [
@@ -180,7 +182,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         era: '1947 AD',
         title: 'Partition & Modern State of West Bengal',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqw5K3IWnBBayQsVWu0XG_ZDjtP8ifQx7kF6AxI0VPKxo8svR0X4z7BwA&s=10',
-        image: 'https://cdn.thecultural.me/sob/bengalpartition1905-map_7d37018a63a04228937247825bbb99da_g.jpg',
+        imageUrl: 'https://cdn.thecultural.me/sob/bengalpartition1905-map_7d37018a63a04228937247825bbb99da_g.jpg',
         description: 'Following Indian independence and partition, West Bengal was integrated into the Indian Union with Kolkata as capital.'
       }
     ]
@@ -329,18 +331,22 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Sambalpuri Bandha Saree (Double Ikat)', 'Bomkai Silk & Cotton', 'Berhampuri Patta (Kumbha borders)'],
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXLTakHaofr_lsa_4n9QQt2T7uFyVKOhybrWFPIafg0NxaOsUxLRYpL94&s=10',
-      image:'https://content-d11d.kxcdn.com/media/catalog/product/a/d/adi492.5342.jpg',
-      image:'https://cdn.shopaccino.com/nirguna/products/tri3dnirguna-2021071514silkset290sowmyasriside2021-7-15-19-28-491600x2400-173281_m.jpg?v=731',
+      textileImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXLTakHaofr_lsa_4n9QQt2T7uFyVKOhybrWFPIafg0NxaOsUxLRYpL94&s=10',
+        'https://content-d11d.kxcdn.com/media/catalog/product/a/d/adi492.5342.jpg',
+        'https://cdn.shopaccino.com/nirguna/products/tri3dnirguna-2021071514silkset290sowmyasriside2021-7-15-19-28-491600x2400-173281_m.jpg?v=731'
+      ],
       handicrafts: ['Pattachitra Paintings of Raghurajpur', 'Cuttack Tarakasi (Silver Filigree Jewelry)', 'Pipili Appliqué Work (Chandua)', 'Dhokra Metal Casting'],
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYWNZ6786fYWxoWTVwRrfBT5Sqf-9JLFNnWsxDXe9X7Rq31h2kSm0rlYob&s=10',
-      image:'https://static.toiimg.com/thumb/msid-108183267,width-1280,height-720,resizemode-4/108183267.jpg',
-      image:'https://gaatha.org/wp-content/uploads/puri-applique-craft.jpg.webp',
-      image:'https://vajiramias.sgp1.cdn.digitaloceanspaces.com/wp/current-affairs/2025/03/what_is_dokra_metal_crafts.jpg?v=2',
+      handicraftImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYWNZ6786fYWxoWTVwRrfBT5Sqf-9JLFNnWsxDXe9X7Rq31h2kSm0rlYob&s=10',
+        'https://static.toiimg.com/thumb/msid-108183267,width-1280,height-720,resizemode-4/108183267.jpg',
+        'https://gaatha.org/wp-content/uploads/puri-applique-craft.jpg.webp',
+        'https://vajiramias.sgp1.cdn.digitaloceanspaces.com/wp/current-affairs/2025/03/what_is_dokra_metal_crafts.jpg?v=2'
+      ],
       traditionalMenAttire: 'Dhoti with Kurta and Gamucha draped over the shoulder.',
-      image:'https://www.indiatravel.app/wp-content/uploads/2024/10/Pata-Dhoti-227x300.png',
+      traditionalMenAttireImage: 'https://www.indiatravel.app/wp-content/uploads/2024/10/Pata-Dhoti-227x300.png',
       traditionalWomenAttire: 'Sambalpuri Ikat or Bomkai Silk Saree with distinctive temple border and silver filigree ornaments.',
-      image:'https://www.bunkarvalley.com/wp-content/uploads/2025/02/Tribal-Fashion-of-Odisha.jpg',
+      traditionalWomenAttireImage: 'https://www.bunkarvalley.com/wp-content/uploads/2025/02/Tribal-Fashion-of-Odisha.jpg',
       giTaggedCrafts: ['Odisha Rasagola', 'Sambalpuri Bandha Saree', 'Kotpad Handloom', 'Odisha Pattachitra', 'Pipili Applique Work', 'Cuttack Silver Filigree (Tarakasi)', 'Kandhamal Haldi (Turmeric)']
     },
     historyTimeline: [
@@ -512,19 +518,23 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Bhagalpuri Tussar Silk (The Silk City)', 'Sujani Embroidery (Storytelling Quilts)', 'Bawan Buti Handloom Weaves'],
-      image: 'https://th.bing.com/th/id/R.953a0e2ad04ccd65c0f95c7f9764622c?rik=whki%2fyft0nSv7Q&riu=http%3a%2f%2fwww.banarasee.in%2fcdn%2fshop%2ffiles%2fIMG_9878.jpg%3fv%3d1685679822&ehk=h3tiwinpvxjCxGCcqVbU%2b0UzHKP7rHPANdqUfxoKMxc%3d&risl=&pid=ImgRaw&r=0',
-      image: 'https://anjushree.co.in/assets/sujani-embroidery.CA1u4jgF.jpg',
-      image: 'https://tse1.mm.bing.net/th/id/OIP.M5rpVUDCLB_58aV5UWfvSAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      textileImages: [
+        'https://th.bing.com/th/id/R.953a0e2ad04ccd65c0f95c7f9764622c?rik=whki%2fyft0nSv7Q&riu=http%3a%2f%2fwww.banarasee.in%2fcdn%2fshop%2ffiles%2fIMG_9878.jpg%3fv%3d1685679822&ehk=h3tiwinpvxjCxGCcqVbU%2b0UzHKP7rHPANdqUfxoKMxc%3d&risl=&pid=ImgRaw&r=0',
+        'https://anjushree.co.in/assets/sujani-embroidery.CA1u4jgF.jpg',
+        'https://tse1.mm.bing.net/th/id/OIP.M5rpVUDCLB_58aV5UWfvSAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
+      ],
       handicrafts: ['Madhubani Paintings on Handmade Paper', 'Sikki Grass Craft (Golden Grass woven boxes)', 'Manjusha Angika Art (Snake Paintings)', 'Khatwa Appliqué Work', 'Stone Carvings of Gaya'],
-      image: 'https://5.imimg.com/data5/SELLER/Default/2023/8/332467286/EK/OO/QW/80080160/painting-p-3-1000x1000.jpeg',
-      image: 'https://th.bing.com/th/id/R.296bb2940902dbdf97721da7134c8af3?rik=RM2ZOBInd2M5kQ&riu=http%3a%2f%2fpunarnawa.com%2fcdn%2fshop%2ffiles%2fpunarnawa-soul-of-artistry-kauna-grass-basket-default-title-moonj-grass-storage-box-32440494063673.jpg%3fv%3d1705104468&ehk=GLP1drjlS96UZQNyVWFQ05raQZPcFj%2bTM2SrPUbONdc%3d&risl=&pid=ImgRaw&r=0',
-      image: 'https://tse3.mm.bing.net/th/id/OIP.gNjJBGdZkXfaKdkwBY0mCAHaFb?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://tse3.mm.bing.net/th/id/OIP.qvGUkB8rZpKWttowhnAAEgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image:'https://c8.alamy.com/comp/2SRDC3C/carved-buddha-on-mahabodhi-temple-wall-bodh-gaya-bihar-india-asia-2SRDC3C.jpg',
+      handicraftImages: [
+        'https://5.imimg.com/data5/SELLER/Default/2023/8/332467286/EK/OO/QW/80080160/painting-p-3-1000x1000.jpeg',
+        'https://th.bing.com/th/id/R.296bb2940902dbdf97721da7134c8af3?rik=RM2ZOBInd2M5kQ&riu=http%3a%2f%2fpunarnawa.com%2fcdn%2fshop%2ffiles%2fpunarnawa-soul-of-artistry-kauna-grass-basket-default-title-moonj-grass-storage-box-32440494063673.jpg%3fv%3d1705104468&ehk=GLP1drjlS96UZQNyVWFQ05raQZPcFj%2bTM2SrPUbONdc%3d&risl=&pid=ImgRaw&r=0',
+        'https://tse3.mm.bing.net/th/id/OIP.gNjJBGdZkXfaKdkwBY0mCAHaFb?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://tse3.mm.bing.net/th/id/OIP.qvGUkB8rZpKWttowhnAAEgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://c8.alamy.com/comp/2SRDC3C/carved-buddha-on-mahabodhi-temple-wall-bodh-gaya-bihar-india-asia-2SRDC3C.jpg'
+      ],
       traditionalMenAttire: 'Dhoti-Kurta with Mirjai jacket and Angavastram (Gamchha) draped around the neck.',
-      image: 'https://tse4.mm.bing.net/th/id/OIP.qM_gjhMTPlZnjedTLX7BYQHaJ3?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      traditionalMenAttireImage: 'https://tse4.mm.bing.net/th/id/OIP.qM_gjhMTPlZnjedTLX7BYQHaJ3?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       traditionalWomenAttire: 'Bhagalpuri Tussar Silk Saree or Seedha-Pallu cotton saree with traditional Tikli and Bichhiya jewelry.',
-      image: 'https://www.loomfolks.com/wp-content/uploads/2021/01/Pleasing-Pearl-White-Pure-Desi-Bhagalpuri-Tussar-Silk-Saree.jpg',
+      traditionalWomenAttireImage: 'https://www.loomfolks.com/wp-content/uploads/2021/01/Pleasing-Pearl-White-Pure-Desi-Bhagalpuri-Tussar-Silk-Saree.jpg',
       giTaggedCrafts: ['Madhubani Paintings', 'Bhagalpur Silk', 'Silao Khaja', 'Sujani Embroidery', 'Khatwa Craft', 'Shahi Litchi of Muzaffarpur', 'Zardalu Mango', 'Katarni Rice', 'Magahi Paan']
     },
     historyTimeline: [
@@ -561,7 +571,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'East',
     coordinates: [23.6102, 85.2799],
     zoomLevel: 7,
-    bannerImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://s7ap1.scene7.com/is/image/incredibleindia/jonha-falls-ranchi-jharkhand-new?qlt=82&ts=1727010871094',
     tagline: 'Land of Forests, Mineral Wealth, Birsa Munda & Sohrai Tribal Murals',
     overview: 'Jharkhand ("Land of Forests") is a mineral-rich highland celebrated for its sacred Sal tree groves, roaring waterfalls (Hundru & Jonha), revolutionary tribal heroes like Bhagwan Birsa Munda, the sacred Jain hill at Parasnath, and prehistoric Sohrai and Khovar cave murals.',
     officialLanguage: 'Hindi',
@@ -572,21 +582,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     monuments: [
       {
         name: 'Baidyanath Dham (Deoghar)',
+        image:'https://upload.wikimedia.org/wikipedia/commons/e/e2/Baba_Dham.jpg?utm_source=hi.wikipedia.org&utm_campaign=index&utm_content=original',
         type: 'Ancient Shiva Jyotirlinga Complex',
         century: 'Ancient Antiquity (Rebuilt 1596 AD)',
         location: 'Deoghar',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
         description: 'One of the 54 Shakti Peethas and 12 sacred Jyotirlingas where Ravana worshipped Lord Shiva; epicenter of the world-famous Shravani Mela.',
         coordinates: [24.4925, 86.7001]
       },
       {
         name: 'Parasnath Hill (Shikharji)',
+        image:'https://www.tourmyindia.com/images/shikharji-temple-jharkhand.jpg',
         type: 'Sacred Jain Summit & Temples',
         century: 'Ancient Antiquity',
         location: 'Giridih District',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
         description: 'Highest peak in Jharkhand (1,365 m), sacred summit adorned with white marble Jain Tirthankara shrines overlooking the Chota Nagpur plateau.',
         coordinates: [23.9628, 86.1308]
       },
@@ -596,7 +606,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '1691 AD (King Barkagarh Jagannathpur)',
         location: 'Dhurwa, Ranchi',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1609137144822-0797300f8dc4?auto=format&fit=crop&w=800&q=80',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/9/95/17th_century_Jagannath_temple_Ranchi_Jharkhand_-_9.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         description: 'Perched on a scenic hillock overlooking Ranchi city, built in the architectural pattern of Puri Jagannath Temple, holding annual Rath Yatra.',
         coordinates: [23.3283, 85.2817]
       }
@@ -604,6 +614,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Sohrai & Khovar Painting',
+        image:'https://indianfolkart.org/wp-content/uploads/2025/10/Sohrai-Painting-Renuka-01.jpg',
         type: 'Theatre',
         origin: 'Hazaribagh District',
         description: 'GI-tagged indigenous mural art painted on mud walls using natural ochre, black manganese, and white clay depicting wildlife, birds, and fertility trees.',
@@ -611,6 +622,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Seraikella Chhau Dance',
+        image:'https://www.sahapedia.org/sites/default/files/styles/sp_page_banner_800x800/public/Gopal-Prasad-Dubey---Chandrabhaga_0.jpg?itok=_fgaWVVR',
         type: 'Dance',
         origin: 'Seraikela Princely State',
         description: 'UNESCO-inscribed classical masked dance known for subtle body tilts (Chalis) and expressive pastel-colored papier-mâché masks depicting nature and myth.',
@@ -618,6 +630,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Paika & Jhumar Dance',
+        image:'https://jharkhandculture.com/sites/default/files/inline-images/paika.jpg',
         type: 'Martial Art',
         origin: 'Munda & Santhal Warriors',
         description: 'Martial dance where men brandishing shields and glittering swords perform battle drills with towering feathered crests to fast-paced beats.',
@@ -627,18 +640,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Dhuska with Ghugni & Aloo Chana',
+        image:'https://i0.wp.com/indroyc.com/wp-content/uploads/2024/11/dhuska-fp.jpg?fit=686%2C386&ssl=1&w=640',
         category: 'Street Food',
         description: 'Crispy golden deep-fried savory pancakes made from soaked rice and chana dal batter, served with spicy black chickpea curry and green chutney.',
         keyIngredients: ['Rice', 'Chana Dal', 'Urad Dal', 'Black Chickpeas (Kala Chana)', 'Garlic', 'Green Chilies', 'Mustard Oil']
       },
       {
         name: 'Rugra & Bamboo Shoot Curry (Karil)',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4YwMMXW7Gq3J0hc-6-YSnAdpN-5CsSDTTzy7xwGcEIOuWiQbhNUcUEzBZ&s=10',
         category: 'Vegetarian',
         description: 'Rare wild forest mushroom (Rugra) and tender fermented bamboo shoot curry slow-cooked with whole spices during the monsoons.',
         keyIngredients: ['Wild Forest Mushrooms (Rugra)', 'Bamboo Shoots (Karil)', 'Mustard Paste', 'Garlic', 'Coriander Seeds']
       },
       {
         name: 'Arsa Roti & Handia',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSRLJCb9IbWBLz0d0G9HMiuFYE8PllqDGNAzLMF8RX8hXKyl_IJLxXeAC8&s=10',
         category: 'Dessert',
         description: 'Traditional festive sweet made of powdered soaked rice flour cooked with melted jaggery syrup and fried until golden and chewy.',
         keyIngredients: ['Rice Flour', 'Jaggery', 'Fennel Seeds', 'Sesame Seeds', 'Mustard Oil / Ghee']
@@ -647,6 +663,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Sarhul Festival',
+        image: 'https://www.bunkarvalley.com/wp-content/uploads/2025/07/Sarhul-Festival.jpg',
         timing: 'Chaitra Shukla Tritiya (Spring - March/April)',
         significance: 'Most important nature festival of the Adivasis (Oraon, Munda, Ho, Santhal) celebrating the blooming of the sacred Sal tree (Sarjom ba).',
         keyRitual: 'Village priest (Pahan) conducts prayers at the sacred grove (Jaher / Sarna), distributing Sal blossoms to every household.',
@@ -654,6 +671,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Shravani Mela Deoghar',
+        image:'https://judgementsincriminallaw.wordpress.com/wp-content/uploads/2020/07/images-33.jpeg?w=743',
         timing: 'Shravana (July - August / One Month)',
         significance: 'World\'s longest continuous religious procession where millions of Kanwariyas in saffron walk 105 km barefoot carrying holy Ganga water from Sultanganj to Baba Baidyanath temple.',
         keyRitual: 'Chanting "Bol Bam" along the 105-km pedestrian pilgrimage path and offering Ganga Jal to the Jyotirlinga.',
@@ -661,6 +679,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Karma Festival',
+        image:'https://www.sahapedia.org/sites/default/files/styles/sp_inline_images/public/inline-images/Karma_Pooja%20-%20Gurpreet%20Singh%20Ranchi%2C%20Wikimedia%20commons_0.jpg?itok=_b6kbL2r',
         timing: 'Bhadra Shukla Ekadashi (August - September)',
         significance: 'Celebration of fertility, sisterly love, and the sacred Karam tree that protects wealth and harvest.',
         keyRitual: 'Planting branches of the Karam tree in the village courtyard, all-night singing of Karam geet, and dancing around the branch.',
@@ -669,30 +688,46 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Kuchai Silk (Wild Organic Tussar Silk)', 'Santhali Panchi and Parhan Handwoven Attire'],
+      textileImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUvrKGmw32cCyN-lrVD0Iy9TQ40qepZkdkN70VgVQHpiXT2Cf-7xlQsPx3&s=10',
+        'https://www.utsavpedia.com/wp-content/uploads/2013/07/Traditional-Costume-of-Jharkhand3.jpg'
+      ],
       handicrafts: ['Sohrai and Khovar Wall Paintings', 'Dhokra Brass Craft (Malhor tribe)', 'Bamboo & Sal Wood Carvings', 'Seraikela Chhau Masks'],
+      handicraftImages: [
+        'https://imp-art.org/wp-content/uploads/2025/07/sohrai-painting-10L.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWxwcpSfhRrMLcRffoOmKoHLV0hT9hdX9AkYCkCkxOzKY1sn_WptkzZxci&s=10',
+        'https://img1.exportersindia.com/product_images/bc-full/dir_148/4431941/bamboo-handicrafts-1499766381-3121014.jpeg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRle2Kvp9jKRP82quSWF5EHeXUnrlunVrYBl5dCsEOhmhiIMC-aAFV4LkA&s=10'
+      ],
       traditionalMenAttire: 'Bhagwan (cotton loinwrap) or Kurta-Pajama with traditional gamcha.',
+      traditionalMenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ71au6mhAxJjAfvmjN-2RFXLcAlMYCjq7LYgPD2EPPAbxmNgb44UJyzk25&s=10',
       traditionalWomenAttire: 'Panchi-Parhan (traditional red and white woven two-piece cotton drape) with silver Hansuli necklace and brass armlets.',
+      traditionalWomenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSagH19JquwUKjkpDVlPd15bmJ8Dc7LQ_iCBRYe-yup9VBB_ZwrIaNlizoX&s=10',
       giTaggedCrafts: ['Sohrai - Khovar Painting', 'Kuchai Silk']
     },
     historyTimeline: [
       {
         era: 'Prehistoric Era',
         title: 'Isko Rock Art & Ancient Megaliths',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMA6GFkh_2fVpMU-9eujduOzMACprgzC2h4YmL9ZbnCAAelzVsKZV98HkR&s=10',
         description: 'Hazaribagh caves reveal rock art dating back over 10,000 years depicting bulls, deer, and ancient geometric sun symbols.'
       },
       {
         era: '1855 - 1856 AD',
         title: 'Santhal Hool (Rebellion)',
+        image:'https://upload.wikimedia.org/wikipedia/commons/2/2c/Attack_by_600_Santhals_upon_a_party_of_50_sepoys%2C_40th_regiment_native_infantry.jpg?utm_source=hi.wikipedia.org&utm_campaign=index&utm_content=original',
         description: 'Brothers Sidhu and Kanhu Murmu mobilized over 60,000 Santhals in one of the fiercest armed rebellions against British colonial exploitation.'
       },
       {
         era: '1899 - 1900 AD',
         title: 'Ulgulan (The Great Tumult) of Birsa Munda',
+        image:'https://i0.wp.com/iascurrentaffairs.com/wp-content/uploads/2026/06/Birsa-Munda-and-His-Legacy.png?fit=600%2C400&ssl=1',
         description: 'Bhagwan Birsa Munda mobilized tribal warriors demanding "Munda Raj" and autonomy, leading to the landmark Chota Nagpur Tenancy Act.'
       },
       {
         era: '2000 AD',
         title: 'Statehood of Jharkhand',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS15ZnxOSzoqAT3BO7uLKVQyNZlIlmpjlVh9LA-Md7H_WZuadvVl64e_0BI&s=10',
         description: 'Carved out of southern Bihar on 15 November 2000 (birth anniversary of Birsa Munda) as India\'s 28th state.'
       }
     ]
@@ -704,7 +739,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'North-East',
     coordinates: [26.2006, 92.9376],
     zoomLevel: 7,
-    bannerImage: 'https://images.unsplash.com/photo-1590740608753-f7a35cbdfaa3?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://www.ibef.org/assets/images/states/Assam-2.jpg',
     tagline: 'Gateway to the Northeast, One-Horned Rhino & Golden Muga Silk',
     overview: 'Assam is the scenic gateway to Northeast India, nourished by the majestic Brahmaputra River. It is celebrated for the one-horned rhinoceros of Kaziranga, the mystical Kamakhya Devi temple, the high-energy Bihu harvest dance, golden Muga silk, and world-renowned malty Assam black tea.',
     officialLanguage: 'Assamese, Bodo',
@@ -715,21 +750,21 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     monuments: [
       {
         name: 'Kamakhya Temple',
+        image:'https://upload.wikimedia.org/wikipedia/commons/4/48/Kamakhya_Temple_-_DEV_8829.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         type: 'Nilachal Style Tantric Shakti Peetha',
         century: '8th Century AD (Rebuilt 1565 AD / King Nara Narayana)',
         location: 'Nilachal Hill, Guwahati',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1590740608753-f7a35cbdfaa3?auto=format&fit=crop&w=800&q=80',
         description: 'One of the oldest and most revered of the 51 Shakti Peethas celebrating the power of creation; epicenter of the annual Ambubachi Mela.',
         coordinates: [26.1664, 91.7054]
       },
       {
         name: 'Kaziranga National Park',
         type: 'UNESCO Natural World Heritage Site',
+        image: 'https://www.insideindianjungles.com/wp-content/uploads/2019/07/kaziranga.jpg',
         century: 'Conservation Reserve since 1905',
         location: 'Golaghat & Nagaon Districts',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&w=800&q=80',
         description: 'Sanctuary hosting two-thirds of the world\'s great one-horned rhinoceroses, alongside wild water buffaloes, swamp deer, and elephants in the Brahmaputra floodplains.',
         coordinates: [26.5775, 93.1711]
       },
@@ -739,7 +774,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '1744 - 1751 AD (Ahom Dynasty / King Pramatta Singha)',
         location: 'Sivasagar',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgYyjqJ17oqYZdVjwT_AUXSwFxSWIYvJ4YrOcWn-asVwsCSwBNxPhqEY-g&s=10',
         description: 'Two-story royal sports pavilion with an inverted boat-shaped roof used by Ahom kings to watch buffalo fights; and underground secret tunnel networks.',
         coordinates: [26.9631, 94.6319]
       }
@@ -747,6 +782,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Bihu Dance',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFHxQ6hTJisrPkGDkmmrmbe5EZwYazkKvEdb4S7-MuaFpLgl1kEkl2Ns8&s=10',
         type: 'Dance',
         origin: 'Indigenous Assamese Agrarian Culture',
         description: 'Energetic spring harvest dance characterized by rapid hand movements, waist swaying (Bihu Hiyar), and singing love ballads to the beats of the Dhol and Pepa horn.',
@@ -755,6 +791,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Sattriya Classical Dance',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQywsx0PrANu7maRYcy3prTIrrk_NvwAckSTFa1__MDjyBXo3pKB-6GhKXJ&s=10',
         type: 'Dance',
         origin: 'Srimanta Sankardev (15th Century Vaishnava Monasteries)',
         description: 'One of the eight classical dances of India, originating in Vaishnavite Satras combining devotional mime, footwork (Mati-Akhara), and cymbal rhythms.',
@@ -763,6 +800,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Ankiya Naat & Bhaona (Mask Theatre)',
+        image:'https://meghalayamonitor.com/wp-content/uploads/2024/04/IMG-20240428-WA00411.jpg',
         type: 'Theatre',
         origin: 'Majuli Island Satras',
         description: 'One-act devotional musical plays created by Sankardev using Brajavali language and large handcrafted bamboo-clay masks (Mukha).',
@@ -772,24 +810,28 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Khaar with Rice & Masor Tenga',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT4vgv3fz9F0yRMa_ea19SK28aGjOd0a8HPr2F6jVmKxCwAy-s0daCJTE&s=10',
         category: 'Non-Vegetarian',
         description: 'Traditional alkaline digestive starter made by filtering water through sun-dried roasted banana peel ash; and light, sour Rohu fish broth flavored with Thekera or elephant apple.',
         keyIngredients: ['Kola Khaar (Banana Peel Ash Water)', 'Fresh River Fish (Rohu)', 'Thekera / Tomatoes', 'Mustard Oil', 'Panch Phoron', 'Green Chilies']
       },
       {
         name: 'Duck with Ash Gourd (Kumura Diya Hah)',
+        image:'https://pbs.twimg.com/media/FNPU-PZacAM-mH2.png',
         category: 'Non-Vegetarian',
         description: 'Royal Assamese winter delicacy of tender duck meat cooked with sweet ash gourd chunks, black pepper, and whole ginger-garlic paste.',
         keyIngredients: ['Duck Meat', 'Ash Gourd (Kumura)', 'Black Peppercorns', 'Ginger-Garlic', 'Mustard Oil']
       },
       {
         name: 'Pitha & Laru (Bihu Sweets)',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHNIvC8JFLS3aazPq6y2vM-sEZC_JIfwiGYu0YzQDv_Ib2XIfSnj0gDMo&s=10',
         category: 'Dessert',
         description: 'Bora rice rolls stuffed with sweet toasted black sesame and jaggery (Til Pitha), crispy Ghila Pitha, and sweet grated coconut laddus.',
         keyIngredients: ['Sticky Bora Rice', 'Black Sesame Seeds', 'Jaggery (Gud)', 'Fresh Coconut', 'Cardamom']
       },
       {
         name: 'Assam Orthodox Black Tea',
+        image:'https://www.assamicaagro.in/cdn/shop/products/Organic-Assam-Orthodox-Tea_1200x1200.jpg?v=1678253170',
         category: 'Beverage',
         description: 'Strong, bright, malty black tea with a deep amber color, cultivated in the lush river valleys of upper Assam since 1823.',
         keyIngredients: ['Camellia sinensis var. assamica Leaves'],
@@ -799,6 +841,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Rongali Bihu (Bohag Bihu)',
+        image:'https://www.indianarrative.com/wp-content/uploads/2026/04/20260414427L.webp',
         timing: 'Mid-April (Assamese New Year / 7 Days)',
         significance: 'Grandest Assamese festival celebrating the arrival of spring and agricultural sowing with community feast and youth dancing.',
         keyRitual: 'Goru Bihu (bathing and honoring cattle with turmeric and gourd), Husori singing from house to house, and gifting handwoven Gamosas.',
@@ -806,6 +849,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Ambubachi Mela (Kamakhya Temple)',
+        image:'https://i.pinimg.com/736x/31/3c/2d/313c2d5e16c998320e8a6c63279def75.jpg',
         timing: 'Ashaad (June / 4 Days)',
         significance: 'Celebration of the annual menstruation cycle of Mother Earth and Goddess Kamakhya; temple doors remain closed for 3 days before grand reopening.',
         keyRitual: 'Tantric sadhus and pilgrims chanting outside closed sanctum doors, distributing holy red Raktavastra cloth as prasad.',
@@ -813,6 +857,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Majuli Raas Mahotsav',
+        image:'https://assaminfo.com/files/touristplaces/m_31.jpg',
         timing: 'Kartik Purnima (November)',
         significance: 'Four-day theatrical carnival across the Satras of Majuli depicting the celestial life and divine Raslila of Lord Krishna.',
         keyRitual: 'All-night Bhaona theatre performances where all island villagers participate as actors, musicians, and mask makers.',
@@ -820,31 +865,48 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       }
     ],
     craftsAndAttire: {
-      textiles: ['Muga Silk (Golden Silk found only in Assam)', 'Eri Silk (Ahimsa Peace Silk)', 'Pat Silk', 'Gamosa (White and Red Embroidered Cotton Scarf of Respect)'],
-      handicrafts: ['Assamese Jaapi (Conical Woven Bamboo Hat with floral motifs)', 'Majuli Handcrafted Bamboo Masks (Mukha)', 'Sarthebari Bell Metal Utensils', 'Barpeta Brass Craft', 'Assamese Gold Jewelry (Dholbiri, Jonbiri, Gamkharu)'],
+      textiles: ['Muga Silk (Golden Silk found only in Assam)', 'Pat Silk', 'Gamosa (White and Red Embroidered Cotton Scarf of Respect)'],
+      textileImages: [
+        'https://upload.wikimedia.org/wikipedia/commons/c/c0/Assamese_Muga_With_Japi.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
+        'https://ethnohues.com/wp-content/uploads/2026/02/saree-p1.webp',
+        'https://images.meesho.com/images/products/1002512707/wxyt6_512.webp?width=512'
+      ],
+      handicrafts: ['Assamese Jaapi (Conical Woven Bamboo Hat with floral motifs)', 'Majuli Handcrafted Bamboo Masks (Mukha)', 'Sarthebari Bell Metal Utensils', 'Assamese Gold Jewelry (Dholbiri, Jonbiri, Gamkharu)'],
+      handicraftImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbs4DfwKrZqwH4RD4Z_mkORtTB-J3oL-VX6hQWDXM1qGtCql2NOlxb2IQJ&s=10',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4W6UJ-Dk7favZb3EIvoLj_oHGCy0-XL0oiGGviM-qwanQ4aLX8E03AT8&s=10',
+        'https://yehaindia.com/wp-content/uploads/2021/08/cover-1.jpg',
+        'https://zangfai.in/image/cache/catalog/products/mainset/IMG_JZNB2907-550x550.jpg'
+      ],
       traditionalMenAttire: 'Dhoti-Kurta with Seleng Chador and Gamosa worn around the neck.',
+      traditionalMenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTejrlVLqIlJhewyyGNpXIsrMUcnCynCmE66kvbNa232BjOYYY43KHc-X65&s=10',
       traditionalWomenAttire: 'Mekhela Chador (two-piece garment of Muga or Eri silk with golden Kingkhap motifs) and Riha drape.',
+      traditionalWomenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLwrdb8qcxJUH3PjR8MzP7dOCnu1ukAG7czpK6c4gL-3ny-U_Oq-gPmzjf&s=10',
       giTaggedCrafts: ['Muga Silk of Assam', 'Assam Karbi Anglong Ginger', 'Tezpur Litchi', 'Jhotiya Pitha', 'Assam Gamosa', 'Assam Orthodox Tea', 'Chokuwa Rice (Soft Magic Rice)']
     },
     historyTimeline: [
       {
         era: '4th - 12th Century AD',
+        image:'https://upload.wikimedia.org/wikipedia/commons/f/ff/Kamarupa_map.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         title: 'Kingdom of Kamarupa',
         description: 'Ruled by Varman, Mlechchha, and Pala dynasties with capital at Pragjyotishpura; King Bhaskaravarman formed an alliance with Emperor Harshavardhana.'
       },
       {
         era: '1228 - 1826 AD',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRMF2Mzt-ThnelmDpLLy0y18_BQ6NliLsCp2mUETHtI8Seyo6T7kK_5CUJ&s=10',
         title: '600-Year Reign of the Ahom Kingdom',
         description: 'Founded by Chaolung Sukaphaa; famously routed the imperial Mughal army 17 times, including the Battle of Saraighat (1671) under General Lachit Borphukan.'
       },
       {
         era: '15th - 16th Century AD',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_Qc-Xs10QatmuvYAqOTeJTM_xQh_MtYVte59MRkUJc57SMWFmAZohbec&s=10',
         title: 'Srimanta Sankardev & Neo-Vaishnavite Renaissance',
         description: 'Saint-philosopher Sankardev unified Assamese society through music (Borgeet), dance (Sattriya), and monastery institutions (Satras).'
       },
       {
         era: '1826 AD',
         title: 'Treaty of Yandabo & Modern Assam',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOqDGYmHTdkKxYnlJ7dc1t3E-7jVuFyODyjHfhjQ4YjVuDN-OLy8HZfrm&s=10',
         description: 'Annexed by the British after the First Anglo-Burmese War, introducing commercial tea plantations, oil fields in Digboi (Asia\'s first), and coal mines.'
       }
     ]
@@ -856,7 +918,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     region: 'North-East',
     coordinates: [27.5330, 88.5122],
     zoomLevel: 8,
-    bannerImage: 'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?auto=format&fit=crop&w=1200&q=80',
+    bannerImage: 'https://assets.vogue.in/photos/5ce44893ba773d71660b5bfc/1:1/w_1080,h_1080,c_limit/Sikkim.jpg',
     tagline: 'Land of Kanchenjunga, Organic Haven, Rumtek Monastery & Orchid Valleys',
     overview: 'Sikkim is India\'s jewel state nestled beneath the world\'s third-highest mountain, Mount Kanchenjunga (Khangchendzonga). Recognized as the world\'s first 100% organic state, it blends ancient Tibetan Buddhist monasteries, serene sacred lakes (Gurudongmar & Tsomgo), alpine rhododendron sanctuaries, and the peaceful harmony of Lepcha, Bhutia, and Nepali communities.',
     officialLanguage: 'Nepali, Sikkimese (Bhutia), Lepcha, English',
@@ -867,11 +929,11 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     monuments: [
       {
         name: 'Rumtek Monastery (Dharma Chakra Centre)',
+        image:'https://upload.wikimedia.org/wikipedia/commons/3/38/Dharmachakra_Centre%2C_Rumtek_Monastery.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original',
         type: 'Tibetan Kagyu Monastic Seat',
         century: '16th Century / Rebuilt 1966 by 16th Karmapa',
         location: 'Rumtek, near Gangtok',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?auto=format&fit=crop&w=800&q=80',
         description: 'The main seat of the Karma Kagyu lineage in exile, housing rare golden stupas, ancient thangkas, and sacred Buddhist relics.',
         coordinates: [27.3039, 88.5528]
       },
@@ -881,7 +943,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: 'Natural & Sacred Cultural Biosphere',
         location: 'North & West Sikkim',
         isUnesco: true,
-        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn2yRdH4eEpQeVkBi4h70NvtEufw_ugNwqXn6nB06X6SqdiHy70swxCKxY&s=10',
         description: 'India\'s first Mixed UNESCO World Heritage Site, encompassing Mt. Kanchenjunga (8,586 m), 18 glaciers, and sacred Buddhist pilgrimage lakes (Beyul).',
         coordinates: [27.7000, 88.3500]
       },
@@ -891,7 +953,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
         century: '1705 AD (Lhatsun Chempo)',
         location: 'Pelling, West Sikkim',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+        image: 'https://s7ap1.scene7.com/is/image/incredibleindia/spiritual-spots-in-pelling-popular?qlt=82&ts=1726655959297',
         description: 'One of the oldest premier monasteries in Sikkim, famous for the exquisite 7-tiered hand-carved wooden model of Zandok Palri (Guru Rinpoche\'s celestial palace).',
         coordinates: [27.3033, 88.2433]
       }
@@ -899,6 +961,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     artAndDance: [
       {
         name: 'Singhi Chham (Snow Lion Dance)',
+        image:'https://pbs.twimg.com/media/Ekmjz-uVMAADSFI.jpg',
         type: 'Dance',
         origin: 'Bhutia Monastic Tradition',
         description: 'Vibrant masked dance where dancers in furry white snow lion costumes leap and tumble, honoring Mt. Kanchenjunga as the state\'s guardian deity.',
@@ -907,6 +970,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Maruni & Chu Faat Dance',
+        image:'https://blogmedia.testbook.com/blog/wp-content/uploads/2023/03/image-217c4cd6.png',
         type: 'Dance',
         origin: 'Nepali & Lepcha Traditions',
         description: 'Maruni (joyful Nepali dance celebrating Diwali with a clown character called Dhatu Waray) and Chu Faat (sacred Lepcha dance paying homage to snowy peaks).',
@@ -914,6 +978,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Thangka Scroll & Lepcha Weaving',
+        image:'https://asiainch.org/wp-content/uploads/2018/11/3-2-768x1024.jpg',
         type: 'Theatre',
         origin: 'Sikkimese Handicraft Centers',
         description: 'Intricate Buddhist silk scroll painting and geometric backstrap loom weaving by the indigenous Lepcha tribe.',
@@ -923,24 +988,29 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     cuisines: [
       {
         name: 'Sikkimese Momos & Thukpa with Churpi Soup',
+        image: 'https://www.clubmahindra.com/blog/media/section_images/bannerlarg-a3b2d550ed98d17.jpg',
+        imageUrl: 'https://i0.wp.com/mayuris-jikoni.com/wp-content/uploads/2019/09/thukpa-1.jpg?fit=3024%2C4032&ssl=1',
         category: 'Vegetarian',
         description: 'Delicate steamed flour dumplings filled with organic vegetables or minced meat and local spices, paired with fiery Dalle Khursani chili chutney and rich yak cheese soup.',
         keyIngredients: ['Flour', 'Minced Meat / Vegetables', 'Dalle Khursani (Cherry Peppers)', 'Churpi (Fermented Yak Cheese)', 'Garlic']
       },
       {
         name: 'Gundruk & Sinki Soup',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFrb3GyNy_q6kedVrezTfuWDRtxwRIAe0zbocr5kcrcJJ-BAZ3bXrFxGs&s=10',
         category: 'Vegetarian',
         description: 'Traditional fermented mustard and radish leaf soup cooked with tomatoes, ginger, and roasted spices, offering a distinct wholesome sour aroma.',
         keyIngredients: ['Fermented Mustard Leaves (Gundruk)', 'Fermented Radish Taproots (Sinki)', 'Tomatoes', 'Green Chilies', 'Garlic']
       },
       {
         name: 'Phagshapa & Sel Roti',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0shjnLK2hNe4eu_RBXOukQhlMLldOCYt_MYTRKbT8-8_vx_7u6YbWIRYK&s=10',
         category: 'Non-Vegetarian',
         description: 'Tender pork fat strips stewed with radishes and dried red chilies (cooked without oil); served alongside crispy ring-shaped fried Nepali sweet rice bread.',
         keyIngredients: ['Pork Strips', 'Radish (Mula)', 'Dry Red Chilies', 'Rice Flour (Sel Roti)', 'Cardamom', 'Ghee']
       },
       {
         name: 'Chaang (Tongba)',
+        image:'https://i.pinimg.com/736x/d4/e7/de/d4e7de3ca7b317d39e715c0755e26fd7.jpg',
         category: 'Beverage',
         description: 'Traditional warm fermented millet beer served in a cylindrical bamboo canister (Tongba) and sipped through a perforated bamboo straw (Pipsing).',
         keyIngredients: ['Fermented Finger Millet', 'Hot Spring Water', 'Bamboo Tongba Flask']
@@ -949,6 +1019,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     festivals: [
       {
         name: 'Pang Lhabsol',
+        image:'https://i0.wp.com/travelshoebum.com/wp-content/uploads/2018/09/dsc3215.jpg?resize=1200%2C1812&ssl=1',
         timing: '15th Day of 7th Tibetan Month (August - September)',
         significance: 'Unique festival commemorating the historic blood brotherhood treaty between Lepchas and Bhutias witnessed by Mt. Kanchenjunga.',
         keyRitual: 'Chogyal royal prayers and the electrifying warrior dance (Dzongkhor Chham) in full military armor.',
@@ -956,6 +1027,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Losoong / Namsoong (Sikkimese New Year)',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoYugSTnhU6e08Lg5vq33ngiGSLfnXpoxM23P7iM9lKhn80cOl3ENTQ4Jc&s=10',
         timing: 'December (End of Harvest)',
         significance: 'Traditional New Year celebrated across Phodong and Rumtek monasteries marking the end of the agricultural harvest cycle.',
         keyRitual: 'Sacred Black Hat mask dances (Kagyed), archery tournaments, and feasts with home-brewed Chaang.',
@@ -963,6 +1035,7 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
       },
       {
         name: 'Saga Dawa',
+        image:'https://www.tusktravel.com/blog/wp-content/uploads/2024/05/saga-dawa-festival-tour.jpg',
         timing: 'Full Moon of 4th Tibetan Month (May - June)',
         significance: 'Triple-blessed Buddhist festival commemorating the Birth, Enlightenment, and Parinirvana of Lord Buddha.',
         keyRitual: 'Holy procession of monks carrying the sacred Kangyur and Tengyur scriptures across Gangtok.',
@@ -971,30 +1044,47 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Lepcha Handwoven Fabrics (Dumdem)', 'Bhutia Hand-knotted Woolen Carpets', 'Sikkim Silk Weaves'],
+      textileImages: [
+        'https://asiainch.org/wp-content/uploads/2017/11/0003977_handmade-lepcha-weave-hardcover-toiletry-bag.jpeg',
+        'https://5.imimg.com/data5/SELLER/Default/2024/5/421611941/RA/JN/AI/120435373/img-20240103-181237.jpg',
+        'https://cdn.exoticindia.com/images/products/original/textiles/sea94-rumbared.jpg'
+      ],
       handicrafts: ['Carved Wood Choktse Folding Tables', 'Thangka Paintings', 'Bamboo & Cane Baskets', 'Buddhist Prayer Wheels (Mani)'],
+      handicraftImages: [
+        'https://blogmedia.oaklores.com/uploads/2026/01/Screenshot-2026-01-04-015507.png',
+        'https://cdn.shopify.com/s/files/1/2545/2216/files/Lucky_Thanka_3.jpg?v=1690267890',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVdpTPKRgSzrdK-qNc9gBgneDcph01mWhuNTcP0U4_-wmX7o7PJlq7LUQ&s=10',
+        'https://cdn.britannica.com/76/137776-050-6CB215D1/Prayer-wheels-Swayambhunath-Temple-Nepal-Kathmandu.jpg'
+      ],
       traditionalMenAttire: 'Bakhu / Kho (long loose-fitting cloak tied at the waist with a silk sash) with Yenthatse shirt and Gyathok hat.',
+      traditionalMenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmfu75B4EbISJ5oe0U9E3b1umSIWDa5Y27LC__-HQv5OBkpq5rL1KorWxn&s=10',
       traditionalWomenAttire: 'Full-length Bakhu with Honju (long-sleeved silk blouse) and Pangden (vibrant striped apron for married women) adorned with turquoise and gold.',
+      traditionalWomenAttireImage: 'https://i.etsystatic.com/10690294/r/il/9622cb/3526784934/il_fullxfull.3526784934_70ad.jpg',
       giTaggedCrafts: ['Sikkim Large Cardamom', 'Dalle Khursani (Fire Red Cherry Pepper)', 'Sikkim Handknotted Carpets']
     },
     historyTimeline: [
       {
         era: '8th Century AD',
         title: 'Guru Padmasambhava (Guru Rinpoche)',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1tJ6yY8EOmk1PzdKXhEj7uWsL8rELVNW10wQToJajDVliw1MCYhUQf8&s=10',
         description: 'The patron saint of Sikkim blessed the sacred land, hidden valleys (Beyuls), and prophesied the coming of the Chogyal monarchs.'
       },
       {
         era: '1642 AD',
         title: 'Consecration of First Chogyal at Yuksom',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAYjWLz0gwPIvdPJ2nKBu3MwXCOeQLPfgP2XyGGyR1qwjT_kBw3qH46-Ds&s=10',
         description: 'Three venerated lamas from Tibet consecrated Phuntsog Namgyal as the first Chogyal (Spiritual King) of the Namgyal dynasty at Norbugang, Yuksom.'
       },
       {
         era: '1890 - 1947 AD',
         title: 'British Protectorate Era',
+        image:'https://iasgyan.sgp1.digitaloceanspaces.com/images/Sikkim_integration_with_India.png',
         description: 'Sikkim maintained internal autonomy as a princely state with administrative reforms under British resident John Claude White.'
       },
       {
         era: '1975 AD',
         title: 'Integration as the 22nd State of India',
+        image:'https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2022/05/sikk.jpg',
         description: 'Following a democratic referendum overwhelmingly supported by the people, Sikkim officially joined the Republic of India on 16 May 1975.'
       }
     ]
@@ -1124,19 +1214,23 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Apatani Geometric Weaves', 'Monpa Woolen Carpets', 'Mishmi Diamond-pattern Jackets', 'Adi Gale Weaves (Wraparound skirts)'],
-      image: 'https://img.perniaspopupshop.com/store-locator-v2/uploads/PWA_Main_Image_Apatani_6fd6e4aca0.jpg',
-      image: 'https://tse1.mm.bing.net/th/id/OIP.g713D0Wrf7uZB7cgSWWT-gHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://tse2.mm.bing.net/th/id/OIP.kPGs6lYX92kl2rgIsQHovAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://tse3.mm.bing.net/th/id/OIP.Cfv9bOpZ5Ms8V4gGANSezwHaEt?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      textileImages: [
+        'https://img.perniaspopupshop.com/store-locator-v2/uploads/PWA_Main_Image_Apatani_6fd6e4aca0.jpg',
+        'https://tse1.mm.bing.net/th/id/OIP.g713D0Wrf7uZB7cgSWWT-gHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://tse2.mm.bing.net/th/id/OIP.kPGs6lYX92kl2rgIsQHovAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://tse3.mm.bing.net/th/id/OIP.Cfv9bOpZ5Ms8V4gGANSezwHaEt?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
+      ],
       handicrafts: ['Monpa Handmade Shugu Paper', 'Cane and Bamboo Helmets (Bopa)', 'Wood Carvings of Wancho and Tangsa', 'Silver and Brass Amulet Jewelry'],
-      image: 'https://nagalandtribune.in/wp-content/uploads/2022/12/Arunachals-Monpas-look-up-to-e-platforms-for-preserving-hand-made-paper-1-1024x489.jpg',
-      image: 'https://tse2.mm.bing.net/th/id/OIP.PFoCKiQO3RJ2AD5dhZsZ-AHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://preview.redd.it/traditional-filipino-wood-carving-art-v0-vlljsjsofiv91.jpg?width=1080&format=pjpg&auto=webp&s=09300e5dadfe49dd46cce7877709c03ed3c840de',
-      image: 'https://i.pinimg.com/736x/ba/c8/5c/bac85c50e19b70679d0c563220cefe85.jpg',
+      handicraftImages: [
+        'https://nagalandtribune.in/wp-content/uploads/2022/12/Arunachals-Monpas-look-up-to-e-platforms-for-preserving-hand-made-paper-1-1024x489.jpg',
+        'https://tse2.mm.bing.net/th/id/OIP.PFoCKiQO3RJ2AD5dhZsZ-AHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://preview.redd.it/traditional-filipino-wood-carving-art-v0-vlljsjsofiv91.jpg?width=1080&format=pjpg&auto=webp&s=09300e5dadfe49dd46cce7877709c03ed3c840de',
+        'https://i.pinimg.com/736x/ba/c8/5c/bac85c50e19b70679d0c563220cefe85.jpg'
+      ],
       traditionalMenAttire: 'Cane hat decorated with Great Hornbill beak and feathers, handwoven sleeveless jacket, and Daos (traditional sword).',
-      image: 'https://thumbs.dreamstime.com/b/nishi-man-tribesman-wearing-traditional-head-dress-having-great-hornbill-beak-36775786.jpg',
+      traditionalMenAttireImage: 'https://thumbs.dreamstime.com/b/nishi-man-tribesman-wearing-traditional-head-dress-having-great-hornbill-beak-36775786.jpg',
       traditionalWomenAttire: 'Gale (vibrant handwoven wraparound skirt) with embroidered blouse and heavy turquoise, amber, and coral bead necklaces.',
-      image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlpwB9s_GL0xhssJLxWNWRCUZa55VkOsC6qu6GMF2aFmxEPzPOABHpw-Ct5uD24yygxVvsuLL1hksAlRe72uQXNsWsd7WvUb32VXelaenb7m5nkjLF2kZSl-G_3g111Fka35XOz_fy380/s1600/5ff43333d1c589d1ff865698e41655b7.jpg',
+      traditionalWomenAttireImage: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlpwB9s_GL0xhssJLxWNWRCUZa55VkOsC6qu6GMF2aFmxEPzPOABHpw-Ct5uD24yygxVvsuLL1hksAlRe72uQXNsWsd7WvUb32VXelaenb7m5nkjLF2kZSl-G_3g111Fka35XOz_fy380/s1600/5ff43333d1c589d1ff865698e41655b7.jpg',
       giTaggedCrafts: ['Arunachal Yak Churpi (Cheese)', 'Arunachal Wakro Orange', 'Idumishmi Textiles', 'Monpa Handmade Paper', 'Wancho Wooden Craft', 'Khamti Rice']
     },
     historyTimeline: [

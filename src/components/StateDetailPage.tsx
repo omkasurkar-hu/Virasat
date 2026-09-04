@@ -27,9 +27,12 @@ import {
   Play,
   Pause,
   SlidersHorizontal,
+  Eye,
 } from 'lucide-react';
 import { StateHeritage, HeritageTab, Monument, CuisineItem, ArtAndDance } from '../types';
 import { heritageAudio } from '../utils/audioSynth';
+import { AdaptiveImage } from './AdaptiveImage';
+import { ClearImageLightboxModal, LightboxImageItem } from './ClearImageLightboxModal';
 
 interface StateDetailPageProps {
   state: StateHeritage;
@@ -67,6 +70,11 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
   const [isPlayingFolkAudio, setIsPlayingFolkAudio] = useState<boolean>(false);
   const [selectedCuisineSubcategory, setSelectedCuisineSubcategory] = useState<string>('all');
   const [isFullscreenImage, setIsFullscreenImage] = useState<boolean>(false);
+  const [leftImageFitMode, setLeftImageFitMode] = useState<'contain' | 'cover'>('contain');
+  const [lightboxImage, setLightboxImage] = useState<LightboxImageItem | null>(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
+  const [lightboxGallery, setLightboxGallery] = useState<LightboxImageItem[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState<number>(0);
 
   // Tab Slider Track Ref and Scroll Position
   const tabScrollContainerRef = useRef<HTMLDivElement>(null);
@@ -177,6 +185,86 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
       description: a.detailedDescription || a.description,
       giTag: a.giTag,
     })),
+    ...(state.festivals
+      ? state.festivals
+          .filter((f) => Boolean(f.image || f.imageUrl))
+          .map((f, idx) => ({
+            id: `festival-${idx}`,
+            title: f.name,
+            subtitle: `Festival • ${f.timing || f.month || ''}`,
+            category: 'Festival',
+            imageUrl: (f.image || f.imageUrl)!,
+            description: f.description || f.significance,
+          }))
+      : []),
+    ...(state.craftsAndAttire?.attireItems
+      ? state.craftsAndAttire.attireItems
+          .filter((ai) => Boolean(ai.image))
+          .map((ai, idx) => ({
+            id: `attire-item-${idx}`,
+            title: ai.name,
+            subtitle: `Attire • ${ai.origin || state.name}`,
+            category: 'Craft & Attire',
+            imageUrl: ai.image!,
+            description: ai.detailedDescription || ai.description,
+          }))
+      : []),
+    ...(state.craftsAndAttire?.traditionalMenAttireImage
+      ? [
+          {
+            id: 'attire-men',
+            title: `Men's Traditional Attire`,
+            subtitle: state.name,
+            category: 'Craft & Attire',
+            imageUrl: state.craftsAndAttire.traditionalMenAttireImage,
+            description: state.craftsAndAttire.traditionalMenAttire,
+          },
+        ]
+      : []),
+    ...(state.craftsAndAttire?.traditionalWomenAttireImage
+      ? [
+          {
+            id: 'attire-women',
+            title: `Women's Traditional Attire`,
+            subtitle: state.name,
+            category: 'Craft & Attire',
+            imageUrl: state.craftsAndAttire.traditionalWomenAttireImage,
+            description: state.craftsAndAttire.traditionalWomenAttire,
+          },
+        ]
+      : []),
+    ...(state.historyTimeline
+      ? state.historyTimeline
+          .filter((h) => Boolean(h.image || h.imageUrl))
+          .map((h, idx) => ({
+            id: `history-${idx}`,
+            title: h.title,
+            subtitle: `Chronicle • ${h.era}`,
+            category: 'History & Dynasties',
+            imageUrl: (h.image || h.imageUrl)!,
+            description: h.description,
+          }))
+      : []),
+    ...(state.craftsAndAttire?.textileImages
+      ? state.craftsAndAttire.textileImages.map((img, idx) => ({
+          id: `textile-${idx}`,
+          title: state.craftsAndAttire.textiles[idx] || `${state.name} Textile Weave`,
+          subtitle: `Handloom • ${state.name}`,
+          category: 'Craft & Attire',
+          imageUrl: img,
+          description: `Masterpiece handloom weave of ${state.name}.`,
+        }))
+      : []),
+    ...(state.craftsAndAttire?.handicraftImages
+      ? state.craftsAndAttire.handicraftImages.map((img, idx) => ({
+          id: `handicraft-${idx}`,
+          title: state.craftsAndAttire.handicrafts[idx] || `${state.name} Artisanship`,
+          subtitle: `Handicraft • ${state.name}`,
+          category: 'Craft & Attire',
+          imageUrl: img,
+          description: `Living craft and master artisanship of ${state.name}.`,
+        }))
+      : []),
     ...(state.traditionalAttire
       ? [
           {
@@ -194,7 +282,8 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
       : []),
   ];
 
-  // Reset indices and audio when state changes
+  const currentVisual = visualGallery[activeImageIndex] || visualGallery[0];
+
   useEffect(() => {
     setActiveImageIndex(0);
     setActiveTab('overview');
@@ -215,7 +304,30 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
     ]);
   }, [state.id]);
 
-  const currentVisual = visualGallery[activeImageIndex] || visualGallery[0];
+  const openLightbox = (
+    image: LightboxImageItem,
+    customGallery?: LightboxImageItem[],
+    index?: number
+  ) => {
+    setLightboxImage(image);
+    const resolvedGallery =
+      customGallery ||
+      visualGallery.map((v) => ({
+        src: v.imageUrl,
+        alt: v.title,
+        title: v.title,
+        subtitle: v.subtitle,
+        description: v.description,
+        category: v.category,
+      }));
+    setLightboxGallery(resolvedGallery);
+    const resolvedIndex =
+      index !== undefined
+        ? index
+        : Math.max(0, resolvedGallery.findIndex((item) => item.src === image.src));
+    setLightboxIndex(resolvedIndex >= 0 ? resolvedIndex : 0);
+    setIsLightboxOpen(true);
+  };
 
   // Prev / Next State navigation
   const currentIndex = allStates.findIndex((s) => s.id === state.id);
@@ -457,23 +569,53 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
           {/* ============================================================ */}
           <div className="lg:col-span-5 xl:col-span-5 lg:sticky lg:top-20 space-y-5">
             {/* Main Picture Frame */}
-            <div className="group relative w-full h-[380px] sm:h-[460px] rounded-3xl overflow-hidden shadow-2xl border-2 border-stone-300/80 bg-stone-900 transition-all">
+            <div
+              onClick={() =>
+                openLightbox(
+                  {
+                    src: currentVisual.imageUrl,
+                    alt: currentVisual.title,
+                    title: currentVisual.title,
+                    subtitle: currentVisual.subtitle,
+                    description: currentVisual.description,
+                    category: currentVisual.category,
+                  },
+                  undefined,
+                  activeImageIndex
+                )
+              }
+              className="group relative w-full h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-2xl border-2 border-stone-300/80 bg-stone-950 transition-all cursor-pointer select-none"
+            >
+              {/* Ambient Blurred Aura Background (Eliminates harsh black bars, gives warm atmospheric glow) */}
+              <img
+                src={currentVisual.imageUrl}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-125 pointer-events-none transition-opacity duration-500"
+                referrerPolicy="no-referrer"
+              />
+
+              {/* Foreground Image - Complete uncropped view by default */}
               <img
                 src={currentVisual.imageUrl}
                 alt={currentVisual.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                className={`relative z-10 w-full h-full transition-all duration-300 ${
+                  leftImageFitMode === 'contain'
+                    ? 'object-contain p-3'
+                    : 'object-cover group-hover:scale-105'
+                }`}
                 referrerPolicy="no-referrer"
                 loading="eager"
               />
 
               {/* Gradient Overlays for optimal readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none z-10" />
 
-              {/* Top Badges over image */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-10">
+              {/* Top Badges & Interactive Controls over image */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-20">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-amber-300 text-xs font-bold border border-amber-500/30 uppercase tracking-wider shadow">
+                  <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-amber-300 text-xs font-bold border border-amber-500/30 uppercase tracking-wider shadow">
                     {currentVisual.category}
                   </span>
                   {currentVisual.isUnesco && (
@@ -488,17 +630,52 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                   )}
                 </div>
 
-                <button
-                  onClick={() => setIsFullscreenImage(true)}
-                  className="p-2 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white border border-white/20 transition-all cursor-pointer"
-                  title="Expand Picture"
-                >
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </button>
+                <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+                  {/* Complete View / Fill View Toggle */}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setLeftImageFitMode((m) => (m === 'contain' ? 'cover' : 'contain'))
+                    }
+                    className="px-2.5 py-1.5 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md text-white text-xs font-semibold border border-white/20 transition-all cursor-pointer flex items-center gap-1 shadow"
+                    title={
+                      leftImageFitMode === 'contain'
+                        ? 'Switch to Filled View'
+                        : 'Switch to Complete View (Uncropped)'
+                    }
+                  >
+                    <Eye className="w-3.5 h-3.5 text-amber-300" />
+                    <span className="text-[11px]">
+                      {leftImageFitMode === 'contain' ? 'Complete View' : 'Fill View'}
+                    </span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openLightbox(
+                        {
+                          src: currentVisual.imageUrl,
+                          alt: currentVisual.title,
+                          title: currentVisual.title,
+                          subtitle: currentVisual.subtitle,
+                          description: currentVisual.description,
+                          category: currentVisual.category,
+                        },
+                        undefined,
+                        activeImageIndex
+                      )
+                    }
+                    className="p-2 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md text-white border border-white/20 transition-all cursor-pointer shadow"
+                    title="Open Full Clear View (Zoom & Pan)"
+                  >
+                    <Maximize2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
 
               {/* Bottom Caption Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 z-10 space-y-1">
+              <div className="absolute bottom-4 left-4 right-4 z-20 space-y-1">
                 <h3 className="font-serif text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-md">
                   {currentVisual.title}
                 </h3>
@@ -852,16 +1029,19 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                         key={idx}
                         className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm hover:shadow-md hover:border-[#8B1E22]/40 transition-all flex flex-col sm:flex-row gap-5"
                       >
-                        <div className="sm:w-48 h-36 flex-shrink-0 rounded-xl overflow-hidden border border-stone-200 relative bg-stone-100">
-                          <img
+                        <div className="sm:w-56 h-40 flex-shrink-0 relative">
+                          <AdaptiveImage
                             src={monument.image}
                             alt={monument.name}
-                            className="w-full h-full object-cover"
-                            referrerPolicy="no-referrer"
-                            loading="lazy"
+                            title={monument.name}
+                            subtitle={`${monument.century} • ${monument.type}`}
+                            description={monument.detailedDescription || monument.description}
+                            category="Monument"
+                            heightClass="h-40"
+                            onOpenModal={(item) => openLightbox(item)}
                           />
                           {monument.isUnesco && (
-                            <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-emerald-700 text-white text-[9px] font-bold uppercase shadow">
+                            <span className="absolute top-2 left-2 z-20 px-2 py-0.5 rounded-md bg-emerald-700 text-white text-[9px] font-bold uppercase shadow">
                               UNESCO
                             </span>
                           )}
@@ -945,13 +1125,16 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                           </div>
 
                           {art.image && (
-                            <div className="mt-2 h-36 rounded-xl overflow-hidden border border-stone-200">
-                              <img
+                            <div className="mt-2">
+                              <AdaptiveImage
                                 src={art.image}
                                 alt={art.name}
-                                className="w-full h-full object-cover"
-                                referrerPolicy="no-referrer"
-                                loading="lazy"
+                                title={art.name}
+                                subtitle={`${art.type} • Origin: ${art.origin}`}
+                                description={art.detailedDescription || art.description}
+                                category="Performing Art"
+                                heightClass="h-44 sm:h-52"
+                                onOpenModal={(item) => openLightbox(item)}
                               />
                             </div>
                           )}
@@ -1081,13 +1264,16 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                             </div>
 
                             {(food.imageUrl || food.image) && (
-                              <div className="mt-2 h-40 rounded-xl overflow-hidden border border-stone-200 bg-stone-100">
-                                <img
+                              <div className="mt-2">
+                                <AdaptiveImage
                                   src={food.imageUrl || food.image}
                                   alt={food.name}
-                                  className="w-full h-full object-cover"
-                                  referrerPolicy="no-referrer"
-                                  loading="lazy"
+                                  title={food.name}
+                                  subtitle={`${food.category}${food.subcategory ? ` • ${food.subcategory}` : ''}`}
+                                  description={food.detailedDescription || food.description}
+                                  category="Cuisine"
+                                  heightClass="h-44 sm:h-52"
+                                  onOpenModal={(item) => openLightbox(item)}
                                 />
                               </div>
                             )}
@@ -1149,7 +1335,140 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                   animate={{ opacity: 1, y: 0 }}
                   className="space-y-6"
                 >
-                  {/* Traditional Attire Section */}
+                  {/* Featured Attire Items Showcase (if available) */}
+                  {state.craftsAndAttire?.attireItems && state.craftsAndAttire.attireItems.length > 0 && (
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <Shirt className="w-5 h-5 text-[#8B1E22]" />
+                        <h4 className="font-serif font-bold text-base text-stone-900">
+                          Iconic Traditional Attire & Weaves
+                        </h4>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {state.craftsAndAttire.attireItems.map((attire) => (
+                          <div
+                            key={attire.id}
+                            className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-3 flex flex-col justify-between"
+                          >
+                            <div>
+                              <div className="flex items-start justify-between gap-2">
+                                <div>
+                                  <h5 className="font-serif font-bold text-base text-stone-900">
+                                    {attire.name}
+                                  </h5>
+                                  {attire.origin && (
+                                    <span className="text-xs text-[#8B1E22] font-semibold block mt-0.5">
+                                      📍 {attire.origin}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+
+                              {attire.image && (
+                                <div className="mt-2.5">
+                                  <AdaptiveImage
+                                    src={attire.image}
+                                    alt={attire.name}
+                                    title={attire.name}
+                                    subtitle={attire.origin || state.name}
+                                    description={attire.detailedDescription || attire.description}
+                                    category="Craft & Attire"
+                                    heightClass="h-48 sm:h-56"
+                                    onOpenModal={(item) => openLightbox(item)}
+                                  />
+                                </div>
+                              )}
+
+                              {attire.shortDesc && (
+                                <p className="text-xs text-stone-600 italic mt-2">
+                                  "{attire.shortDesc}"
+                                </p>
+                              )}
+
+                              <p className="text-xs text-stone-700 leading-relaxed mt-2">
+                                {attire.detailedDescription || attire.description}
+                              </p>
+                            </div>
+
+                            {attire.highlights && attire.highlights.length > 0 && (
+                              <div className="pt-2 border-t border-stone-100 flex flex-wrap gap-1.5">
+                                {attire.highlights.map((hl, i) => (
+                                  <span
+                                    key={i}
+                                    className="px-2.5 py-1 rounded-md text-[10px] bg-stone-100 text-[#8B1E22] border border-stone-200 font-semibold"
+                                  >
+                                    ✦ {hl}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Traditional Men & Women Dress Overview */}
+                  {state.craftsAndAttire && (
+                    <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+                      <div className="flex items-center gap-2">
+                        <Shirt className="w-5 h-5 text-[#8B1E22]" />
+                        <h4 className="font-serif font-bold text-base text-stone-900">
+                          Traditional Dress of {state.name}
+                        </h4>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 text-xs space-y-2">
+                          <span className="font-bold text-stone-900 text-sm block">
+                            👨 Men's Traditional Attire
+                          </span>
+                          {state.craftsAndAttire.traditionalMenAttireImage && (
+                            <div className="mt-2">
+                              <AdaptiveImage
+                                src={state.craftsAndAttire.traditionalMenAttireImage}
+                                alt="Men's Traditional Attire"
+                                title="Men's Traditional Attire"
+                                subtitle={state.name}
+                                description={state.craftsAndAttire.traditionalMenAttire}
+                                category="Craft & Attire"
+                                heightClass="h-44 sm:h-52"
+                                onOpenModal={(item) => openLightbox(item)}
+                              />
+                            </div>
+                          )}
+                          <p className="text-stone-700 leading-relaxed">
+                            {state.craftsAndAttire.traditionalMenAttire}
+                          </p>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 text-xs space-y-2">
+                          <span className="font-bold text-stone-900 text-sm block">
+                            👩 Women's Traditional Attire
+                          </span>
+                          {state.craftsAndAttire.traditionalWomenAttireImage && (
+                            <div className="mt-2">
+                              <AdaptiveImage
+                                src={state.craftsAndAttire.traditionalWomenAttireImage}
+                                alt="Women's Traditional Attire"
+                                title="Women's Traditional Attire"
+                                subtitle={state.name}
+                                description={state.craftsAndAttire.traditionalWomenAttire}
+                                category="Craft & Attire"
+                                heightClass="h-44 sm:h-52"
+                                onOpenModal={(item) => openLightbox(item)}
+                              />
+                            </div>
+                          )}
+                          <p className="text-stone-700 leading-relaxed">
+                            {state.craftsAndAttire.traditionalWomenAttire}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Traditional Attire legacy if present */}
                   {state.traditionalAttire && (
                     <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4">
                       <div className="flex items-center gap-2">
@@ -1160,13 +1479,16 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                       </div>
 
                       {(state.traditionalAttire.image || state.traditionalAttire.imagePlaceholder) && (
-                        <div className="h-48 rounded-xl overflow-hidden border border-stone-200">
-                          <img
-                            src={state.traditionalAttire.image || state.traditionalAttire.imagePlaceholder}
+                        <div className="mt-2">
+                          <AdaptiveImage
+                            src={state.traditionalAttire.image || state.traditionalAttire.imagePlaceholder!}
                             alt={state.traditionalAttire.name}
-                            className="w-full h-full object-cover"
-                            referrerPolicy="no-referrer"
-                            loading="lazy"
+                            title={state.traditionalAttire.name}
+                            subtitle={`Handloom & Attire • ${state.name}`}
+                            description={state.traditionalAttire.description}
+                            category="Craft & Attire"
+                            heightClass="h-56 sm:h-64"
+                            onOpenModal={(item) => openLightbox(item)}
                           />
                         </div>
                       )}
@@ -1177,46 +1499,134 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                         <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs">
-                          <span className="font-bold text-stone-900 block mb-1">Men's Traditional Dress</span>
+                          <span className="font-bold text-stone-900 block mb-1">Men's Dress</span>
                           <span className="text-stone-600">{state.traditionalAttire.men}</span>
                         </div>
                         <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs">
-                          <span className="font-bold text-stone-900 block mb-1">Women's Traditional Dress</span>
+                          <span className="font-bold text-stone-900 block mb-1">Women's Dress</span>
                           <span className="text-stone-600">{state.traditionalAttire.women}</span>
                         </div>
                       </div>
                     </div>
                   )}
 
-                  {/* GI-Tagged Handicrafts & Handlooms */}
-                  <div className="space-y-3">
-                    <h4 className="font-serif font-bold text-base text-stone-900">
-                      GI-Tagged Handicrafts & Living Crafts
-                    </h4>
+                  {/* Textiles & Handlooms Showcase */}
+                  {state.craftsAndAttire?.textiles && state.craftsAndAttire.textiles.length > 0 && (
+                    <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+                      <h4 className="font-serif font-bold text-base text-stone-900">
+                        🧵 Renowned Textiles & Weaves
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {state.craftsAndAttire.textiles.map((tex, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1.5 rounded-lg text-xs bg-stone-50 text-stone-800 border border-stone-200 font-medium"
+                          >
+                            🧵 {tex}
+                          </span>
+                        ))}
+                      </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {state.crafts.map((craft, idx) => (
-                        <div
-                          key={idx}
-                          className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-2"
-                        >
-                          <div className="flex items-center justify-between gap-2">
-                            <h5 className="font-serif font-bold text-stone-900 text-sm">
-                              {craft.name}
-                            </h5>
-                            {craft.giTag && (
-                              <span className="bg-blue-100 text-blue-800 text-[9px] font-bold px-2 py-0.5 rounded border border-blue-200">
-                                GI Tagged
-                              </span>
-                            )}
-                          </div>
-                          <p className="text-xs text-stone-600 leading-relaxed">
-                            {craft.description}
-                          </p>
+                      {state.craftsAndAttire.textileImages && state.craftsAndAttire.textileImages.length > 0 && (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
+                          {state.craftsAndAttire.textileImages.map((imgUrl, i) => (
+                            <div key={i}>
+                              <AdaptiveImage
+                                src={imgUrl}
+                                alt={`${state.name} Textile weave ${i + 1}`}
+                                title={`${state.name} Textile Pattern`}
+                                subtitle="Traditional Weave"
+                                category="Handloom"
+                                heightClass="h-32 sm:h-36"
+                                onOpenModal={(item) => openLightbox(item)}
+                              />
+                            </div>
+                          ))}
                         </div>
-                      ))}
+                      )}
                     </div>
-                  </div>
+                  )}
+
+                  {/* Living Handicrafts */}
+                  {state.craftsAndAttire?.handicrafts && state.craftsAndAttire.handicrafts.length > 0 && (
+                    <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+                      <h4 className="font-serif font-bold text-base text-stone-900">
+                        🏺 Handicrafts & Artisanship
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {state.craftsAndAttire.handicrafts.map((craft, idx) => (
+                          <div
+                            key={idx}
+                            className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs text-stone-800 font-medium flex items-center gap-2"
+                          >
+                            <span className="text-amber-700">✦</span>
+                            <span>{craft}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {state.craftsAndAttire.handicraftImages && state.craftsAndAttire.handicraftImages.length > 0 && (
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+                          {state.craftsAndAttire.handicraftImages.map((imgUrl, i) => (
+                            <div key={i}>
+                              <AdaptiveImage
+                                src={imgUrl}
+                                alt={state.craftsAndAttire.handicrafts[i] || `${state.name} Craft ${i + 1}`}
+                                title={state.craftsAndAttire.handicrafts[i] || `${state.name} Artisanship`}
+                                subtitle="Handicraft & Art"
+                                category="Craft"
+                                heightClass="h-28 sm:h-32"
+                                onOpenModal={(item) => openLightbox(item)}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* GI Certified Crafts */}
+                  {state.craftsAndAttire?.giTaggedCrafts && state.craftsAndAttire.giTaggedCrafts.length > 0 && (
+                    <div className="bg-emerald-50/80 p-5 rounded-2xl border border-emerald-200 space-y-2">
+                      <span className="text-xs font-bold text-emerald-900 block">
+                        🌿 Geographical Indications (GI Tagged)
+                      </span>
+                      <p className="text-xs text-emerald-800 font-medium leading-relaxed">
+                        {state.craftsAndAttire.giTaggedCrafts.join(' • ')}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Supplemental Crafts array if present */}
+                  {state.crafts && state.crafts.length > 0 && (
+                    <div className="space-y-3">
+                      <h4 className="font-serif font-bold text-base text-stone-900">
+                        Craft Heritage
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {state.crafts.map((craft, idx) => (
+                          <div
+                            key={idx}
+                            className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-2"
+                          >
+                            <div className="flex items-center justify-between gap-2">
+                              <h5 className="font-serif font-bold text-stone-900 text-sm">
+                                {craft.name}
+                              </h5>
+                              {craft.giTag && (
+                                <span className="bg-blue-100 text-blue-800 text-[9px] font-bold px-2 py-0.5 rounded border border-blue-200">
+                                  GI Tagged
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-xs text-stone-600 leading-relaxed">
+                              {craft.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               )}
 
@@ -1235,23 +1645,57 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                     {state.festivals.map((fest, idx) => (
                       <div
                         key={idx}
-                        className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-2"
+                        className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-3 flex flex-col justify-between"
                       >
-                        <div className="flex items-center justify-between gap-2">
-                          <h4 className="font-serif font-bold text-base text-stone-900">
-                            {fest.name}
-                          </h4>
-                          <span className="text-xs font-semibold px-2 py-0.5 rounded bg-amber-100 text-amber-900">
-                            🗓️ {fest.month}
-                          </span>
+                        <div className="space-y-2">
+                          <div className="flex items-start justify-between gap-2">
+                            <div>
+                              <h4 className="font-serif font-bold text-base text-stone-900">
+                                {fest.name}
+                              </h4>
+                              {(fest.timing || fest.month) && (
+                                <span className="text-xs font-semibold text-[#8B1E22] block mt-0.5">
+                                  🗓️ {fest.timing || fest.month}
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-xl">🎉</span>
+                          </div>
+
+                          {(fest.image || fest.imageUrl) && (
+                            <div className="mt-2">
+                              <AdaptiveImage
+                                src={(fest.image || fest.imageUrl)!}
+                                alt={fest.name}
+                                title={fest.name}
+                                subtitle={`Festival • ${fest.timing || fest.month || ''}`}
+                                description={fest.description || fest.significance}
+                                category="Festival"
+                                heightClass="h-44 sm:h-52"
+                                onOpenModal={(item) => openLightbox(item)}
+                              />
+                            </div>
+                          )}
+
+                          <p className="text-xs text-stone-700 leading-relaxed">
+                            {fest.description || fest.significance}
+                          </p>
                         </div>
-                        <p className="text-xs text-stone-700 leading-relaxed">
-                          {fest.description}
-                        </p>
-                        {fest.significance && (
-                          <div className="pt-2 border-t border-stone-100 text-[11px] text-stone-600">
-                            <span className="font-semibold text-stone-800">Significance: </span>
-                            {fest.significance}
+
+                        {(fest.keyRitual || fest.highlight) && (
+                          <div className="bg-stone-50 p-3 rounded-xl border border-stone-200 space-y-1.5 text-xs text-stone-700">
+                            {fest.keyRitual && (
+                              <div>
+                                <span className="font-bold text-stone-900 block">🪔 Sacred Rituals:</span>
+                                <span className="text-stone-600">{fest.keyRitual}</span>
+                              </div>
+                            )}
+                            {fest.highlight && (
+                              <div>
+                                <span className="font-bold text-stone-900 block">✨ Main Highlight:</span>
+                                <span className="text-stone-600">{fest.highlight}</span>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
@@ -1265,7 +1709,7 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="space-y-4"
+                  className="space-y-6"
                 >
                   <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
                     <h4 className="font-serif font-bold text-lg text-stone-900">
@@ -1276,10 +1720,54 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
                     </p>
                   </div>
 
+                  {/* History Timeline Milestones */}
+                  {state.historyTimeline && state.historyTimeline.length > 0 && (
+                    <div className="space-y-4">
+                      <h5 className="font-serif font-bold text-stone-900 text-base">
+                        Chronological Milestones & Dynasties
+                      </h5>
+                      <div className="relative pl-6 space-y-6 border-l-2 border-[#8B1E22]/30">
+                        {state.historyTimeline.map((item, idx) => (
+                          <div key={idx} className="relative group space-y-2">
+                            <div className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-[#8B1E22] group-hover:scale-125 transition-transform" />
+                            <div className="flex items-center gap-2">
+                              <span className="text-[11px] font-bold text-[#8B1E22] bg-[#8B1E22]/10 px-2.5 py-0.5 rounded-full border border-[#8B1E22]/20">
+                                {item.era}
+                              </span>
+                            </div>
+                            <h4 className="text-base font-bold text-stone-900 font-serif">
+                              {item.title}
+                            </h4>
+
+                            {(item.image || item.imageUrl) && (
+                              <div className="max-w-xl">
+                                <AdaptiveImage
+                                  src={(item.image || item.imageUrl)!}
+                                  alt={item.title}
+                                  title={item.title}
+                                  subtitle={`Chronicle • ${item.era}`}
+                                  description={item.description}
+                                  category="History & Dynasties"
+                                  heightClass="h-56 sm:h-72"
+                                  onOpenModal={(img) => openLightbox(img)}
+                                />
+                              </div>
+                            )}
+
+                            <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                              {item.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Historical Eras if present */}
                   {state.historicalEras && state.historicalEras.length > 0 && (
                     <div className="space-y-3">
                       <h5 className="font-serif font-bold text-stone-900 text-sm">
-                        Historical Eras & Milestones
+                        Historical Eras
                       </h5>
                       <div className="space-y-3">
                         {state.historicalEras.map((era, i) => (
@@ -1397,31 +1885,29 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
         </div>
       </main>
 
-      {/* Fullscreen Image Lightbox Modal */}
-      <AnimatePresence>
-        {isFullscreenImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsFullscreenImage(false)}
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 sm:p-8 cursor-pointer"
-          >
-            <div className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
-              <img
-                src={currentVisual.imageUrl}
-                alt={currentVisual.title}
-                className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl"
-                referrerPolicy="no-referrer"
-              />
-              <div className="text-center mt-3 text-white">
-                <h3 className="font-serif text-lg font-bold">{currentVisual.title}</h3>
-                <p className="text-xs text-amber-300">{currentVisual.subtitle}</p>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Complete & Clear Fullscreen Image Lightbox Modal with Zoom & Navigation */}
+      <ClearImageLightboxModal
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+        image={
+          lightboxImage || {
+            src: currentVisual.imageUrl,
+            alt: currentVisual.title,
+            title: currentVisual.title,
+            subtitle: currentVisual.subtitle,
+            description: currentVisual.description,
+            category: currentVisual.category,
+          }
+        }
+        gallery={lightboxGallery.length > 0 ? lightboxGallery : undefined}
+        currentIndex={lightboxIndex}
+        onNavigate={(newIdx) => {
+          setLightboxIndex(newIdx);
+          if (lightboxGallery[newIdx]) {
+            setLightboxImage(lightboxGallery[newIdx]);
+          }
+        }}
+      />
     </div>
   );
 };

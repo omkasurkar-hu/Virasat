@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { X, Award, MapPin, Calendar, Compass, Sparkles } from 'lucide-react';
+import { X, Award, MapPin, Calendar, Compass, Sparkles, Maximize2, Minimize2, Eye } from 'lucide-react';
 import { Monument, StateHeritage } from '../types';
+import { ClearImageLightboxModal } from './ClearImageLightboxModal';
 
 interface MonumentModalProps {
   monument: Monument;
@@ -16,6 +17,9 @@ export const MonumentModal: React.FC<MonumentModalProps> = ({
   onClose,
   onExploreState,
 }) => {
+  const [fitMode, setFitMode] = useState<'contain' | 'cover'>('contain');
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
       <motion.div
@@ -24,26 +28,71 @@ export const MonumentModal: React.FC<MonumentModalProps> = ({
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         className="relative w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl text-slate-100 flex flex-col max-h-[90vh]"
       >
-        {/* Banner */}
-        <div className="relative h-64 w-full overflow-hidden flex-shrink-0">
-          <img src={monument.image} alt={monument.name} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+        {/* Banner with Clear/Complete View support */}
+        <div className="relative h-64 sm:h-72 w-full overflow-hidden flex-shrink-0 bg-stone-950">
+          {fitMode === 'contain' && (
+            <div
+              className="absolute inset-0 scale-110 blur-xl opacity-40 bg-center bg-cover"
+              style={{ backgroundImage: `url(${monument.image})` }}
+            />
+          )}
 
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700 text-slate-200 hover:text-white hover:bg-red-500/80 transition-all z-10"
-          >
-            <X className="w-4 h-4" />
-          </button>
+          <img
+            src={monument.image}
+            alt={monument.name}
+            className={`relative w-full h-full ${
+              fitMode === 'contain' ? 'object-contain' : 'object-cover'
+            } transition-all duration-300 cursor-pointer`}
+            onClick={() => setIsLightboxOpen(true)}
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none" />
+
+          {/* Top Controls: Close, Clear View Fullscreen, Fit Mode */}
+          <div className="absolute top-4 right-4 flex items-center gap-1.5 z-10">
+            <button
+              onClick={() => setFitMode((m) => (m === 'contain' ? 'cover' : 'contain'))}
+              className="px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700 text-slate-200 hover:text-amber-400 text-xs flex items-center gap-1 transition-all"
+              title={fitMode === 'contain' ? 'Fill frame' : 'Show complete uncropped image'}
+            >
+              {fitMode === 'contain' ? (
+                <>
+                  <Minimize2 className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Fill</span>
+                </>
+              ) : (
+                <>
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Fit All</span>
+                </>
+              )}
+            </button>
+
+            <button
+              onClick={() => setIsLightboxOpen(true)}
+              className="p-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700 text-slate-200 hover:text-amber-400 transition-all"
+              title="Open full-screen clear view"
+            >
+              <Eye className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={onClose}
+              className="p-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700 text-slate-200 hover:text-white hover:bg-red-500/80 transition-all"
+              title="Close modal"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
 
           {monument.isUnesco && (
-            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-extrabold shadow-lg">
+            <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-extrabold shadow-lg z-10">
               <Award className="w-3.5 h-3.5" />
               <span>UNESCO World Heritage Site</span>
             </div>
           )}
 
-          <div className="absolute bottom-4 left-6 right-6">
+          <div className="absolute bottom-4 left-6 right-6 z-10">
             <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider block">
               {monument.type}
             </span>
@@ -116,6 +165,20 @@ export const MonumentModal: React.FC<MonumentModalProps> = ({
           </div>
         </div>
       </motion.div>
+
+      {/* Clear Fullscreen Lightbox */}
+      <ClearImageLightboxModal
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+        image={{
+          src: monument.image,
+          alt: monument.name,
+          title: monument.name,
+          subtitle: `${monument.century} • ${monument.type} • ${monument.location}, ${state.name}`,
+          description: monument.detailedDescription || monument.description,
+          category: 'Monument',
+        }}
+      />
     </div>
   );
 };
