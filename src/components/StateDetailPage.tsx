@@ -305,6 +305,15 @@ export const StateDetailPage: React.FC<StateDetailPageProps> = ({
       const utterance = new SpeechSynthesisUtterance(textToRead);
       utterance.rate = 0.95;
       utterance.pitch = 1.0;
+      
+      // Select Indian English voice if available
+      const voices = window.speechSynthesis.getVoices();
+      const indianVoice = voices.find(v => v.lang === 'en-IN' || v.lang.includes('IN') || v.name.toLowerCase().includes('india') || v.name.toLowerCase().includes('heera') || v.name.toLowerCase().includes('prabhat'));
+      if (indianVoice) {
+        utterance.voice = indianVoice;
+      }
+      utterance.lang = 'en-IN';
+
       utterance.onend = () => setIsSpeaking(false);
       utterance.onerror = () => setIsSpeaking(false);
       window.speechSynthesis.speak(utterance);

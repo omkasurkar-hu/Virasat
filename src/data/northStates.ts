@@ -822,6 +822,7 @@ export const NORTH_STATES: StateHeritage[] = [
   {
     id: 'delhi',
     name: 'Delhi (NCR)',
+    isUnionTerritory: true,
     capital: 'New Delhi',
     region: 'North',
     coordinates: [28.6139, 77.2090],
@@ -1378,6 +1379,7 @@ export const NORTH_STATES: StateHeritage[] = [
   {
     id: 'jammu-and-kashmir',
     name: 'Jammu & Kashmir',
+    isUnionTerritory: true,
     capital: 'Srinagar (Summer), Jammu (Winter)',
     region: 'North',
     coordinates: [34.0837, 74.7973],
@@ -1515,6 +1517,7 @@ export const NORTH_STATES: StateHeritage[] = [
   {
     id: 'ladakh',
     name: 'Ladakh',
+    isUnionTerritory: true,
     capital: 'Leh',
     region: 'North',
     coordinates: [34.1526, 77.5771],
@@ -1646,6 +1649,147 @@ export const NORTH_STATES: StateHeritage[] = [
         era: '2019 AD',
         title: 'Union Territory of Ladakh',
         description: 'Created as a distinct Union Territory of India, preserving its unique cultural, environmental, and strategic identity.'
+      }
+    ]
+  },
+  {
+    id: 'chandigarh',
+    name: 'Chandigarh',
+    isUnionTerritory: true,
+    capital: 'Chandigarh',
+    region: 'North',
+    coordinates: [30.7333, 76.7794],
+    zoomLevel: 10,
+    bannerImage: 'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=1200&q=80',
+    tagline: 'The City Beautiful — Modernist Architecture, Rock Garden & Shivalik Foothills',
+    overview: 'Chandigarh is India\'s premier planned city, globally renowned for the modernist architecture of Swiss-French master Le Corbusier (a UNESCO World Heritage site), the wondrous outsider art creations of Nek Chand\'s Rock Garden, serene Sukhna Lake, and vibrant Punjabi-Haryanvi cultural confluence.',
+    officialLanguage: 'English, Hindi, Punjabi',
+    spokenLanguages: ['Punjabi', 'Hindi', 'English'],
+    stateAnimal: 'Indian Grey Mongoose',
+    stateBird: 'Indian Grey Hornbill',
+    funFact: 'Nek Chand secretly sculpted the 40-acre Rock Garden over 18 years using industrial waste, broken ceramic chinaware, discarded bangles, and electrical fittings before it was discovered and declared a national heritage park.',
+    monuments: [
+      {
+        name: 'Rock Garden of Chandigarh',
+        type: 'Outsider Art Sculpture Kingdom',
+        century: '1957 AD (20th Century / Nek Chand)',
+        location: 'Sector 1, Chandigarh',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=800&q=80',
+        description: 'World-famous 40-acre sculpture park crafted entirely from recycled urban ceramics, industrial salvage, glass bangles, and pottery, framed by multi-tiered waterfalls.',
+        coordinates: [30.7525, 76.8066]
+      },
+      {
+        name: 'Le Corbusier Capitol Complex',
+        type: 'Modernist Architectural Ensemble',
+        century: '1952 - 1965 AD (Le Corbusier)',
+        location: 'Sector 1, Chandigarh',
+        isUnesco: true,
+        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+        description: 'UNESCO World Heritage monument complex featuring the monumental Open Hand Monument (symbol of peace and unity), the Legislative Assembly, High Court, and Secretariat.',
+        coordinates: [30.7589, 76.8038]
+      },
+      {
+        name: 'Sukhna Lake Promenade',
+        type: 'Scenic Himalayan Reservoir & Wetland',
+        century: '1958 AD (Designed by Le Corbusier & P.L. Verma)',
+        location: 'Sector 1, Chandigarh',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        description: 'Picturesque 3-sq-km rainfed reservoir at the foothills of the Shivalik range, celebrated for rowing regattas, migratory bird watching, and tranquil sunrise walking tracks.',
+        coordinates: [30.7421, 76.8188]
+      },
+      {
+        name: 'Government Museum and Art Gallery',
+        type: 'Modernist Museum of Ancient Art',
+        century: '1968 AD (Designed by Le Corbusier)',
+        location: 'Sector 10, Chandigarh',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+        description: 'Houses one of the world\'s finest collections of ancient Gandhara Buddhist stone sculptures and exquisite Pahari and Rajasthani miniature paintings.',
+        coordinates: [30.7483, 76.7869]
+      }
+    ],
+    artAndDance: [
+      {
+        name: 'Giddha & Bhangra of the North',
+        type: 'Dance',
+        origin: 'Punjab & Chandigarh Region',
+        description: 'Energetic celebratory folk dances performed with clapping clappers (Chimta), Algoza flutes, and Dholak during festivals and cultural gatherings.',
+        instruments: ['Dhol', 'Chimta', 'Algoza', 'Dholak'],
+        costumeHighlight: 'Vibrant Salwar Kameez with embroidered Phulkari dupattas and colorful Kurta-Chadra.'
+      },
+      {
+        name: 'Modernist Architectural Art & Murals',
+        type: 'Folk Art',
+        origin: 'Le Corbusier & Pierre Jeanneret Era',
+        description: 'Iconic brutalist concrete bas-reliefs, geometric tapestries, and handcrafted teakwood furniture designed for the Capitol Complex.',
+        highlights: ['Open Hand Philosophy', 'Modular Proportioning', 'Raw Cast-Concrete Formwork']
+      }
+    ],
+    cuisines: [
+      {
+        name: 'Chandigarh Chole Bhature & Kulcha',
+        category: 'Street Food',
+        description: 'Golden puffy deep-fried bhaturas served with spicy dark Punjabi chickpea curry, pickled onions, and sweet chilled lassi in clay kulhads.',
+        keyIngredients: ['Kabuli Chana', 'Refined Flour', 'Anardana (Pomegranate Seeds)', 'Ginger', 'Green Chilies', 'Curd']
+      },
+      {
+        name: 'Butter Naan with Tandoori Paneer Tikka',
+        category: 'Vegetarian',
+        description: 'Charred clay-oven paneer cubes marinated in hung yogurt, mustard oil, and carom seeds, served with garlic-herb butter naan.',
+        keyIngredients: ['Fresh Paneer', 'Hung Curd', 'Ajwain', 'Mustard Oil', 'Kashmiri Red Chili', 'Butter']
+      },
+      {
+        name: 'Pinni & Makhana Kheer',
+        category: 'Dessert',
+        description: 'Nutritious roasted wheat flour, gond, and dry-fruit laddoos pan-fried in pure desi ghee, paired with fragrant saffron foxnut kheer.',
+        keyIngredients: ['Whole Wheat Flour', 'Ghee', 'Edible Gum (Gond)', 'Almonds', 'Foxnuts (Makhana)', 'Cardamom']
+      }
+    ],
+    festivals: [
+      {
+        name: 'Chandigarh Rose Festival',
+        timing: 'February (Last Weekend)',
+        significance: 'Asia\'s premier floral carnival hosted at Zakir Hussain Rose Garden, displaying over 50,000 rose bushes in 1,600 varieties.',
+        keyRitual: 'Flower arrangement competitions, musical concerts, folk dance troupes, and helicopter rides over the Shivalik foothills.',
+        highlight: 'Sea of blooming multicolored roses with cultural stage shows.'
+      },
+      {
+        name: 'Chandigarh Carnival',
+        timing: 'November',
+        significance: 'Annual three-day cultural and youth festival celebrating artistic diversity, vintage car rallies, and community street theatre.',
+        keyRitual: 'Procession of vibrant themed floats, live performances by leading Punjabi musicians, and craft pavilions.',
+        highlight: 'Parade of handmade giant puppets and illuminated night concerts.'
+      }
+    ],
+    craftsAndAttire: {
+      textiles: ['Phulkari Hand Embroidery', 'Kashmiri & Pahari Loomed Shawls', 'Khadi Handloom Weaves'],
+      handicrafts: ['Recycled Sculpture Art', 'Terracotta Flower Pottery', 'Pierre Jeanneret Heritage Teak Furniture', 'Brass Embellishments'],
+      traditionalMenAttire: 'Crisp Kurta-Pajama with Nehru jacket or tailored urban smart-casual attire.',
+      traditionalWomenAttire: 'Graceful Punjabi Salwar Kameez with intricate Phulkari dupatta and Punjabi Juttis.',
+      giTaggedCrafts: ['Phulkari (Shared Punjab/Haryana/Chandigarh)']
+    },
+    historyTimeline: [
+      {
+        era: '1947 - 1950 AD',
+        title: 'Post-Independence Vision for a New Capital',
+        description: 'Prime Minister Jawaharlal Nehru commissioned a forward-looking, uninhibited modern city to serve as the new capital following the partition of Punjab.'
+      },
+      {
+        era: '1951 - 1965 AD',
+        title: 'Master Plan of Le Corbusier',
+        description: 'Swiss-French architect Le Corbusier created the sector grid layout, Capitol Complex, and landscaped green belts across the city.'
+      },
+      {
+        era: '1966 AD',
+        title: 'Designation as a Union Territory',
+        description: 'Upon the linguistic reorganization of Punjab and Haryana, Chandigarh was declared a Union Territory under central administration serving as joint capital.'
+      },
+      {
+        era: '2016 AD',
+        title: 'UNESCO World Heritage Inscription',
+        description: 'The Capitol Complex of Chandigarh was inscribed as a UNESCO World Heritage Site as part of Le Corbusier\'s outstanding architectural contribution.'
       }
     ]
   }

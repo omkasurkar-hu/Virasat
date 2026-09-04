@@ -102,6 +102,7 @@ export interface StateHeritage {
   id: string;
   name: string;
   stateCode?: string;
+  isUnionTerritory?: boolean;
   capital: string;
   region: 'North' | 'South' | 'West' | 'East' | 'Central' | 'North-East';
   coordinates: [number, number]; // [lat, lng]
@@ -279,6 +280,9 @@ export interface AdoptedTraditionRecord {
 export interface DetailedFestival {
   id: string;
   name: string;
+  nativeName?: string;
+  day: number; // Day of month (1-31)
+  endDay?: number; // Optional end day for multi-day festivals
   monthIndex: number; // 0 = Jan, 11 = Dec
   monthName: string;
   lunarOrGregorianDate: string;

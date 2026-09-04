@@ -206,16 +206,11 @@ export const FloatingViraBot: React.FC<FloatingViraBotProps> = ({ states, onSele
             </div>
 
             {/* Label */}
-            <div className="flex flex-col text-left pr-1">
-              <div className="flex items-center gap-1.5">
-                <span className="font-serif font-bold text-sm text-white tracking-wide leading-none">
-                  Ask Vira
-                </span>
-                <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-spin-slow" />
-              </div>
-              <span className="text-[10px] text-amber-200/90 font-medium leading-none mt-1">
-                AI Cultural Scholar
+            <div className="flex items-center gap-1.5 pr-1">
+              <span className="font-serif font-bold text-sm text-white tracking-wide leading-none">
+                Ask Vira
               </span>
+              <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-spin-slow" />
             </div>
 
             {/* Green Online Dot */}

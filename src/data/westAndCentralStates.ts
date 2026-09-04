@@ -774,5 +774,146 @@ export const WEST_CENTRAL_STATES: StateHeritage[] = [
         description: 'Carved out of eastern Madhya Pradesh on 1 November 2000 as India\'s 26th state with Raipur as capital.'
       }
     ]
+  },
+  {
+    id: 'dadra-and-nagar-haveli-and-daman-and-diu',
+    name: 'Dadra & Nagar Haveli and Daman & Diu',
+    isUnionTerritory: true,
+    capital: 'Daman',
+    region: 'West',
+    coordinates: [20.4283, 72.8397],
+    zoomLevel: 9,
+    bannerImage: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1200&q=80',
+    tagline: 'Portuguese Coastal Bastions, Golden Arabian Beaches & Tribal Warli Art',
+    overview: 'This coastal Union Territory merges Portuguese maritime colonial heritage with lush indigenous tribal culture. From the 16th-century fortress walls of Moti Daman and Diu Fort to the sacred rhythmic Warli art and Tarpa tribal dances of Silvassa, it offers a tranquil confluence of beachscapes and heritage.',
+    officialLanguage: 'Gujarati, Hindi, English',
+    spokenLanguages: ['Gujarati', 'Konkani', 'Hindi', 'Varli', 'Portuguese Creole', 'English'],
+    stateAnimal: 'Indian Leopard / Chital',
+    stateBird: 'Black-capped Kingfisher',
+    funFact: 'The historic Portuguese-era cannons in Diu Fort have stood facing the Arabian Sea since the 16th century, and the island of Diu was once a pivotal maritime trade fortress linked to trade routes spanning Lisbon, Goa, and Macau.',
+    monuments: [
+      {
+        name: 'Diu Fort & Lighthouse',
+        type: 'Portuguese Island Sea Fortress',
+        century: '1535 AD (16th Century / Nuno da Cunha)',
+        location: 'Diu Island',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=800&q=80',
+        description: 'Colossal stone sea fortress surrounded on three sides by the Arabian Sea, featuring a double moat, grand bastion cannons, and a functioning 19th-century lighthouse.',
+        coordinates: [20.7139, 70.9856]
+      },
+      {
+        name: 'Moti Daman Fort (Fort of St. Jerome)',
+        type: 'Portuguese Colonial Citadel',
+        century: '1559 AD (16th Century)',
+        location: 'Moti Daman',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
+        description: 'Sprawling 30,000 sq meter fortress with 10 bastions and ramparts overlooking the Damanganga River, housing the Secretariat, churches, and lighthouse.',
+        coordinates: [20.4194, 72.8328]
+      },
+      {
+        name: 'Church of Bom Jesus',
+        type: 'Portuguese Baroque Catholic Church',
+        century: '1603 AD (17th Century)',
+        location: 'Moti Daman',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
+        description: 'Renowned for its intricately carved gilded wooden altarpiece, Corinthian pillars, and ceiling decorated with hand-carved cherub statues.',
+        coordinates: [20.4183, 72.8339]
+      },
+      {
+        name: 'Naida Caves',
+        type: 'Subterranean Sandstone Labyrinth',
+        century: 'Geological & 16th Century Stonemason Quarry',
+        location: 'Diu',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        description: 'Mystical network of open-air sandstone caves, interlocking arches, and sunbeam shafts carved by Portuguese quarrying just outside Diu Fort.',
+        coordinates: [20.7067, 70.9822]
+      }
+    ],
+    artAndDance: [
+      {
+        name: 'Tarpa Dance of the Warli Tribe',
+        type: 'Dance',
+        origin: 'Silvassa & Nagar Haveli',
+        description: 'Vibrant circular tribal dance performed during harvest seasons where dancers link arms around a central musician playing the trumpet-like dried gourd Tarpa instrument.',
+        instruments: ['Tarpa', 'Dholak', 'Ghungroo'],
+        costumeHighlight: 'Knee-length colorful drapes, peacock feather headpieces, and brass bead necklaces.'
+      },
+      {
+        name: 'Warli Folk Painting',
+        type: 'Folk Art',
+        origin: 'Warli Indigenous Community',
+        description: 'World-renowned tribal geometric painting using basic shapes (circle, triangle, square) painted with rice paste to depict mother earth, tree of life, and village joy.',
+        highlights: ['Rice paste on ochre mud', 'Sacred Chowk iconography', 'Celebration of harmony with nature']
+      }
+    ],
+    cuisines: [
+      {
+        name: 'Daman Coastal Seafood & Kolmi Papri',
+        category: 'Non-Vegetarian',
+        description: 'Fresh Arabian Sea prawns tossed with flat green beans (val papri), kokum, garlic, and freshly grated coconut in Portuguese-Gujarati coastal style.',
+        keyIngredients: ['Prawns (Kolmi)', 'Flat Green Beans (Papri)', 'Kokum', 'Fresh Coconut', 'Mustard Seeds', 'Garlic']
+      },
+      {
+        name: 'Ubadiyu & Nagli (Ragi) Rotla',
+        category: 'Vegetarian',
+        description: 'Rustic tribal delicacy of wild seasonal roots, green beans, and spices slow-steamed inside an inverted earthen pot buried in smoking wood fires.',
+        keyIngredients: ['Nagli / Ragi Flour', 'Yam / Suran', 'Field Beans', 'Wild Ajwain Leaves', 'Ginger-Chili Paste']
+      },
+      {
+        name: 'Diu Crab Masala & Bebinca',
+        category: 'Non-Vegetarian',
+        description: 'Succulent fresh mud crabs tossed in roasted spices and tamarind gravy, concluded with multi-layered Goan-Portuguese Bebinca cake.',
+        keyIngredients: ['Mud Crabs', 'Roasted Coriander', 'Tamarind', 'Coconut Milk', 'Egg Yolks', 'Ghee', 'Nutmeg']
+      }
+    ],
+    festivals: [
+      {
+        name: 'Nariyal Poornima (Coconut Day)',
+        timing: 'Shravana Purnima (August)',
+        significance: 'Traditional coastal festival marking the end of the monsoon season, where fishermen offer gold-painted coconuts to Lord Varuna to calm sea waves.',
+        keyRitual: 'Floating coconuts in the Arabian Sea, blessing fishing trawlers, and beach boat races.',
+        highlight: 'Decorated coastal boats sailing out for the new fishing season.'
+      },
+      {
+        name: 'Tarpa Festival Silvassa',
+        timing: 'December',
+        significance: 'Celebration of Dadra & Nagar Haveli\'s rich indigenous tribal heritage, archery contests, and craft fairs on the banks of the Damanganga River.',
+        keyRitual: 'Traditional tribal games, Warli live painting demonstrations, and folk dance competitions.',
+        highlight: 'Hundreds of Warli and Dhodia tribal artists dancing in unison.'
+      }
+    ],
+    craftsAndAttire: {
+      textiles: ['Tribal Handloom Wraps', 'Embroidered Cotton Quilts (Godhadis)'],
+      handicrafts: ['Warli Tribal Canvas Paintings', 'Bamboo & Cane Craft of Silvassa', 'Carved Seashell Souvenirs of Diu', 'Palm-leaf Mat Weaving'],
+      traditionalMenAttire: 'Dhoti with cotton vest and colorful pagri for Warli men; lightweight linen shirts for coastal towns.',
+      traditionalWomenAttire: 'Lugda (knee-length draped wrap) with traditional tribal silver necklaces, kadas, and anklets.',
+      giTaggedCrafts: ['Warli Painting (Shared region)']
+    },
+    historyTimeline: [
+      {
+        era: '1535 - 1559 AD',
+        title: 'Portuguese Maritime Fortifications',
+        description: 'Portuguese explorers under Nuno da Cunha fortified Diu following naval treaties with Sultan Bahadur Shah of Gujarat, and annexed Daman in 1559.'
+      },
+      {
+        era: '1783 - 1785 AD',
+        title: 'Maratha Treaty of Nagar Haveli',
+        description: 'The Peshwa of the Maratha Empire assigned Nagar Haveli to the Portuguese under a treaty of friendship for revenue collection.'
+      },
+      {
+        era: '1961 AD',
+        title: 'Liberation of Daman & Diu',
+        description: 'Indian Armed Forces liberated Daman and Diu through Operation Vijay, ending over 400 years of colonial Portuguese enclave rule.'
+      },
+      {
+        era: '2020 AD',
+        title: 'Merger into a Single Union Territory',
+        description: 'Parliament passed legislation uniting Dadra and Nagar Haveli with Daman and Diu into a unified single Union Territory with Daman as headquarters.'
+      }
+    ]
   }
 ];

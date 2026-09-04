@@ -757,5 +757,435 @@ export const SOUTH_STATES: StateHeritage[] = [
         description: 'Created as the 29th state of India following a historic people\'s statehood movement.'
       }
     ]
+  },
+  {
+    id: 'puducherry',
+    name: 'Puducherry',
+    isUnionTerritory: true,
+    capital: 'Puducherry',
+    region: 'South',
+    coordinates: [11.9416, 79.8083],
+    zoomLevel: 9,
+    bannerImage: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
+    tagline: 'French Riviera of the East, Auroville Matrimandir & Spiritual Peace',
+    overview: 'Puducherry (formerly Pondicherry) is a charming coastal Union Territory where 300 years of French colonial elegance blend harmoniously with vibrant Tamil culture. Known for the Golden Globe Matrimandir of Auroville, Sri Aurobindo Ashram, pastel mustard-yellow French Quarter colonial villas, and serene Promenade Beach.',
+    officialLanguage: 'Tamil, French, English, Telugu, Malayalam',
+    spokenLanguages: ['Tamil', 'French', 'English', 'Telugu', 'Malayalam'],
+    stateAnimal: 'Indian Palm Squirrel',
+    stateBird: 'Asian Koel',
+    funFact: 'Auroville, located in Puducherry, is an experimental international township founded in 1968 by Mirra Alfassa ("The Mother") where residents from over 50 nations live together in spiritual harmony without politics, money, or individual ownership.',
+    monuments: [
+      {
+        name: 'Matrimandir, Auroville',
+        type: 'Futuristic Golden Spiritual Sphere',
+        century: '1971 - 2008 AD (Designed by Roger Anger & The Mother)',
+        location: 'Auroville',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+        description: 'Monumental golden geodesic sphere situated in the center of Auroville, containing an inner meditation chamber featuring the world\'s largest optically perfect glass crystal globe.',
+        coordinates: [12.0069, 79.8106]
+      },
+      {
+        name: 'Sri Aurobindo Ashram',
+        type: 'Spiritual Sanctuary & Samadhi',
+        century: '1926 AD (Founded by Sri Aurobindo & The Mother)',
+        location: 'White Town, Puducherry',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
+        description: 'Spiritual haven founded in 1926 where thousands seek peace and meditation around the flower-bedecked marble Samadhi of Sri Aurobindo and Mirra Alfassa.',
+        coordinates: [11.9366, 79.8344]
+      },
+      {
+        name: 'White Town French Quarter & Promenade',
+        type: 'French Colonial Heritage District',
+        century: '18th Century AD (French East India Company)',
+        location: 'Goubert Avenue, Puducherry',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
+        description: 'Atmospheric French colonial sector lined with bougainvillea-draped mustard villas, wrought-iron balconies, street signs in French, and sea-facing Goubert Promenade.',
+        coordinates: [11.9333, 79.8358]
+      },
+      {
+        name: 'Basilica of the Sacred Heart of Jesus',
+        type: 'Gothic Revival Catholic Cathedral',
+        century: '1907 AD (20th Century)',
+        location: 'South Boulevard, Puducherry',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+        description: 'Striking Neo-Gothic pilgrimage church featuring 28 rare stained glass windows depicting the life of Jesus Christ and Latin church inscriptions.',
+        coordinates: [11.9286, 79.8278]
+      }
+    ],
+    artAndDance: [
+      {
+        name: 'Garadi Folk Dance',
+        type: 'Dance',
+        origin: 'Puducherry Villianur Region',
+        description: 'Ancient festive warrior dance performed by male artists wearing large iron rings on their ankles (Anjali) imitating Lord Rama\'s Vanara army celebration.',
+        instruments: ['Thappu (Frame Drum)', 'Urumi', 'Jallra'],
+        costumeHighlight: 'Warrior attire, feathered turbans, and jingling heavy ankle iron rings (Anjali).'
+      },
+      {
+        name: 'Villianur Terracotta Art',
+        type: 'Folk Art',
+        origin: 'Villianur Village',
+        description: 'Centuries-old terracotta sculpting tradition using fine green clay of the Gingee river to craft monumental Ayyanar temple horses and deity figurines.',
+        highlights: ['GI Tagged Pottery', 'Natural Clay Firing', 'Temple Guardian Sculptures']
+      }
+    ],
+    cuisines: [
+      {
+        name: 'Franco-Tamil Creole Curry & Baguette',
+        category: 'Non-Vegetarian',
+        description: 'Exquisite culinary fusion combining French wine-reduction techniques with aromatic Tamil roasted spices, coconut milk, and freshly baked French crusty baguettes.',
+        keyIngredients: ['Fish/Prawns', 'Coconut Milk', 'Shallots', 'White Wine Vinegar', 'Curry Leaves', 'Fennel']
+      },
+      {
+        name: 'Puducherry Crab Fry & Podi Dosa',
+        category: 'Street Food',
+        description: 'Crispy fermented rice-lentil crepes smeared with gun-powder spice and ghee, paired with fresh sea crab tossed in crushed black pepper and curry leaves.',
+        keyIngredients: ['Fermented Rice Batter', 'Idli Podi', 'Desi Ghee', 'Fresh Mud Crabs', 'Black Pepper']
+      },
+      {
+        name: 'Auroville Organic Salads & Tarts',
+        category: 'Dessert',
+        description: 'Fresh farm-to-table bakery tarts, sourdough bread, and passion fruit mousse crafted by artisanal bakeries in Auroville.',
+        keyIngredients: ['Organic Wheat', 'Passion Fruit', 'Almond Meal', 'Farm Butter', 'Raw Honey']
+      }
+    ],
+    festivals: [
+      {
+        name: 'Auroville Darshan & International Day of Yoga',
+        timing: 'February & June',
+        significance: 'Global gathering of spiritual practitioners and artists meditating around the amphitheater at Matrimandir for world peace.',
+        keyRitual: 'Dawn meditation around the sacred banyan tree and collective silent prayers.',
+        highlight: 'Golden reflections of Matrimandir during sunset bonfire.'
+      },
+      {
+        name: 'French Bastille Day Celebrations',
+        timing: 'July 14',
+        significance: 'Commemoration of the French National Day celebrated with Franco-Indian harmony along the coastal Promenade.',
+        keyRitual: 'Laying of floral wreaths at the French War Memorial and torchlight march by former French legionnaires.',
+        highlight: 'Bilingual parades and French cultural exhibitions.'
+      },
+      {
+        name: 'Villianur Temple Chariot Festival',
+        timing: 'May - June (Brahmotsavam)',
+        significance: 'Celebration at Sri Gokilambal Thirukameshwara Temple where thousands pull a 15-meter tall carved wooden temple chariot.',
+        keyRitual: 'Pulling of the gigantic Rath by devotees and distribution of temple Prasadam.',
+        highlight: 'Festive procession with traditional Nadaswaram ensembles.'
+      }
+    ],
+    craftsAndAttire: {
+      textiles: ['Auroville Handloom Organic Cottons', 'Hand-dyed Batik Silk Fabrics', 'Linen Beachwear'],
+      handicrafts: ['Villianur Terracotta Sculptures (GI Tagged)', 'Sri Aurobindo Ashram Handmade Paper & Marbling', 'Aromatic Organic Incense & Candles', 'Handmade Leather Footwear'],
+      traditionalMenAttire: 'Crisp cotton Veshti (Dhoti) with light linen shirts or French-cut trousers.',
+      traditionalWomenAttire: 'Traditional Kanjeevaram Silk Saree or breezy pastel linen dresses.',
+      giTaggedCrafts: ['Villianur Terracotta Works', 'Tirukanur Papier Mache Craft']
+    },
+    historyTimeline: [
+      {
+        era: '1674 AD',
+        title: 'Establishment of French Trading Post',
+        description: 'François Martin of the French East India Company founded Pondicherry as the primary trading stronghold of French India.'
+      },
+      {
+        era: '1742 - 1754 AD',
+        title: 'Governorship of Joseph François Dupleix',
+        description: 'Dupleix expanded French influence across South India and planned the dual White Town and Black Town urban layout.'
+      },
+      {
+        era: '1926 AD',
+        title: 'Sri Aurobindo & The Mother\'s Ashram',
+        description: 'Renowned philosopher Sri Aurobindo settled in Pondicherry to develop Integral Yoga and establish the world-renowned spiritual ashram.'
+      },
+      {
+        era: '1954 - 1962 AD',
+        title: 'Integration with the Republic of India',
+        description: 'Following a peaceful referendum, France transferred administrative and de jure control of Pondicherry, Karaikal, Mahe, and Yanam to India as a Union Territory.'
+      }
+    ]
+  },
+  {
+    id: 'andaman-and-nicobar-islands',
+    name: 'Andaman & Nicobar Islands',
+    isUnionTerritory: true,
+    capital: 'Sri Vijaya Puram (Port Blair)',
+    region: 'South',
+    coordinates: [11.6234, 92.7265],
+    zoomLevel: 7,
+    bannerImage: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
+    tagline: 'Emerald Isles, Cellular Jail Freedom Memorial & Pristine Coral Lagoons',
+    overview: 'An archipelago of 572 tropical islands in the Bay of Bengal, the Andaman & Nicobar Islands are a land of profound national memory and extraordinary biodiversity. Home to the historic Cellular Jail (Kala Pani) where India\'s freedom fighters were incarcerated, Ross Island ruins, turquoise coral atolls of Havelock, and ancient indigenous tribes.',
+    officialLanguage: 'Hindi, English',
+    spokenLanguages: ['Bengali', 'Hindi', 'Tamil', 'Telugu', 'Malayalam', 'Nicobarese', 'English'],
+    stateAnimal: 'Dugong (Sea Cow)',
+    stateBird: 'Andaman Wood Pigeon',
+    funFact: 'The only active volcano in South Asia is located on Barren Island in the Andaman Sea. Additionally, India\'s southernmost point is Indira Point on Great Nicobar Island.',
+    monuments: [
+      {
+        name: 'Cellular Jail (Kala Pani National Memorial)',
+        type: 'National Freedom Struggle Memorial',
+        century: '1906 AD (British Colonial Penal Fortress)',
+        location: 'Sri Vijaya Puram (Port Blair)',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+        description: 'Historic seven-winged Panopticon brick prison where Veer Savarkar, Batukeshwar Dutt, and hundreds of heroic freedom fighters suffered solitary confinement.',
+        coordinates: [11.6738, 92.7473]
+      },
+      {
+        name: 'Netaji Subhash Chandra Bose Island (Ross Island)',
+        type: 'Colonial Administrative Ruins',
+        century: '1858 AD (19th Century British Base)',
+        location: 'Port Blair Harbor',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        description: 'Former British headquarters known as "Paris of the East", now eerily preserved amidst giant banyan tree roots and tropical deer herds.',
+        coordinates: [11.6767, 92.7600]
+      },
+      {
+        name: 'Radhanagar Beach & Coral Atolls',
+        type: 'Pristine Marine Biosphere & Beach',
+        century: 'Natural Coral Atoll Heritage',
+        location: 'Swaraj Dweep (Havelock Island)',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+        description: 'Award-winning turquoise bay ranked among the finest beaches in the world, flanked by dense rainforests and vibrant living coral reefs.',
+        coordinates: [11.9840, 92.9510]
+      },
+      {
+        name: 'Viper Island Historic Gallows',
+        type: 'Colonial Penal Gallows & Harbour Fortress',
+        century: '1867 AD (19th Century)',
+        location: 'Port Blair',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
+        description: 'Historic British punishment hillock where early political prisoners and convict mutineers were tried and incarcerated prior to Cellular Jail.',
+        coordinates: [11.6644, 92.7022]
+      }
+    ],
+    artAndDance: [
+      {
+        name: 'Nicobarese Tribal Folk Dance',
+        type: 'Dance',
+        origin: 'Nicobar Islands',
+        description: 'Hypnotic traditional circular group dance performed during moonlit nights where villagers hold each other\'s shoulders, swaying to songs honoring ancestral spirits.',
+        instruments: ['Bamboo Flutes', 'Percussion Logs', 'Sea Shell Chimes'],
+        costumeHighlight: 'Traditional coconut frond skirts, shell necklaces, and flower garlands.'
+      },
+      {
+        name: 'Island Maritime Folk Ballads',
+        type: 'Music',
+        origin: 'Settler Communities of the Bay of Bengal',
+        description: 'Soul-stirring seafaring folk songs depicting monsoon storms, coral reefs, and communal brotherhood across the islands.',
+        instruments: ['Dotara', 'Dholak', 'Harmonium']
+      }
+    ],
+    cuisines: [
+      {
+        name: 'Andaman Coconut Prawn Curry',
+        category: 'Non-Vegetarian',
+        description: 'Fresh Bay of Bengal tiger prawns simmered in freshly extracted coconut milk, green chilies, mustard seeds, and sour kokum.',
+        keyIngredients: ['Tiger Prawns', 'Coconut Milk', 'Mustard Seeds', 'Kokum', 'Curry Leaves', 'Turmeric']
+      },
+      {
+        name: 'Island Spiced Mud Crab Masala',
+        category: 'Non-Vegetarian',
+        description: 'Whole sea crabs cooked with roasted coriander, black pepper, cardamom, and caramelized shallots, served with hot steamed jasmine rice.',
+        keyIngredients: ['Mud Crabs', 'Shallots', 'Black Pepper', 'Cardamom', 'Cinnamon', 'Coconut Oil']
+      },
+      {
+        name: 'Tropical Fruit Platter & Coconut Water',
+        category: 'Dessert',
+        description: 'Fresh island-grown king coconuts, sweet sweet-papayas, tropical rambutan, and caramelized banana halwa.',
+        keyIngredients: ['Fresh Tender Coconut', 'Island Papaya', 'Cardamom', 'Palm Jaggery']
+      }
+    ],
+    festivals: [
+      {
+        name: 'Island Tourism Festival',
+        timing: 'January (10-Day Carnival)',
+        significance: 'Mega annual celebration across Port Blair showcasing ethnic food courts, tribal cultural troupes, scuba demonstrations, and musical galas.',
+        keyRitual: 'Inauguration at ITF Ground with cultural dance troupes from all Indian states.',
+        highlight: 'Illuminated floating water floats and island handicraft expos.'
+      },
+      {
+        name: 'Netaji Subhash Mela',
+        timing: 'December 30 - January 23',
+        significance: 'Commemoration of Netaji Subhash Chandra Bose unfurling the first Free Indian Tricolour flag on Indian soil at Gymkhana Ground in 1943.',
+        keyRitual: 'Patriotic flag hoisting ceremony, historical reenactments, and maritime boat rallies.',
+        highlight: 'Tricolour light display across Port Blair Harbor.'
+      }
+    ],
+    craftsAndAttire: {
+      textiles: ['Island Hand-Block Printed Linens', 'Cotton Batik Wraps'],
+      handicrafts: ['Mother-of-Pearl & Oyster Shell Carvings', 'Carved Andaman Padauk Hardwood Artifacts', 'Cane & Bamboo Basketry of Nicobar', 'Coconut Shell Bowls & Lamps'],
+      traditionalMenAttire: 'Lightweight linen shirt with cotton trousers or traditional sarong.',
+      traditionalWomenAttire: 'Breezy cotton sarees with mother-of-pearl jewelry and seashell hairpins.',
+      giTaggedCrafts: ['Nicobari Hodi Craft (Traditional Ocean Canoe)']
+    },
+    historyTimeline: [
+      {
+        era: '10th - 11th Century AD',
+        title: 'Chola Imperial Naval Base',
+        description: 'Emperor Rajendra Chola I used the Andaman Islands (called Ma-Nakkavaram in Thanjavur inscriptions) as a strategic naval base for maritime expeditions.'
+      },
+      {
+        era: '1858 - 1906 AD',
+        title: 'British Penal Settlement & Cellular Jail',
+        description: 'Following the 1857 war of independence, the British established a brutal penal colony, completing the iconic Cellular Jail in 1906.'
+      },
+      {
+        era: '1943 AD',
+        title: 'Netaji Unfurls the Indian Tricolour',
+        description: 'Netaji Subhash Chandra Bose liberated the islands with the Azad Hind Fauj, renaming them Shaheed Dweep and Swaraj Dweep.'
+      },
+      {
+        era: '1956 AD',
+        title: 'Union Territory of India',
+        description: 'Constituted as a Union Territory of India; in 1979 Cellular Jail was officially dedicated to the nation as a National Freedom Memorial.'
+      }
+    ]
+  },
+  {
+    id: 'lakshadweep',
+    name: 'Lakshadweep',
+    isUnionTerritory: true,
+    capital: 'Kavaratti',
+    region: 'South',
+    coordinates: [10.5667, 72.6417],
+    zoomLevel: 8,
+    bannerImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+    tagline: 'Hundred Thousand Coral Islands, Turquoise Lagoons & Coconut Atolls',
+    overview: 'Lakshadweep—meaning "A Hundred Thousand Islands" in Sanskrit and Malayalam—is India\'s smallest and most pristine Union Territory, consisting of 36 coral atolls in the Arabian Sea. Renowned for its crystalline aquamarine lagoons, vibrant coral reefs, coconut groves, Kolkali folk dances, and maritime fishing heritage.',
+    officialLanguage: 'Malayalam, English, Hindi, Jeseri, Mahl',
+    spokenLanguages: ['Jeseri (Dweep Bhasha)', 'Mahl (Minicoy Island)', 'Malayalam', 'English'],
+    stateAnimal: 'Butterflyfish',
+    stateBird: 'Sooty Tern',
+    funFact: 'Lakshadweep is India\'s only fully coral island territory. Every single island sits atop ancient volcanic submerged mountain ridges encircled by living coral reefs and tranquil lagoons.',
+    monuments: [
+      {
+        name: 'Ujra Mosque of Kavaratti',
+        type: 'Ornate Islamic Wood-Carved Mosque',
+        century: '17th Century AD (Sheikh Mohammad Qasim)',
+        location: 'Kavaratti Island',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+        description: 'Masterpiece of coastal Islamic architecture featuring an intricate hand-carved floral wooden ceiling and a holy well reputed to possess therapeutic curative waters.',
+        coordinates: [10.5694, 72.6406]
+      },
+      {
+        name: 'Minicoy Island British Lighthouse',
+        type: 'Historic Maritime Navigation Tower',
+        century: '1885 AD (19th Century)',
+        location: 'Minicoy Island',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
+        description: '49-meter brick lighthouse engineered by the British in 1885, offering a panoramic 360-degree view of Minicoy\'s crescent lagoon and international sea routes.',
+        coordinates: [8.2725, 73.0489]
+      },
+      {
+        name: 'Marine Aquarium & Museum',
+        type: 'Marine Biodiversity Conservation Center',
+        century: 'Modern Eco-Heritage',
+        location: 'Kavaratti',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+        description: 'Home to rare clownfish, sea anemones, brain corals, sea cucumbers, and preserved oceanic artifacts showcasing the Arabian Sea reef ecosystem.',
+        coordinates: [10.5600, 72.6350]
+      },
+      {
+        name: 'Agatti Coral Atoll & Lagoon',
+        type: 'Crystalline Lagoon Atoll',
+        century: 'Natural Geological Heritage',
+        location: 'Agatti Island',
+        isUnesco: false,
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+        description: 'World-renowned coral atoll runway and aquamarine lagoon where travelers can observe sea turtles, rays, and coral formations directly from the shore.',
+        coordinates: [10.8569, 72.1814]
+      }
+    ],
+    artAndDance: [
+      {
+        name: 'Kolkali & Parichakali Dance',
+        type: 'Dance',
+        origin: 'Kavaratti & Andrott Islands',
+        description: 'Fast-paced rhythmic folk dances performed by pairs of male artists with wooden sticks (Kolkali) or wooden shields and swords (Parichakali) accompanied by vocal chants.',
+        instruments: ['Kolkali Sticks', 'Dholak', 'Chilanka'],
+        costumeHighlight: 'White Mundu with red borders and embroidered waist scarves.'
+      },
+      {
+        name: 'Lava Dance of Minicoy',
+        type: 'Dance',
+        origin: 'Minicoy Island',
+        description: 'Lively group dance of Minicoy islanders performed during Eid celebrations with colorful headgear, drums, and synchronized swaying steps.',
+        instruments: ['Dhol', 'Brass Cymbals']
+      }
+    ],
+    cuisines: [
+      {
+        name: 'Mus Kavaab (Spiced Tuna Skewers)',
+        category: 'Non-Vegetarian',
+        description: 'Boneless oceanic skipjack tuna fish chunks marinated in freshly ground grated coconut, red chilies, turmeric, coriander, and curry leaves, pan-seared in coconut oil.',
+        keyIngredients: ['Skipjack Tuna (Mas)', 'Fresh Coconut', 'Curry Leaves', 'Coconut Oil', 'Dry Red Chilies', 'Cardamom']
+      },
+      {
+        name: 'Lakshadweep Rayereha & Parotta',
+        category: 'Non-Vegetarian',
+        description: 'Spiced aromatic red tuna fish curry slow-cooked with tamarind and roasted island spices, eaten with flaky layered Malabar parottas.',
+        keyIngredients: ['Fresh Oceanic Tuna', 'Tamarind', 'Kashmiri Chili', 'Garlic', 'Mustard Seeds', 'Coconut Paste']
+      },
+      {
+        name: 'Kadalakka Sweet Cake',
+        category: 'Dessert',
+        description: 'Traditional celebratory dessert cake baked with chana dal, fresh coconut milk, eggs, cardamom, and palm sugar.',
+        keyIngredients: ['Chana Dal', 'Coconut Milk', 'Eggs', 'Cardamom Powder', 'Ghee', 'Cashews']
+      }
+    ],
+    festivals: [
+      {
+        name: 'Eid-ul-Fitr & Bakrid Regattas',
+        timing: 'Shawwal & Dhul Hijjah (Islamic Calendar)',
+        significance: 'Most joyful community festivals across all 10 inhabited islands, marked by special morning prayers, shared feasts, and coastal canoe races.',
+        keyRitual: 'Community prayers at historic island mosques, visiting relatives with Kadalakka sweets, and Kolkali performances.',
+        highlight: 'Traditional racing canoes sailing across turquoise lagoons.'
+      },
+      {
+        name: 'Minicoy Jahadhoni Boat Festival',
+        timing: 'Winter (December - January)',
+        significance: 'Grand traditional boat race where colorful snake-like rowing boats (Jahadhoni) compete with 30+ rowers in synchronization.',
+        keyRitual: 'Rowing races across Minicoy lagoon accompanied by rhythmic chanting and drumming.',
+        highlight: 'Intricately painted Jahadhoni wooden boats racing at top speed.'
+      }
+    ],
+    craftsAndAttire: {
+      textiles: ['Minicoy Handwoven Cotton Fabrics', 'Traditional Libus Embroidered Tunics'],
+      handicrafts: ['Coconut Shell Carved Artifacts', 'Golden Coir Fiber Ropes & Mattings', 'Handmade Wooden Jahadhoni Boat Models', 'Coral Sand Ornaments (Eco-Friendly)'],
+      traditionalMenAttire: 'Crisp white Mundu with cotton shirt and embroidered prayer cap.',
+      traditionalWomenAttire: 'Kachi (black wrap with red border) and Thattam headscarf; Libus long red gown on Minicoy.',
+      giTaggedCrafts: ['Lakshadweep Coconut Coir Craft', 'Minicoy Tuna Masmin']
+    },
+    historyTimeline: [
+      {
+        era: '7th Century AD',
+        title: 'Arrival of Saint Ubaidullah',
+        description: 'Arab missionary Saint Ubaidullah arrived after a shipwreck, establishing the earliest Islamic traditions and founding the Ujra Mosque in Kavaratti.'
+      },
+      {
+        era: '11th - 16th Century AD',
+        title: 'Suzerainty of the Arakkal Kingdom',
+        description: 'Ruled under the matriarchal Arakkal Royal House of Cannanore (Kerala), managing international spice and coir trade.'
+      },
+      {
+        era: '1799 - 1947 AD',
+        title: 'British Administration after Tipu Sultan',
+        description: 'Following the Anglo-Mysore wars, southern islands came under British administration while maintaining traditional island customs.'
+      },
+      {
+        era: '1956 AD',
+        title: 'Union Territory of India',
+        description: 'Constituted as a distinct Union Territory of the Republic of India; officially named Lakshadweep in 1973.'
+      }
+    ]
   }
 ];

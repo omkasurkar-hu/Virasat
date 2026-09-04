@@ -158,21 +158,7 @@ export default function App() {
             onOpenQuiz={() => setShowQuizModal(true)}
           />
 
-          {/* Quick State Pills Selector (Bottom Center on Large Screens) */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 shadow-2xl">
-            <span className="text-xs text-amber-400 font-bold flex items-center gap-1 mr-1">
-              <Compass className="w-3.5 h-3.5" /> Explore State:
-            </span>
-            {STATES_HERITAGE_DATA.slice(0, 6).map((st) => (
-              <button
-                key={st.id}
-                onClick={() => handleSelectState(st)}
-                className="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 border border-slate-700 transition-all cursor-pointer"
-              >
-                {st.name}
-              </button>
-            ))}
-          </div>
+
         </div>
       )}
 

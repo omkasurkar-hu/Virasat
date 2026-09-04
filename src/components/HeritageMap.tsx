@@ -44,6 +44,7 @@ const STATE_LABEL_CENTROIDS: Record<string, [number, number]> = {
   'jammu-and-kashmir': [33.70, 75.00],
   'himachal-pradesh': [31.95, 77.20],
   'punjab': [31.10, 75.30],
+  'chandigarh': [30.73, 76.78],
   'uttarakhand': [30.15, 79.20],
   'haryana': [29.10, 76.10],
   'delhi': [28.62, 77.22],
@@ -52,6 +53,7 @@ const STATE_LABEL_CENTROIDS: Record<string, [number, number]> = {
 
   // West & Central India
   'gujarat': [22.40, 71.40],
+  'dadra-and-nagar-haveli-and-daman-and-diu': [20.42, 72.84],
   'madhya-pradesh': [23.50, 77.90],
   'maharashtra': [19.45, 76.10],
   'chhattisgarh': [21.20, 81.80],
@@ -63,6 +65,9 @@ const STATE_LABEL_CENTROIDS: Record<string, [number, number]> = {
   'karnataka': [14.60, 75.80],
   'kerala': [10.20, 76.40],
   'tamil-nadu': [11.00, 78.40],
+  'puducherry': [11.94, 79.80],
+  'lakshadweep': [10.56, 72.64],
+  'andaman-and-nicobar-islands': [11.62, 92.72],
 
   // East & North-East India
   'bihar': [25.65, 85.80],
@@ -281,24 +286,27 @@ export const HeritageMap: React.FC<HeritageMapProps> = ({
       const monumentName = famousMonument?.name || 'Heritage Landmark';
 
       // Clean embedded label (no picture at rest - only the crisp embedded state name)
+      const isLongUT = state.isUnionTerritory && state.name.length > 10;
       const labelIcon = L.divIcon({
         className: 'state-map-embedded-label',
         html: `
           <div class="group flex items-center justify-center cursor-pointer select-none">
-            <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg ${
+            <div class="flex items-center gap-1 px-${isLongUT ? '1.5' : '2.5'} py-${isLongUT ? '0.5' : '1'} rounded-lg ${
               isSelected
                 ? 'bg-amber-500 text-slate-950 font-bold border-amber-300 shadow-xl scale-110'
+                : state.isUnionTerritory
+                ? 'bg-cyan-950/90 hover:bg-cyan-400 text-cyan-200 hover:text-slate-950 border border-cyan-500/80 hover:border-cyan-200 shadow-lg backdrop-blur-md'
                 : 'bg-slate-950/85 hover:bg-amber-500 text-slate-100 hover:text-slate-950 border border-slate-700/80 hover:border-amber-300 shadow-lg backdrop-blur-md'
             } transition-all duration-200 transform group-hover:scale-105">
-              <span class="w-1.5 h-1.5 rounded-full ${
-                isSelected ? 'bg-slate-950' : 'bg-amber-400 group-hover:bg-slate-950'
+              <span class="${isLongUT ? 'w-1 h-1' : 'w-1.5 h-1.5'} rounded-full ${
+                isSelected ? 'bg-slate-950' : state.isUnionTerritory ? 'bg-cyan-400 group-hover:bg-slate-950' : 'bg-amber-400 group-hover:bg-slate-950'
               } transition-colors flex-shrink-0"></span>
-              <span class="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase font-sans whitespace-nowrap leading-none drop-shadow-sm">${state.name}</span>
+              <span class="${isLongUT ? 'text-[8.5px] sm:text-[9.5px]' : 'text-[10px] sm:text-[11px]'} font-bold tracking-wider uppercase font-sans whitespace-nowrap leading-none drop-shadow-sm">${state.name} ${state.isUnionTerritory ? `<span class="${isLongUT ? 'text-[8px]' : 'text-[9px]'} opacity-80 font-normal">(UT)</span>` : ''}</span>
             </div>
           </div>
         `,
-        iconSize: [100, 28],
-        iconAnchor: [50, 14],
+        iconSize: isLongUT ? [110, 22] : [110, 28],
+        iconAnchor: isLongUT ? [55, 11] : [55, 14],
       });
 
       // Hyper-Visual Hover Tooltip: Famous Monument Photo pops up ONLY on cursor hover
