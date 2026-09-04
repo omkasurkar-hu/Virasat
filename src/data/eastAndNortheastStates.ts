@@ -1386,18 +1386,22 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Ryndia Silk (Organic Eri Eco-Silk colored with plant dyes)', 'Dakmanda (Garo handwoven wraparound with eye borders)', 'Jainsem & Dhara (Khasi silk draped attire)'],
-      image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWEFhFoGoW69AYagO10K_dcy2rb5KJ1O8SHUroXCDVXYoYbaKWlEUO70n3rgUFPgDOCFQDLTvHzmQQO5TvAbEMArAZ1awWNUpeZZT5-R5QR3WjPFtsdzIs60Tm5oNYecMb_BlIUlA31PI6/s2639/IMG_20190221_112952.jpg',
-      image: 'https://garrowmandai.com/wp-content/uploads/2026/02/4500.jpeg',
-      image: 'https://tse1.mm.bing.net/th/id/OIP.CJfLgJ-UxjfcoCrjFDL9mQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      textileImages: [
+        'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWEFhFoGoW69AYagO10K_dcy2rb5KJ1O8SHUroXCDVXYoYbaKWlEUO70n3rgUFPgDOCFQDLTvHzmQQO5TvAbEMArAZ1awWNUpeZZT5-R5QR3WjPFtsdzIs60Tm5oNYecMb_BlIUlA31PI6/s2639/IMG_20190221_112952.jpg',
+        'https://garrowmandai.com/wp-content/uploads/2026/02/4500.jpeg',
+        'https://tse1.mm.bing.net/th/id/OIP.CJfLgJ-UxjfcoCrjFDL9mQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
+      ],
       handicrafts: ['Tlieng (Waterproof Khasi Cane Mats)', 'Bamboo Rain Shields (Knup)', 'Cane & Bamboo Stools (Mora)', 'Black Clay Pottery of Larnai'],
-      image: 'https://www.postoast.com/wp-content/uploads/2020/06/Cane-mats-meghalaya.jpg',
-      image: 'https://chalohoppo.com/wp-content/uploads/2023/03/Bamboo-Rain-Shields-Knup-of-Meghalaya.jpg',
-      image: 'https://m.media-amazon.com/images/I/71sGmGl4KwL._AC_.jpg',
-      image: 'https://artsandcraftmeghalaya.com/wp-content/uploads/2024/10/P1050117__.jpg',
+      handicraftImages: [
+        'https://www.postoast.com/wp-content/uploads/2020/06/Cane-mats-meghalaya.jpg',
+        'https://chalohoppo.com/wp-content/uploads/2023/03/Bamboo-Rain-Shields-Knup-of-Meghalaya.jpg',
+        'https://m.media-amazon.com/images/I/71sGmGl4KwL._AC_.jpg',
+        'https://artsandcraftmeghalaya.com/wp-content/uploads/2024/10/P1050117__.jpg'
+      ],
       traditionalMenAttire: 'Jymphong (sleeveless cotton jacket open in front) with Dhoti and turban (Spong).',
-      image: 'https://tse2.mm.bing.net/th/id/OIP.fwDi31Le1gc_JjedyTMf0gAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      traditionalMenAttireImage: 'https://tse2.mm.bing.net/th/id/OIP.fwDi31Le1gc_JjedyTMf0gAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       traditionalWomenAttire: 'Jainsem (two-piece silk garment pinned at both shoulders) covered by a Dhara or Jainkup woolen mantle with 24k gold Kynjri chains.',
-      image: 'https://static.fibre2fashion.com/articleresources/images/106/10563/Cover-b_Big.jpg',
+      traditionalWomenAttireImage: 'https://static.fibre2fashion.com/articleresources/images/106/10563/Cover-b_Big.jpg',
       giTaggedCrafts: ['Meghalaya Memang Narang (Wild Orange)', 'Khasi Mandarin', 'Lakadong Turmeric (World\'s highest curcumin content ~7-12%)']
     },
     historyTimeline: [
@@ -1552,19 +1556,23 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Tsüngkotepsü (Ao Warrior Shawl with tiger/mithun motifs)', 'Loramhoushü (Angami Black-Red-Green Shawl)', 'Sumi Peacock Shawls', 'Chakhesang Rira Shawls'],
-      image: 'https://thumbs.dreamstime.com/b/ao-naga-significa-tradicional-chal-de-shawl-tsungkotepsu-creado-por-tejida-mano-guerrero-278479325.jpg',
-      image: 'https://tse4.mm.bing.net/th/id/OIP.S0LyN2vViOjdZVGEw5RAzwHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://th.bing.com/th/id/R.8ba08d8368eaf22ccfd756c8cf70bda4?rik=tyMXaReBmsARjg&riu=http%3a%2f%2fpearlsandpetals.co.uk%2fcdn%2fshop%2ffiles%2f1_b88f8609-e787-4db8-a43f-db606c05e1a5_grande.jpg%3fv%3d1759317476&ehk=Nc00%2fD8UF9SV0ahOOkuRuPG5%2b4G9Ft0Rt7IJOJ27biM%3d&risl=&pid=ImgRaw&r=0',
-      image: 'https://digitalgi.in/wp-content/uploads/2024/07/Naga-Chakhesang-Shawl-1024x689.jpg',
+      textileImages: [
+        'https://thumbs.dreamstime.com/b/ao-naga-significa-tradicional-chal-de-shawl-tsungkotepsu-creado-por-tejida-mano-guerrero-278479325.jpg',
+        'https://tse4.mm.bing.net/th/id/OIP.S0LyN2vViOjdZVGEw5RAzwHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://th.bing.com/th/id/R.8ba08d8368eaf22ccfd756c8cf70bda4?rik=tyMXaReBmsARjg&riu=http%3a%2f%2fpearlsandpetals.co.uk%2fcdn%2fshop%2ffiles%2f1_b88f8609-e787-4db8-a43f-db606c05e1a5_grande.jpg%3fv%3d1759317476&ehk=Nc00%2fD8UF9SV0ahOOkuRuPG5%2b4G9Ft0Rt7IJOJ27biM%3d&risl=&pid=ImgRaw&r=0',
+        'https://digitalgi.in/wp-content/uploads/2024/07/Naga-Chakhesang-Shawl-1024x689.jpg'
+      ],
       handicrafts: ['Konyak Wood Carvings', 'Naga Bamboo & Cane Baskets', 'Naga Spears with Red Dyed Goat Hair', 'Boar Tusk & Carnelian Bead Necklaces'],
-      image: 'https://oddessemania.in/wp-content/uploads/2024/07/Konyak-Tribes-wood-Carving-art-of-Nagaland.jpg',
-      image: 'https://purbashree.com/image/cache/catalog/BASKET%20AND%20TRAYS/BASKET/34b-550x688h.jpg.webp',
-      image: 'https://www.mandarinmansion.com/sites/default/files/styles/item_image/public/2024-10/multicolor-tufted-naga-spear4.jpg?itok=sYO0cWTL',
-      image: 'https://i.etsystatic.com/8645839/r/il/6c6f9b/5655821407/il_1080xN.5655821407_3g2m.jpg',
+      handicraftImages: [
+        'https://oddessemania.in/wp-content/uploads/2024/07/Konyak-Tribes-wood-Carving-art-of-Nagaland.jpg',
+        'https://purbashree.com/image/cache/catalog/BASKET%20AND%20TRAYS/BASKET/34b-550x688h.jpg.webp',
+        'https://www.mandarinmansion.com/sites/default/files/styles/item_image/public/2024-10/multicolor-tufted-naga-spear4.jpg?itok=sYO0cWTL',
+        'https://i.etsystatic.com/8645839/r/il/6c6f9b/5655821407/il_1080xN.5655821407_3g2m.jpg'
+      ],
       traditionalMenAttire: 'Embroidered warrior kilt with feathered hornbill crown, boar tusk neckband, brass armlets, and woven tribal shawl.',
-      image: 'https://media.istockphoto.com/id/1161932839/pt/foto/portrait-of-a-naga-warrior-at-hornbill-festival.jpg?s=612x612&w=0&k=20&c=WCe34jscSi_Z2vVAfBJSjZVh09f1WyuGLqCwjSjzYWo=',
+      traditionalMenAttireImage: 'https://media.istockphoto.com/id/1161932839/pt/foto/portrait-of-a-naga-warrior-at-hornbill-festival.jpg?s=612x612&w=0&k=20&c=WCe34jscSi_Z2vVAfBJSjZVh09f1WyuGLqCwjSjzYWo=',
       traditionalWomenAttire: 'Neikhro (wraparound skirt) with embroidered blouse and multi-layered red carnelian and yellow glass bead necklaces.',
-      image: 'https://i.pinimg.com/originals/2b/76/66/2b76665425c2332135908e4933e511c7.jpg',
+      traditionalWomenAttireImage: 'https://i.pinimg.com/originals/2b/76/66/2b76665425c2332135908e4933e511c7.jpg',
       giTaggedCrafts: ['Naga King Chili (Bhut Jolokia / Raja Mircha)', 'Naga Tree Tomato', 'Naga Sweet Cucumber', 'Chakhesang Shawls']
     },
     historyTimeline: [
@@ -1720,18 +1728,22 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Shaphee Lanphee (Warrior Shawl with astronomical motifs)', 'Moirang Phee (Temple border design)', 'Wangkei Phee (Fine sheer cotton)', 'Phanek Mayek Naiba (Striped skirt)'],
-      image: 'https://img.indiahandmade.com/catalog/product/cache/dee0bc41489afb86ae85561eae1bc64e/i/m/img_20250918_144445643_hdr_ae_-_sahil_thakur_1.jpg',
-      image: 'https://th.bing.com/th/id/OIP.i-pam4KmPGOn5WTd3UocsAHaJ4?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://tse4.mm.bing.net/th/id/OIP.QNsD8sMnEsPFfRj43pvfbAHaGq?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
-      image: 'https://tse4.mm.bing.net/th/id/OIP.N_-pMCattdXh2SyxoXM6YQHaE6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      textileImages: [
+        'https://img.indiahandmade.com/catalog/product/cache/dee0bc41489afb86ae85561eae1bc64e/i/m/img_20250918_144445643_hdr_ae_-_sahil_thakur_1.jpg',
+        'https://th.bing.com/th/id/OIP.i-pam4KmPGOn5WTd3UocsAHaJ4?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://tse4.mm.bing.net/th/id/OIP.QNsD8sMnEsPFfRj43pvfbAHaGq?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+        'https://tse4.mm.bing.net/th/id/OIP.N_-pMCattdXh2SyxoXM6YQHaE6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
+      ],
       handicrafts: ['Longpi Black Pottery (Stone-clay made without potter\'s wheel)', 'Kauna Grass Mats and Baskets', 'Wood and Bamboo Sculptures'],
-      image: 'https://dmcfinder.com/wp-content/uploads/2025/02/Longpi-black-pottery-manipur.jpg',
-      image: 'https://www.ethicaonline.com/wp-content/uploads/2024/01/Kauna-Grass-14.jpg',
-      image: 'https://tse1.mm.bing.net/th/id/OIP.8HCthXbsBvNWXRvM2toJIwHaGy?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      handicraftImages: [
+        'https://dmcfinder.com/wp-content/uploads/2025/02/Longpi-black-pottery-manipur.jpg',
+        'https://www.ethicaonline.com/wp-content/uploads/2024/01/Kauna-Grass-14.jpg',
+        'https://tse1.mm.bing.net/th/id/OIP.8HCthXbsBvNWXRvM2toJIwHaGy?r=0&rs=1&pid=ImgDetMain&o=7&rm=3'
+      ],
       traditionalMenAttire: 'Khamen Chatpa Dhoti (royal printed silk) with white Kurta and turban.',
-      image: 'https://ik.imagekit.io/ldqsn9vvwgg/images/1757580.jpg',
+      traditionalMenAttireImage: 'https://ik.imagekit.io/ldqsn9vvwgg/images/1757580.jpg',
       traditionalWomenAttire: 'Phanek (handwoven wraparound skirt) with Innaphi (sheer embroidered shawl) draped around the upper body.',
-      image: 'https://tse1.mm.bing.net/th/id/OIP.YS0bszRyW5HOOG9FTX_M7wAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      traditionalWomenAttireImage: 'https://tse1.mm.bing.net/th/id/OIP.YS0bszRyW5HOOG9FTX_M7wAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       giTaggedCrafts: ['Chak-Hao (Black Rice)', 'Shaphee Lanphee', 'Moirang Phee', 'Wangkei Phee', 'Kachai Lemon', 'Sirarakhong Hathei Chili']
     },
     historyTimeline: [
@@ -1886,18 +1898,22 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Puanchei (Magnificent Festive Handwoven Wraparound)', 'Puandum (Black, red, and yellow striped shawl of honor)', 'Ngotekherh (Checkered traditional Puan)', 'Tawlhlohpuan (Bravery shawl)'],
-      image: 'https://indyhaat.co.in/wp-content/uploads/2025/05/Mizo-Puanchei-Handwoven-Lenbuang-and-Sakeizangzia-Pattern.jpg',
-      image: 'https://vaiphei.com/wp-content/uploads/2026/01/puandum-1024x535.jpeg',
-      image: 'https://th-i.thgim.com/public/life-and-style/fashion/article19854684.ece/alternates/LANDSCAPE_1200/puanchei-JiksawPhotographyjpg',
-      image: 'https://s7ap1.scene7.com/is/image/incredibleindia/tawlhlohpuan-mizoram-craft-body?qlt=82&ts=1726641355490',
+      textileImages: [
+        'https://indyhaat.co.in/wp-content/uploads/2025/05/Mizo-Puanchei-Handwoven-Lenbuang-and-Sakeizangzia-Pattern.jpg',
+        'https://vaiphei.com/wp-content/uploads/2026/01/puandum-1024x535.jpeg',
+        'https://th-i.thgim.com/public/life-and-style/fashion/article19854684.ece/alternates/LANDSCAPE_1200/puanchei-JiksawPhotographyjpg',
+        'https://s7ap1.scene7.com/is/image/incredibleindia/tawlhlohpuan-mizoram-craft-body?qlt=82&ts=1726641355490'
+      ],
       handicrafts: ['Mizo Bamboo Hats (Khumbeu made from waterproof wild leaves)', 'Thul Bamboo Storage Baskets', 'Handmade Cane Furniture'],
-      image: 'https://1.bp.blogspot.com/_PIRG-kRWEQc/TFBV-LlqAII/AAAAAAAAAC0/O9mn9WsBUfg/s1600/DSC_4373.JPG',
-      image: 'https://m.media-amazon.com/images/I/81j9p7IgfbL.jpg',
-      image: 'https://3.imimg.com/data3/KK/MF/FCP-5852639/01036600-b-1-bamboo-cane-sofa-set-500x500.jpg',
+      handicraftImages: [
+        'https://1.bp.blogspot.com/_PIRG-kRWEQc/TFBV-LlqAII/AAAAAAAAAC0/O9mn9WsBUfg/s1600/DSC_4373.JPG',
+        'https://m.media-amazon.com/images/I/81j9p7IgfbL.jpg',
+        'https://3.imimg.com/data3/KK/MF/FCP-5852639/01036600-b-1-bamboo-cane-sofa-set-500x500.jpg'
+      ],
       traditionalMenAttire: 'Plain white cotton coat with colorful Puandum shawl draped across the shoulders.',
-      image: 'https://tse2.mm.bing.net/th/id/OIP.jsRxl8SEJKEYUnxNTW5KIAHaJh?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+      traditionalMenAttireImage: 'https://tse2.mm.bing.net/th/id/OIP.jsRxl8SEJKEYUnxNTW5KIAHaJh?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       traditionalWomenAttire: 'Kawrchei (embroidered blouse) with Puanchei skirt and Vakiria feather headdress.',
-      image: 'https://tse4.mm.bing.net/th/id/OIP.sPEEjekcJ3zrePsNoa8qFwHaJQ?r=0&w=1440&h=1800&rs=1&pid=ImgDetMain&o=7&rm=3',
+      traditionalWomenAttireImage: 'https://tse4.mm.bing.net/th/id/OIP.sPEEjekcJ3zrePsNoa8qFwHaJQ?r=0&w=1440&h=1800&rs=1&pid=ImgDetMain&o=7&rm=3',
       giTaggedCrafts: ['Mizo Puanchei', 'Tawlhlohpuan', 'Puandum', 'Ngotekherh', 'Mizo Chilli (Bird\'s Eye Chili)', 'Mizo Ginger']
     },
     historyTimeline: [
@@ -1945,12 +1961,11 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     monuments: [
       {
         name: 'Neermahal (Water Palace of Twijilik)',
-        image:'https://img-cdn.publive.online/fit-in/1200x675/filters:format(webp)/30-stades/media/media_files/nE7cXHzVi1pInLvfqElG.jpg',
+        image: 'https://img-cdn.publive.online/fit-in/1200x675/filters:format(webp)/30-stades/media/media_files/nE7cXHzVi1pInLvfqElG.jpg',
         type: 'Lake Palace Complex (Rudrasagar Lake)',
         century: '1930 - 1938 AD (Maharaja Bir Bikram Kishore Manikya)',
         location: 'Melaghar, Sepahijala District',
         isUnesco: false,
-        image: 'https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=800&q=80',
         description: 'Largest water palace in Eastern India blending Hindu and Mughal architecture, rising gracefully from the center of the 6-sq-km Rudrasagar Lake.',
         coordinates: [23.4900, 91.3200]
       },
@@ -2063,18 +2078,22 @@ export const EAST_NORTHEAST_STATES: StateHeritage[] = [
     ],
     craftsAndAttire: {
       textiles: ['Risa (Traditional Narrow Handwoven Chest Drape)', 'Rignai (Indigenous Loincloth Wraparound)', 'Rikutu (Upper Body Drape)'],
-      image:'https://static.fibre2fashion.com//articleresources/images/106/10557/Cover-s_Small.jpg',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrydAfVQSB_XJfKN1uTyBc7LoHAK8Z0DCMNLyvrtWa97pqlkz4YqMqyjJ&s=10',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK0XmXq-3rPtF4hjwzTxaKRcJ79xZiQ2llVT0drBNILjsTjnwlnfDEB3g&s=10',
+      textileImages: [
+        'https://static.fibre2fashion.com//articleresources/images/106/10557/Cover-s_Small.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrydAfVQSB_XJfKN1uTyBc7LoHAK8Z0DCMNLyvrtWa97pqlkz4YqMqyjJ&s=10',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK0XmXq-3rPtF4hjwzTxaKRcJ79xZiQ2llVT0drBNILjsTjnwlnfDEB3g&s=10'
+      ],
       handicrafts: ['Tripura Bamboo & Cane Furniture', 'Bamboo Lampshades and Screens', 'Carved Wooden Masks', 'Sitalpati Cold Bamboo Mats'],
-      image:'https://www.indianetzone.com/images/Bamboo_and_Cane_crafts_of_Tripu.jpg',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAERmlQgirkdPi3i-NUa7zzmOgZhkGSUm4I_NoJc_Scm7W4srZpxdG1ed6&s=10',
-      image:'https://trovecraftindia.com/cdn/shop/files/Wooden_wall_mask_female_1.jpg?v=1779432673&width=1445',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT34znRcup-K-JJG3aGNjqVBNwBFzBUk8aALvLIF9rsQeY2t8m9JjKU9ks&s=10',
+      handicraftImages: [
+        'https://www.indianetzone.com/images/Bamboo_and_Cane_crafts_of_Tripu.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAERmlQgirkdPi3i-NUa7zzmOgZhkGSUm4I_NoJc_Scm7W4srZpxdG1ed6&s=10',
+        'https://trovecraftindia.com/cdn/shop/files/Wooden_wall_mask_female_1.jpg?v=1779432673&width=1445',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT34znRcup-K-JJG3aGNjqVBNwBFzBUk8aALvLIF9rsQeY2t8m9JjKU9ks&s=10'
+      ],
       traditionalMenAttire: 'Dhoti with Rikutu scarf and Pagri (Turban).',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXoScVDFJ4hsBIEnoyvL1VhLzgrzieLNEGGce9AeGQwV6lAcf3wVl8o8M&s=10',
+      traditionalMenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXoScVDFJ4hsBIEnoyvL1VhLzgrzieLNEGGce9AeGQwV6lAcf3wVl8o8M&s=10',
       traditionalWomenAttire: 'Rignai (patterned wraparound) tied with a colorful handwoven Risa across the chest and multi-strand silver coin necklaces.',
-      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSssZ2bLsvY5MpCT0AvRZvsXBFPd7twbrNOAMNP486wZmtREKyr2Wrvl5I&s=10',
+      traditionalWomenAttireImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSssZ2bLsvY5MpCT0AvRZvsXBFPd7twbrNOAMNP486wZmtREKyr2Wrvl5I&s=10',
       giTaggedCrafts: ['Tripura Queen Pineapple', 'Tripura Risa Handloom (Textile)']
     },
     historyTimeline: [
